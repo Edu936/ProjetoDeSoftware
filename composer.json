@@ -1,0 +1,18 @@
+{
+    "name": "dudum/php",
+    "authors": [
+        {
+            "name": "Eduardo Vieira",
+            "email": "edu.vieira936@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\":"app"
+        },
+        "files":[
+            
+        ]
+    }
+}
