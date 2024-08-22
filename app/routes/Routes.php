@@ -2,14 +2,19 @@
 
 namespace app\routes;
 
-class Routes 
+/**
+ * Essa classe so possui o metodo get esse metodo retorna todas as rotas que nosso website possui.
+ */
+
+class Routes
 {
     public static function get(): array
     {
         return [
             'get' => [
-                '/'=>'HomeController@index',
-                '/cadastros' => 'CadastroContrller@store',
+                '/' => 'HomeController@index',
+                '/user/[0-9]+' => 'UserController@user',
+                '/register' => 'RegisterController@register',
             ],
             'post' => [],
         ];
