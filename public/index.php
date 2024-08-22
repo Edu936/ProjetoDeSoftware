@@ -12,4 +12,8 @@ require '../vendor/autoload.php';
 
 session_start();
 
-var_dump(Router::run());
+$path = Router::run();
+
+extract(['name' => 'Eduardo']);
+
+require $path['path'];

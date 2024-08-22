@@ -15,6 +15,7 @@ class Routes
                 '/' => 'HomeController@index',
                 '/user/[0-9]+' => 'UserController@user',
                 '/register' => 'RegisterController@register',
+                '/user/[0-9]+/orcamento/[0-9]+' => 'UserController@cad',
             ],
             'post' => [],
         ];
