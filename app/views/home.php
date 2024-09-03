@@ -1,6 +1,13 @@
-<?php
-    $this->layout('master', ['title' => 'User'])
-?>
+<?php $this->layout('master', ['title' => 'User']) ?>
+
+<?php $this->start('css') ?>
+    <link rel="stylesheet" href="/style/home.css">
+<?php $this->stop() ?>
+
+<?php $this->start('js') ?>
+    <script src="/javascript/home.js"></script>
+<?php $this->stop() ?>
 
 <h1>User</h1>
-<p>Hello, <?=$this->e($name) ?></p>
+<p id="name">Hello, <?=$this->e($name) ?></p>
+

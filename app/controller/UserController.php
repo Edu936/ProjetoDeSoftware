@@ -2,9 +2,10 @@
 
 namespace app\controller;
 
+use app\controller\Controller;
 use League\Plates\Engine;
 
-class UserController
+class UserController extends Controller
 {
     public function index(){
         $templetes = new Engine('../app/views/');

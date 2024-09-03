@@ -1,13 +1,12 @@
 <?php
 namespace app\controller;
 
+use app\controller\Controller;
 use League\Plates\Engine;
 
-class HomeController {
+class HomeController extends Controller{
     public function index() 
     {
-        $templetes = new Engine('../app/views/');
-
-        echo $templetes->render('home', ['name' => 'Eduardo']);
+        $this->views('home', ['name' => 'Eduardo']);
     }
 }
