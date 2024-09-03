@@ -13,6 +13,7 @@ class Routes
         return [
             'get' => [
                 '/' => 'HomeController@index',
+                '/user' => 'UserController@index',
                 '/user/[0-9]+' => 'UserController@user',
                 '/register' => 'RegisterController@register',
                 '/user/[0-9]+/orcamento/[0-9]+' => 'UserController@cad',

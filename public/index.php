@@ -13,7 +13,3 @@ require '../vendor/autoload.php';
 session_start();
 
 $path = Router::run();
-
-extract(['name' => 'Eduardo']);
-
-require $path['path'];

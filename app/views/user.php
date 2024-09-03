@@ -1,6 +1,4 @@
 <?php
     $this->layout('master', ['title' => 'User'])
 ?>
-
-<h1>User</h1>
-<p>Hello, <?=$this->e($name) ?></p>
+<h1>Bem vindo a pagina de usuario!</h1>
