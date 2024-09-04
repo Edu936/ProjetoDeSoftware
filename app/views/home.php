@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => 'User']) ?>
+<?php $this->layout('master', ['title' => 'Estitica Automotiva']) ?>
 
 <?php $this->start('css') ?>
     <link rel="stylesheet" href="/style/home.css">

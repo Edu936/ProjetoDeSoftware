@@ -14,11 +14,13 @@ class Routes
             'get' => [
                 '/' => 'HomeController@index',
                 '/user' => 'UserController@index',
-                '/user/[0-9]+' => 'UserController@user',
-                '/register' => 'RegisterController@register',
-                '/user/[0-9]+/orcamento/[0-9]+' => 'UserController@cad',
+                '/cliente' => 'ClienteController@index',
+                '/atendimento' => 'AtendimentoController@index',
             ],
-            'post' => [],
+            'post' => [
+                '/user/cadastrar' => 'UserController@cadastrar',
+                '/user/atualizar/[aA-zZ]+' => 'UserController@atualizar',
+            ],
         ];
     }
 }
