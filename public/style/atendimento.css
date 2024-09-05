@@ -1,3 +1,16 @@
 body {
-    background-color: red;
+    width: 90vw;
+    height: 90vh;
+}
+
+iframe {
+    display: block;
+    width: 99%;
+    height: 99%;
+    scrollbar-width: none;
+}
+
+.cadastros {
+    height: 90vh;
+    width: 99vw;
 }

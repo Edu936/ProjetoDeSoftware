@@ -9,7 +9,7 @@ use Throwable;
  * classe RouterFilter e receber o tratamento de rota.
  */
 
-class Router
+abstract class Router
 {
     public static function run()
     {

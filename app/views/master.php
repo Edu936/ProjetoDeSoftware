@@ -18,7 +18,7 @@
 
         <!--  -->
         <div class="container">
-            <?= $this->insert('layouts/header') ?>
+            <!-- <?= $this->insert('layouts/header') ?> -->
             <?= $this->section('content') ?>
         </div>
 
