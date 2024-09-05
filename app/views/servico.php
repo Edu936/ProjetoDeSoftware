@@ -1,3 +1,3 @@
-<?php $this->start('css') ?>
-<link rel="stylesheet" href="/style/login.css">
-<?php $this->stop() ?>
+<?php $this->layout('master') ?>
+
+<h2> Request</h2>

@@ -1,6 +1,8 @@
 <?php
 
-namespace app\model;
+namespace app\models;
+
+use app\database\MySql;
 
 final class Usuario extends User
 {
@@ -21,6 +23,12 @@ final class Usuario extends User
         $this->setEndCep($endCep);
         $this->setEndNumero($endNumero);
         $this->setEndBairro($endBairro);
+    }
+
+
+    public function con(){
+        $conn = MySql::connect();
+        dd($conn);
     }
 
     function setCpf($cpf): void

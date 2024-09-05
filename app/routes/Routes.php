@@ -13,17 +13,16 @@ namespace app\routes;
         return [
             'get' => [
                 '/' => 'LoginController@index',
-                '/user' => 'UserController@index',
-                '/cidade' => 'CidadeController@index',
-                '/cliente' => 'ClienteController@index',
-                '/atendimento' => 'AtendimentoController@index',
+                // '/user' => 'UserController@index',
+                // '/cidade' => 'CidadeController@index',
+                // '/cliente' => 'ClienteController@index',
+                // '/atendimento' => 'AtendimentoController@index',
             ],
             'post' => [
-                '/home' => 'HomeController@index',
-                '/user/cadastrar' => 'UserController@cadastrar',
-                '/user/atualizar/[aA-zZ]+' => 'UserController@atualizar',
-                '/cidade/cadastrar' => 'CidadeController@cadastrar',
-
+                '/home' => 'HomeController@x',
+                // '/user/cadastrar' => 'UserController@cadastrar',
+                // '/user/atualizar/[aA-zZ]+' => 'UserController@atualizar',
+                // '/cidade/cadastrar' => 'CidadeController@cadastrar',
             ],
         ];
     }

@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => 'Estitica Automotiva']) ?>
+<?php $this->layout('master') ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/home.css">
@@ -9,26 +9,9 @@
 <script src="/javascript/home.js"></script>
 <?php $this->stop() ?>
 
-<!-- <?= $this->insert('layouts/header') ?> -->
 
-<header>
-    <div class="sidebar-active">
-        <span class="active-sidebar" onclick="esconderMenu()">
-            <i class="bi bi-three-dots"></i>
-        </span>
-    </div>
-    <div class="search">
-        <input type="search" name="search" id="search">
-    </div>
-    <div class="unit">
-        <div class="description-unit">
-            <h4>ClubCar LTA</h4>
-        </div>
-        <span>
-            <img class="logo-unit" src="https://sujeitoprogramador.com/steve.png" alt="Foto da unidade">
-        </span>
-    </div>
-</header>
+<?= $this->insert('layouts/header') ?>
+
 <aside id="menu">
     <div class="head-sidebar">
         <h4>Menu</h4>

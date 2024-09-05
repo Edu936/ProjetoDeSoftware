@@ -1,13 +1,11 @@
-<?php $this->layout('master', ['title' => 'Estitica Automotiva']) ?>
+<!----------- Configuração da Pagina de Login ------------>
+<?php $this->layout('master') ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/login.css">
 <?php $this->stop() ?>
 
-<?php $this->start('js') ?>
-<script src="/javascript/login.js"></script>
-<?php $this->stop() ?>
-
+<!--------------- HTML da Pagina de Login ----------------->
 <main>
     <div class="image">
         <h1>Entre<br />E gerencie sua loja!</h1>
@@ -19,11 +17,11 @@
             <form action="/home" method="post" autocomplete="off">
                 <div class="dados">
                     <label for="user">Usuário:</label><br />
-                    <input type="text" name="user" placeholder="Usuário" id="user" required />
+                    <input type="text" name="user" id="user" placeholder="Usuário" required />
                 </div>
                 <div class="dados">
                     <label for="password">Senha:</label><br />
-                    <input type="password" name="password" placeholder="Senha" id="password" required />
+                    <input type="password" name="password" id="password" placeholder="Senha" required />
                 </div>
                 <div class="submit">
                     <input type="reset" value="Limpar" />
@@ -34,7 +32,7 @@
         </div>
         <ul>
             <li>
-                <a class="link" href="../Cadastra-se/sigin.html">
+                <a class="link" href="">
                     <p>Cadastrar-se</p>
                 </a>
             </li>

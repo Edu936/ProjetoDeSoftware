@@ -2,7 +2,7 @@
 
 namespace app\static;
 
-class RequestType
+abstract class RequestType
 {
     public static function get() 
     {
