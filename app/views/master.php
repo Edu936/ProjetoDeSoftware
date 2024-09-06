@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!------- Define o titulo da pagina -------->
-        <title>Estetica Automotiva</title>
+        <title><?=$this->e($title)?></title>
         <!------------------------------------------>
 
         <!-- Define o estilo e o script da pagina -->
@@ -15,7 +15,6 @@
 
     </head>
     <body>
-
         <div class="container">
             <?= $this->section('content') ?>
         </div>

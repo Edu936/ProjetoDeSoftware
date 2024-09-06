@@ -16,10 +16,10 @@ namespace app\routes;
                 // '/user' => 'UserController@index',
                 // '/cidade' => 'CidadeController@index',
                 // '/cliente' => 'ClienteController@index',
-                // '/atendimento' => 'AtendimentoController@index',
+                '/atendimento' => 'AtendimentoController@index',
             ],
             'post' => [
-                '/home' => 'HomeController@x',
+                '/home' => 'HomeController@index',
                 // '/user/cadastrar' => 'UserController@cadastrar',
                 // '/user/atualizar/[aA-zZ]+' => 'UserController@atualizar',
                 // '/cidade/cadastrar' => 'CidadeController@cadastrar',

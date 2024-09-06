@@ -1,5 +1,5 @@
 <!----------- Configuração da Pagina de Login ------------>
-<?php $this->layout('master') ?>
+<?php $this->layout('master' ) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/login.css">
@@ -9,7 +9,7 @@
 <main>
     <div class="image">
         <h1>Entre<br />E gerencie sua loja!</h1>
-        <img src="Car finance-bro.png" />
+        <img src="/images/Car finance-bro.png" />
     </div>
     <div class="form-main">
         <div class="card">
@@ -30,12 +30,5 @@
                 </div>
             </form>
         </div>
-        <ul>
-            <li>
-                <a class="link" href="">
-                    <p>Cadastrar-se</p>
-                </a>
-            </li>
-        </ul>
     </div>
 </main>
