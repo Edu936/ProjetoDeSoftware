@@ -3,11 +3,12 @@ namespace app\controller;
 
 use app\controller\Controller;
 use app\models\Usuario;
+use app\static\Request;
 
 class HomeController extends Controller{
     public function index() 
     {
-        $this->views('home', ['name' => $_POST['user']]);
+      $this->views('home', ['title' => "Estetica Automotiva"] );
     }
 
     public function x(){

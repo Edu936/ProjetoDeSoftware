@@ -11,7 +11,7 @@
     </div>
     <div class="unit">
         <div class="description-unit">
-            <h4><?=  $this->e($name)?></h4>
+            <h4>Edu</h4>
         </div>
         <span>
             <img class="logo-unit" src="https://sujeitoprogramador.com/steve.png" alt="Foto da unidade">

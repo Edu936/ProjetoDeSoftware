@@ -7,8 +7,11 @@ use app\controller\Controller;
 class LoginController extends Controller {
     public function index()
     {
-        $this->views('login',[
-            'title' => "Login",
-        ]);
+        $this->views('login',['title' => "Login", 'pag' => "Login"]);
+    }
+
+    public function teste()
+    {
+        $this->views('cadastro',[]);
     }
 }

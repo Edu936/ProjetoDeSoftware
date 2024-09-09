@@ -1,5 +1,5 @@
 <!----------- Configuração da Pagina de Login ------------>
-<?php $this->layout('master' ) ?>
+<?php $this->layout('master', ['title' => 'Login']) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/login.css">
@@ -29,6 +29,7 @@
                     <input type="submit" value="Confirmar" />
                 </div>
             </form>
+            <a href="/cadastro">Cadastrar-se</a>
         </div>
     </div>
 </main>

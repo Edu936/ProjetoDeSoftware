@@ -16,7 +16,9 @@
     </head>
     <body>
         <div class="container">
-            <?= $this->section('content') ?>
+            <?php
+                echo $this->section('content');
+            ?>
         </div>
 
     </body>
