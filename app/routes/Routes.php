@@ -12,6 +12,7 @@ namespace app\routes;
     {
         return [
             'get' => [
+                '/teste' => 'TesteController@index',
                 '/' => 'LoginController@index',
                 '/controle' => 'ControleController@index',
                 '/cadastro' => 'CadastroController@index',

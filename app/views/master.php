@@ -18,7 +18,15 @@
 
 <body>
     <div class="container">
-        <?php echo $this->section('content') ?>
+        <?php
+        if ($this->e($title) == "Login") {
+            echo $this->section('content');
+        } else {
+            echo $this->insert('layout/header');
+            echo $this->insert('layout/asside');
+            echo "<main>".$this->section('content')."</main>";
+        }
+        ?>
     </div>
 </body>
 
