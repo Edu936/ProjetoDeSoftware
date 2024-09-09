@@ -3,7 +3,7 @@
 namespace app\controller;
 
 class CadastroController extends Controller {
-    public function usuario() {
+    public function index() {
         echo $this->views('cadastro');
     } 
 }

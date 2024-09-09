@@ -12,18 +12,15 @@ namespace app\routes;
     {
         return [
             'get' => [
-                '/' => 'LoginController@teste',
-                // '/cadastro' => 'CadastroController@usuario',
-                // '/atendimento' => 'AtendimentoController@index',
-                // '/user' => 'UserController@index',
-                // '/cidade' => 'CidadeController@index',
-                // '/cliente' => 'ClienteController@index',
+                '/' => 'LoginController@index',
+                '/controle' => 'ControleController@index',
+                '/cadastro' => 'CadastroController@index',
+                '/estatisca' => 'EstatisticaController@index',
+                '/atendimento' => 'AtendimentoController@index',
+                '/configuracao' => 'ConfiguracaoController@index',
             ],
             'post' => [
-                // '/home' => 'HomeController@index',
-                // '/user/cadastrar' => 'UserController@cadastrar',
-                // '/user/atualizar/[aA-zZ]+' => 'UserController@atualizar',
-                // '/cidade/cadastrar' => 'CidadeController@cadastrar',
+                '/home' => 'HomeController@index',
             ],
         ];
     }

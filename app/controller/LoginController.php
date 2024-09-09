@@ -9,9 +9,4 @@ class LoginController extends Controller {
     {
         $this->views('login',['title' => "Login", 'pag' => "Login"]);
     }
-
-    public function teste()
-    {
-        $this->views('cadastro',[]);
-    }
 }
