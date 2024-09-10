@@ -29,7 +29,7 @@
                     <input type="submit" value="Confirmar" />
                 </div>
             </form>
-            <a href="/cadastro">Cadastrar-se</a>
         </div>
+        <a href="/cadastro">Cadastrar-se</a>
     </div>
 </main>

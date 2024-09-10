@@ -25,6 +25,7 @@
             echo $this->insert('layout/header');
             echo $this->insert('layout/asside');
             echo "<main>".$this->section('content')."</main>";
+            echo $this->insert('layout/footer');
         }
         ?>
     </div>
