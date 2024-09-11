@@ -11,25 +11,25 @@
                 </a>
             </li>
             <li class="options">
-                <a href="/controle" target="main">
+                <a href="/controle">
                     <i class="bi bi-controller"></i>
                     <span>Controle</span>
                 </a>
             </li>
             <li class="options">
-                <a href="/cadastro" target="main">
+                <a href="/cadastro">
                     <i class="bi bi-pen"></i>
                     <span>Cadastros</span>
                 </a>
             </li>
             <li class="options">
-                <a href="/estatisca" target="main">
+                <a href="/estatistica">
                     <i class="bi bi-graph-up"></i>
                     <span>Estatisticas</span>
                 </a>
             </li>
             <li class="options">
-                <a href="/configuracao" target="main">
+                <a href="/configuracao">
                     <i class="bi bi-gear-fill"></i>
                     <span>Configuração</span>
                 </a>

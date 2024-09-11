@@ -27,7 +27,7 @@ class RouterFilter
     public function get()
     {
         $root = $this->rotasSimples();
-        
+
         if ($root != 'NotFoundController@index') {
             return $root;
         } else {

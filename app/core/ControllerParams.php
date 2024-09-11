@@ -21,20 +21,20 @@ class ControllerParams
 
     public function encontrarParametros($root)
     {
-        $indice = array_search($root,$this->rotes[$this->type]);
-        $arrayUri = explode('/',$this->uri);
-        $arrayIndice = explode('/',$indice);
+        $indice = array_search($root, $this->rotes[$this->type]);
+        $arrayUri = explode('/', $this->uri);
+        $arrayIndice = explode('/', $indice);
         $parametros = [];
-        $i=0;
-        foreach($arrayIndice as $indice => $value){
-            if($value != $arrayUri[$indice]){
+        $i = 0;
+        foreach ($arrayIndice as $indice => $value) {
+            if ($value != $arrayUri[$indice]) {
                 $parametros[$i] = $arrayUri[$indice];
                 $i++;
             }
         }
-        if($parametros != []){
+        if ($parametros != []) {
             return $parametros;
         }
-        return ;
+        return;
     }
 }

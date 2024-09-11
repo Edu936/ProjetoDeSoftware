@@ -17,9 +17,8 @@ abstract class Router
             $controller = new Controller;
             $filtroDeRotas = new RouterFilter;
             return $controller->execute($filtroDeRotas->get());
-        } catch(Throwable $e){
+        } catch (Throwable $e) {
             echo $e->getMessage();
         }
-       
     }
 }

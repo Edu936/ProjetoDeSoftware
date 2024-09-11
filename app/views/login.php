@@ -30,6 +30,5 @@
                 </div>
             </form>
         </div>
-        <a href="/cadastro">Cadastrar-se</a>
     </div>
 </main>

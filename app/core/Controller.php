@@ -21,7 +21,7 @@ class Controller
         }
         $objeto = new $controllerClass;
         $params = new ControllerParams;
-        $parametros = $params -> encontrarParametros($root);
-        return $objeto -> $method($parametros);
+        $parametros = $params->encontrarParametros($root);
+        return $objeto->$method($parametros);
     }
 }

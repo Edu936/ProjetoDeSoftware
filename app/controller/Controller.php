@@ -9,8 +9,8 @@ abstract class Controller
 {
     protected function views(string $view, array $data = [])
     {
-        $viewPath = "../app/views/".$view.'.php';
-        if(!file_exists($viewPath)){
+        $viewPath = "../app/views/" . $view . '.php';
+        if (!file_exists($viewPath)) {
             throw new Exception("Essa Tela não existe no sistema!");
         } else {
             $templetes = new Engine('../app/views/');
