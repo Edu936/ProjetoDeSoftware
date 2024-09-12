@@ -1,18 +1,21 @@
 <h2>Cadastros</h2>
 <ul>
-    <li class="optionsAtend">
+    <li class="options">
         Novo Produto
     </li>
-    <li class="optionsAtend">
+    <li class="options">
         Novo Serviço
     </li>
-    <li class="optionsAtend">
-        Nova Cidade
+    <li class="options">
+        <a href="/cadastro/cidade">
+            <i class="bi bi-geo-alt"></i>
+            <span>Nova Cidade</span>
+        </a>
     </li>
-    <li class="optionsAtend">
+    <li class="options">
         Novo Fornecedor
     </li>
-    <li class="optionsAtend">
+    <li class="options">
         Novo Atendente
     </li>
 </ul>

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\model;
+namespace app\models;
 
-class Cidade
+class Cidade extends Model
 {
     private int $codigo;
     private string $nome;
@@ -12,6 +12,7 @@ class Cidade
     {
         $this->setNome($nome);   
         $this->setEstado($estado);
+        $this->table = 'TB_CIDADE';
     }
 
     public function getCodigo(): int

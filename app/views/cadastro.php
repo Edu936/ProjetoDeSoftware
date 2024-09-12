@@ -2,6 +2,7 @@
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/master.css">
+<link rel="stylesheet" href="/style/cadastro.css">
 <link rel="stylesheet" href="/style/menu.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
@@ -10,7 +11,13 @@
     <div class="menu">
         <?=$this->insert('layout/cadastro-menu')?>  
     </div>
-    <div class="imges">
-        <!-- <img src="/images/Car wash-bro.png" alt=""> -->
-    </div>
+    <section>
+        <?php 
+            if($this->e($pag) == "index") {
+                echo "<img src= \"images/Car wash-bro.png\"/>";
+            } else if($this->e($pag) == "city") {
+                echo $this->insert('components/form-city');
+            }
+        ?>
+    </section>
 </div>

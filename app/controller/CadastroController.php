@@ -8,6 +8,15 @@ class CadastroController extends Controller
     {
         echo $this->views('cadastro', [
             'title' => "Estetica Automotiva",
+            'pag' => "index",
+        ]);
+    }
+
+    public function createCity()
+    {
+        echo $this-> views('cadastro', [
+            'title' => "Estetica Automotiva",
+            'pag' => "city",
         ]);
     }
 }
