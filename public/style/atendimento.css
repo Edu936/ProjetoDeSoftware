@@ -1,11 +1,11 @@
-.imges {
+section {
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.imges > img {
+section > img {
     width: 60%;
     height: 100%;
     max-width: 60%;

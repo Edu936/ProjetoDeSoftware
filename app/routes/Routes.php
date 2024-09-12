@@ -15,14 +15,21 @@ abstract class Routes
                 '/' => 'LoginController@index',
                 '/teste' => 'TesteController@index',
                 '/controle' => 'ControleController@index',
-                '/cadastro' => 'CadastroController@index',
+                '/cadastro' => 'CadastroController@index',               
                 '/estatistica' => 'EstatisticaController@index',
                 '/atendimento' => 'AtendimentoController@index',
+                '/atendimento/cliente' => 'AtendimentoController@createClient',
+
                 '/configuracao' => 'ConfiguracaoController@index',
             ],
             'post' => [
                 '/home' => 'HomeController@index',
-                '/cadastro/cliente' => 'CadastroController@create',
+
+                '/cliente/listar' => 'ClientController@read',
+                '/cliente/salvar' => 'ClientController@create',
+                '/cliente/buscar' => 'ClientController@search',
+                '/cliente/apagar' => 'ClientController@delete',
+                '/cliente/alterar' => 'ClientController@update',
             ],
         ];
     }

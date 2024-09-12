@@ -1,10 +1,9 @@
 <?php
 
-namespace app\model;
+namespace app\models;
 
 use Pedido;
-use app\model\interface\ICliente;
-
+use app\models\interfaces\ICliente;
 
 final class Cliente extends User implements ICliente
 {
@@ -29,19 +28,5 @@ final class Cliente extends User implements ICliente
     function setCpf($cpf): void
     {
         $this->cpf = $cpf;
-    }
-
-    #[\Override]
-    public function fazerPedido (): Pedido
-    {
-        $pedido = new Pedido;
-        return $pedido;
-    }
-    #[\Override]
-    public function cancelarPedido(): void {}
-    #[\Override]
-    public function pagaPedido(): bool
-    {
-        return true;
     }
 }

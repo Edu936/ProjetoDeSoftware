@@ -6,25 +6,19 @@ use PDO;
 
 class MySql
 {
+    private static $password = "";
+    private static $username = "root";
     private static $connection = null;
+    private static $dbname = "db_clubcar";
+    private static $servername = "host-localhost";
 
     public static function connect()
     {
         if (!self::$connection) {
-            self::$connection = new PDO("mysql:host-localhost;dbname=db_clubcar", "root", "", [
+            self::$connection = new PDO("mysql:".self::$servername.";dbname=".self::$dbname, self::$username, self::$password, [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
             ]);
             return self::$connection;
         }
     }
 }
-    // $servername = "localhost";
-    // $username = "root";  
-    // $password = "";    
-    // $dbname = "db_clubcar";         
-
-    // $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // if (!$conn) {
-    //     die("Conexão falhou: " . mysqli_connect_error());
-    // }
