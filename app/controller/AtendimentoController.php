@@ -8,6 +8,15 @@ class AtendimentoController extends Controller
    {
       $this->views('atendimento', [
          'title' => "Estetica Automotiva",
+         'pag' => "index",
+      ]);
+   }
+
+   public function createClient()
+   {
+      $this->views('atendimento', [
+         'title' => "Estetica Automotiva",
+         'pag' => "client",
       ]);
    }
 }
