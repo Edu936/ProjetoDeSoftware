@@ -6,9 +6,9 @@ use PDO;
 
 class MySql
 {
-    private static $password = "";
     private static $username = "root";
     private static $connection = null;
+    private static $password = "Edu@1195";
     private static $dbname = "db_clubcar";
     private static $servername = "host-localhost";
 
@@ -18,7 +18,7 @@ class MySql
             self::$connection = new PDO("mysql:".self::$servername.";dbname=".self::$dbname, self::$username, self::$password, [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
             ]);
-            return self::$connection;
         }
+        return self::$connection;
     }
 }

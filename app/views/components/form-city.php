@@ -1,6 +1,6 @@
 <div class="card">
     <h4>Cadastro de Cidade</h4>
-    <form action="" method="post">
+    <form action="/cidade/salvar" method="post">
         <div class="data">
             <label for="name">Digite o nome da cidade:</label>
             <input type="text" name="name" id="name" requireed>
