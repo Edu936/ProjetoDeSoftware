@@ -1,9 +1,9 @@
 {
-    "name": "dudum/php",
+    "name": "samsung/projeto-de-software",
     "authors": [
         {
-            "name": "Eduardo Vieira",
-            "email": "edu.vieira936@gmail.com"
+            "name": "caroluiza-n",
+            "email": "caroluizanunes126@gmail.com"
         }
     ],
     "require": {
@@ -12,9 +12,9 @@
     },
     "autoload": {
         "psr-4": {
-            "app\\":"app"
+            "app\\" :"app"
         },
-        "files":[
+        "files": [
             "app/helpers/json.php"
         ]
     }
