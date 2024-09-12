@@ -7,7 +7,10 @@
         Novo Serviço
     </li>
     <li class="options">
-        Nova Cidade
+        <a href="/cadastro/cidade">
+            <i class="bi bi-geo-alt"></i>
+            <span>Nova Cidade</span>
+        </a>
     </li>
     <li class="options">
         Novo Fornecedor

@@ -15,7 +15,10 @@ abstract class Routes
                 '/' => 'LoginController@index',
                 '/teste' => 'TesteController@index',
                 '/controle' => 'ControleController@index',
-                '/cadastro' => 'CadastroController@index',               
+
+                '/cadastro' => 'CadastroController@index',
+                '/cadastro/cidade' => 'CadastroController@createCity',
+                
                 '/estatistica' => 'EstatisticaController@index',
                 '/atendimento' => 'AtendimentoController@index',
                 '/atendimento/cliente' => 'AtendimentoController@createClient',
