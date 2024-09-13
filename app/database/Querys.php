@@ -2,28 +2,44 @@
 
 namespace app\database;
 
-class Querys {
-    private static function tables() : array
-    {
-        return [
-            'create_cidade' => "INSERT INTO tb_cidade (NM_CIDADE, DS_ESTADO_CIDADE) VALUES (:n,:e)",
-            'reader_cidade' => "",
-            'update_cidade' => "",
-            'delete_cidade' => "DELETE FROM tb_cidade WHERE CD_CIDADE = :id",
-            
+abstract class Querys {
 
-        ];
-    }
-
-    public static function getQuery($nomeTable)
+    private static function colunas(array $colunas) : string
     {
-        $query = "";
-        $tables = self::tables();
-        foreach($tables as $nmTable => $script){
-            if($nomeTable == $nmTable) {
-                $query = $script;
+        $colum = "";
+        $length = count($colunas);
+        foreach($colunas as $value){
+            if($value == $colunas[$length-1]){
+                $colum .= $value;
+            } else {
+                $colum .= $value . ", ";
             }
         }
+        return $colum;
+    }
+
+    private static function valores (array $valores): string
+    {
+        $value = "";
+        $length = count($valores);
+        foreach($valores as $index){
+            if($index == $valores[$length-1]){
+                $value .= $index;
+            } else {
+                $value .= $index . ", ";
+            }
+        }
+        return $value;
+    }
+
+    public static function insert(string $nomeTabela, array $campos, array $valores)
+    {
+        $colunas = self::colunas($campos);
+        $values = self::valores($valores);
+
+        $query ="INSERT INTO ".$nomeTabela." ( ".$colunas." ) VALUES ( ".$values." )";
+
         return $query;
     }
+
 }

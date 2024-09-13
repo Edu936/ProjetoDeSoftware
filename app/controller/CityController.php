@@ -20,18 +20,13 @@ class CityController extends Controller
     public function create(): void
     {
         $data = Request::only(['name', 'estado']);
-        $script = Querys::getQuery('tb_cidade');
         $cidade = new Cidade($data['name'], $data['estado']);
-
-        $query = $this->conn->prepare($script);
-        $query->bindValue(":n", $cidade->getNome());
-        $query->bindValue(":e", $cidade->getEstado());
-        $query->execute();
-                
-        echo $this-> views('cadastro', [
-            'title' => "Estetica Automotiva",
-            'pag' => "city",
-        ]);
+        $query = Querys::insert('tb_cidade',["NM_CIDADE", "DS_ESTADO_CIDADE"],[":n",":e"]);
+        dd($query);
+        $execute = $this->conn->prepare($query);
+        $execute->bindValue(":n", $cidade->getNome());
+        $execute->bindValue(":e", $cidade->getEstado());
+        $execute->execute();
     }
 
     public function delete(): void

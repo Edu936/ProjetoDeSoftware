@@ -15,6 +15,12 @@
         <?php 
             if($this->e($pag) == "index") {
                 echo "<img src= \"images/Car wash-bro.png\"/>";
+            } else if($this->e($pag) == "pedido") {
+
+            } else if($this->e($pag) == "orcamento") {
+
+            } else if($this->e($pag) == "orcamento") {
+
             } else if($this->e($pag) == "client") {
                 echo $this->insert('components/form-client');
             }
