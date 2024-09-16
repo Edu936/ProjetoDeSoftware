@@ -20,9 +20,13 @@ abstract class Routes
                 '/cadastro/cidade' => 'CadastroController@createCity',
                 
                 '/estatistica' => 'EstatisticaController@index',
-                '/atendimento' => 'AtendimentoController@index',
-                '/atendimento/cliente' => 'AtendimentoController@createClient',
 
+                '/atendimento' => 'AtendimentoController@index',
+                '/atendimento/pedido' => 'AtendimentoController@pedido',
+                '/atendimento/cliente' => 'AtendimentoController@cliente',
+                '/atendimento/veiculo' => 'AtendimentoController@veiculo',
+                '/atendimento/orcamento' => 'AtendimentoController@orcamento',
+ 
                 '/configuracao' => 'ConfiguracaoController@index',
             ],
             'post' => [

@@ -7,7 +7,7 @@
         </a>
     </li>
     <li class="options">
-        <a href="/atendimento/orçamento">
+        <a href="/atendimento/orcamento">
             <i class="bi bi-pencil-square"></i>
             <span>Novo Orçamento</span>
         </a>
