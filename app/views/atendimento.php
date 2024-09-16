@@ -17,16 +17,16 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "pedido") {
-                echo $this->insert('components/form-pedido');
+                echo $this->insert('components/atendimento-form/form-pedido');
             } 
             else if($this->e($pag) == "orcamento") {
-                echo $this->insert('components/form-orcamento');
+                echo $this->insert('components/atendimento-form/form-orcamento');
             } 
             else if($this->e($pag) == "cliente") {
-                echo $this->insert('components/form-cliente');
+                echo $this->insert('components/atendimento-form/form-cliente');
             } 
             else if($this->e($pag) == "veiculo") {
-                echo $this->insert('components/form-veiculo');
+                echo $this->insert('components/atendimento-form/form-veiculo');
             }
         ?>
     </section>
