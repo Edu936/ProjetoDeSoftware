@@ -28,10 +28,10 @@ abstract class Routes
             'post' => [
                 '/home' => 'HomeController@index',
 
-                '/cidade/salvar' => 'CityController@create',
+                '/cidade/salvar' => 'CityController@salvar',
 
                 '/cliente/listar' => 'ClientController@read',
-                '/cliente/salvar' => 'ClientController@create',
+                '/cliente/salvar' => 'ClientController@salvar',
                 '/cliente/buscar' => 'ClientController@search',
                 '/cliente/apagar' => 'ClientController@delete',
                 '/cliente/alterar' => 'ClientController@update',

@@ -2,9 +2,11 @@
 
 namespace app\database;
 
-abstract class Querys {
+class Querys {
 
-    private static function colunas(array $colunas) : string
+    private array $filters = [];
+
+    private function colunas(array $colunas) : string
     {
         $colum = "";
         $length = count($colunas);
@@ -17,8 +19,8 @@ abstract class Querys {
         }
         return $colum;
     }
-
-    private static function valores (array $valores): string
+    
+    private function valores (array $valores): string
     {
         $value = "";
         $length = count($valores);
@@ -31,15 +33,45 @@ abstract class Querys {
         }
         return $value;
     }
-
-    public static function insert(string $nomeTabela, array $campos, array $valores)
+    
+    public function insert(string $nomeTabela, array $campos, array $valores)
     {
-        $colunas = self::colunas($campos);
-        $values = self::valores($valores);
-
-        $query ="INSERT INTO ".$nomeTabela." ( ".$colunas." ) VALUES ( ".$values." )";
-
+        $colunas = $this->colunas($campos);
+        $values = $this->valores($valores);
+        
+        $query = "INSERT INTO ".$nomeTabela." ( ".$colunas." ) VALUES ( ".$values." )";
+        
         return $query;
     }
+    
+    public function update(string $nomeTabela, string $coluna, string $value, string $where){
+        return $query = "UPDATE ".$nomeTabela." SET ".$coluna." = ".$value." WHERE ".$where;
+    }
+    
+    public function delete($nomeTabela, $where)
+    {
+        return $query = "DELETE FROM ".$nomeTabela." WHERE ".$where;
+    }
+    
+    public function select($campos){
 
+        return $query = "SELECT ";
+    }
+
+    public function where (string $field, string $operator, mixed $value, string $logic ='')
+    {
+        $formatter = '';
+        if(is_array($value)){
+            $formatter = "('".implode("','".$value."')");
+        } else if(is_string($value)) {
+            $formatter = "'{$value}'";
+        } else if(is_bool($value)){
+            $formatter = $value ? 1 : 0;
+        } else {
+            $formatter = $value;
+        }
+
+        $value = strip_tags($formatter);
+        $this->filters ['where'] [] = "{$field} {$operator} {$value} {$logic} "; 
+    }
 }
