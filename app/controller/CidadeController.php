@@ -8,7 +8,7 @@ use app\models\Cidade;
 use app\static\Request;
 use PDO;
 
-class CityController extends Controller
+class CidadeController extends Controller
 {
     private $conn;
     private $query;
@@ -24,19 +24,23 @@ class CityController extends Controller
 
     public function salvar() : void
     {
+        // Recebe os paramentros dados inseridos no formulario
         $data = Request::only(['name','estado']);
+        // Cria o Objeto cidade
         $cidade = new Cidade($data['name'],$data['estado']);
+        // Cria a query de criação de registro
         $script = $this->query->insert($this->tabela,$this->colunas,$this->indices);
-        
+        dd($script);
         // $execute = $this->conn->prepare($script);
         // $execute -> bindValue(":n", $cidade->getNome());
         // $execute -> bindValue(":e", $cidade->getEstado());
+        // // Execução da query de criação
         // $execute -> execute();
     }
 
     public function atulizar() : void
     {
-
+        
     }
 
     public function excluir() : void

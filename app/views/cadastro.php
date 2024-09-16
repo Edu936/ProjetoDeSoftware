@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title'=> 'EsticaAutomotiva']) ?>
+<?php $this->layout('master', ['title'=> 'EsticaAutomotiva' ]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/master.css">
@@ -15,8 +15,13 @@
         <?php 
             if($this->e($pag) == "index") {
                 echo "<img src= \"images/Car wash-bro.png\"/>";
-            } else if($this->e($pag) == "city") {
-                echo $this->insert('components/form-city');
+            } else if($this->e($pag) == "cidade") {
+                echo "<div class=\"component\"";
+                    echo $this->insert('components/cadastro-form/form-cidade');
+                echo"<div class=\"icon-cidade\">
+                        <i class=\"bi bi-geo-alt\"></i>
+                    </div>";
+                echo "</div>";
             }
         ?>
     </section>

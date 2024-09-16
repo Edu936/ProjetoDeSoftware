@@ -14,13 +14,10 @@ abstract class Routes
             'get' => [
                 '/' => 'LoginController@index',
                 '/controle' => 'ControleController@index',
-
                 '/cadastro' => 'CadastroController@index',
-                '/cadastro/cidade' => 'CadastroController@createCity',
-                
                 '/estatistica' => 'EstatisticaController@index',
-
                 '/atendimento' => 'AtendimentoController@index',
+                '/cadastro/cidade' => 'CadastroController@cidade',
                 '/atendimento/pedido' => 'AtendimentoController@pedido',
                 '/atendimento/cliente' => 'AtendimentoController@cliente',
                 '/atendimento/veiculo' => 'AtendimentoController@veiculo',
@@ -30,14 +27,7 @@ abstract class Routes
             ],
             'post' => [
                 '/home' => 'HomeController@index',
-
-                '/cidade/salvar' => 'CityController@salvar',
-
-                '/cliente/listar' => 'ClientController@read',
-                '/cliente/salvar' => 'ClientController@salvar',
-                '/cliente/buscar' => 'ClientController@search',
-                '/cliente/apagar' => 'ClientController@delete',
-                '/cliente/alterar' => 'ClientController@update',
+                '/cidade/salvar' => 'CidadeController@salvar',
             ],
         ];
     }
