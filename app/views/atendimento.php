@@ -9,7 +9,7 @@
 
 <div class="conteiner">
     <div class="menu">
-        <?=$this->insert('layout/atendimento-menu')?>  
+        <?=$this->insert('layout/menu/atendimento-menu')?>  
     </div>
     <section>
         <?php 

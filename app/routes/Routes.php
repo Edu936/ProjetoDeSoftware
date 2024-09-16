@@ -13,7 +13,6 @@ abstract class Routes
         return [
             'get' => [
                 '/' => 'LoginController@index',
-                '/teste' => 'TesteController@index',
                 '/controle' => 'ControleController@index',
 
                 '/cadastro' => 'CadastroController@index',
