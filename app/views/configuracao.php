@@ -8,7 +8,7 @@
 
 <div class="conteiner">
     <div class="menu">
-        <?=$this->insert('layout/configuracao-menu')?>  
+        <?=$this->insert('layout/menu/configuracao-menu')?>  
     </div>
     <div class="imges">
         <!-- <img src="/images/Car wash-bro.png" alt=""> -->
