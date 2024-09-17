@@ -6,7 +6,6 @@ use PDO;
 use PDOException;
 use app\database\MySql;
 use app\database\Filters;
-use mysqli;
 
 abstract class Model 
 {
