@@ -8,9 +8,9 @@
 
 <div class="conteiner">
     <div class="menu">
-        <?=$this->insert('layout/controle-menu')?>  
+        <?=$this->insert('layout/menu/controle-menu')?>  
     </div>
-    <div class="imges">
-        <!-- <img src="/images/Car wash-bro.png" alt=""> -->
-    </div>
+    <section>
+        
+    </section>
 </div>

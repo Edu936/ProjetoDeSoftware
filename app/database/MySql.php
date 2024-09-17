@@ -2,7 +2,9 @@
 
 namespace app\database;
 
+use Exception;
 use PDO;
+use PDOException;
 
 class MySql
 {
@@ -10,14 +12,18 @@ class MySql
     private static $connection = null;
     private static $password = "Edu@1195";
     private static $dbname = "db_clubcar";
-    private static $servername = "host-localhost";
+    private static $servername = "localhost";
 
     public static function connect()
     {
         if (!self::$connection) {
-            self::$connection = new PDO("mysql:".self::$servername.";dbname=".self::$dbname, self::$username, self::$password, [
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
-            ]);
+            try {
+                self::$connection = new PDO ("mysql:dbname=".self::$dbname.";host=".self::$servername,self::$username,self::$password);
+            } catch (PDOException $e) {
+                echo "Erro na conecxão com o banco de dados ".$e->getMessage();
+            } catch (Exception $e) {
+                echo "Erro generico ".$e->getMessage();
+            }
         }
         return self::$connection;
     }
