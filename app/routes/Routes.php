@@ -24,6 +24,9 @@ abstract class Routes
                 '/atendimento/orcamento' => 'AtendimentoController@orcamento',
  
                 '/configuracao' => 'ConfiguracaoController@index',
+
+                '/cidade/buscar' => 'CidadeController@buscarTodos',
+
             ],
             'post' => [
                 '/home' => 'HomeController@index',

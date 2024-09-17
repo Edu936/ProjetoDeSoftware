@@ -7,6 +7,7 @@ use app\database\MySql;
 use app\models\Cidade;
 use app\static\Request;
 use PDO;
+use PDOException;
 
 class CidadeController extends Controller
 {
@@ -30,15 +31,25 @@ class CidadeController extends Controller
         $cidade = new Cidade($data['name'],$data['estado']);
         // Cria a query de criação de registro
         $script = $this->query->insert($this->tabela,$this->colunas,$this->indices);
-        dd($script);
-        // $execute = $this->conn->prepare($script);
-        // $execute -> bindValue(":n", $cidade->getNome());
-        // $execute -> bindValue(":e", $cidade->getEstado());
-        // // Execução da query de criação
-        // $execute -> execute();
+        $execute = $this->conn->prepare($script);
+        $execute -> bindValue(":n", $cidade->getNome());
+        $execute -> bindValue(":e", $cidade->getEstado());
+        // Execução da query de criação
+        try{
+            $execute -> execute();
+        } catch(PDOException $e){
+            echo $e->getMessage();
+        }
+
+        $this->views('cadastro', [
+            'title' => "Estetica Automotiva", 
+            'pag' => "cadastro realizado",
+            'cidade' => $cidade,
+        ]);
     }
 
     public function atulizar() : void
+
     {
         
     }
@@ -55,6 +66,14 @@ class CidadeController extends Controller
 
     public function buscarTodos() : void
     {
-
+        $script = $this->query->select('*',$this->tabela);
+        // $script .= " ".$this->query->where("CD_CIDADE",'=',10);
+        $execute = $this->conn->prepare($script);
+        $execute -> execute();
+        $cidades = array();
+        do {
+            $result = $execute->fetch(PDO::FETCH_OBJ);
+            
+        }while($result != false);
     }
 }

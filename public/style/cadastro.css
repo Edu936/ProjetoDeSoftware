@@ -19,7 +19,8 @@ section > img {
     margin: 1%;
 }
 
-.component > h4 {
+form > h4 {
+    margin: 2% 0% 2% 0%;
     text-align: center;
 }
 
@@ -30,7 +31,7 @@ form {
 .card {
     width: 80%;
     padding: 0%;
-    height: 18%;
+    height: 30%;
     margin: auto;
     display: flex;
     border-radius: 8px;
