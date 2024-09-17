@@ -53,9 +53,9 @@ class Querys {
         return $query = "DELETE FROM ".$nomeTabela." WHERE ".$where;
     }
     
-    public function select(mixed $campos, string $tabela)
-    {
-        return $query = "SELECT ".$campos." FROM ".$tabela;
+    public function select($campos){
+
+        return $query = "SELECT ";
     }
 
     public function where (string $field, string $operator, mixed $value, string $logic ='')
@@ -73,6 +73,5 @@ class Querys {
 
         $value = strip_tags($formatter);
         $this->filters ['where'] [] = "{$field} {$operator} {$value} {$logic} "; 
-        return $filter = !empty($this->filters['where'])? 'where '.implode ('',$this->filters['where']):' ';
     }
 }
