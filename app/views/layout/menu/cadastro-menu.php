@@ -7,7 +7,7 @@
         </a>
     </li>
     <li class="options">
-        <a href="/cadastro/cidade">
+        <a href="/cadastro/servico">
             <i class="bi bi-brush-fill"></i>
             <span>Novo Serviço</span>
         </a>

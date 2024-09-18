@@ -17,6 +17,15 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
         ?>
+
+        <?php
+            if($this->e($pag) == "servico") {
+                echo "<div class=\"component\">";
+                    echo $this->insert('components/cadastro-form/form-servico');
+                echo "</div>";
+            }
+        ?>
+        
         <?php
             if($this->e($pag) == "cidade") {
                 echo "<div class=\"component\">";
@@ -28,7 +37,7 @@
             if($this->e($pag) == "cadastro realizado") {
                 echo $this->e($resposta);
                 echo "<button>";
-                    echo "<a href=\"/cadastro/cidade\">voltar</a>";
+                    echo "<a href=\"/cadastro\">voltar</a>";
                 echo "</button>";
             }
         ?>

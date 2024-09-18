@@ -18,6 +18,7 @@ abstract class Routes
                 '/estatistica' => 'EstatisticaController@index',
                 '/atendimento' => 'AtendimentoController@index',
                 '/cadastro/cidade' => 'CadastroController@cidade',
+                '/cadastro/servico' => 'CadastroController@servico',
                 '/atendimento/pedido' => 'AtendimentoController@pedido',
                 '/atendimento/cliente' => 'AtendimentoController@cliente',
                 '/atendimento/veiculo' => 'AtendimentoController@veiculo',
@@ -33,7 +34,9 @@ abstract class Routes
             'post' => [
                 '/home' => 'HomeController@index',
                 '/cidade/salvar' => 'CidadeController@salvar',
+                '/servico/salvar' => 'ServicoController@salvar',
             ],
+
         ];
     }
 }
