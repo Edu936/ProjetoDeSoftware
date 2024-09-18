@@ -17,7 +17,7 @@ class Controller
             throw new Exception("A Classe encontrada não existe!");
         }
         if (!method_exists($controllerClass, $method)) {
-            throw new Exception("O metodo encontrado não existe!");
+            throw new Exception("O método encontrado não existe!");
         }
         $objeto = new $controllerClass;
         $params = new ControllerParams;

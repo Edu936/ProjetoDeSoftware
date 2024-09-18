@@ -1,7 +1,7 @@
 <h2>Cadastros</h2>
 <ul>
     <li class="options">
-        <a href="/cadastro/cidade">
+        <a href="/cadastro/produto">
             <i class="bi bi-bag-fill"></i>
             <span>Novo Produto</span>
         </a>

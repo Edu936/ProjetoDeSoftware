@@ -35,20 +35,20 @@ class CidadeController extends Controller
             ]);
             if(!$result) {
                 $this->views('cadastro',[
-                    'title' => "Estica Automotiva",
+                    'title' => "Estética Automotiva",
                     'pag' => "cadastro realizado",
                     'resposta' => "Ocorreu um erro no cadastro!",
                 ]);
             } else {
                 $this->views('cadastro',[
-                    'title' => "Estica Automotiva",
+                    'title' => "Estética Automotiva",
                     'pag' => "cadastro realizado",
                     'resposta' => "A Cidade {$request['name']} foi Cadastrada Com Sucesso!",
                 ]);
             }
         } else {
             $this->views('cadastro',[
-                'title' => "Estica Automotiva",
+                'title' => "Estética Automotiva",
                 'pag' => "cadastro realizado",
                 'resposta' => "Essa Cidade Já foi Cadastrada!",
             ]);

@@ -19,11 +19,12 @@ abstract class Routes
                 '/atendimento' => 'AtendimentoController@index',
                 '/cadastro/cidade' => 'CadastroController@cidade',
                 '/cadastro/servico' => 'CadastroController@servico',
+                '/cadastro/produto' => 'CadastroController@produto',
                 '/atendimento/pedido' => 'AtendimentoController@pedido',
                 '/atendimento/cliente' => 'AtendimentoController@cliente',
                 '/atendimento/veiculo' => 'AtendimentoController@veiculo',
                 '/atendimento/orcamento' => 'AtendimentoController@orcamento',
- 
+
                 '/configuracao' => 'ConfiguracaoController@index',
 
                 '/cidade/buscar' => 'CidadeController@buscar',
@@ -35,6 +36,7 @@ abstract class Routes
                 '/home' => 'HomeController@index',
                 '/cidade/salvar' => 'CidadeController@salvar',
                 '/servico/salvar' => 'ServicoController@salvar',
+                '/produto/salvar' => 'ProdutoController@salvar',
             ],
 
         ];

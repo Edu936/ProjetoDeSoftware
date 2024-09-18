@@ -25,7 +25,7 @@
                 echo "</div>";
             }
         ?>
-        
+
         <?php
             if($this->e($pag) == "cidade") {
                 echo "<div class=\"component\">";
@@ -33,6 +33,15 @@
                 echo "</div>";
             }
         ?>
+
+<?php
+            if($this->e($pag) == "produto") {
+                echo "<div class=\"component\">";
+                    echo $this->insert('components/cadastro-form/form-produto');
+                echo "</div>";
+            }
+        ?>
+
         <?php
             if($this->e($pag) == "cadastro realizado") {
                 echo $this->e($resposta);

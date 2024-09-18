@@ -37,7 +37,7 @@ class Servico extends Model
     {
         return $this->VL_SERVICO;
     } 
-     
+    
     public function setValor($valor) : void 
     {
         $this->VL_SERVICO=$valor;

@@ -1,5 +1,5 @@
-<form action="/servico/salvar" method="post">
-    <h4>Cadastro de Serviços</h4>
+<form action="/produto/salvar" method="post">
+    <h4>Cadastro de Produtos</h4>
     <div class="card">
         <div class="data">
             <div>
@@ -9,6 +9,10 @@
             <div>   
                 <label for="valor">Valor:</label>&nbsp;
                 <input type="text" name="valor" id="valor" requireed>
+            </div>
+            <div>   
+                <label for="quantidade">Quantidade:</label>&nbsp;
+                <input type="text" name="quantidade" id="quantidade" requireed>
             </div>
         </div>
         <div class="control">
