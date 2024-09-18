@@ -43,7 +43,7 @@ class CidadeController extends Controller
                 $this->views('cadastro',[
                     'title' => "Estica Automotiva",
                     'pag' => "cadastro realizado",
-                    'resposta' => "A Cidade Foi {$request['name']}Cadastrada Com Sucesso!",
+                    'resposta' => "A Cidade {$request['name']} foi Cadastrada Com Sucesso!",
                 ]);
             }
         } else {
