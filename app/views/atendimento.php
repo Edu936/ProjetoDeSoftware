@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title'=> 'EsticaAutomotiva', 'pag']) ?>
+<?php $this->layout('master', ['title'=> 'Estética Automotiva', 'pag']) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/menu.css"/>
