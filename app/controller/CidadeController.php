@@ -9,20 +9,52 @@ use app\static\Request;
 class CidadeController extends Controller
 {
 
+    private function buscarPorNome(string $name) : Cidade 
+    {
+        $city = new Cidade();
+        $city->setNome("");
+        $city->setCodigo(0);
+        $city->setEstado("");
+    
+        $cidade = new Cidade();
+    
+        $cidade = $cidade->findby('NM_CIDADE',$name);
+    
+        return $cidade?$cidade: $city;
+    }
+
     public function salvar() : void
     {
+        $request = Request::all();
+        $filtro = $this->buscarPorNome($request['name']);
         $cidade = new Cidade();
-        $result =  $cidade->create([
-            "NM_CIDADE" => "Uberlandia",
-            "DS_ESTADO_CIDADE" => "Minas Gerais"
-        ]);
-
-        if(!$result) {
-            echo"Não foi cadastrado essa cidade!";
+        if($filtro->getNome() != $request['name'] && $filtro->getEstado() != $request['estado']){
+            $result = $cidade->create([
+                "NM_CIDADE" => $request['name'],
+                "DS_ESTADO_CIDADE" => $request['estado']
+            ]);
+            if(!$result) {
+                $this->views('cadastro',[
+                    'title' => "Estica Automotiva",
+                    'pag' => "cadastro realizado",
+                    'resposta' => "Ocorreu um erro no cadastro!",
+                ]);
+            } else {
+                $this->views('cadastro',[
+                    'title' => "Estica Automotiva",
+                    'pag' => "cadastro realizado",
+                    'resposta' => "A Cidade Foi {$request['name']}Cadastrada Com Sucesso!",
+                ]);
+            }
         } else {
-            echo "Foi cadastrado a cidade";
+            $this->views('cadastro',[
+                'title' => "Estica Automotiva",
+                'pag' => "cadastro realizado",
+                'resposta' => "Essa Cidade Já foi Cadastrada!",
+            ]);
         }
     }
+
 
     public function atulizar() : void
     {
@@ -40,7 +72,7 @@ class CidadeController extends Controller
 
     public function excluir() : void
     {
-        $request =  "afdb";//Request::input('CD_CIDADE');
+        $request = Request::input('CD_CIDADE');
         $cidade = new Cidade();
         $cidade = $cidade->delete('NM_CIDADE', $request);
         if(!$cidade){
@@ -50,13 +82,6 @@ class CidadeController extends Controller
         }
     }
 
-    public function buscarPorNome() : Cidade
-    {
-        $request = Request::input('name');
-        $cidade = new Cidade();
-        $cidade = $cidade->findby('NM_CIDADE',$request);
-        return $cidade;
-    }
 
     public function buscarTodos() : array
     {
