@@ -8,6 +8,16 @@ class ControleController extends Controller
     {
         echo $this->views('controle', [
             'title' => "Estetica Automotiva",
+            'pag' => "index",
+        ]);
+    }
+
+    public function cidade()
+    {
+        echo $this->views('controle', [
+            'title' => "Estetica Automotiva",
+            'pag' => "cidade",
+
         ]);
     }
 }

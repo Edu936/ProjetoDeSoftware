@@ -25,7 +25,9 @@ abstract class Routes
  
                 '/configuracao' => 'ConfiguracaoController@index',
 
-                '/cidade/buscar' => 'CidadeController@buscarTodos',
+                '/cidade/buscar' => 'CidadeController@buscar',
+                '/cidade/excluir' => 'CidadeController@excluir',
+                '/cidade/atualizar' => 'CidadeController@atualizar',
 
             ],
             'post' => [
