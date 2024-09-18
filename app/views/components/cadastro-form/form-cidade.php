@@ -1,5 +1,5 @@
 <form action="/cidade/salvar" method="post">
-    <h4>Cadastro de Cidade</h4>
+    <h4>Cadastro de Cidades</h4>
     <div class="card">
         <div class="data">
             <div>

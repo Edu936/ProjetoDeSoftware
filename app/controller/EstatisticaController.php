@@ -7,7 +7,7 @@ class EstatisticaController extends Controller
     public function index()
     {
         echo $this->views('estatistica', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "index",
         ]);
     }

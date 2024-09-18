@@ -7,7 +7,7 @@ class CadastroController extends Controller
     public function index()
     {
         echo $this->views('cadastro', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "index",
         ]);
     }
@@ -15,7 +15,7 @@ class CadastroController extends Controller
     public function cidade()
     {
         echo $this-> views('cadastro', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "cidade",
         ]);
     }
@@ -23,7 +23,7 @@ class CadastroController extends Controller
     public function servico()
     {
         echo $this-> views('cadastro', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "servico",
         ]);
     }
@@ -31,7 +31,7 @@ class CadastroController extends Controller
     public function produto()
     {
         echo $this-> views('cadastro', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "produto",
         ]);
     }
@@ -39,7 +39,7 @@ class CadastroController extends Controller
     public function fornecedor()
     {
         echo $this-> views('cadastro', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "fornecedor",
         ]);
     }
@@ -47,7 +47,7 @@ class CadastroController extends Controller
     public function atendente()
     {
         echo $this-> views('cadastro', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "atendente",
         ]);
     }

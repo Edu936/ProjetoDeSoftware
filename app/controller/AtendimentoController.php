@@ -7,7 +7,7 @@ class AtendimentoController extends Controller
    public function index() : void
    {
       $this->views('atendimento', [
-         'title' => "Estetica Automotiva",
+         'title' => "Estética Automotiva",
          'pag' => "index",
       ]);
    }
@@ -15,7 +15,7 @@ class AtendimentoController extends Controller
    public function pedido() : void
    {
       $this->views('atendimento', [
-         'title' => "Estetica Automotiva",
+         'title' => "Estética Automotiva",
          'pag' => "pedido"
       ]);
    }
@@ -23,7 +23,7 @@ class AtendimentoController extends Controller
    public function orcamento() : void
    {
       $this->views('atendimento', [
-         'title' => "Estetica Automotiva",
+         'title' => "Estética Automotiva",
          'pag' => "orcamento",
       ]);
    }
@@ -31,7 +31,7 @@ class AtendimentoController extends Controller
    public function cliente() : void
    {
       $this->views('atendimento', [
-         'title' => "Estetica Automotiva",
+         'title' => "Estética Automotiva",
          'pag' => "cliente",
       ]);
    }
@@ -39,7 +39,7 @@ class AtendimentoController extends Controller
    public function veiculo() : void
    {
       $this->views('atendimento', [
-         'title' => "Estetica Automotiva",
+         'title' => "Estética Automotiva",
          'pag' => "veiculo",
       ]);
    }

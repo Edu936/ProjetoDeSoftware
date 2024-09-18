@@ -20,9 +20,9 @@ class MySql
             try {
                 self::$connection = new PDO ("mysql:dbname=".self::$dbname.";host=".self::$servername,self::$username,self::$password);
             } catch (PDOException $e) {
-                echo "Erro na conecxão com o banco de dados ".$e->getMessage();
+                echo "Erro na conexão com o banco de dados ".$e->getMessage();
             } catch (Exception $e) {
-                echo "Erro generico ".$e->getMessage();
+                echo "Erro genérico ".$e->getMessage();
             }
         }
         return self::$connection;

@@ -7,7 +7,7 @@ class ConfiguracaoController extends Controller
     public function index()
     {
         $this->views('configuracao', [
-            'title' => "Estetica Automotiva",
+            'title' => "Estética Automotiva",
             'pag' => "index",
         ]);
     }

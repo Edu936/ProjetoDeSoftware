@@ -9,7 +9,7 @@ class HomeController extends Controller
   public function index()
   {
     $this->views('home', [
-      'title' => "Estetica Automotiva",
+      'title' => "Estética Automotiva",
     ]);
   }
 }
