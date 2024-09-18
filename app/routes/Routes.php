@@ -13,29 +13,30 @@ abstract class Routes
         return [
             'get' => [
                 '/' => 'LoginController@index',
-                '/teste' => 'TesteController@index',
                 '/controle' => 'ControleController@index',
-
                 '/cadastro' => 'CadastroController@index',
-                '/cadastro/cidade' => 'CadastroController@createCity',
-                
                 '/estatistica' => 'EstatisticaController@index',
                 '/atendimento' => 'AtendimentoController@index',
-                '/atendimento/cliente' => 'AtendimentoController@createClient',
-
+                '/cadastro/cidade' => 'CadastroController@cidade',
+                '/cadastro/servico' => 'CadastroController@servico',
+                '/atendimento/pedido' => 'AtendimentoController@pedido',
+                '/atendimento/cliente' => 'AtendimentoController@cliente',
+                '/atendimento/veiculo' => 'AtendimentoController@veiculo',
+                '/atendimento/orcamento' => 'AtendimentoController@orcamento',
+ 
                 '/configuracao' => 'ConfiguracaoController@index',
+
+                '/cidade/buscar' => 'CidadeController@buscar',
+                '/cidade/excluir' => 'CidadeController@excluir',
+                '/cidade/atualizar' => 'CidadeController@atualizar',
+
             ],
             'post' => [
                 '/home' => 'HomeController@index',
-
-                '/cidade/salvar' => 'CityController@create',
-
-                '/cliente/listar' => 'ClientController@read',
-                '/cliente/salvar' => 'ClientController@create',
-                '/cliente/buscar' => 'ClientController@search',
-                '/cliente/apagar' => 'ClientController@delete',
-                '/cliente/alterar' => 'ClientController@update',
+                '/cidade/salvar' => 'CidadeController@salvar',
+                '/servico/salvar' => 'ServicoController@salvar',
             ],
+
         ];
     }
 }

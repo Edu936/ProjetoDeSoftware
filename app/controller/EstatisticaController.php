@@ -8,6 +8,7 @@ class EstatisticaController extends Controller
     {
         echo $this->views('estatistica', [
             'title' => "Estetica Automotiva",
+            'pag' => "index",
         ]);
     }
 }

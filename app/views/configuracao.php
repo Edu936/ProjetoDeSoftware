@@ -8,9 +8,13 @@
 
 <div class="conteiner">
     <div class="menu">
-        <?=$this->insert('layout/configuracao-menu')?>  
+        <?=$this->insert('layout/menu/configuracao-menu')?>  
     </div>
-    <div class="imges">
-        <!-- <img src="/images/Car wash-bro.png" alt=""> -->
-    </div>
+    <section>
+        <?php 
+            if($this->e($pag) == "index") {
+                echo "<img src= \"images/Car wash-bro.png\"/>";
+            } 
+        ?>
+    </section>
 </div>    

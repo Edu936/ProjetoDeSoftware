@@ -9,14 +9,24 @@
 
 <div class="conteiner">
     <div class="menu">
-        <?=$this->insert('layout/atendimento-menu')?>  
+        <?=$this->insert('layout/menu/atendimento-menu')?>  
     </div>
     <section>
         <?php 
             if($this->e($pag) == "index") {
                 echo "<img src= \"images/Car wash-bro.png\"/>";
-            } else if($this->e($pag) == "client") {
-                echo $this->insert('components/form-client');
+            } 
+            else if($this->e($pag) == "pedido") {
+                echo $this->insert('components/atendimento-form/form-pedido');
+            } 
+            else if($this->e($pag) == "orcamento") {
+                echo $this->insert('components/atendimento-form/form-orcamento');
+            } 
+            else if($this->e($pag) == "cliente") {
+                echo $this->insert('components/atendimento-form/form-cliente');
+            } 
+            else if($this->e($pag) == "veiculo") {
+                echo $this->insert('components/atendimento-form/form-veiculo');
             }
         ?>
     </section>

@@ -8,6 +8,7 @@ class ConfiguracaoController extends Controller
     {
         $this->views('configuracao', [
             'title' => "Estetica Automotiva",
+            'pag' => "index",
         ]);
     }
 }
