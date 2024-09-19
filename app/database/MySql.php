@@ -10,7 +10,7 @@ class MySql
 {
     private static $username = "root";
     private static $connection = null;
-    private static $password = "root";
+    private static $password = "";
     private static $dbname = "db_clubcar";
     private static $servername = "localhost";
 
