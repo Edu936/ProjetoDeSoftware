@@ -18,7 +18,7 @@ class Usuario extends Model
 
     public function __construct()
     {
-        $this->table = "tb_cliente";
+        $this->table = "tb_usuario";
     }
 
     //Cargo
