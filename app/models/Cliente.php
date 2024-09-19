@@ -37,7 +37,7 @@ class Cliente extends Model
 
     public function setCidade(Cidade $cidade): void
     {
-        $this->CD_CLIENTE = $cidade->getCodigo();
+        $this->CD_CIDADE = $cidade->getCodigo();
     }
 
     //Nome
