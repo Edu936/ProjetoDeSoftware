@@ -9,6 +9,23 @@ use app\static\Request;
 class CidadeController extends Controller
 {
 
+    public function controle()
+    {
+        echo $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "cidade",
+
+        ]);
+    }
+
+    public function cadastro()
+    {
+        echo $this-> views('cadastro', [
+            'title' => "Estética Automotiva",
+            'pag' => "cidade",
+        ]);
+    }
+
     private function buscarPorNome(string $name) : Cidade 
     {
         $city = new Cidade();

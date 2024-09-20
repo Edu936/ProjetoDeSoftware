@@ -13,10 +13,12 @@ abstract class Routes
         return [
             'get' => [
                 '/' => 'LoginController@index',
-                '/controle' => 'ControleController@index',
-                '/cadastro' => 'CadastroController@index',
-                '/estatistica' => 'EstatisticaController@index',
-                '/atendimento' => 'AtendimentoController@index',
+                '/controle' => 'HomeController@controle',
+                '/cadastro' => 'HomeController@cadastro',
+                '/atendimento' => 'HomeController@atendimento',
+                '/estatistica' => 'HomeController@estatistica',
+                '/configuracao' => 'HomeController@configuracao',
+
                 '/cadastro/cidade' => 'CadastroController@cidade',
                 '/cadastro/servico' => 'CadastroController@servico',
                 '/cadastro/produto' => 'CadastroController@produto',
@@ -25,7 +27,6 @@ abstract class Routes
                 '/atendimento/veiculo' => 'AtendimentoController@veiculo',
                 '/atendimento/orcamento' => 'AtendimentoController@orcamento',
 
-                '/configuracao' => 'ConfiguracaoController@index',
 
                 '/cidade/buscar' => 'CidadeController@buscar',
                 '/cidade/excluir' => 'CidadeController@excluir',
