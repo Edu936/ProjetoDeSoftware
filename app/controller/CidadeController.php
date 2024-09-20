@@ -9,16 +9,7 @@ use app\static\Request;
 class CidadeController extends Controller
 {
 
-    public function controle()
-    {
-        echo $this->views('controle', [
-            'title' => "Estética Automotiva",
-            'pag' => "cidade",
-
-        ]);
-    }
-
-    public function cadastro()
+    public function paginaDeCadastro()
     {
         echo $this-> views('cadastro', [
             'title' => "Estética Automotiva",

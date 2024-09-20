@@ -6,17 +6,18 @@ use app\controller\Controller;
 
 class HomeController extends Controller
 {
-  public function index()
-  {
-    $this->views('home', [
-      'title' => "Estética Automotiva",
-    ]);
-  }
 
   public function login()
   {
     $this->views('login', [
       'title' => "Entre",
+    ]);
+  }
+
+  public function home()
+  {
+    $this->views('home', [
+      'title' => "Estética Automotiva",
     ]);
   }
 

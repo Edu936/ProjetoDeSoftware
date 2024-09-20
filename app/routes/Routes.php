@@ -12,31 +12,33 @@ abstract class Routes
     {
         return [
             'get' => [
+                //Home
                 '/' => 'HomeController@login',
                 '/controle' => 'HomeController@controle',
                 '/cadastro' => 'HomeController@cadastro',
                 '/atendimento' => 'HomeController@atendimento',
                 '/estatistica' => 'HomeController@estatistica',
-                '/configuracao' => 'HomeController@configuracao',
-
-                '/cadastro/cidade' => 'CadastroController@cidade',
-                '/cadastro/servico' => 'CadastroController@servico',
-                '/cadastro/produto' => 'CadastroController@produto',
-                '/atendimento/pedido' => 'AtendimentoController@pedido',
-                '/atendimento/cliente' => 'AtendimentoController@cliente',
-                '/atendimento/veiculo' => 'AtendimentoController@veiculo',
-                '/atendimento/orcamento' => 'AtendimentoController@orcamento',
-
-
+                '/configuracao' => 'HomeController@configuracao', 
+                //Cidade
                 '/cidade/buscar' => 'CidadeController@buscar',
                 '/cidade/excluir' => 'CidadeController@excluir',
                 '/cidade/atualizar' => 'CidadeController@atualizar',
-
+                '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
+                //Cliente
+                '/atendimento/cliente' => 'ClienteController@atendimento',
+                //Servico
+                '/cadastro/servico' => 'ServicoController@paginaDeServico',
+                //Produto
+                '/cadastro/produto' => 'ProdutoController@paginaDeProduto',
             ],
             'post' => [
-                '/home' => 'HomeController@index',
+                //Home
+                '/home' => 'HomeController@home',
+                //Cidade
                 '/cidade/salvar' => 'CidadeController@salvar',
+                //Servico
                 '/servico/salvar' => 'ServicoController@salvar',
+                //Produto
                 '/produto/salvar' => 'ProdutoController@salvar',
             ],
 
