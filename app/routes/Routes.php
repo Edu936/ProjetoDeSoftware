@@ -12,7 +12,7 @@ abstract class Routes
     {
         return [
             'get' => [
-                '/' => 'LoginController@index',
+                '/' => 'HomeController@login',
                 '/controle' => 'HomeController@controle',
                 '/cadastro' => 'HomeController@cadastro',
                 '/atendimento' => 'HomeController@atendimento',

@@ -13,6 +13,13 @@ class HomeController extends Controller
     ]);
   }
 
+  public function login()
+  {
+    $this->views('login', [
+      'title' => "Entre",
+    ]);
+  }
+
   public function atendimento(): void
   {
     $this->views('atendimento', [
