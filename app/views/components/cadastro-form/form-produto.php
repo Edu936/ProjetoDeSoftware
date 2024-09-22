@@ -1,25 +1,22 @@
-<form action="/produto/salvar" method="post">
-    <h4>Cadastro de Produtos</h4>
-    <div class="card">
-        <div class="data">
-            <div>
-                <label for="name">Nome:</label>&nbsp;
-                <input type="text" name="name" id="nome" requireed>
-            </div>
-            <div>   
-                <label for="valor">Valor:</label>&nbsp;
-                <input type="text" name="valor" id="valor" requireed>
-            </div>
-            <div>   
-                <label for="quantidade">Quantidade:</label>&nbsp;
-                <input type="text" name="quantidade" id="quantidade" requireed>
-            </div>
+<div class="card">
+    <h1>Cadastro de Produtos</h1>
+    <form action="/produto/salvar" method="post" autocomplete="off">
+        <div class="dados">
+            <label for="name">Nome do Produto:</label><br />
+            <input type="text" name="name" id="name" placeholder="Usuário" required />
         </div>
-        <div class="control">
-            <button type="reset">Limpar</button>
-            &nbsp;
-            &nbsp;
-            <button type="submit">Cadastrar</button>
+        <div class="dados">
+            <label for="valor">Valor do Produto:</label><br />
+            <input type="number" name="valor" id="valor" placeholder="Valor" required />
         </div>
-    </div>
-</form>
+        <div class="dados">
+            <label for="quantidade">Quantidade Inicial:</label><br />
+            <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade"/>
+        </div>
+        <div class="submit">
+            <input type="reset" value="Limpar" />
+            &nbsp;
+            <input type="submit" value="Cadastrar" />
+        </div>
+    </form>
+</div>
