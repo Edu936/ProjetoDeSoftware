@@ -24,6 +24,7 @@ abstract class Routes
                 '/cidade/excluir' => 'CidadeController@excluir',
                 '/cidade/atualizar' => 'CidadeController@atualizar',
                 '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
+                '/controle/cidade' => 'CidadeController@paginaDeControle',
                 //Cliente
                 '/atendimento/cliente' => 'ClienteController@atendimento',
                 //Servico

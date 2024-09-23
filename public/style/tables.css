@@ -1,0 +1,14 @@
+table {
+    padding: 0px;
+    padding: 10px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
+}
+
+tbody {
+    background-color: rgb(32, 27, 44);
+}
+
+table,th, td {
+    margin: 2px;
+    padding: 2px 10px 2px 10px;
+}
