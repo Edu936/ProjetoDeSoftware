@@ -21,27 +21,6 @@
         <?php
         if ($this->e($pag) == "cidade") {
             require_once('layout/tables/cidades.php');
-            // echo 
-            // "<table>
-            //     <thead>
-            //         <tr>
-            //             <th>Codigo</th>
-            //             <th>Cidade</th>
-            //             <th>Estado</th>
-            //         </tr>
-            //     </thead>
-            //     <tbody>"
-            // ;
-            // foreach ($cidades as $cidade) {
-            //     echo
-            //     "<tr>
-            //         <th>{$cidade->getCodigo()}</th>
-            //         <th>{$cidade->getNome()}</th>
-            //         <th>{$cidade->getEstado()}</th>
-            //     </tr>";               
-            // }
-            // echo"</tbody>
-            // </table>";
         }
         ?>
     </section>
