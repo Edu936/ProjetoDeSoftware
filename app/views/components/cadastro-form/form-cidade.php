@@ -1,21 +1,18 @@
-<form action="/cidade/salvar" method="post">
-    <h4>Cadastro de Cidades</h4>
-    <div class="card">
-        <div class="data">
-            <div>
-                <label for="name">Cidade:</label>&nbsp;
-                <input type="text" name="name" id="name" requireed>
-            </div>
-            <div>   
-                <label for="estado">Estado:</label>&nbsp;
-                <input type="text" name="estado" id="estado" requireed>
-            </div>
+<div class="card">
+    <h1>Cadastro de Cidades</h1>
+    <form action="/cidade/salvar" method="post" autocomplete="off">
+        <div class="dados">
+            <label for="name">Nome da Cidade:</label><br />
+            <input type="text" name="name" id="name" placeholder="Cidade" required />
         </div>
-        <div class="control">
-            <button type="reset">Limpar</button>
-            &nbsp;
-            &nbsp;
-            <button type="submit">Cadastrar</button>
+        <div class="dados">
+            <label for="estado">Nome do Estado:</label><br />
+            <input type="text" name="estado" id="estado" placeholder="Estado" required />
         </div>
-    </div>
-</form>
+        <div class="submit">
+            <input type="reset" value="Limpar" />
+            &nbsp;
+            <input type="submit" value="Cadastrar" />
+        </div>
+    </form>
+</div>

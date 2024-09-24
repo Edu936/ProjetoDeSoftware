@@ -1,21 +1,18 @@
-<form action="/servico/salvar" method="post">
-    <h4>Cadastro de Serviços</h4>
-    <div class="card">
-        <div class="data">
-            <div>
-                <label for="name">Nome:</label>&nbsp;
-                <input type="text" name="name" id="nome" requireed>
-            </div>
-            <div>   
-                <label for="valor">Valor:</label>&nbsp;
-                <input type="text" name="valor" id="valor" requireed>
-            </div>
+<div class="card">
+    <h1>Cadastro de Serviços</h1>
+    <form action="/servico/salvar" method="post" autocomplete="off">
+        <div class="dados">
+            <label for="name">Nome da Serviço:</label><br />
+            <input type="text" name="name" id="name" placeholder="Serviço" required />
         </div>
-        <div class="control">
-            <button type="reset">Limpar</button>
-            &nbsp;
-            &nbsp;
-            <button type="submit">Cadastrar</button>
+        <div class="dados">
+            <label for="valor">Valor do Serviço:</label><br />
+            <input type="number" name="valor" id="valor" placeholder="Preço" required />
         </div>
-    </div>
-</form>
+        <div class="submit">
+            <input type="reset" value="Limpar" />
+            &nbsp;
+            <input type="submit" value="Cadastrar" />
+        </div>
+    </form>
+</div>

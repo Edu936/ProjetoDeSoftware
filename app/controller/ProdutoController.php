@@ -7,6 +7,13 @@ use app\static\Request;
     class ProdutoController extends Controller
     { 
 
+        public function paginaDeProduto(){
+            $this->views('cadastro', [
+            'title' => "Estética Automotiva",
+            'pag' => "produto",
+        ]);
+        }
+
         private function buscarPorNome(string $name) : Produto{
             $product = new Produto();
             $product-> setNome("");

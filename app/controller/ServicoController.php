@@ -7,6 +7,13 @@ use app\static\Request;
     class ServicoController extends Controller
     { 
 
+        public function paginaDeServico(){
+            $this->views('cadastro', [
+            'title' => "Estética Automotiva",
+            'pag' => "servico",
+        ]);
+        }
+
         private function buscarPorNome(string $name) : Servico{
             $service = new Servico();
             $service-> setNome("");
