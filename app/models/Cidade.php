@@ -4,39 +4,42 @@ namespace app\models;
 
 class Cidade extends Model
 {
-    private int $codigo;
-    private string $nome;
-    private string $estado;
+    private int $CD_CIDADE;
+    private string $NM_CIDADE;
+    private string $DS_ESTADO_CIDADE;
 
-    function __construct($nome, $estado)
+    function __construct()
     {
-        $this->setNome($nome);   
-        $this->setEstado($estado);
-        $this->table = 'TB_CIDADE';
-    }
-
-    public function getCodigo(): int
-    {
-        return $this->codigo;
+        $this->table = "tb_cidade";
     }
 
     public function getNome(): string
     {
-        return $this->nome;
+        return $this->NM_CIDADE;
     }
 
     public function setNome($nome): void
     {
-        $this->nome = $nome;
+        $this->NM_CIDADE = $nome;
     }
 
     public function getEstado(): string
     {
-        return $this->estado;
+        return $this->DS_ESTADO_CIDADE;
     }
 
     public function setEstado($estado): void
     {
-        $this->estado = $estado;
+        $this->DS_ESTADO_CIDADE = $estado;
+    }
+
+    public function getCodigo(): string
+    {
+        return $this->CD_CIDADE;
+    }
+
+    public function setCodigo($codigo): void
+    {
+        $this->CD_CIDADE = $codigo;
     }
 }

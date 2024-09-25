@@ -12,26 +12,37 @@ abstract class Routes
     {
         return [
             'get' => [
-                '/' => 'LoginController@index',
-                '/controle' => 'ControleController@index',
-                '/cadastro' => 'CadastroController@index',
-                '/estatistica' => 'EstatisticaController@index',
-                '/atendimento' => 'AtendimentoController@index',
-                '/cadastro/cidade' => 'CadastroController@cidade',
-                '/atendimento/pedido' => 'AtendimentoController@pedido',
-                '/atendimento/cliente' => 'AtendimentoController@cliente',
-                '/atendimento/veiculo' => 'AtendimentoController@veiculo',
-                '/atendimento/orcamento' => 'AtendimentoController@orcamento',
- 
-                '/configuracao' => 'ConfiguracaoController@index',
-
-                '/cidade/buscar' => 'CidadeController@buscarTodos',
-
+                //Home
+                '/' => 'HomeController@login',
+                '/controle' => 'HomeController@controle',
+                '/cadastro' => 'HomeController@cadastro',
+                '/atendimento' => 'HomeController@atendimento',
+                '/estatistica' => 'HomeController@estatistica',
+                '/configuracao' => 'HomeController@configuracao', 
+                //Cidade
+                '/cidade/buscar' => 'CidadeController@buscar',
+                '/cidade/excluir' => 'CidadeController@excluir',
+                '/cidade/atualizar' => 'CidadeController@atualizar',
+                '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
+                '/controle/cidade' => 'CidadeController@paginaDeControle',
+                //Cliente
+                '/atendimento/cliente' => 'ClienteController@atendimento',
+                //Servico
+                '/cadastro/servico' => 'ServicoController@paginaDeServico',
+                //Produto
+                '/cadastro/produto' => 'ProdutoController@paginaDeProduto',
             ],
             'post' => [
-                '/home' => 'HomeController@index',
+                //Home
+                '/home' => 'HomeController@home',
+                //Cidade
                 '/cidade/salvar' => 'CidadeController@salvar',
+                //Servico
+                '/servico/salvar' => 'ServicoController@salvar',
+                //Produto
+                '/produto/salvar' => 'ProdutoController@salvar',
             ],
+
         ];
     }
 }

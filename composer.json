@@ -1,5 +1,6 @@
 {
-    "name": "dudum/php",
+    "name": "dudum/projeto_php",
+    "description": "Projeto de Software",
     "authors": [
         {
             "name": "Eduardo Vieira",
@@ -14,7 +15,7 @@
         "psr-4": {
             "app\\":"app"
         },
-        "files":[
+        "files": [
             "app/helpers/json.php"
         ]
     }

@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title'=> 'EsticaAutomotiva']) ?>
+<?php $this->layout('master', ['title'=> 'Estética Automotiva']) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/master.css">
@@ -10,7 +10,11 @@
     <div class="menu">
         <?=$this->insert('layout/menu/estatistica-menu')?>  
     </div>
-    <div class="imges">
-        <!-- <img src="/images/Car wash-bro.png" alt=""> -->
-    </div>
+    <section>
+        <?php 
+            if($this->e($pag) == "index") {
+                echo "<img src= \"images/Car wash-bro.png\"/>";
+            } 
+        ?>
+    </section>
 </div>

@@ -31,7 +31,7 @@
         </a>
     </li>
     <li class="options">
-        <a href="">
+        <a href="/controle/cidade">
             <i class="bi bi-geo-alt"></i>
             <span>Cidades</span>
         </a>
