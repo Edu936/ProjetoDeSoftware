@@ -26,7 +26,17 @@ abstract class Routes
                 '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
                 '/controle/cidade' => 'CidadeController@paginaDeControle',
                 //Cliente
-                '/atendimento/cliente' => 'ClienteController@atendimento',
+                '/cliente/buscar' => 'ClienteController@buscar',
+                '/cliente/excluir' => 'ClienteController@excluir',
+                '/cliente/atulizar' => 'ClienteController@eatualizar',
+                '/controle/cliente' => 'ClienteController@paginaDeControle',
+                '/atendimento/cliente' => 'ClienteController@paginaDeCadastro',
+                //Veiculo
+                '/veiculo/buscar' => 'VeiculoController@buscar',
+                '/veiculo/excluir' => 'VeiculoController@buscar',
+                '/veiculo/atualizar' => 'VeiculoController@buscar',
+                '/controle/veiculo' => 'VeiculoController@paginaDeControle',
+                '/atendimento/veiculo' => 'VeiculoController@paginaDeCadastro',
                 //Servico
                 '/cadastro/servico' => 'ServicoController@paginaDeServico',
                 //Produto
@@ -37,6 +47,10 @@ abstract class Routes
                 '/home' => 'HomeController@home',
                 //Cidade
                 '/cidade/salvar' => 'CidadeController@salvar',
+                //Cliente
+                '/cliente/salvar' => 'ClienteController@salvar',
+                //Veiculo
+                '/veiculo/salvar' => 'VeiculoController@salvar',
                 //Servico
                 '/servico/salvar' => 'ServicoController@salvar',
                 //Produto
