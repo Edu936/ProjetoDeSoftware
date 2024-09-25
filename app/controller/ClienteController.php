@@ -12,7 +12,7 @@ class ClienteController extends Controller
     {
         $cidade = new Cidade();
         $cidades = $cidade->fetchAll();
-        echo $this-> views('atendimento', [
+        echo $this->views('atendimento', [
             'title' => "Estética Automotiva",
             'pag' => "cliente",
             'cidades' => $cidades,
@@ -21,13 +21,13 @@ class ClienteController extends Controller
 
     public function paginaDeControle()
     {
-        echo $this-> views('controle', [
+        echo $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "cliente",
         ]);
     }
 
-    public function buscarPorCPF(string $CPF) : Cliente
+    public function buscarPorCPF(string $CPF): Cliente
     {
         $client = new Cliente();
         $client->setCPF("");
@@ -39,12 +39,12 @@ class ClienteController extends Controller
         return $cliente ? $cliente : $client;
     }
 
-    public function salvar ()
+    public function salvar()
     {
         $request = Request::all();
         $filtro = $this->buscarPorCPF($request['DS_CPF_CLIENTE']);
         $cliente = new Cliente();
-        if($filtro->getCPF() != $request['DS_CPF_CLIENTE']){
+        if ($filtro->getCPF() != $request['DS_CPF_CLIENTE']) {
             $result = $cliente->create($request);
             if (!$result) {
                 $this->views('atendiemto', [
