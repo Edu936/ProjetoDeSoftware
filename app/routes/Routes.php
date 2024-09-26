@@ -38,7 +38,7 @@ abstract class Routes
                 '/controle/veiculo' => 'VeiculoController@paginaDeControle',
                 '/atendimento/veiculo' => 'VeiculoController@paginaDeCadastro',
                 //Servico
-                '/cadastro/servico' => 'ServicoController@paginaDeServico',
+                '/cadastro/servico' => 'ServicoController@paginaDeCadastro',
                 //Produto
                 '/cadastro/produto' => 'ProdutoController@paginaDeProduto',
                 //Usuario
