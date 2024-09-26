@@ -1,24 +1,21 @@
-<h2>Estatística</h2>
+<h2>Relatorios</h2>
 <ul>
     <li class="options">
-        Controle de Pagamento
+        <a href="">
+            <i class="bi bi-bar-chart-fill"></i>
+            <span>Produtos</span>
+        </a>
     </li>
     <li class="options">
-        Controle de Pedidos
+        <a href="">
+            <i class="bi bi-bar-chart-fill"></i>
+            <span>Serviços</span>
+        </a>
     </li>
     <li class="options">
-        Controle de Orçamentos
-    </li>
-    <li class="options">
-        Controle de Cidades
-    </li>
-    <li class="options">
-        Controle de Cliente
-    </li>
-    <li class="options">
-        Controle de Veiculo
-    </li>
-    <li class="options">
-        Controle de Fornecedor
+        <a href="">
+            <i class="bi bi-bar-chart-fill"></i>
+            <span>Atendentes</span>
+        </a>
     </li>
 </ul>

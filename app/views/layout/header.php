@@ -1,11 +1,8 @@
 <header>
     <div class="sidebar-active">
-        <span class="active-sidebar" onclick="esconderMenu()">
-            <i class="bi bi-three-dots"></i>
-        </span>
+        
     </div>
     <div class="search">
-        <input type="search" name="search" id="search">
     </div>
     <div class="unit">
         <div class="description-unit">

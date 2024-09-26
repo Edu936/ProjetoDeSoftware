@@ -40,6 +40,8 @@
         <a href="/">
             <span class="icon">
                 <i class="bi bi-box-arrow-left"></i>
+                &nbsp;
+                Sair
             </span>
         </a>
     </div>
