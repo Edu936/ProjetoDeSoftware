@@ -16,34 +16,21 @@
         if ($this->e($pag) == "index") {
             echo "<img src= \"images/Car wash-bro.png\"/>";
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "servico") {
-            echo $this->insert('components/cadastro-form/form-servico');
+        else if ($this->e($pag) == "servico") {
+            require_once('components/cadastro-form/form-servico.php');
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "cidade") {
-            echo $this->insert('components/cadastro-form/form-cidade');
+        else if ($this->e($pag) == "cidade") {
+            require_once('components/cadastro-form/form-cidade.php');
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "produto") {
-            echo $this->insert('components/cadastro-form/form-produto');
+        else if ($this->e($pag) == "produto") {
+            require_once('components/cadastro-form/form-produto.php');
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "cadastro realizado") {
+        else if ($this->e($pag) == "cadastro realizado") {
             echo $this->e($resposta);
             echo "<button>";
             echo "<a href=\"/cadastro\">voltar</a>";
             echo "</button>";
         }
         ?>
-
     </section>
 </div>

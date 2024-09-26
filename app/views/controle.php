@@ -15,9 +15,32 @@
         <?php
         if ($this->e($pag) == "index") {
             echo "<img src= \"images/Car wash-bro.png\"/>";
-        } else if ($this->e($pag) == "cidade") {
+        } 
+        else if ($this->e($pag) == "pagamento") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "produto") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "servico") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "orcamento") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "pedido") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "cidade") {
             require_once('layout/tables/cidades.php');
-        } else if ($this->e($pag) == "pagamento") {
+        } 
+        else if ($this->e($pag) == "cliente") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "veiculo") {
+            echo "teste";
+        } 
+        else if ($this->e($pag) == "fornecedor") {
             echo "teste";
         }
         ?>

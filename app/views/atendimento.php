@@ -17,17 +17,18 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "pedido") {
-                echo $this->insert('components/atendimento-form/form-pedido');
+                require_once('components/atendimento-form/form-pedido.php');
             } 
             else if($this->e($pag) == "orcamento") {
-                echo $this->insert('components/atendimento-form/form-orcamento');
+                require_once('components/atendimento-form/form-orcamento.php');
             } 
             else if($this->e($pag) == "cliente") {
                 require_once('components/atendimento-form/form-cliente.php');
             } 
             else if($this->e($pag) == "veiculo") {
-                echo $this->insert('components/atendimento-form/form-veiculo');
-            } else if ($this->e($pag) == "cadastro realizado") {
+                require_once('components/atendimento-form/form-veiculo.php');
+            } 
+            else if ($this->e($pag) == "cadastro realizado") {
                 echo $this->e($resposta);
                 echo "<button>";
                 echo "<a href=\"/cadastro\">voltar</a>";

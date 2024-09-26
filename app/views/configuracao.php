@@ -15,6 +15,9 @@
             if($this->e($pag) == "index") {
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
+            else if($this->e($pag) == "usuario") {
+
+            }
         ?>
     </section>
 </div>    
