@@ -25,6 +25,9 @@
         else if ($this->e($pag) == "produto") {
             require_once('components/cadastros/form-produto.php');
         }
+        else if($this->e($pag) == "fornecedor") {
+            require_once('components/cadastros/form-fornecedor.php');
+        }
         else if ($this->e($pag) == "cadastro realizado") {
             echo $this->e($resposta);
             echo "<button>";

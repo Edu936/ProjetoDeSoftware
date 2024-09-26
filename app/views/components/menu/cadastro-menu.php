@@ -19,7 +19,7 @@
         </a>
     </li>
     <li class="options">
-        <a href="/cadastro/cidade">
+        <a href="/cadastro/fornecedor">
             <i class="bi bi-box2-fill"></i>
             <span>Novo Fornecedor</span>
         </a>
