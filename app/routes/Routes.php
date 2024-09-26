@@ -45,6 +45,8 @@ abstract class Routes
                 '/usuario' => 'UsuarioController@paginaDeCadastro',
                 //Orçamento
                 '/atendimento/orcamento' => 'OrcamentoController@paginaDeCadastro',
+                //Pedido
+                '/atendimento/pedido' => 'PedidoController@paginaDeCadastro',
             ],
             'post' => [
                 //Home
