@@ -43,6 +43,8 @@ abstract class Routes
                 '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
                 //Usuario
                 '/usuario' => 'UsuarioController@paginaDeCadastro',
+                //Orçamento
+                '/atendimento/orcamento' => 'OrcamentoController@paginaDeCadastro',
             ],
             'post' => [
                 //Home
