@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
-<div class="conteiner">
+<div class="content">
     <div class="menu">
-        <?= $this->insert('layout/menu/controle-menu') ?>
+        <?= require_once('components/menu/controle-menu.php') ?>
     </div>
     <section>
         <?php
@@ -32,7 +32,7 @@
             echo "teste";
         } 
         else if ($this->e($pag) == "cidade") {
-            require_once('layout/tables/cidades.php');
+            require_once('components/tabelas/cidades.php');
         } 
         else if ($this->e($pag) == "cliente") {
             echo "teste";

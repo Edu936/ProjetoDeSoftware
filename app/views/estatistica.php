@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
-<div class="conteiner">
+<div class="content">
     <div class="menu">
-        <?=$this->insert('layout/menu/estatistica-menu')?>  
+        <?=require_once('components/menu/estatistica-menu.php')?>  
     </div>
     <section>
         <?php 

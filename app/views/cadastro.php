@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
-<div class="conteiner">
+<div class="content">
     <div class="menu">
-        <?= $this->insert('layout/menu/cadastro-menu') ?>
+        <?= require_once('components/menu/cadastro-menu.php') ?>
     </div>
     <section>
         <?php
@@ -17,13 +17,13 @@
             echo "<img src= \"images/Car wash-bro.png\"/>";
         }
         else if ($this->e($pag) == "servico") {
-            require_once('components/cadastro-form/form-servico.php');
+            require_once('components/cadastros/form-servico.php');
         }
         else if ($this->e($pag) == "cidade") {
-            require_once('components/cadastro-form/form-cidade.php');
+            require_once('components/cadastros/form-cidade.php');
         }
         else if ($this->e($pag) == "produto") {
-            require_once('components/cadastro-form/form-produto.php');
+            require_once('components/cadastros/form-produto.php');
         }
         else if ($this->e($pag) == "cadastro realizado") {
             echo $this->e($resposta);

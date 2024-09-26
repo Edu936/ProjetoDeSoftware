@@ -23,10 +23,10 @@
     } else if ($this->e($title) == "Novo Usuario") {
         echo $this->section('content');
     } else {
-        require_once('layout/header');
-        require_once('layout/asside');
+        require_once('layout/header.php');
+        require_once('layout/asside.php');
         echo "<main>" . $this->section('content') . "</main>";
-        require_once('layout/footer');
+        require_once('layout/footer.php');
     }
     ?>
 </body>
