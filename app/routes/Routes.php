@@ -47,6 +47,8 @@ abstract class Routes
                 '/atendimento/orcamento' => 'OrcamentoController@paginaDeCadastro',
                 //Pedido
                 '/atendimento/pedido' => 'PedidoController@paginaDeCadastro',
+                //Pagamento0
+                '/controle/pagamento' => 'PagamentoController@paginaDeControle',
             ],
             'post' => [
                 //Home

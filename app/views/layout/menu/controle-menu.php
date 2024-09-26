@@ -1,7 +1,7 @@
 <h2>Controle</h2>
 <ul>
     <li class="options">
-        <a href="">
+        <a href="/controle/pagamento">
             <i class="bi bi-currency-dollar"></i>
             <span>Pagamentos</span>
         </a>

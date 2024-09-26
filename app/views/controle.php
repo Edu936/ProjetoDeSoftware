@@ -16,11 +16,10 @@
         <?php
         if ($this->e($pag) == "index") {
             echo "<img src= \"images/Car wash-bro.png\"/>";
-        }
-        ?>
-        <?php
-        if ($this->e($pag) == "cidade") {
+        } else if ($this->e($pag) == "cidade") {
             require_once('layout/tables/cidades.php');
+        } else if ($this->e($pag) == "pagamento") {
+            echo "teste";
         }
         ?>
     </section>
