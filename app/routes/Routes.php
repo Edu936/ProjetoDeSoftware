@@ -26,17 +26,39 @@ abstract class Routes
                 '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
                 '/controle/cidade' => 'CidadeController@paginaDeControle',
                 //Cliente
-                '/atendimento/cliente' => 'ClienteController@atendimento',
+                '/cliente/buscar' => 'ClienteController@buscar',
+                '/cliente/excluir' => 'ClienteController@excluir',
+                '/cliente/atulizar' => 'ClienteController@eatualizar',
+                '/controle/cliente' => 'ClienteController@paginaDeControle',
+                '/atendimento/cliente' => 'ClienteController@paginaDeCadastro',
+                //Veiculo
+                '/veiculo/buscar' => 'VeiculoController@buscar',
+                '/veiculo/excluir' => 'VeiculoController@buscar',
+                '/veiculo/atualizar' => 'VeiculoController@buscar',
+                '/controle/veiculo' => 'VeiculoController@paginaDeControle',
+                '/atendimento/veiculo' => 'VeiculoController@paginaDeCadastro',
                 //Servico
-                '/cadastro/servico' => 'ServicoController@paginaDeServico',
+                '/cadastro/servico' => 'ServicoController@paginaDeCadastro',
                 //Produto
-                '/cadastro/produto' => 'ProdutoController@paginaDeProduto',
+                '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
+                //Usuario
+                '/usuario' => 'UsuarioController@paginaDeCadastro',
+                //Orçamento
+                '/atendimento/orcamento' => 'OrcamentoController@paginaDeCadastro',
+                //Pedido
+                '/atendimento/pedido' => 'PedidoController@paginaDeCadastro',
+                //Pagamento0
+                '/controle/pagamento' => 'PagamentoController@paginaDeControle',
             ],
             'post' => [
                 //Home
                 '/home' => 'HomeController@home',
                 //Cidade
                 '/cidade/salvar' => 'CidadeController@salvar',
+                //Cliente
+                '/cliente/salvar' => 'ClienteController@salvar',
+                //Veiculo
+                '/veiculo/salvar' => 'VeiculoController@salvar',
                 //Servico
                 '/servico/salvar' => 'ServicoController@salvar',
                 //Produto

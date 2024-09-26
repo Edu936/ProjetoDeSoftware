@@ -25,7 +25,7 @@
         </a>
     </li>
     <li class="options">
-        <a href="/cadastro/cidade">
+        <a href="/cadastro/usuario">
             <i class="bi bi-person-add"></i>
             <span>Novo Atendente</span>
         </a>

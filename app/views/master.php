@@ -21,7 +21,11 @@
         <?php
         if ($this->e($title) == "Login") {
             echo $this->section('content');
-        } else {
+        } 
+        else if($this->e($title) == "Novo Usuario"){
+            echo $this->section('content');
+        }
+        else {
             echo $this->insert('layout/header');
             echo $this->insert('layout/asside');
             echo "<main>".$this->section('content')."</main>";

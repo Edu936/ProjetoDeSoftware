@@ -3,7 +3,7 @@
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/menu.css"/>
 <link rel="stylesheet" href="/style/master.css">
-<link rel="stylesheet" href="/style/atendimento.css"/>
+<link rel="stylesheet" href="/style/card.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
@@ -23,10 +23,15 @@
                 echo $this->insert('components/atendimento-form/form-orcamento');
             } 
             else if($this->e($pag) == "cliente") {
-                echo $this->insert('components/atendimento-form/form-cliente');
+                require_once('components/atendimento-form/form-cliente.php');
             } 
             else if($this->e($pag) == "veiculo") {
                 echo $this->insert('components/atendimento-form/form-veiculo');
+            } else if ($this->e($pag) == "cadastro realizado") {
+                echo $this->e($resposta);
+                echo "<button>";
+                echo "<a href=\"/cadastro\">voltar</a>";
+                echo "</button>";
             }
         ?>
     </section>
