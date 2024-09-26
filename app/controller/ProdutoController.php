@@ -7,7 +7,7 @@ use app\static\Request;
     class ProdutoController extends Controller
     { 
 
-        public function paginaDeProduto(){
+        public function paginaDeCadastro(){
             $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "produto",

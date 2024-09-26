@@ -40,7 +40,7 @@ abstract class Routes
                 //Servico
                 '/cadastro/servico' => 'ServicoController@paginaDeCadastro',
                 //Produto
-                '/cadastro/produto' => 'ProdutoController@paginaDeProduto',
+                '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
                 //Usuario
                 '/usuario' => 'UsuarioController@paginaDeCadastro',
             ],
