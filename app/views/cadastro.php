@@ -7,43 +7,33 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
-<div class="conteiner">
+<div class="content">
     <div class="menu">
-        <?= $this->insert('layout/menu/cadastro-menu') ?>
+        <?= require_once('components/menu/cadastro-menu.php') ?>
     </div>
     <section>
         <?php
         if ($this->e($pag) == "index") {
             echo "<img src= \"images/Car wash-bro.png\"/>";
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "servico") {
-            echo $this->insert('components/cadastro-form/form-servico');
+        else if ($this->e($pag) == "servico") {
+            require_once('components/cadastros/form-servico.php');
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "cidade") {
-            echo $this->insert('components/cadastro-form/form-cidade');
+        else if ($this->e($pag) == "cidade") {
+            require_once('components/cadastros/form-cidade.php');
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "produto") {
-            echo $this->insert('components/cadastro-form/form-produto');
+        else if ($this->e($pag) == "produto") {
+            require_once('components/cadastros/form-produto.php');
         }
-        ?>
-
-        <?php
-        if ($this->e($pag) == "cadastro realizado") {
+        else if($this->e($pag) == "fornecedor") {
+            require_once('components/cadastros/form-fornecedor.php');
+        }
+        else if ($this->e($pag) == "cadastro realizado") {
             echo $this->e($resposta);
             echo "<button>";
             echo "<a href=\"/cadastro\">voltar</a>";
             echo "</button>";
         }
         ?>
-
     </section>
 </div>

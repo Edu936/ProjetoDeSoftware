@@ -19,13 +19,13 @@
         </a>
     </li>
     <li class="options">
-        <a href="/cadastro/cidade">
+        <a href="/cadastro/fornecedor">
             <i class="bi bi-box2-fill"></i>
             <span>Novo Fornecedor</span>
         </a>
     </li>
     <li class="options">
-        <a href="/cadastro/cidade">
+        <a href="/cadastro/usuario">
             <i class="bi bi-person-add"></i>
             <span>Novo Atendente</span>
         </a>

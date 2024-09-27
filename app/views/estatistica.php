@@ -6,15 +6,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
-<div class="conteiner">
+<div class="content">
     <div class="menu">
-        <?=$this->insert('layout/menu/estatistica-menu')?>  
+        <?=require_once('components/menu/estatistica-menu.php')?>  
     </div>
     <section>
         <?php 
             if($this->e($pag) == "index") {
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
+            else if($this->e($pag) == "produto") {
+                
+            }
+            else if($this->e($pag) == "servico") {
+
+            }
+            else if($this->e($pag) == "atendente") {
+
+            }
         ?>
     </section>
 </div>

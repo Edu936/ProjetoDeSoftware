@@ -23,7 +23,6 @@ class CidadeController extends Controller
     public function paginaDeControle()
     {
         $cidades = $this->buscarTodos();
-        // $cidades = [1,2,34,4,2,6];
         echo $this->views(
             'controle',
             [

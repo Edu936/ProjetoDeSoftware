@@ -3,13 +3,13 @@
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/menu.css"/>
 <link rel="stylesheet" href="/style/master.css">
-<link rel="stylesheet" href="/style/atendimento.css"/>
+<link rel="stylesheet" href="/style/card.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
-<div class="conteiner">
+<div class="content">
     <div class="menu">
-        <?=$this->insert('layout/menu/atendimento-menu')?>  
+        <?=require_once('components/menu/atendimento-menu.php')?>  
     </div>
     <section>
         <?php 
@@ -17,16 +17,22 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "pedido") {
-                echo $this->insert('components/atendimento-form/form-pedido');
+                require_once('components/cadastros/form-pedido.php');
             } 
             else if($this->e($pag) == "orcamento") {
-                echo $this->insert('components/atendimento-form/form-orcamento');
+                require_once('components/cadastros/form-orcamento.php');
             } 
             else if($this->e($pag) == "cliente") {
-                echo $this->insert('components/atendimento-form/form-cliente');
+                require_once('components/cadastros/form-cliente.php');
             } 
             else if($this->e($pag) == "veiculo") {
-                echo $this->insert('components/atendimento-form/form-veiculo');
+                require_once('components/cadastros/form-veiculo.php');
+            } 
+            else if ($this->e($pag) == "cadastro realizado") {
+                echo $this->e($resposta);
+                echo "<button>";
+                echo "<a href=\"/cadastro\">voltar</a>";
+                echo "</button>";
             }
         ?>
     </section>

@@ -17,18 +17,18 @@
 </head>
 
 <body>
-    <div class="container">
-        <?php
-        if ($this->e($title) == "Login") {
-            echo $this->section('content');
-        } else {
-            echo $this->insert('layout/header');
-            echo $this->insert('layout/asside');
-            echo "<main>".$this->section('content')."</main>";
-            echo $this->insert('layout/footer');
-        }
-        ?>
-    </div>
+    <?php
+    if ($this->e($title) == "Login") {
+        echo $this->section('content');
+    } else if ($this->e($title) == "Novo Usuario") {
+        echo $this->section('content');
+    } else {
+        require_once('layout/header.php');
+        require_once('layout/asside.php');
+        echo "<main>" . $this->section('content') . "</main>";
+        require_once('layout/footer.php');
+    }
+    ?>
 </body>
 
 </html>
