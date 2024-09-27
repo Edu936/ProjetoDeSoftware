@@ -32,7 +32,7 @@
             echo "teste";
         } 
         else if ($this->e($pag) == "cidade") {
-            require_once('components/tabelas/cidades.php');
+            require_once('components/tabelas/table-cidade.php');
         } 
         else if ($this->e($pag) == "cliente") {
             echo "teste";
