@@ -2,38 +2,45 @@
 
 namespace app\controller;
 
-use app\database\Filters;
 use app\models\Cidade;
 use app\static\Request;
+use app\database\Filters;
 
 class CidadeController extends Controller
 {
 
-    public function paginaDeCadastro()
+    /**
+     * Este metodo será responsavel por exibir as telas de cadastro
+     */
+    public function paginaDeCadastro() : void
     {
-        echo $this->views(
-            'cadastro', 
-            [
-                'title' => "Estética Automotiva",
-                'pag' => "cidade",
-            ]
-        );
+        echo $this->views('cadastro', [
+            'title' => "Estética Automotiva",
+            'pag' => "cidade",
+        ]);
     }
 
-    public function paginaDeControle()
+    /**
+     * Este metodo será responsavel por exibir a telas de controle das cidades cadastradas
+     */
+    public function paginaDeControle() : void
     {
         $cidades = $this->buscarTodos();
-        echo $this->views(
-            'controle',
-            [
-                'title' => "Estética Automotiva",   
-                'pag' => "cidade",
-                'cidades' => $cidades,
-            ]
-        );
+        echo $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "cidade",
+            'cidades' => $cidades,
+        ]);
     }
 
-    public function buscarPorNome(string $name): Cidade
+    public function buscar($value) {
+        dd($value);
+    }
+
+    /**
+     * Este metodo tem como função buscar pelo nome uma cidade
+     */
+    public function buscarPorNome(string $name) : Cidade
     {
         $city = new Cidade();
         $city->setNome("");
@@ -47,6 +54,9 @@ class CidadeController extends Controller
         return $cidade ? $cidade : $city;
     }
 
+    /**
+     * Esse metodo tem como função filtrar ha existencia de uma cidade já cadastrada e salvar caso necessario
+     */
     public function salvar(): void
     {
         $request = Request::all();
@@ -80,6 +90,9 @@ class CidadeController extends Controller
     }
 
 
+    /**
+     * Esse metodo tem como função atualizar os dados de uma cidade
+     */
     public function atulizar(): void
     {
         $cidade = new Cidade();
@@ -94,11 +107,13 @@ class CidadeController extends Controller
         }
     }
 
-    public function excluir(): void
+    /**
+     * Essa função tem como finalidade excluir uma cidade já cadastrada
+     */
+    public function excluir($codigo): void
     {
-        $request = Request::input('CD_CIDADE');
         $cidade = new Cidade();
-        $cidade = $cidade->delete('NM_CIDADE', $request);
+        $cidade = $cidade->delete('NM_CIDADE', $codigo);
         if (!$cidade) {
             echo "Cidade não foi apagada!";
         } else {
@@ -106,14 +121,15 @@ class CidadeController extends Controller
         }
     }
 
-
+    /**
+     * Esse metodo tem como função buscar todas as cidade já cadastradas
+     */
     public function buscarTodos(): array
     {
         $fielters = new Filters;
         $cidade = new Cidade();
         $cidade->setfilters($fielters);
         $cidades = $cidade->fetchAll();
-        // echo $cidades[1]->getNome();
         return $cidades;
     }
 }

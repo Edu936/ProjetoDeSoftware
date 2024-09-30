@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
+<?php $this->start('js') ?>
+<script src="/javascript/mudar.js"></script>
+<?php $this->stop() ?>
+
 <div class="content">
     <div class="menu">
         <?= require_once('components/menu/controle-menu.php') ?>

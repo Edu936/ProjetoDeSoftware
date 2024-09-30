@@ -20,9 +20,9 @@ abstract class Routes
                 '/estatistica' => 'HomeController@estatistica',
                 '/configuracao' => 'HomeController@configuracao', 
                 //Cidade
-                '/cidade/buscar' => 'CidadeController@buscar',
-                '/cidade/excluir' => 'CidadeController@excluir',
-                '/cidade/atualizar' => 'CidadeController@atualizar',
+                '/cidade/buscar/[aA-zZ 0-9]+' => 'CidadeController@buscar',
+                '/cidade/excluir/[aA-zZ 0-9]+' => 'CidadeController@excluir',
+                '/cidade/atualizar/[aA-zZ 0-9]+' => 'CidadeController@atualizar',
                 '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
                 '/controle/cidade' => 'CidadeController@paginaDeControle',
                 //Cliente
