@@ -21,8 +21,8 @@ abstract class Routes
                 '/configuracao' => 'HomeController@configuracao', 
                 //Cidade
                 '/cidade/buscar/[aA-zZ 0-9]+' => 'CidadeController@buscar',
-                '/cidade/excluir/[aA-zZ 0-9]+' => 'CidadeController@excluir',
-                '/cidade/atualizar/[aA-zZ 0-9]+' => 'CidadeController@atualizar',
+                '/cidade/excluir/[0-9]+' => 'CidadeController@excluir',
+                '/cidade/editar/[0-9]+' => 'CidadeController@paginaDeEdicao',
                 '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
                 '/controle/cidade' => 'CidadeController@paginaDeControle',
                 //Cliente
@@ -57,6 +57,7 @@ abstract class Routes
                 '/home' => 'HomeController@home',
                 //Cidade
                 '/cidade/salvar' => 'CidadeController@salvar',
+                '/cidade/atualizar/[0-9]+' => 'CidadeController@atualizar',
                 //Cliente
                 '/cliente/salvar' => 'ClienteController@salvar',
                 //Veiculo

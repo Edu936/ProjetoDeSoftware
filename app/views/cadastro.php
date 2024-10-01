@@ -12,6 +12,7 @@
         <?= require_once('components/menu/cadastro-menu.php') ?>
     </div>
     <section>
+        
         <?php
         if ($this->e($pag) == "index") {
             echo "<img src= \"images/Car wash-bro.png\"/>";

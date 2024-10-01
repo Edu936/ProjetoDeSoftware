@@ -1,6 +1,6 @@
 function bucarCidade() {
-    const input = document.querySelector('#buscarCidade');
-    window.location.href = `/cidade/buscar/${input.value}`;
+    const input = document.querySelector('#buscarCidade').value;
+    window.location.href = `/cidade/buscar/${input}`;
 }
 
 function editarCidade(value) {
@@ -8,5 +8,5 @@ function editarCidade(value) {
 }
 
 function excluirCidade(value) {
-    window.location.href = `/cidade/exclur/${value}`;
+    window.location.href = `/cidade/excluir/${value}`;
 }

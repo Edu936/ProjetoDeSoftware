@@ -12,35 +12,67 @@ class CidadeController extends Controller
     /**
      * Este metodo será responsavel por exibir as telas de cadastro
      */
-    public function paginaDeCadastro() : void
+    public function paginaDeCadastro(): void
     {
+        $cidade = new Cidade();
+        $cidade->setNome("");
+        $cidade->setEstado("");
+        $route = "/cidade/salvar";
+        $card = "Cadastro De Cidade";
         echo $this->views('cadastro', [
-            'title' => "Estética Automotiva",
+            'card' => $card,
+            'route' => $route,
             'pag' => "cidade",
+            'cidade' => $cidade,
+            'title' => "Estética Automotiva",
         ]);
     }
 
     /**
      * Este metodo será responsavel por exibir a telas de controle das cidades cadastradas
      */
-    public function paginaDeControle() : void
+    public function paginaDeControle(): void
     {
+        $dados = "";
         $cidades = $this->buscarTodos();
         echo $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "cidade",
             'cidades' => $cidades,
+            'dados' => $dados
+        ]);
+    }
+
+    public function paginaDeEdicao($codigo): void
+    {
+        $cidade = new Cidade();
+        $cidade = $cidade->findby("CD_CIDADE", $codigo[0]);
+        $route = "/cidade/atualizar/{$codigo[0]}";
+        $card = "Atualização De Cidade";
+        echo $this->views('cadastro', [
+            'card' => $card,
+            'pag' => "cidade",
+            'route' => $route,
+            'cidade' => $cidade,
+            'title' => "Estética Automotiva",
         ]);
     }
 
     public function buscar($value) {
-        dd($value);
+        $dados = $this->buscarPorNome($value[0]);
+        $cidades = $this->buscarTodos();
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "cidade",
+            'cidades' => $cidades,
+            'dados' => $dados
+        ]);
     }
 
     /**
      * Este metodo tem como função buscar pelo nome uma cidade
      */
-    public function buscarPorNome(string $name) : Cidade
+    public function buscarPorNome(string $name): Cidade
     {
         $city = new Cidade();
         $city->setNome("");
@@ -60,13 +92,10 @@ class CidadeController extends Controller
     public function salvar(): void
     {
         $request = Request::all();
-        $filtro = $this->buscarPorNome($request['name']);
+        $filtro = $this->buscarPorNome($request['NM_CIDADE']);
         $cidade = new Cidade();
-        if ($filtro->getNome() != $request['name'] && $filtro->getEstado() != $request['estado']) {
-            $result = $cidade->create([
-                "NM_CIDADE" => $request['name'],
-                "DS_ESTADO_CIDADE" => $request['estado']
-            ]);
+        if ($filtro->getNome() != $request['NM_CIDADE'] && $filtro->getEstado() != $request['DS_ESTADO_CIDADE']) {
+            $result = $cidade->create($request);
             if (!$result) {
                 $this->views('cadastro', [
                     'title' => "Estética Automotiva",
@@ -77,7 +106,7 @@ class CidadeController extends Controller
                 $this->views('cadastro', [
                     'title' => "Estética Automotiva",
                     'pag' => "cadastro realizado",
-                    'resposta' => "A Cidade {$request['name']} foi Cadastrada Com Sucesso!",
+                    'resposta' => "A Cidade {$request['NM_CIDADE']} foi Cadastrada Com Sucesso!",
                 ]);
             }
         } else {
@@ -89,21 +118,37 @@ class CidadeController extends Controller
         }
     }
 
-
     /**
      * Esse metodo tem como função atualizar os dados de uma cidade
      */
-    public function atulizar(): void
+    public function atualizar($codigo): void
     {
+        $request = Request::all();
+        $filtro = $this->buscarPorNome($request['NM_CIDADE']);
         $cidade = new Cidade();
-        $result = $cidade->update([
-            "NM_CIDADE" => "Rio de Janeiro",
-            "DS_ESTADO_CIDADE" => "Rio de Janeiro",
-        ], "CD_CIDADE", 11);
-        if (!$result) {
-            echo "Não foi atualizado essa cidade!";
-        } else {
-            echo "Foi atualizado a cidade";
+        if ($filtro->getNome() != $request['NM_CIDADE'] && $filtro->getEstado() != $request['DS_ESTADO_CIDADE']) {
+            $result = $cidade->update($request, "CD_CIDADE", $codigo[0]);
+            if (!$result) {
+                $this->views('cadastro', [
+                    'title' => "Estética Automotiva",
+                    'pag' => "cadastro realizado",
+                    'resposta' => "Ocorreu um erro na atualização da cidade!",
+                ]);
+            } 
+            else {
+                $this->views('cadastro', [
+                    'title' => "Estética Automotiva",
+                    'pag' => "cadastro realizado",
+                    'resposta' => "A Cidade {$request['NM_CIDADE']} foi atualizada Com Sucesso!",
+                ]);
+            }
+        } 
+        else {
+            $this->views('cadastro', [
+                'title' => "Estética Automotiva",
+                'pag' => "cadastro realizado",
+                'resposta' => "Essa cidade já foi cadastrada!",
+            ]);
         }
     }
 
@@ -113,11 +158,11 @@ class CidadeController extends Controller
     public function excluir($codigo): void
     {
         $cidade = new Cidade();
-        $cidade = $cidade->delete('NM_CIDADE', $codigo);
+        $cidade = $cidade->delete('CD_CIDADE', $codigo[0]);
         if (!$cidade) {
-            echo "Cidade não foi apagada!";
-        } else {
             echo "A cidade foi apagada!";
+        } else {
+            echo "A cidade não foi apagada!";
         }
     }
 
