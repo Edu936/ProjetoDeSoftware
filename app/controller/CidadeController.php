@@ -58,7 +58,8 @@ class CidadeController extends Controller
         ]);
     }
 
-    public function buscar($value) {
+    public function buscar($value) :void 
+     {
         $dados = $this->buscarPorNome($value[0]);
         $cidades = $this->buscarTodos();
         $this->views('controle', [

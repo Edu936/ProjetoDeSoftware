@@ -18,9 +18,7 @@
 
 <body>
     <?php
-    if ($this->e($title) == "Login") {
-        echo $this->section('content');
-    } else if ($this->e($title) == "Novo Usuario") {
+    if ($this->e($title) == "Login" || $this->e($title) == "Cadastra-se") {
         echo $this->section('content');
     } else {
         require_once('layout/header.php');

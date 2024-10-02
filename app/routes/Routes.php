@@ -66,6 +66,8 @@ abstract class Routes
                 '/servico/salvar' => 'ServicoController@salvar',
                 //Produto
                 '/produto/salvar' => 'ProdutoController@salvar',
+                //Usuario
+                'usuario/salvar' => 'UsuarioController@salvar',
             ],
 
         ];

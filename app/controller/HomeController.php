@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\controller\Controller;
+use app\static\Request;
 
 class HomeController extends Controller
 {
@@ -16,9 +17,16 @@ class HomeController extends Controller
 
   public function home()
   {
-    $this->views('home', [
-      'title' => "Estética Automotiva",
-    ]);
+    $user = new UsuarioController();
+    $filtro1 = $user->filtrarUsuario('DS_USUARIO_USER', Request::input('DS_USUARIO_USER'));
+    $filtro2 = $user->filtrarUsuario('DS_USUARIO_SENHA', Request::input('DS_USUARIO_SENHA'));
+    if($filtro1 && $filtro2) {
+      $this->views('home', [
+        'title' => "Estética Automotiva",
+      ]);
+    } else {
+      echo "<script>window.alert(\"Usuario ou Senha estão erradas!\")</script>";
+    }
   }
 
   public function atendimento(): void

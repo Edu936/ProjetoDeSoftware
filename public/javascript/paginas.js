@@ -10,3 +10,11 @@ function editarCidade(value) {
 function excluirCidade(value) {
     window.location.href = `/cidade/excluir/${value}`;
 }
+
+function pagina(pagina) {
+    window.location = pagina;
+}
+
+function paginaDeLogin() {
+    window.location = `/`;
+}
