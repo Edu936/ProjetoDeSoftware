@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title'=> 'Estética Automotiva', 'pag']) ?>
+<?php $this->layout('master', ['title'=> 'Estética Automotiva', 'name' => $usuario->getNome()]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/menu.css"/>
@@ -8,6 +8,7 @@
 <?php $this->stop() ?>
 
 <div class="content">
+    <?php dd($usuario)?>
     <div class="menu">
         <?=require_once('components/menu/atendimento-menu.php')?>  
     </div>

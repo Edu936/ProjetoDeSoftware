@@ -57,4 +57,11 @@ class UsuarioController extends Controller
             ]);
         }
     }
+
+    public function buscar($key, $data) : Usuario 
+    {
+        $usuario = new Usuario();
+        $usuario = $usuario->findby($key, $data);
+        return $usuario;
+    }
 }

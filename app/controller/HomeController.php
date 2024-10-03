@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\controller\Controller;
+use app\models\Usuario;
 use app\static\Request;
 
 class HomeController extends Controller
@@ -21,11 +22,13 @@ class HomeController extends Controller
     $filtro1 = $user->filtrarUsuario('DS_USUARIO_USER', Request::input('DS_USUARIO_USER'));
     $filtro2 = $user->filtrarUsuario('DS_USUARIO_SENHA', Request::input('DS_USUARIO_SENHA'));
     if($filtro1 && $filtro2) {
+      $usuario = new Usuario;
+      $usuario = $user->buscar('DS_USUARIO_USER',Request::input('DS_USUARIO_USER'));
       $this->views('home', [
         'title' => "Estética Automotiva",
       ]);
     } else {
-      echo "<script>window.alert(\"Usuario ou Senha estão erradas!\")</script>";
+      echo "<script> window.alert(\"Usuario ou Senha estão erradas!\"); window.location = `/`; </script>";
     }
   }
 
