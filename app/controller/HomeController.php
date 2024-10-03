@@ -24,6 +24,9 @@ class HomeController extends Controller
     if($filtro1 && $filtro2) {
       $usuario = new Usuario;
       $usuario = $user->buscar('DS_USUARIO_USER',Request::input('DS_USUARIO_USER'));
+      session_regenerate_id();
+      $_SESSION['user'] = $usuario->getNome();
+      $_SESSION['cargo'] = $usuario->getCargo();
       $this->views('home', [
         'title' => "Estética Automotiva",
       ]);
