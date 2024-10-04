@@ -1,19 +1,32 @@
 /* Configuração de estilo global dos cards de Formulario */
-.card {
-    width: 50%;
+.card-grande {
+    width: 95%;
+    height: 100%;
     margin: auto;
     display: flex;
     color: rgb(255, 255, 255);
-    padding: 30px 10px;
+    padding: 20px 0px;
     border-radius: 15px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(067, 059, 098);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
+    overflow-y: scroll;
 }
 
-.card > h1 {
+.card-grande::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 8px;
+    background-color: rgb(47, 42, 66);
+}
+
+.card-grande::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgb(177, 114, 206);
+}
+
+.card-grande > h1 {
     margin: 0px 0px;
     padding: 0px 0px;
     color: rgb(177, 114, 206);
@@ -22,6 +35,12 @@
 form {
     margin: 0%;
     width: 80%;
+}
+
+fieldset {
+    width: 100%;
+    border-radius: 8px;
+    margin:0px 0px 10px 0px;
 }
 
 .dados > input {

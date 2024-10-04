@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card-grande">
     <h1>Dados Pessoais</h1>
     <form action="/cliente/salvar" method="post" autocomplete="off">
         <fieldset>
@@ -13,7 +13,11 @@
             </div>
             <div class="dados">
                 <label for="telefone">Telefone:</label><br />
-                <input type="tel" name="NU_FONE" id="CEP" placeholder="Numero da casa ou apartamento" required />
+                <input type="tel" name="DS_FONE_CLIENTE" id="telefone" placeholder="Numero de telefone" required />
+            </div>
+            <div class="dados">
+                <label for="email">Email:</label><br />
+                <input type="tel" name="DS_EMAIL_CLIENTE" id="email" placeholder="e-mail" required />
             </div>
         </fieldset>
         <fieldset>
