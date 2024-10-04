@@ -1,6 +1,11 @@
-function bucarCidade() {
+function buscarCidade() {
     const input = document.querySelector('#buscarCidade').value;
     window.location.href = `/cidade/buscar/${input}`;
+}
+
+function buscarCliente() {
+    const option = document.querySelector('#cliente');
+    window.location.href = `/cliente/buscar/${option.value}`;
 }
 
 function editarCidade(value) {

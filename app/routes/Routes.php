@@ -32,11 +32,11 @@ abstract class Routes
                 '/controle/cliente' => 'ClienteController@paginaDeControle',
                 '/cadastro/cliente' => 'ClienteController@paginaDeCadastro',
                 //Veiculo
-                '/veiculo/buscar' => 'VeiculoController@buscar',
+                '/cliente/buscar/[aA-zZ 0-9]+' => 'VeiculoController@cadastrar',
                 '/veiculo/excluir' => 'VeiculoController@buscar',
                 '/veiculo/atualizar' => 'VeiculoController@buscar',
                 '/controle/veiculo' => 'VeiculoController@paginaDeControle',
-                '/atendimento/veiculo' => 'VeiculoController@paginaDeCadastro',
+                '/cadastro/veiculo' => 'VeiculoController@paginaDeCadastro',
                 //Servico
                 '/cadastro/servico' => 'ServicoController@paginaDeCadastro',
                 //Produto
@@ -61,7 +61,7 @@ abstract class Routes
                 //Cliente
                 '/cliente/salvar' => 'ClienteController@salvar',
                 //Veiculo
-                '/veiculo/salvar' => 'VeiculoController@salvar',
+                '/veiculo/salvar/[0-9]+' => 'VeiculoController@salvar',
                 //Servico
                 '/servico/salvar' => 'ServicoController@salvar',
                 //Produto

@@ -39,6 +39,18 @@ class ClienteController extends Controller
         return $cliente ? $cliente : $client;
     }
 
+    public function buscar($key, $value) 
+    {
+        $client = new Cliente();
+        $client->setCPF("");
+
+        $cliente = new Cliente();
+
+        $cliente = $cliente->findby($key, $value[0]);
+
+        return $cliente ? $cliente : $client;
+    }
+
     public function salvar()
     {
         $request = Request::all();

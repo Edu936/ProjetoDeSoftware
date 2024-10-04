@@ -1,8 +1,8 @@
 <div class="card-grande">
-    <h1>Dados Pessoais</h1>
+    <h1>Cadastro de Cliente</h1>
     <form action="/cliente/salvar" method="post" autocomplete="off">
         <fieldset>
-            <legend>Dados Pessoais</legend>
+            <legend>Cliente</legend>
             <div class="dados">
                 <label for="name">Nome do Cliente:</label><br />
                 <input type="text" name="NM_CLIENTE" id="name" placeholder="Digite o nome" required />
