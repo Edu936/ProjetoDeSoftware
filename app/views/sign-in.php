@@ -5,9 +5,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
+<?php $this->start('js') ?>
+<script src="/javascript/paginas.js"></script>
+<?php $this->stop() ?>
+
 <main>
     <div class="header-form">
-        <button onclick="paginaDeLogin()">
+        <button onclick="pagina('<?=$route?>')">
             <i class="bi bi-arrow-left"></i>
             voltar
         </button>
@@ -24,6 +28,14 @@
                 <div class="dados">
                     <label for="CPF">CPF:</label>
                     <input type="text" name="DS_CPF_USUARIO" id="CPF" required><br>
+                </div>
+                <div class="dados">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" name="DS_FONE_USUARIO" id="telefone" required><br>
+                </div>
+                <div class="dados">
+                    <label for="email">Email:</label>
+                    <input type="email" name="DS_EMAIL_USUARIO" id="email" required><br>
                 </div>
             </fieldset>
             <fieldset>
@@ -49,7 +61,7 @@
                 <legend>Endereço</legend>
                 <div class="dados">
                     <label for="Numero">Numero:</label>
-                    <input type="text" name="DS_NUMERO" id="Numero" required><br>
+                    <input type="number" name="DS_NUMERO" id="Numero" required><br>
                 </div>
                 <div class="dados">
                     <label for="Rua">Rua:</label>

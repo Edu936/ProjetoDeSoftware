@@ -29,12 +29,12 @@
             require_once('components/cadastros/form-produto.php');
         } else if ($this->e($pag) == "fornecedor") {
             require_once('components/cadastros/form-fornecedor.php');
-        } else if ($this->e($pag) == "finalizar") {
-            require_once('components/content/finalizar.php');
         } else if ($this->e($pag) == "cliente") {
             require_once('components/cadastros/form-cliente.php');
         } else if ($this->e($pag) == "veiculo") {
             require_once('components/cadastros/form-veiculo.php');
+        } else if ($this->e($pag) == "finalizar") {
+            require_once('components/content/finalizar.php');
         }
         ?>
     </section>

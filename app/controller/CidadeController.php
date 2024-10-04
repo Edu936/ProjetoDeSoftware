@@ -99,22 +99,28 @@ class CidadeController extends Controller
             $result = $cidade->create($request);
             if (!$result) {
                 $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "Ocorreu um erro no cadastro!",
+                    'title' => "Cadastro Cidade",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Ocorreu um erro no cadastro!",
+                    'link' => '/cadastro/cidade',
                 ]);
             } else {
                 $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "A Cidade {$request['NM_CIDADE']} foi Cadastrada Com Sucesso!",
+                    'title' => "Cadastro Cidade",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'mensagem' => "A Cidade {$request['NM_CIDADE']} foi Cadastrada Com Sucesso!",
+                    'link' => '/cadastro/cidade',
                 ]);
             }
         } else {
             $this->views('cadastro', [
-                'title' => "Estética Automotiva",
-                'pag' => "cadastro realizado",
-                'resposta' => "Essa Cidade Já foi Cadastrada!",
+                'title' => "Cadastro Cidade",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Essa Cidade Já foi Cadastrada!",
+                'link' => '/cadastro/cidade',
             ]);
         }
     }

@@ -14,6 +14,7 @@ class UsuarioController extends Controller
         $this->views('sign-in', [
             'title' => "Cadastra-se",
             'cidades' => $cidades,
+            'route' => '/',
         ]);
     }
 
@@ -27,7 +28,7 @@ class UsuarioController extends Controller
 
     public function salvar() : void 
     {
-        $request = Request::all();
+        $request = Request::exception(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
         $filtro1 = $this->filtrarUsuario('DS_USUARIO_USER',$request['DS_USUARIO_USER']);
         $filtro2 = $this->filtrarUsuario('DS_CPF_USUARIO',$request['DS_CPF_USUARIO']);
         $newUsuario = new Usuario();
