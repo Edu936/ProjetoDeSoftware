@@ -1,0 +1,1 @@
+<button onclick="pagina('<?=$route?>')">Voltar</button>

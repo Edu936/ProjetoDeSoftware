@@ -1,57 +1,93 @@
 <h2>Controle</h2>
 <ul>
-    <li class="options">
-        <a href="/controle/pagamento">
-            <i class="bi bi-currency-dollar"></i>
-            <span>Pagamentos</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/produto">
-            <i class="bi bi-bag-fill"></i>
-            <span>Produtos</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/servico">           
-            <i class="bi bi-brush-fill"></i>
-            <span>Serviços</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/orcamento">
-            <i class="bi bi-pencil-square"></i>
-            <span>Orçamentos</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/pedido">
-            <i class="bi bi-clipboard"></i>
-            <span>Pedidos</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/cidade">
-            <i class="bi bi-geo-alt"></i>
-            <span>Cidades</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/cliente">
-            <i class="bi bi-person"></i>
-            <span>Clientes</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/veiculo">
-            <i class="bi bi-car-front-fill"></i>
-            <span>Veiculos</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/controle/fornecedor">
-            <i class="bi bi-box2-fill"></i>
-            <span>Fornecedores</span>
-        </a>
-    </li>
+    <?php
+    if ($_SESSION['cargo'] != 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/pagamento\">";
+        echo "<i class=\"bi bi-currency-dollar\"></i>";
+        echo "<span>Pagamentos</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] != 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/produto\">";
+        echo "<i class=\"bi bi-bag-fill\"></i>";
+        echo "<span>Produtos</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] != 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/servico\">";
+        echo "<i class=\"bi bi-brush-fill\"></i>";
+        echo "<span>Serviços</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] == 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/orcamento\">";
+        echo "<i class=\"bi bi-pencil-square\"></i>";
+        echo "<span>Orçamentos</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] == 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/pedido\">";
+        echo "<i class=\"bi bi-clipboard\"></i>";
+        echo "<span>Pedidos</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] != 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/cidade\">";
+        echo "<i class=\"bi bi-geo-alt\"></i>";
+        echo "<span>Cidade</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] == 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/cliente\">";
+        echo "<i class=\"bi bi-person\"></i>";
+        echo "<span>Clientes</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] == 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/vaiculo\">";
+        echo "<i class=\"bi bi-car-front-fill\"></i>";
+        echo "<span>Veiculos</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
+    <?php
+    if ($_SESSION['cargo'] != 'Atendente') {
+        echo "<li class=\"options\">";
+        echo "<a href=\"/controle/fornecedor\">";
+        echo "<i class=\"bi bi-box2-fill\"></i>";
+        echo "<span>Fornecedores</span>";
+        echo "</a>";
+        echo "</li>";
+    }
+    ?>
 </ul>

@@ -11,6 +11,8 @@ class HomeController extends Controller
 
   public function login()
   {
+    $_SESSION['user'] = null;
+    $_SESSION['cargo'] = null;
     $this->views('login', [
       'title' => "Entre",
     ]);

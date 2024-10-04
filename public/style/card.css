@@ -1,10 +1,10 @@
 /* Configuração de estilo global dos cards de Formulario */
 .card {
-    width: 50%;
+    width: 90%;
     margin: auto;
     display: flex;
     color: rgb(255, 255, 255);
-    padding: 30px 10px;
+    padding: 20px 0px;
     border-radius: 15px;
     align-items: center;
     flex-direction: column;
@@ -22,6 +22,12 @@
 form {
     margin: 0%;
     width: 80%;
+}
+
+fieldset {
+    width: 100%;
+    border-radius: 8px;
+    margin:0px 0px 10px 0px;
 }
 
 .dados > input {

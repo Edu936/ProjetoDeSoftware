@@ -1,5 +1,6 @@
 <?php 
-    namespace app\controller;
+    
+namespace app\controller;
 
 use app\models\Produto;
 use app\static\Request;

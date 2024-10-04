@@ -30,7 +30,7 @@ abstract class Routes
                 '/cliente/excluir' => 'ClienteController@excluir',
                 '/cliente/atulizar' => 'ClienteController@eatualizar',
                 '/controle/cliente' => 'ClienteController@paginaDeControle',
-                '/atendimento/cliente' => 'ClienteController@paginaDeCadastro',
+                '/cadastro/cliente' => 'ClienteController@paginaDeCadastro',
                 //Veiculo
                 '/veiculo/buscar' => 'VeiculoController@buscar',
                 '/veiculo/excluir' => 'VeiculoController@buscar',

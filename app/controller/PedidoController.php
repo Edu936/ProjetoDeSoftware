@@ -8,8 +8,8 @@ class PedidoController extends Controller
 {
     public function paginaDeCadastro() : void 
     {
-        // $cliente = new Cliente();
-        // $clientes = $cliente->fetchAll();
+        $controller = new ClienteController();
+        $clientes = $controller->buscarTodos();
         $this->views('atendimento', [
             'title' => "Estética Automotiva",
             'pag' => "pedido",

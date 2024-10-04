@@ -12,7 +12,7 @@ class ClienteController extends Controller
     {
         $cidade = new Cidade();
         $cidades = $cidade->fetchAll();
-        echo $this->views('atendimento', [
+        echo $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "cliente",
             'cidades' => $cidades,
@@ -49,22 +49,32 @@ class ClienteController extends Controller
             if (!$result) {
                 $this->views('atendiemto', [
                     'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "Ocorreu um erro no cadastro!",
+                    'route' => '/cadastro/cliente',
+                    'resposta' => "erro",
+                    'pag' => "finalizar",
                 ]);
             } else {
                 $this->views('atendimento', [
                     'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "O cliente {$request['NM_CLIENTE']} foi cadastrado com sucesso!",
+                    'route' => '/cadastro/cliente',
+                    'resposta' => "sucesso",
+                    'pag' => "finalizar",
                 ]);
             }
         } else {
             $this->views('atendimento', [
                 'title' => "Estética Automotiva",
-                'pag' => "cadastro realizado",
-                'resposta' => "O Cliente Já foi Cadastrado!",
+                'route' => '/cadastro/cliente',
+                'resposta' => "cadastrado",
+                'pag' => "finalizar",
             ]);
         }
+    }
+
+    public function buscarTodos() : array
+    {
+        $cliente = new Cliente();
+        $clientes = $cliente->fetchAll();
+        return $clientes;
     }
 }

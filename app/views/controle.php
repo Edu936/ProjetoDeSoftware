@@ -8,12 +8,12 @@
 <?php $this->stop() ?>
 
 <?php $this->start('js') ?>
-<script src="/javascript/mudar.js"></script>
+<script src="/javascript/paginas.js"></script>
 <?php $this->stop() ?>
 
 <div class="content">
     <div class="menu">
-        <?= require_once('components/menu/controle-menu.php') ?>
+        <?= $this->insert('components/menu/controle-menu') ?>
     </div>
     <section>
         <?php

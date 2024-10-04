@@ -16,6 +16,8 @@ class Fornecedor extends Model
     public function __construct()
     {
         $this->table = "tb_fornecedor";
+        $this->setNome("");
+        $this->setCNPJ("");
     }
 
     //codigo
@@ -52,12 +54,12 @@ class Fornecedor extends Model
     }
 
     //CPF
-    public function getCPF(): string
+    public function getCNPJ(): string
     {
         return $this->DS_CNPJ_FORNECEDOR;
     }
 
-    public function setCPF(string $CNPJ) : void 
+    public function setCNPJ(string $CNPJ) : void 
     {
         $this->DS_CNPJ_FORNECEDOR = $CNPJ;   
     }
