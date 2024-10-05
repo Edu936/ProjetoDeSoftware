@@ -42,28 +42,31 @@ class VeiculoController extends Controller
         if($filtro == false) {
             $result = $veiculo->create($request);
             if(!$result){
-                $this->views('sucesso', [
-                    'title' => "Cadastra-se",
+                $this->views('cadastro', [
+                    'title' => "Cadastro Veiculo",
+                    'pag' => "finalizar",
                     'imagem' => "/images/Forgot password-bro.png",
-                    'messagem' => "Não foi possivel cadastrar o veiculo.",
-                    'link' => '/',
+                    'mensagem' => "Não foi possivel cadastrar o veiculo.",
+                    'link' => '/cadastro/veiculo',
                 ]);
             }
             else {
-                $this->views('sucesso', [
-                    'title' => "finalizar",
+                $this->views('cadastro', [
+                    'title' => "Cadastro Veiculo",
+                    'pag' => "finalizar",
                     'imagem' => "/images/Create-amico.png",
-                    'messagem' => "O Veiculo {$request['NM_USUARIO']} foi cadastrado com Sucesso!",
-                    'link' => '/',
+                    'mensagem' => "O Veiculo {$request['DS_PLACA']} foi cadastrado com Sucesso!",
+                    'link' => '/cadastro/veiculo',
                 ]); 
             }
         }
         else {
-            $this->views('sucesso', [
-                'title' => "Cadastra-se",
+            $this->views('cadastro', [
+                'title' => "Cadastro Veiculo",
+                'pag' => "finalizar",
                 'imagem' => "/images/Forgot password-bro.png",
-                'messagem' => "O Veiculo {$request['DS_PLACA']} já foi cadastrado!",
-                'link' => '/',
+                'mensagem' => "O Veiculo {$request['DS_PLACA']} já foi cadastrado!",
+                'link' => '/cadastro/veiculo',
             ]);
         }
     }

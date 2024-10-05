@@ -59,26 +59,29 @@ class ClienteController extends Controller
         if ($filtro->getCPF() != $request['DS_CPF_CLIENTE']) {
             $result = $cliente->create($request);
             if (!$result) {
-                $this->views('atendiemto', [
+                $this->views('cadastro', [
                     'title' => "Estética Automotiva",
-                    'route' => '/cadastro/cliente',
-                    'resposta' => "erro",
                     'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Não foi possivel cadastrar o cliente {$request['NM_CLIENTE']}!",
+                    'link' => '/cadastro/cliente',
                 ]);
             } else {
-                $this->views('atendimento', [
+                $this->views('cadastro', [
                     'title' => "Estética Automotiva",
-                    'route' => '/cadastro/cliente',
-                    'resposta' => "sucesso",
                     'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'resposta' => "O cliente {$request['NM_CLIENTE']} foi cadastrado!",
+                    'link' => '/cadastro/cliente',
                 ]);
             }
         } else {
-            $this->views('atendimento', [
+            $this->views('cadastro', [
                 'title' => "Estética Automotiva",
-                'route' => '/cadastro/cliente',
-                'resposta' => "cadastrado",
                 'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Esse cliente já foi cadastrado!",
+                'link' => '/cadastro/cliente',
             ]);
         }
     }

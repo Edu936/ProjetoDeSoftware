@@ -5,7 +5,9 @@ function buscarCidade() {
 
 function buscarCliente() {
     const option = document.querySelector('#cliente');
-    window.location.href = `/cliente/buscar/${option.value}`;
+    if(option.value != "Selecione o Cliente"){
+        window.location.href = `/cliente/buscar/${option.value}`;
+    }
 }
 
 function editarCidade(value) {

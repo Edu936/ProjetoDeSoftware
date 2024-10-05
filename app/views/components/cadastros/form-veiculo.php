@@ -1,7 +1,7 @@
 <div class="search">
     <select name="CD_CIDADE" id="cliente">
         <?php
-        echo "<option selected>Clientes</option>";
+        echo "<option selected>Selecione o Cliente</option>";
         foreach ($clientes as $cliente) {
             echo "<option class=\"option\"  value=\"{$cliente->getCodigo()}\">{$cliente->getNome()}</option>";
         }
@@ -55,7 +55,7 @@
                 </div>
             </form>
         </div>";
+    } else {
     }
     ?>
-
 </div>
