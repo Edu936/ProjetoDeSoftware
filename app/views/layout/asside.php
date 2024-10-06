@@ -15,14 +15,12 @@
             }
             ?>
             <?php
-            if ($_SESSION['cargo'] == "Atendente") {
                 echo "<li class=\"options\">";
                 echo "<a href=\"/controle\">";
                 echo "<i class=\"bi bi-controller\"></i>";
                 echo "<span>Controle</span>";
                 echo "</a>";
                 echo "</li>";
-            }
             ?>
             <?php
             echo "<li class=\"options\">";

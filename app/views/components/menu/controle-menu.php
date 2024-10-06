@@ -3,16 +3,6 @@
     <?php
     if ($_SESSION['cargo'] != 'Atendente') {
         echo "<li class=\"options\">";
-        echo "<a href=\"/controle/pagamento\">";
-        echo "<i class=\"bi bi-currency-dollar\"></i>";
-        echo "<span>Pagamentos</span>";
-        echo "</a>";
-        echo "</li>";
-    }
-    ?>
-    <?php
-    if ($_SESSION['cargo'] != 'Atendente') {
-        echo "<li class=\"options\">";
         echo "<a href=\"/controle/produto\">";
         echo "<i class=\"bi bi-bag-fill\"></i>";
         echo "<span>Produtos</span>";
@@ -51,14 +41,12 @@
     }
     ?>
     <?php
-    if ($_SESSION['cargo'] != 'Atendente') {
         echo "<li class=\"options\">";
         echo "<a href=\"/controle/cidade\">";
         echo "<i class=\"bi bi-geo-alt\"></i>";
         echo "<span>Cidade</span>";
         echo "</a>";
         echo "</li>";
-    }
     ?>
     <?php
     if ($_SESSION['cargo'] == 'Atendente') {
