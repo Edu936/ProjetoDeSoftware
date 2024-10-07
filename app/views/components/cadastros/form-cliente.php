@@ -17,7 +17,7 @@
             </div>
             <div class="dados">
                 <label for="email">Email:</label><br />
-                <input type="tel" name="DS_EMAIL_CLIENTE" id="email" placeholder="e-mail" required />
+                <input type="tel" name="DS_EMAIL_CLIENTE" id="email" placeholder="Endereço email" required />
             </div>
         </fieldset>
         <fieldset>

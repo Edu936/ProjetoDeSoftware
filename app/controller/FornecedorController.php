@@ -3,7 +3,9 @@
 namespace app\controller;
 
 use app\models\Cidade;
+use app\models\EmailFornecedor;
 use app\models\Fornecedor;
+use app\models\TelefoneFornecedor;
 use app\static\Request;
 
 class FornecedorController extends Controller
@@ -31,17 +33,17 @@ class FornecedorController extends Controller
     {
         $fornecedor = new Fornecedor();
         $fornecedor = $fornecedor->findby($key, $value);
-        return $fornecedor ? true : false;
+        return $fornecedor ? $fornecedor : false;
     }
 
     public function salvar() {
-        $request = Request::all();
+        $request = Request::exception(['DS_FONE_FORNECEDOR','DS_EMAIL_FORNECEDOR']);
         $filtro1 = $this->buscar("NM_FORNECEDOR", $request['NM_FORNECEDOR']);
         $filtro2 = $this->buscar("DS_CNPJ_FORNECEDOR", $request['DS_CNPJ_FORNECEDOR']);
         $fornecedor = new Fornecedor();
         if(!($filtro1 && $filtro2)) {
             $result = $fornecedor->create($request);
-            if(!$result){
+            if(!true){
                 $this->views('cadastro', [
                     'title' => "Estética Automotiva",
                     'pag' => "finalizar",
@@ -51,13 +53,29 @@ class FornecedorController extends Controller
                 ]);
             } 
             else {
-                $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "finalizar",
-                    'imagem' => "/images/Create-amico.png",
-                    'mensagem' => "O fornecedor {$request['NM_FORNECEDOR']} foi cadastrado!",
-                    'link' => '/cadastro/fornecedor',
-                ]);
+                $fornecedor = $this->buscar('DS_CNPJ_FORNECEDOR', $request['DS_CNPJ_FORNECEDOR']);
+                $contatoEmail = new EmailFornecedor();
+                $contatoFone = new TelefoneFornecedor();
+                $result1 = $contatoEmail->create(['CD_FORNECEDOR'=>$fornecedor->getCodigo(),'DS_EMAIL_FORNECEDOR'=> Request::input('DS_EMAIL_FORNECEDOR')]);
+                $result2 = $contatoFone->create(['CD_FORNECEDOR'=>$fornecedor->getCodigo(), 'DS_FONE_FORNECEDOR'=>Request::input('DS_FONE_FORNECEDOR')]);
+                if(!($result1 && $result2)){
+                    $this->views('cadastro', [
+                        'title' => "Estética Automotiva",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Create-amico.png",
+                        'mensagem' => "O fornecedor {$request['NM_FORNECEDOR']} foi cadastrado, porem seus contato não foram cadastrados!",
+                        'link' => '/cadastro/fornecedor',
+                    ]);
+                }
+                else {
+                    $this->views('cadastro', [
+                        'title' => "Estética Automotiva",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Create-amico.png",
+                        'mensagem' => "O fornecedor {$request['NM_FORNECEDOR']} foi cadastrado!",
+                        'link' => '/cadastro/fornecedor',
+                    ]);
+                }
             }
 
         } else {
