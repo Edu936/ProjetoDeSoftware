@@ -10,6 +10,7 @@ use app\core\Router;
 
 require '../vendor/autoload.php';
 
+session_set_cookie_params(['httponly' => true]);
 session_start();
 
 $path = Router::run();

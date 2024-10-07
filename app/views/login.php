@@ -17,11 +17,11 @@
             <form action="/home" method="post" autocomplete="off">
                 <div class="dados">
                     <label for="user">Usuário:</label><br />
-                    <input type="text" name="user" id="user" placeholder="Usuário" required />
+                    <input type="text" name="DS_USUARIO_USER" id="user" placeholder="Usuário" required />
                 </div>
                 <div class="dados">
                     <label for="password">Senha:</label><br />
-                    <input type="password" name="password" id="password" placeholder="Senha" required />
+                    <input type="password" name="DS_USUARIO_SENHA" id="password" placeholder="Senha" required />
                 </div>
                 <div class="submit">
                     <input type="reset" value="Limpar" />

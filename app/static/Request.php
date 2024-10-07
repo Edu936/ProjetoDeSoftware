@@ -37,15 +37,12 @@ abstract class Request
     public static function exception(array $exception)
     {
         $form = self::all();
-        $return = [];
-        foreach ($form as $indexs => $values) {
-            foreach ($exception as $ind => $val) {
-                if ($indexs != $val) {
-                    $return[$indexs] = $values;
-                }
+        foreach ($exception as $value) {
+            if (isset($form[$value])) {
+                unset($form[$value]);
             }
         }
-        return $return;
+        return $form;
     }
 
     public static function query(string $name)

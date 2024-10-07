@@ -18,11 +18,9 @@
 
 <body>
     <?php
-    if ($this->e($title) == "Login") {
+    if ($this->e($title) == "Login" || $this->e($title) == "Cadastra-se") {
         echo $this->section('content');
-    } else if ($this->e($title) == "Novo Usuario") {
-        echo $this->section('content');
-    } else {
+    } else if($_SESSION['user'] != ""){
         require_once('layout/header.php');
         require_once('layout/asside.php');
         echo "<main>" . $this->section('content') . "</main>";

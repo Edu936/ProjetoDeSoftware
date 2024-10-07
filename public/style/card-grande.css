@@ -1,19 +1,31 @@
 /* Configuração de estilo global dos cards de Formulario */
-.card {
-    width: 50%;
+.card-grande {
+    width: 95%;
+    height: 100%;
     margin: auto;
     display: flex;
     color: rgb(255, 255, 255);
-    padding: 30px 10px;
+    padding: 20px 0px;
     border-radius: 15px;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     background-color: rgb(067, 059, 098);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
+    overflow-y: scroll;
 }
 
-.card > h1 {
+.card-grande::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 8px;
+    background-color: rgb(47, 42, 66);
+}
+
+.card-grande::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgb(177, 114, 206);
+}
+
+.card-grande > h1 {
     margin: 0px 0px;
     padding: 0px 0px;
     color: rgb(177, 114, 206);
@@ -24,8 +36,10 @@ form {
     width: 80%;
 }
 
-.dados {
-    margin: 5px 0px;
+fieldset {
+    width: 100%;
+    border-radius: 8px;
+    margin:0px 0px 10px 0px;
 }
 
 .dados > input {
@@ -69,53 +83,4 @@ form {
     border: transparent;
     background-color: rgb(177, 114, 206);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
-}
-
-section {
-    flex-direction: column;
-}
-
-.search {
-    width: 100% !important;
-    height: 10% !important;
-    margin: 0%;
-}
-
-.search > select {
-    margin: 0%;
-    width: 80%;
-    height: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color:white;
-    border-radius: 4px;
-    background-color: rgb(067, 059, 098);
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
-}
-
-.search > button {
-    background-color: rgb(067, 059, 098);
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
-    border: none;
-    color:white;
-    border-radius: 4px;
-    height: 20px;
-
-}
-
-.form-veiculo {
-    width: 100%;
-    height: 90%;
-}
-
-.dado {
-    display: flex;
-    height: 5%;
-    border-radius: 15px;
-    margin: 1% 25% 1% 25%;
-    align-items: center;
-    width: 50%;
-    justify-content: space-around;
-    background-color:  rgb(067, 059, 098);
 }

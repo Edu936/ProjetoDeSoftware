@@ -1,15 +1,15 @@
-<?php $this->layout('master', ['title'=> 'Estética Automotiva', 'pag']) ?>
+<?php $this->layout('master', ['title'=> 'Estética Automotiva']) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/menu.css"/>
-<link rel="stylesheet" href="/style/master.css">
 <link rel="stylesheet" href="/style/card.css"/>
+<link rel="stylesheet" href="/style/master.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
 <div class="content">
     <div class="menu">
-        <?=require_once('components/menu/atendimento-menu.php')?>  
+        <?=$this->insert('components/menu/atendimento-menu')?>  
     </div>
     <section>
         <?php 
@@ -17,22 +17,12 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "pedido") {
-                require_once('components/cadastros/form-pedido.php');
             } 
             else if($this->e($pag) == "orcamento") {
                 require_once('components/cadastros/form-orcamento.php');
-            } 
-            else if($this->e($pag) == "cliente") {
-                require_once('components/cadastros/form-cliente.php');
-            } 
-            else if($this->e($pag) == "veiculo") {
-                require_once('components/cadastros/form-veiculo.php');
-            } 
-            else if ($this->e($pag) == "cadastro realizado") {
-                echo $this->e($resposta);
-                echo "<button>";
-                echo "<a href=\"/cadastro\">voltar</a>";
-                echo "</button>";
+            }
+            else if ($this->e($pag) == "finalizar") {
+                require_once('components/content/finalizar.php');
             }
         ?>
     </section>

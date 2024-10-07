@@ -12,16 +12,4 @@
             <span>Novo Orçamento</span>
         </a>
     </li>
-    <li class="options">
-        <a href="/atendimento/cliente">
-            <i class="bi bi-person-plus"></i>
-            <span>Novo Cliente</span>
-        </a>
-    </li>
-    <li class="options">
-        <a href="/atendimento/veiculo">
-            <i class="bi bi-car-front-fill"></i>
-            <span>Novo Veiculo</span>
-        </a>
-    </li>
 </ul>
