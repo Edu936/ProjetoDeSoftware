@@ -19,10 +19,7 @@
         <?php
         if ($this->e($pag) == "index") {
             echo "<img src= \"images/Car wash-bro.png\"/>";
-        } 
-        else if ($this->e($pag) == "pagamento") {
-            echo "teste";
-        } 
+        }
         else if ($this->e($pag) == "produto") {
             echo "teste";
         } 
@@ -30,10 +27,9 @@
             echo "teste";
         } 
         else if ($this->e($pag) == "orcamento") {
-            echo "teste";
+            require_once('components/tabelas/table-orcamento.php');
         } 
         else if ($this->e($pag) == "pedido") {
-            echo "teste";
         } 
         else if ($this->e($pag) == "cidade") {
             require_once('components/tabelas/table-cidade.php');

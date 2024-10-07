@@ -16,8 +16,6 @@ class Fornecedor extends Model
     public function __construct()
     {
         $this->table = "tb_fornecedor";
-        $this->setNome("");
-        $this->setCNPJ("");
     }
 
     //codigo

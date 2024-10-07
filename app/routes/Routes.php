@@ -44,6 +44,7 @@ abstract class Routes
                 //Usuario
                 'cadastro/usuario' => 'UsuarioController@paginaDeCadastro',
                 //Orçamento
+                '/controle/orcamento' => 'OrcamentoController@paginaDeControle',
                 '/atendimento/orcamento' => 'OrcamentoController@paginaDeCadastro',
                 //Pedido
                 '/atendimento/pedido' => 'PedidoController@paginaDeCadastro',
@@ -68,6 +69,8 @@ abstract class Routes
                 '/produto/salvar' => 'ProdutoController@salvar',
                 //Usuario
                 'usuario/salvar' => 'UsuarioController@salvar',
+                //Fornecedor
+                'fornecedor/salvar' => 'FornecedorController@salvar'
             ],
 
         ];

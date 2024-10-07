@@ -11,4 +11,12 @@ class OrcamentoController extends Controller
             'pag' => "orcamento",
         ]);
     }
+
+    public function paginaDeControle() : void
+    {
+        $this->views('controle', [
+            'title' => "Controle Orcamento",
+            'pag' => "orcamento",
+        ]);
+    }
 }
