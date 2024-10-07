@@ -4,6 +4,8 @@ namespace app\controller;
 
 use app\models\Cidade;
 use app\models\Cliente;
+use app\models\EmailCliente;
+use app\models\TelefoneCliente;
 use app\static\Request;
 
 class ClienteController extends Controller
@@ -53,7 +55,7 @@ class ClienteController extends Controller
 
     public function salvar()
     {
-        $request = Request::all();
+        $request = Request::exception(['DS_EMAIL_CLIENTE','DS_FONE_CLIENTE']);
         $filtro = $this->buscarPorCPF($request['DS_CPF_CLIENTE']);
         $cliente = new Cliente();
         if ($filtro->getCPF() != $request['DS_CPF_CLIENTE']) {
@@ -67,13 +69,29 @@ class ClienteController extends Controller
                     'link' => '/cadastro/cliente',
                 ]);
             } else {
-                $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "finalizar",
-                    'imagem' => "/images/Create-amico.png",
-                    'resposta' => "O cliente {$request['NM_CLIENTE']} foi cadastrado!",
-                    'link' => '/cadastro/cliente',
-                ]);
+                $cliente = $this->buscarPorCPF($request['DS_CPF_CLIENTE']);
+                $contatoEmail = new EmailCliente();
+                $contatoFone = new TelefoneCliente();
+                $result1 = $contatoEmail->create(['CD_CLIENTE'=>$cliente->getCodigo(),'DS_EMAIL_CLIENTE'=> Request::input('DS_EMAIL_CLIENTE')]);
+                $result2 = $contatoFone->create(['CD_CLIENTE'=>$cliente->getCodigo(), 'DS_FONE_CLIENTE'=>Request::input('DS_FONE_CLIENTE')]);
+                if(!($result1 && $result2)){
+                    $this->views('cadastro', [
+                        'title' => "Estética Automotiva",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Create-amico.png",
+                        'mensagem' => "O cliente {$request['NM_CLIENTE']} foi cadastrado, porem seus contato não foram cadastrados!",
+                        'link' => '/cadastro/cliente',
+                    ]);
+                }
+                else {
+                    $this->views('cadastro', [
+                        'title' => "Estética Automotiva",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Create-amico.png",
+                        'mensagem' => "O cliente {$request['NM_CLIENTE']} foi cadastrado!",
+                        'link' => '/cadastro/cliente',
+                    ]);
+                }
             }
         } else {
             $this->views('cadastro', [
