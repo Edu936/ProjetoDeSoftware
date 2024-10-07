@@ -21,24 +21,25 @@
             echo "<img src= \"images/Car wash-bro.png\"/>";
         }
         else if ($this->e($pag) == "produto") {
-            echo "teste";
+            require_once('components/tabelas/table-produto.php');
         } 
         else if ($this->e($pag) == "servico") {
-            echo "teste";
+            require_once('components/tabelas/table-servico.php');
         } 
         else if ($this->e($pag) == "orcamento") {
             require_once('components/tabelas/table-orcamento.php');
         } 
         else if ($this->e($pag) == "pedido") {
+            require_once('components/tabelas/table-pedido.php');
         } 
         else if ($this->e($pag) == "cidade") {
             require_once('components/tabelas/table-cidade.php');
         } 
         else if ($this->e($pag) == "cliente") {
-            echo "teste";
+            require_once('components/tabelas/table-cliente.php');
         } 
         else if ($this->e($pag) == "veiculo") {
-            echo "teste";
+            require_once('components/tabelas/table-veiculo.php');
         } 
         else if ($this->e($pag) == "fornecedor") {
             require_once('components/tabelas/table-fornecedor.php');
