@@ -52,6 +52,7 @@ abstract class Routes
                 '/controle/pagamento' => 'PagamentoController@paginaDeControle',
                 //Fornecedor
                 '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',
+                '/controle/fornecedor' => 'FornecedorController@paginaDeControle',
             ],
             'post' => [
                 //Home

@@ -4,7 +4,7 @@ namespace app\models;
 
 class Fornecedor extends Model
 {
-    private int $CD_FORNECEDOR;
+    private mixed $CD_FORNECEDOR;
     private string $NM_FORNECEDOR;
     private string $DS_CNPJ_FORNECEDOR;
     private int $DS_NUMERO;
@@ -19,7 +19,7 @@ class Fornecedor extends Model
     }
 
     //codigo
-    public function getCodigo(): int
+    public function getCodigo()
     {
         return $this->CD_FORNECEDOR;
     }
@@ -63,13 +63,13 @@ class Fornecedor extends Model
     }
 
     //Numero de Casa
-    public function setNumeroCasa(int $numeroCasa) : void
+    public function setNumero(int $numeroCasa) : void
     {
         $this->DS_NUMERO = $numeroCasa;
     }
 
     
-    public function getNumeroCasa() : int
+    public function getNumero() : int
     {
         return $this->DS_NUMERO;
     }

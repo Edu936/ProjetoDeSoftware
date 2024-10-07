@@ -104,7 +104,7 @@ class ClienteController extends Controller
         }
     }
 
-    public function buscarTodos() : array
+    public function buscarTodos() 
     {
         $cliente = new Cliente();
         $clientes = $cliente->fetchAll();

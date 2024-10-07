@@ -41,7 +41,7 @@
             echo "teste";
         } 
         else if ($this->e($pag) == "fornecedor") {
-            echo "teste";
+            require_once('components/tabelas/table-fornecedor.php');
         }
         ?>
     </section>

@@ -22,7 +22,7 @@
                 <th scope="col">Codigo</th>
                 <th scope="col">Cidade</th>
                 <th scope="col">Estado</th>
-                <th scope="colgroup" colspan="2">Controle</th>
+                <th scope="colgroup" colspan="2">Ações</th>
             </tr>
         </thead>
         <tbody>
