@@ -18,9 +18,11 @@ class ServicoController extends Controller
 
     public function paginaDeControle() : void
     {
+        $servicos = $this->buscarTodos();
         $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "servico",
+            'servicos' => $servicos,
         ]);
     }
 
@@ -41,6 +43,11 @@ class ServicoController extends Controller
         return $servico ? $servico : $service;
     }
 
+    public function buscarTodos(){
+        $servico = new Servico();
+        return $servico->fetchAll();
+    }
+
     public function salvar()
     {
         $request = Request::all();
@@ -53,22 +60,28 @@ class ServicoController extends Controller
             ]);
             if (!$result) {
                 $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "Ocorreu um erro no cadastro!",
+                    'title' => "Cadastros Serviços",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Não foi possivel cadastrar o servico {$request['name']}!",
+                    'link' => '/cadastro/servico',
                 ]);
             } else {
                 $this->views('cadastro', [
                     'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "O servico {$request['name']} foi cadastrado com sucesso!",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'mensagem' => "O servico {$request['name']} foi cadastrado com sucesso!",
+                    'link' => '/cadastro/servico',
                 ]);
             }
         } else {
             $this->views('cadastro', [
                 'title' => "Estética Automotiva",
-                'pag' => "cadastro realizado",
-                'resposta' => "Este Servico ja foi cadastrado!",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Este serviço ja foi cadastrado!",
+                'link' => '/cadastro/servico',
             ]);
         }
     }
