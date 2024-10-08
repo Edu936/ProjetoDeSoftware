@@ -3,6 +3,8 @@
 namespace app\controller;
 
 use app\models\Cidade;
+use app\models\EmailUsuario;
+use app\models\TelefoneUsuario;
 use app\models\Usuario;
 use app\static\Request;
 
@@ -43,7 +45,7 @@ class UsuarioController extends Controller
         $newUsuario = new Usuario();
         if(!$filtro1 && !$filtro2) {
             $result = $newUsuario->create($request);
-            if(!$result) {
+            if(!($result)) {
                 $this->views('sucesso', [
                     'title' => "Cadastra-se",
                     'imagem' => "/images/Forgot password-bro.png",
@@ -51,12 +53,26 @@ class UsuarioController extends Controller
                     'link' => '/',
                 ]);
             } else {     
-                $this->views('sucesso', [
-                    'title' => "Cadastra-se",
-                    'imagem' => "/images/Create-amico.png",
-                    'messagem' => "O Usuario {$request['NM_USUARIO']} foi cadastrado com Sucesso!",
-                    'link' => '/',
-                ]);     
+                $usuario = $this->buscar('DS_CPF_USUARIO', $request['DS_CPF_USUARIO']);
+                $contato1 = new TelefoneUsuario();
+                $contato2 = new EmailUsuario();
+                $result1 = $contato1->create(['CD_USUARIO' => $usuario->getCodigo(), 'DS_EMAIL_USUARIO' => Request::input('DS_EMAIL_USUARIO')]);
+                $result2 = $contato2->create(['CD_USUARIO' => $usuario->getCodigo(), 'DS_FONE_USUARIO' => Request::input('DS_FONE_USUARIO')]);
+                if (!($result1 && $result2)) {
+                    $this->views('sucesso', [
+                        'title' => "Cadastra-se",
+                        'imagem' => "/images/Create-amico.png",
+                        'mensagem' => "O usuario {$request['NM_FORNECEDOR']} foi cadastrado, porem seus contato não foram cadastrados!",
+                        'link' => '/',
+                    ]);
+                } else {
+                    $this->views('sucesso', [
+                        'title' => "Cadastra-se",
+                        'imagem' => "/images/Create-amico.png",
+                        'messagem' => "O Usuario {$request['NM_USUARIO']} foi cadastrado com Sucesso!",
+                        'link' => '/',
+                    ]);   
+                }
             }
         } else {
             $this->views('sucesso', [
