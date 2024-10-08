@@ -59,7 +59,7 @@
     <?php
     if ($_SESSION['cargo'] == 'Atendente') {
         echo "<li class=\"options\">";
-        echo "<a href=\"/controle/vaiculo\">";
+        echo "<a href=\"/controle/veiculo\">";
         echo "<i class=\"bi bi-car-front-fill\"></i>";
         echo "<span>Veiculos</span>";
         echo "</a>";

@@ -15,7 +15,7 @@ class OrcamentoController extends Controller
     public function paginaDeControle() : void
     {
         $this->views('controle', [
-            'title' => "Controle Orcamento",
+            'title' => "Estética Automotiva",
             'pag' => "orcamento",
         ]);
     }

@@ -15,4 +15,12 @@ class PedidoController extends Controller
             'pag' => "pedido",
         ]);   
     }
+
+    public function paginaDeControle() : void
+    {
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "pedido",
+        ]);
+    }
 }

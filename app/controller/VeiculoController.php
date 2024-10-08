@@ -19,6 +19,14 @@ class VeiculoController extends Controller
         ]);    
     }
 
+    public function paginaDeControle() : void
+    {
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "veiculo",
+        ]);
+    }
+
     public function cadastrar($value) : void 
     {
         $controller = new ClienteController();

@@ -20,11 +20,11 @@ abstract class Routes
                 '/estatistica' => 'HomeController@estatistica',
                 '/configuracao' => 'HomeController@configuracao', 
                 //Cidade
-                '/cidade/buscar/[aA-zZ 0-9]+' => 'CidadeController@buscar',
+                '/cidade/buscar/[0-9]+' => 'CidadeController@buscar',
                 '/cidade/excluir/[0-9]+' => 'CidadeController@excluir',
-                '/cidade/editar/[0-9]+' => 'CidadeController@paginaDeEdicao',
-                '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
                 '/controle/cidade' => 'CidadeController@paginaDeControle',
+                '/cadastro/cidade' => 'CidadeController@paginaDeCadastro',
+                '/cidade/editar/[0-9]+' => 'CidadeController@paginaDeEdicao',
                 //Cliente
                 '/cliente/buscar' => 'ClienteController@buscar',
                 '/cliente/excluir' => 'ClienteController@excluir',
@@ -32,27 +32,30 @@ abstract class Routes
                 '/controle/cliente' => 'ClienteController@paginaDeControle',
                 '/cadastro/cliente' => 'ClienteController@paginaDeCadastro',
                 //Veiculo
-                '/cliente/buscar/[aA-zZ 0-9]+' => 'VeiculoController@cadastrar',
                 '/veiculo/excluir' => 'VeiculoController@buscar',
                 '/veiculo/atualizar' => 'VeiculoController@buscar',
                 '/controle/veiculo' => 'VeiculoController@paginaDeControle',
                 '/cadastro/veiculo' => 'VeiculoController@paginaDeCadastro',
+                '/cliente/buscar/[aA-zZ 0-9]+' => 'VeiculoController@cadastrar',
                 //Servico
                 '/cadastro/servico' => 'ServicoController@paginaDeCadastro',
+                '/controle/servico' => 'ServicoController@paginaDeControle',
                 //Produto
+                '/controle/produto' => 'ProdutoController@paginaDeControle',
                 '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
                 //Usuario
+                'controle/usuario' => 'UsuarioController@paginaDeControle',
                 'cadastro/usuario' => 'UsuarioController@paginaDeCadastro',
                 //Orçamento
+                '/cadastro/orcamento' => 'OrcamentoController@paginaDeCadastro',
                 '/controle/orcamento' => 'OrcamentoController@paginaDeControle',
                 '/atendimento/orcamento' => 'OrcamentoController@paginaDeCadastro',
                 //Pedido
+                '/controle/pedido' => 'PedidoController@paginaDeControle',
                 '/atendimento/pedido' => 'PedidoController@paginaDeCadastro',
-                //Pagamento0
-                '/controle/pagamento' => 'PagamentoController@paginaDeControle',
                 //Fornecedor
-                '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',
                 '/controle/fornecedor' => 'FornecedorController@paginaDeControle',
+                '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',
             ],
             'post' => [
                 //Home

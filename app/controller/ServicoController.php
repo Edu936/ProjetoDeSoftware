@@ -8,9 +8,17 @@ use app\static\Request;
 class ServicoController extends Controller
 {
 
-    public function paginaDeCadastro()
+    public function paginaDeCadastro() : void
     {
         $this->views('cadastro', [
+            'title' => "Estética Automotiva",
+            'pag' => "servico",
+        ]);
+    }
+
+    public function paginaDeControle() : void
+    {
+        $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "servico",
         ]);
