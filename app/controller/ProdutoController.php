@@ -28,6 +28,10 @@ class ProdutoController extends Controller
         ]);
     }
 
+    public function relatorio() : void {
+        dd('Atendente');
+    }
+
     private function buscarPorNome(string $name): Produto
     {
         $product = new Produto();

@@ -24,6 +24,10 @@ class ServicoController extends Controller
         ]);
     }
 
+    public function relatorio() : void {
+        dd('Atendente');
+    }
+
     private function buscarPorNome(string $name): Servico
     {
         $service = new Servico();

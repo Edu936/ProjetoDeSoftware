@@ -56,6 +56,10 @@ abstract class Routes
                 //Fornecedor
                 '/controle/fornecedor' => 'FornecedorController@paginaDeControle',
                 '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',
+                //Relatorio
+                '/relatorio/produto' => 'ProdutoController@relatorio',
+                '/relatorio/servico' => 'ServicoController@relatorio',
+                '/relatorio/usuario' => 'UsuarioController@relatorio',
             ],
             'post' => [
                 //Home

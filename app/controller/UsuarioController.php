@@ -26,6 +26,10 @@ class UsuarioController extends Controller
         return $user? true : false;
     }
 
+    public function relatorio() : void {
+        dd('Atendente');
+    }
+
     public function salvar() : void 
     {
         $request = Request::exception(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
