@@ -30,6 +30,11 @@ class UsuarioController extends Controller
         dd('Atendente');
     }
 
+    public function paginaDeEdicao() : void 
+    {
+        dd('PaginaDeEdicao');
+    }
+
     public function salvar() : void 
     {
         $request = Request::exception(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
