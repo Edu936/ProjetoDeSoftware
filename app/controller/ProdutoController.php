@@ -22,9 +22,11 @@ class ProdutoController extends Controller
 
     public function paginaDeControle(): void
     {
+        $produto = $this->buscarTodos();
         $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "produto",
+            'produtos' => $produto
         ]);
     }
 
@@ -94,5 +96,10 @@ class ProdutoController extends Controller
                 'link' => '/cadastro/produto',
             ]);
         }
+    }
+
+    public function buscarTodos(){
+        $produto = new Produto();
+        return $produto->fetchAll();
     }
 }
