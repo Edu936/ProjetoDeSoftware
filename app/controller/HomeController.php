@@ -9,7 +9,7 @@ use app\static\Request;
 class HomeController extends Controller
 {
 
-  public function login()
+  public function login() : void
   {
     $_SESSION['user'] = null;
     $_SESSION['cargo'] = null;
@@ -18,7 +18,7 @@ class HomeController extends Controller
     ]);
   }
 
-  public function home()
+  public function home() : void
   {
     $user = new UsuarioController();
     $filtro1 = $user->filtrarUsuario('DS_USUARIO_USER', Request::input('DS_USUARIO_USER'));
@@ -46,7 +46,7 @@ class HomeController extends Controller
     ]);
   }
 
-  public function controle()
+  public function controle() : void
   {
     echo $this->views('controle', [
       'title' => "Estética Automotiva",
@@ -54,7 +54,7 @@ class HomeController extends Controller
     ]);
   }
 
-  public function cadastro()
+  public function cadastro() : void
   {
     echo $this->views('cadastro', [
       'title' => "Estética Automotiva",
@@ -62,7 +62,7 @@ class HomeController extends Controller
     ]);
   }
 
-  public function estatistica()
+  public function estatistica() : void
   {
     echo $this->views('estatistica', [
       'title' => "Estética Automotiva",
@@ -70,7 +70,7 @@ class HomeController extends Controller
     ]);
   }
 
-  public function configuracao()
+  public function configuracao() : void
   {
     $this->views('configuracao', [
       'title' => "Estética Automotiva",

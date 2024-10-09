@@ -21,4 +21,9 @@ class OrcamentoController extends Controller
             'pag' => "orcamento",
         ]);
     }
+
+    public function paginaDeEdicao($codigo) : void 
+    {
+            
+    }
 }

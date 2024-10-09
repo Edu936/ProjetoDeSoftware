@@ -26,6 +26,11 @@ class ServicoController extends Controller
         ]);
     }
 
+    public function paginaDeEdicao($codigo) : void
+    {
+        
+    }
+
     public function relatorio() : void {
         dd('Atendente');
     }

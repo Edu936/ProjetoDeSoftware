@@ -26,6 +26,10 @@ class PedidoController extends Controller
         ]);
     }
 
+    public function paginaDeEdicao($codigo) : void 
+    {
+
+    }
 
     public function salvar() {
         dd(Request::all());

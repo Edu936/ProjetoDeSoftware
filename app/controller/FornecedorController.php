@@ -10,7 +10,7 @@ use app\static\Request;
 
 class FornecedorController extends Controller
 {
-    public function paginaDeCadastro(): void
+    public function paginaDeCadastro() : void
     {
         $card = "Cadastro De Fornecedor";
         $route = '/fornecedor/salvar';
@@ -29,7 +29,7 @@ class FornecedorController extends Controller
         ]);
     }
 
-    public function paginaDeControle(): void
+    public function paginaDeControle() : void
     {
         $filter = new Filters();
         $filter->join("TB_FONE_FORNECEDOR", "TB_FONE_FORNECEDOR.CD_FORNECEDOR", "=", "TB_FORNECEDOR.CD_FORNECEDOR", "LEFT JOIN");
@@ -44,6 +44,11 @@ class FornecedorController extends Controller
             'pag' => "fornecedor",
             'fornecedores' => $fornecedores,
         ]);
+    }
+
+    public function paginaDeEdicao($codigo) : void
+    {
+
     }
 
     public function buscar($key, $value)

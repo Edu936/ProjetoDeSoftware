@@ -27,6 +27,10 @@ class VeiculoController extends Controller
         ]);
     }
 
+    public function paginaDeEdicao($codigo) : void {
+        
+    }
+
     public function cadastrar($value) : void 
     {
         $controller = new ClienteController();

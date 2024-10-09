@@ -10,7 +10,8 @@ use app\static\Request;
 
 class UsuarioController extends Controller
 {
-    public function paginaDeCadastro() {
+    public function paginaDeCadastro() : void 
+    {
         $cidade = new Cidade();
         $cidades = $cidade->fetchAll();
         $this->views('sign-in', [
@@ -20,6 +21,15 @@ class UsuarioController extends Controller
         ]);
     }
 
+    public function paginaDeControle() : void 
+    {
+
+    }
+
+    public function paginaDeEdicao() : void 
+    {
+        dd('PaginaDeEdicao');
+    }
 
     public function filtrarUsuario($key, $data) : bool
     {
@@ -32,10 +42,7 @@ class UsuarioController extends Controller
         dd('Atendente');
     }
 
-    public function paginaDeEdicao() : void 
-    {
-        dd('PaginaDeEdicao');
-    }
+    
 
     public function salvar() : void 
     {

@@ -10,7 +10,7 @@ use app\static\Request;
 
 class ClienteController extends Controller
 {
-    public function paginaDeCadastro()
+    public function paginaDeCadastro() : void
     {
         $cidade = new Cidade();
         $cidades = $cidade->fetchAll();
@@ -21,7 +21,7 @@ class ClienteController extends Controller
         ]);
     }
 
-    public function paginaDeControle()
+    public function paginaDeControle() : void
     {
         $clientes = $this->buscarTodos();
         echo $this->views('controle', [
@@ -29,6 +29,11 @@ class ClienteController extends Controller
             'pag' => "cliente",
             'clientes' => $clientes,
         ]);
+    }
+
+    public function paginaDeEdicao($codigo) : void
+    {
+
     }
 
     public function buscarPorCPF(string $CPF): Cliente

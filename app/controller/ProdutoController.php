@@ -9,7 +9,7 @@ use app\static\Request;
 class ProdutoController extends Controller
 {
 
-    public function paginaDeCadastro()
+    public function paginaDeCadastro() : void
     {
         $controller = new FornecedorController();
         $fornecedores = $controller->buscarTodos();
@@ -20,7 +20,7 @@ class ProdutoController extends Controller
         ]);
     }
 
-    public function paginaDeControle(): void
+    public function paginaDeControle() : void
     {
         $produto = $this->buscarTodos();
         $this->views('controle', [
@@ -28,6 +28,11 @@ class ProdutoController extends Controller
             'pag' => "produto",
             'produtos' => $produto
         ]);
+    }
+
+    public function paginaDeEdicao($codigo) : void 
+    {
+
     }
 
     public function relatorio() : void {
