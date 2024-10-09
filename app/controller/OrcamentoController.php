@@ -6,6 +6,8 @@ class OrcamentoController extends Controller
 {
     public function paginaDeCadastro() : void 
     {
+        $controller = new ClienteController();
+        $clientes = $controller->buscarTodos();
         $this->views('atendimento', [
             'title' => "Estética Automotiva",
             'pag' => "orcamento",

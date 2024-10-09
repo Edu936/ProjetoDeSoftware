@@ -27,6 +27,7 @@ class HomeController extends Controller
       $usuario = new Usuario;
       $usuario = $user->buscar('DS_USUARIO_USER',Request::input('DS_USUARIO_USER'));
       session_regenerate_id();
+      $_SESSION['id'] = $usuario->getCodigo();
       $_SESSION['user'] = $usuario->getNome();
       $_SESSION['cargo'] = $usuario->getCargo();
       $this->views('home', [

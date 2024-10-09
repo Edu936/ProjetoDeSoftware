@@ -11,7 +11,7 @@
     flex-direction: column;
     background-color: rgb(067, 059, 098);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .card-grande::-webkit-scrollbar {

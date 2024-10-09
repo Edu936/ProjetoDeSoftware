@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/style/menu.css"/>
 <link rel="stylesheet" href="/style/card.css"/>
 <link rel="stylesheet" href="/style/master.css">
+<link rel="stylesheet" href="/style/card-grande.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
 
@@ -28,3 +29,8 @@
         ?>
     </section>
 </div>
+
+<?php $this->start('js') ?>
+<script src="/javascript/paginas.js"></script>
+<script src="/javascript/select.js"></script>
+<?php $this->stop() ?>
