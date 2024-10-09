@@ -8,7 +8,7 @@
 
 <div class="content">
     <div class="menu">
-        <?=require_once('components/menu/configuracao-menu.php')?>  
+        <?=$this->insert('components/menu/configuracao-menu')?>  
     </div>
     <section>
         <?php 
