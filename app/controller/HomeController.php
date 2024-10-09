@@ -2,9 +2,9 @@
 
 namespace app\controller;
 
-use app\controller\Controller;
 use app\models\Usuario;
 use app\static\Request;
+use app\controller\Controller;
 
 class HomeController extends Controller
 {
@@ -14,7 +14,18 @@ class HomeController extends Controller
     $_SESSION['user'] = null;
     $_SESSION['cargo'] = null;
     $this->views('login', [
-      'title' => "Entre",
+      'title' => "Login",
+    ]);
+  }
+
+  public function signIn() : void 
+  {
+    $controller = new CidadeController();
+    $cidades = $controller->buscarTodos();
+    $this->views('sign-in', [
+        'title' => "Sing-In",
+        'cidades' => $cidades,
+        'route' => '/',
     ]);
   }
 

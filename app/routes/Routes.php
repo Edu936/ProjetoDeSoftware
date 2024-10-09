@@ -14,6 +14,7 @@ abstract class Routes
             'get' => [
                 //Home
                     '/' => 'HomeController@login',
+                    '/sign-in' => 'HomeController@signIn',
                     '/controle' => 'HomeController@controle',
                     '/cadastro' => 'HomeController@cadastro',
                     '/atendimento' => 'HomeController@atendimento',

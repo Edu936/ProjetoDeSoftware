@@ -18,7 +18,7 @@
 
 <body>
     <?php
-    if ($this->e($title) == "Login" || $this->e($title) == "Cadastra-se") {
+    if ($this->e($title) == "Login" || $this->e($title) == "Sing-In") {
         echo $this->section('content');
     } else if($_SESSION['user'] != ""){
         require_once('layout/header.php');

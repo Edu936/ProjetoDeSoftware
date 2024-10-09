@@ -12,13 +12,7 @@ class UsuarioController extends Controller
 {
     public function paginaDeCadastro() : void 
     {
-        $cidade = new Cidade();
-        $cidades = $cidade->fetchAll();
-        $this->views('sign-in', [
-            'title' => "Cadastra-se",
-            'cidades' => $cidades,
-            'route' => '/',
-        ]);
+        
     }
 
     public function paginaDeControle() : void 
