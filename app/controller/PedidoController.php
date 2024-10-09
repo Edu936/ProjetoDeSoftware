@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\models\Cliente;
+use app\static\Request;
 
 class PedidoController extends Controller
 {
@@ -13,6 +14,7 @@ class PedidoController extends Controller
         $this->views('atendimento', [
             'title' => "Estética Automotiva",
             'pag' => "pedido",
+            'clientes' => $clientes,
         ]);   
     }
 
@@ -22,5 +24,10 @@ class PedidoController extends Controller
             'title' => "Estética Automotiva",
             'pag' => "pedido",
         ]);
+    }
+
+
+    public function salvar() {
+        dd(Request::all());
     }
 }
