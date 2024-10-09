@@ -23,9 +23,11 @@ class ClienteController extends Controller
 
     public function paginaDeControle()
     {
+        $clientes = $this->buscarTodos();
         echo $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "cliente",
+            'clientes' => $clientes,
         ]);
     }
 

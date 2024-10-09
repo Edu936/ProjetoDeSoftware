@@ -137,24 +137,30 @@ class CidadeController extends Controller
             $result = $cidade->update($request, "CD_CIDADE", $codigo[0]);
             if (!$result) {
                 $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "Ocorreu um erro na atualização da cidade!",
+                    'title' => "Atualizar Cidade",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Ocorreu um erro ao Atualizar Cidade!",
+                    'link' => '/controle/cidade',
                 ]);
             } 
             else {
                 $this->views('cadastro', [
-                    'title' => "Estética Automotiva",
-                    'pag' => "cadastro realizado",
-                    'resposta' => "A Cidade {$request['NM_CIDADE']} foi atualizada Com Sucesso!",
+                    'title' => "Atualizar Cidade",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'mensagem' => "A Cidade {$request['NM_CIDADE']} foi atualizada Com Sucesso!",
+                    'link' => '/controle/cidade',
                 ]);
             }
         } 
         else {
             $this->views('cadastro', [
                 'title' => "Estética Automotiva",
-                'pag' => "cadastro realizado",
-                'resposta' => "Essa cidade já foi cadastrada!",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Você não alterou!",
+                'link' => '/controle/cidade',
             ]);
         }
     }
@@ -167,9 +173,21 @@ class CidadeController extends Controller
         $cidade = new Cidade();
         $cidade = $cidade->delete('CD_CIDADE', $codigo[0]);
         if (!$cidade) {
-            echo "A cidade foi apagada!";
+            $this->views('cadastro', [
+                'title' => "Atualizar Cidade",
+                'pag' => "finalizar",
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "A cidade foi apagada com sucesso!",
+                'link' => '/controle/cidade',
+            ]);
         } else {
-            echo "A cidade não foi apagada!";
+            $this->views('cadastro', [
+                'title' => "Atualizar Cidade",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "A cidade não foi apagada!",
+                'link' => '/controle/cidade',
+            ]);
         }
     }
 
