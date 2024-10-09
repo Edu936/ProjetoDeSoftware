@@ -61,6 +61,7 @@ abstract class Routes
                 '/relatorio/produto' => 'ProdutoController@relatorio',
                 '/relatorio/servico' => 'ServicoController@relatorio',
                 '/relatorio/usuario' => 'UsuarioController@relatorio',
+                '/relatorio/estoque' => 'ProdutoController@relatorioEstoque',
             ],
             'post' => [
                 //Home

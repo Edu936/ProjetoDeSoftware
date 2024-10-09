@@ -16,13 +16,16 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "produto") {
-                
+                require_once ('components/relatorio/relatorio-produto.php');
             }
             else if($this->e($pag) == "servico") {
-
+                require_once ('components/relatorio/relatorio-servico.php');
             }
             else if($this->e($pag) == "atendente") {
-
+                require_once ('components/relatorio/relatorio-atendente.php');
+            }
+            else if($this->e($pag) == "estoque") {
+                require_once ('components/relatorio/relatorio-estoque.php');
             }
         ?>
     </section>

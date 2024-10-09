@@ -18,4 +18,10 @@
             <span>Atendentes</span>
         </a>
     </li>
+    <li class="options">
+        <a href="/relatorio/estoque">
+            <i class="bi bi-bar-chart-fill"></i>
+            <span>Estoque</span>
+        </a>
+    </li>
 </ul>
