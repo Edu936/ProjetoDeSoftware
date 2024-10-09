@@ -40,22 +40,18 @@
         echo "</li>";
     }
     ?>
-    <?php
-    echo "<li class=\"options\">";
-    echo "<a href=\"/controle/cidade\">";
-    echo "<i class=\"bi bi-geo-alt\"></i>";
-    echo "<span>Cidade</span>";
-    echo "</a>";
-    echo "</li>";
-    ?>
-    <?php
-    echo "<li class=\"options\">";
-    echo "<a href=\"/controle/cliente\">";
-    echo "<i class=\"bi bi-person\"></i>";
-    echo "<span>Clientes</span>";
-    echo "</a>";
-    echo "</li>";
-    ?>
+    <li class="options">
+        <a href="/controle/cidade">
+            <i class="bi bi-geo-alt"></i>
+            <span>Cidade</span>
+        </a>
+    </li>
+    <li class="options">
+        <a href="/controle/cliente">
+            <i class="bi bi-person"></i>
+            <span>Clientes</span>
+        </a>
+    </li>
     <?php
     if ($_SESSION['cargo'] == 'Atendente') {
         echo "<li class=\"options\">";
