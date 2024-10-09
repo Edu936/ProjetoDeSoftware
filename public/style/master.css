@@ -112,7 +112,13 @@ aside {
     display: flex;
     list-style: none;
     align-items: center;
+     /*add*/
+    border-left: 0px solid white;
+   
+   
 }
+
+
 
 .options > a {
     width: 100%;
@@ -237,8 +243,13 @@ footer {
 /* hover */
 
 .options:hover {
-    border-radius: 8px;
+    /*border-radius: 8px;
     background-color: rgb(185, 185, 185);
+    add*/
+    background-color: #453c64;
+    border-width: 3px;
+    transition: 0.1s;
+    
 }
 
 @media (width <1050px) {

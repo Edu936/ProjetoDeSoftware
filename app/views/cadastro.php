@@ -37,6 +37,12 @@
         ?>
 
         <?php
+        if ($this->e($pag) == "fornecedor") {
+            echo $this->insert('components/cadastro-form/form-fornecedor');
+        }
+        ?>
+
+        <?php
         if ($this->e($pag) == "cadastro realizado") {
             echo $this->e($resposta);
             echo "<button>";
