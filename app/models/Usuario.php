@@ -4,7 +4,7 @@ namespace app\models;
 
 class Usuario extends Model
 {
-    private int $CD_USUARIO;
+    private string $CD_USUARIO;
     private string $NM_USUARIO;
     private string $DS_USUARIO_CARGO;
     private string $DS_CPF_USUARIO;

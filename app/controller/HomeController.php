@@ -36,13 +36,13 @@ class HomeController extends Controller
     $filtro2 = $user->filtrarUsuario('DS_USUARIO_SENHA', Request::input('DS_USUARIO_SENHA'));
     if($filtro1 && $filtro2) {
       $usuario = new Usuario;
-      $usuario = $user->buscar('DS_USUARIO_USER',Request::input('DS_USUARIO_USER'));
+      $usuario = $user->buscarUsuario('DS_USUARIO_USER',Request::input('DS_USUARIO_USER'));
       session_regenerate_id();
       $_SESSION['id'] = $usuario->getCodigo();
       $_SESSION['user'] = $usuario->getNome();
       $_SESSION['cargo'] = $usuario->getCargo();
       $this->views('home', [
-        'title' => "Estética Automotiva",
+        'title' => "Home",
       ]);
     } else {
       echo "<script> window.alert(\"Usuario ou Senha estão erradas!\"); window.location = `/`; </script>";
@@ -52,7 +52,7 @@ class HomeController extends Controller
   public function atendimento(): void
   {
     $this->views('atendimento', [
-      'title' => "Estética Automotiva",
+      'title' => "Atendimentos",
       'pag' => "index",
     ]);
   }
@@ -60,7 +60,7 @@ class HomeController extends Controller
   public function controle() : void
   {
     echo $this->views('controle', [
-      'title' => "Estética Automotiva",
+      'title' => "Controles",
       'pag' => "index",
     ]);
   }
@@ -68,7 +68,7 @@ class HomeController extends Controller
   public function cadastro() : void
   {
     echo $this->views('cadastro', [
-      'title' => "Estética Automotiva",
+      'title' => "Cadastros",
       'pag' => "index",
     ]);
   }
@@ -76,7 +76,7 @@ class HomeController extends Controller
   public function estatistica() : void
   {
     echo $this->views('estatistica', [
-      'title' => "Estética Automotiva",
+      'title' => "Estatística",
       'pag' => "index",
     ]);
   }
@@ -84,7 +84,7 @@ class HomeController extends Controller
   public function configuracao() : void
   {
     $this->views('configuracao', [
-      'title' => "Estética Automotiva",
+      'title' => "Configurações",
       'pag' => "index",
     ]);
   }

@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title'=> 'Estética Automotiva']) ?>
+<?php $this->layout('master', ['title'=> $title]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/master.css">
@@ -15,8 +15,8 @@
             if($this->e($pag) == "index") {
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
-            else if($this->e($pag) == "usuario") {
-
+            else if($this->e($pag) == "detalhe") {
+                require_once('components/content/detalhes-usuario.php');
             }
         ?>
     </section>

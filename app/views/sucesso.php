@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => 'Cadastra-se']) ?>
+<?php $this->layout('master', ['title' => $title]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/sign-in.css">

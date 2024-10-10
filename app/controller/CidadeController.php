@@ -24,7 +24,7 @@ class CidadeController extends Controller
             'route' => $route,
             'pag' => "cidade",
             'cidade' => $cidade,
-            'title' => "Estética Automotiva",
+            'title' => "Cadastro de cidade",
         ]);
     }
 
@@ -36,7 +36,7 @@ class CidadeController extends Controller
         $dados = "";
         $cidades = $this->buscarTodos();
         echo $this->views('controle', [
-            'title' => "Estética Automotiva",
+            'title' => "Controle de cidade",
             'pag' => "cidade",
             'cidades' => $cidades,
             'dados' => $dados
@@ -54,7 +54,7 @@ class CidadeController extends Controller
             'pag' => "cidade",
             'route' => $route,
             'cidade' => $cidade,
-            'title' => "Estética Automotiva",
+            'title' => "Edição de cidade",
         ]);
     }
 
