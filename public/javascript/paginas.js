@@ -31,6 +31,11 @@ function buscarVeiculo(value) {
     window.location.href = `/pedido/buscar/${value}`;
 }
 
+function buscarUsuario(value) {
+    window.location.href = `/pedido/buscar/${value}`;
+
+}
+
 // Metodos De Edição
 function editarCidade(value) {
     window.location.href = `/cidade/editar/${value}`;
@@ -136,4 +141,17 @@ function selecionarFornecedor() {
 // Metodo aciliar de Pagina
 function pagina(pagina) {
     window.location.href = pagina;
+}
+
+function usuarioTelefone(value) {
+    window.location.href = `/usuario/telefone/${value}`;
+}
+function usuarioEmail(value) {
+    window.location.href = `/usuario/email/${value}`;
+}
+function usuarioEditar(value) {
+    window.location.href = `/usuario/editar/${value}`;
+}
+function usuarioExcluir(value) {
+    window.location.href = `/usuario/excluir/${value}`;
 }

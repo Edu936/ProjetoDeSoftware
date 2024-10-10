@@ -25,6 +25,14 @@ abstract class Routes
                     '/relatorio/servico' => 'ServicoController@relatorio',
                     '/relatorio/usuario' => 'UsuarioController@relatorio',
                     '/relatorio/estoque' => 'ProdutoController@relatorioEstoque',
+                //Telefones
+                    '/usuario/telefone/[0-9]+' => 'UsuarioController@cadastroTelefone',
+                    '/cliente/telefone/[0-9]+' => 'ClienteController@cadastroTelefone',
+                    '/fornecedor/telefone/[0-9]+' => 'FornecedorController@cadastroTelefone',
+                //Email
+                    '/usuario/email/[0-9]+' => 'UsuarioController@cadastroEmail',
+                    '/cliente/email/[0-9]+' => 'ClienteController@cadastroEmail',
+                    '/fornecedor/email/[0-9]+' => 'FornecedorController@cadastroEmail',
                 //Cidade
                     //Paginas 
                         '/controle/cidade' => 'CidadeController@paginaDeControle',
@@ -67,12 +75,11 @@ abstract class Routes
                         '/produto/excluir/[0-9]+' => 'ProdutoController@excluir',
                 //Usuario
                     //Paginas
-                        '/controle/usuario' => 'UsuarioController@paginaDeControle',
-                        '/cadastro/usuario' => 'UsuarioController@paginaDeCadastro',
                         '/usuario/editar/[0-9]+' => 'UsuarioController@paginaDeEdicao',
+                        '/usuario/excluir/[0-9]+' => 'UsuarioController@paginaDeExclusao',
+                        '/usuario/controle/[0-9]+' => 'UsuarioController@paginaDeControle',
                     //Ações
-                        '/usuario/buscar/[0-9]+' => 'UsuarioController@buscar',
-                        '/usuario/excluir/[0-9]' => 'UsuarioController@excluir',
+                        '/usuario/apagar/[0-9]' => 'UsuarioController@excluir',
                 //Orçamento
                     //Paginas
                         '/controle/orcamento' => 'OrcamentoController@paginaDeControle',
@@ -96,7 +103,7 @@ abstract class Routes
                         '/fornecedor/editar/[0-9]+' => 'FornecedorController@paginaDeEdicao',
                     //Ações
                         '/fornecedor/buscar/[0-9]+' => 'FornecedorController@buscar',
-                        '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',        
+                        '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',    
             ],
             'post' => [
                 //Home
@@ -119,6 +126,7 @@ abstract class Routes
                 //Usuario
                     '/usuario/salvar' => 'UsuarioController@salvar',
                     '/usuario/atualizar/[0-9]+' => 'UsuarioController@atualizar',
+                    '/usuario/salvar/telefone/[0-9]+' => 'UsuarioController@salvarTelefone',
                 //Fornecedor
                     '/fornecedor/salvar' => 'FornecedorController@salvar',
                     '/fornecedor/atualizar/[0-9]+' => 'FornecedorController@atualizar',

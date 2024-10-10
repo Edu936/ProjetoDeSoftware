@@ -11,17 +11,7 @@ use app\static\Request;
 
 class UsuarioController extends Controller
 {
-    public function paginaDeCadastro() : void 
-    {
-        
-    }
-
-    public function paginaDeControle() : void 
-    {
-
-    }
-
-    public function paginaDeEdicao($codigo) : void 
+    public function paginaDeControle($codigo) : void 
     {
         $dataUsuario = $this->buscarUsuario('CD_USUARIO', $codigo[0]);
         $emailUsuario = $this->buscarEmailUsuario('CD_USUARIO', $dataUsuario->getCodigo()); 
@@ -37,6 +27,38 @@ class UsuarioController extends Controller
         ]);
     }
 
+    public function paginaDeEdicao() : void 
+    {
+        $this->views('configuracao', [
+            'pag' => "edicao",
+            'title' => 'Editar Usuario',
+        ]);
+    }
+
+    public function paginaDeExclusao() : void 
+    {
+        $this->views('configuracao', [
+            'pag' => "exclusao",
+            'title' => 'Excluir Perfil',
+        ]);
+    }
+
+    public function cadastroTelefone() : void 
+    {
+        $this->views('configuracao', [
+            'pag' => "telefone",
+            'title' => 'Adcionar Telefone',
+        ]);
+    }
+
+    public function cadastroEmail() : void 
+    {
+        $this->views('configuracao', [
+            'pag' => "email",
+            'title' => 'Adcionar Email',
+        ]);
+    }
+
     public function filtrarUsuario($key, $data) : bool
     {
         $user = new Usuario();
@@ -48,7 +70,41 @@ class UsuarioController extends Controller
         dd('Atendente');
     }
 
+    public function salvarTelefone($codigo) : void 
+    {
+        $request = array_unique(Request::input('DS_FONE_USUARIO'));
+        $telefone = new TelefoneUsuario();
+        $telefonesUsuario = $this->buscarTelefoneUsuario('CD_USUARIO', $codigo[0]);
+        foreach($telefonesUsuario as $item){
+            foreach($request as $value){
+                if($item == $value){
+                    $this->views('configuracao', [
+                        'title' => "Cadastro telefone",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Forgot password-bro.png",
+                        'messagem' => "O telefone {$value} já foi cadastrado!",
+                        'link' => "/usuario/controle/{$_SESSION['id']}",
+                    ]);
+                }
+            }
+        }
+        foreach($request as $item) {
+            $telefone = $telefone->create([
+                'CD_USUARIO' => $codigo[0],
+                'DS_FONE_USUARIO' => $item,
+            ]);
+        }
+        $this->views('configuracao', [
+            'title' => "Cadastro telefone",
+            'pag' => "finalizar",
+            'imagem' => "/images/Create-amico.png",
+            'mensagem' => "O telefone foi cadastrado com sucesso!",
+            'link' => "/usuario/controle/{$_SESSION['id']}",
+        ]);
+        
+    } 
     
+
 
     public function salvar() : void 
     {

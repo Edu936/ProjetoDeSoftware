@@ -1,8 +1,8 @@
 <div class="action-user">
-    <button class="option-user">Adcionar Telefone</button>
-    <button class="option-user">Adcionar Email</button>
-    <button class="option-user">Editar Perfil</button>
-    <button class="option-user">Excluir Conta</button>
+    <button class="option-user" onclick="usuarioTelefone(<?=$_SESSION['id']?>)">Adcionar Telefone</button>
+    <button class="option-user" onclick="usuarioEmail(<?=$_SESSION['id']?>)">Adcionar Email</button>
+    <button class="option-user" onclick="usuarioEditar(<?=$_SESSION['id']?>)">Editar Perfil</button>
+    <button class="option-user" onclick="usuarioExcluir(<?=$_SESSION['id']?>)">Excluir Conta</button>
 </div>
 <div class="card-user">
     <div class="user-detail">
@@ -34,8 +34,8 @@
         <fieldset>
             <legend>Email</legend>
             <?php
-            foreach($telefones as $telefone) {
-                echo "<p>Número de Telefone: {$telefone->getTelefone()}</p>";
+            foreach($emails as $email) {
+                echo "<p>Email: {$email->getTelefone()}</p>";
             }
             ?>
         </fieldset>
