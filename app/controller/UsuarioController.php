@@ -102,7 +102,7 @@ class UsuarioController extends Controller
         $filters = new Filters();
         $usuario = new Usuario();
         
-        $filters->where($key, '=', (int)$data);
+        $filters->where($key, '=', $data);
         
         $usuario->setfilters($filters);
         $usuario = $usuario->fetchAll();

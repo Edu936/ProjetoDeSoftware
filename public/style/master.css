@@ -3,6 +3,17 @@
     box-sizing: border-box;
 }
 
+* ::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 8px;
+    background-color: rgb(47, 42, 66);
+}
+
+* ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgb(177, 114, 206);
+}
+
 body {
     margin: 0%;
     padding: 0%;

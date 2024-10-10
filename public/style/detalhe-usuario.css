@@ -1,0 +1,76 @@
+.action-user {
+    margin: 0%;
+    width: 30%;
+    padding: 0%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.option-user {
+    width: 80%;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.8s;
+    border-radius: 6px;
+    background-color: rgb(177, 114, 206);
+}
+
+.option-user:hover {
+    background-color: rgb(151, 39, 202);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
+}
+
+.card-user {
+    margin: 0%;
+    width: 70%;
+    padding: 0%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-detail {
+    width: 90%;
+    height: 90%;
+    border-radius: 8px;
+    padding: 15px 10px 10px 15px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
+    overflow: auto;
+}
+
+.data-user {
+    display: flex;
+    justify-content: space-around;
+    height: 45%;
+}
+
+.user-detail > h1 {
+    margin: 0%;
+    text-align: center;
+    color: rgb(177, 114, 206);
+}
+
+.user-detail > fieldset {
+    border-radius: 4px;
+    color: rgb(177, 114, 206);
+    border: 1px solid rgb(177, 114, 206);
+}
+
+fieldset  {
+    padding: 0px;
+    margin-top: 10px;
+    width: 98%;
+}
+
+fieldset > p  {
+    color: white;
+    margin: 10px 0px 10px 15px;
+}
+
+
