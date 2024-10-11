@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="/style/menu.css">
 <link rel="stylesheet" href="/style/master.css">
 <link rel="stylesheet" href="/style/card.css">
+<link rel="stylesheet" href="/style/card-grande.css">
 <link rel="stylesheet" href="/style/detalhe-usuario.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <?php $this->stop() ?>
@@ -36,18 +37,17 @@
                 require_once('components/content/excluir-usuario.php');
             }
             else if($this->e($pag) == "telefone") {
-                echo "
-                    <div class=\"card\">
+                echo"<div class=\"card\">
                         <h1>Telefones</h1>
-                        <form action=\"/usuario/salvar/telefone/{$_SESSION['id']}\" method=\"POST\">
-                            <div id=\"telefone\">
+                        <form id=\"forme\" action=\"/usuario/salvar/telefone/{$_SESSION['id']}\" method=\"POST\">
+                            <div id=\"telefone\" class=\"telefone\">
                                 <div class=\"dados\">
                                     <label for=\"telefone\"> Telefone:</label>
                                     <input type=\"text\" name=\"DS_FONE_USUARIO[]\" placeholder=\"Numero do Telefone\">
                                 </div>
                             </div>
-                            <div class=\"submit\"> 
-                                <button type=\"button\" onclick=\"adicionarTelefone()\">Adicionar Produto</button>
+                            <div class=\"submit\">
+                                <button type=\"button\" onclick=\"adicionarTelefone()\">Adicionar</button>
                                 &nbsp;
                                 &nbsp;
                                 <button type=\"reset\">Limpar</button>

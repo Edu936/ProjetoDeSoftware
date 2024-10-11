@@ -6,7 +6,7 @@ function adicionarTelefone() {
     telefoneCount++;
     const telefoneDiv = document.getElementById('telefone');
     const novoTelefone = `
-        <div id=\"telefone\">
+        <div class=\"telefone\">
             <div class=\"dados\">
                 <label for=\"telefone\"> Telefone:</label>
                 <input type=\"tel\" name=\"DS_FONE_USUARIO[]\" placeholder=\"Numero do Telefone\">

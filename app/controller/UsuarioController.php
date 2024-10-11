@@ -8,15 +8,16 @@ use app\models\EmailUsuario;
 use app\models\TelefoneUsuario;
 use app\models\Usuario;
 use app\static\Request;
+use UnderflowException;
 
 class UsuarioController extends Controller
 {
-    public function paginaDeControle($codigo) : void 
+    public function paginaDeControle($codigo): void
     {
         $dataUsuario = $this->buscarUsuario('CD_USUARIO', $codigo[0]);
-        $emailUsuario = $this->buscarEmailUsuario('CD_USUARIO', $dataUsuario->getCodigo()); 
+        $emailUsuario = $this->buscarEmailsUsuario('CD_USUARIO', $dataUsuario->getCodigo());
         $cidadeUsuario = $this->buscarCidadeUsuario('CD_CIDADE', $dataUsuario->getCidade());
-        $telefoneUsuario = $this->buscarTelefoneUsuario('CD_USUARIO', $dataUsuario->getCodigo());
+        $telefoneUsuario = $this->buscarTelefonesUsuario('CD_USUARIO', $dataUsuario->getCodigo());
         $this->views('configuracao', [
             'pag' => "detalhe",
             'usuario' => $dataUsuario,
@@ -27,15 +28,20 @@ class UsuarioController extends Controller
         ]);
     }
 
-    public function paginaDeEdicao() : void 
+    public function paginaDeEdicao($codigo): void
     {
+        $cidadeController = new CidadeController();
+        $usuario = $this->buscarUsuario('CD_USUARIO', $codigo[0]);
+        $cidades = $cidadeController->buscarTodos();
         $this->views('configuracao', [
             'pag' => "edicao",
             'title' => 'Editar Usuario',
+            'usuario' => $usuario,
+            'cidades' => $cidades,
         ]);
     }
 
-    public function paginaDeExclusao() : void 
+    public function paginaDeExclusao(): void
     {
         $this->views('configuracao', [
             'pag' => "exclusao",
@@ -43,7 +49,7 @@ class UsuarioController extends Controller
         ]);
     }
 
-    public function cadastroTelefone() : void 
+    public function cadastroTelefone(): void
     {
         $this->views('configuracao', [
             'pag' => "telefone",
@@ -51,7 +57,7 @@ class UsuarioController extends Controller
         ]);
     }
 
-    public function cadastroEmail() : void 
+    public function cadastroEmail(): void
     {
         $this->views('configuracao', [
             'pag' => "email",
@@ -59,114 +65,221 @@ class UsuarioController extends Controller
         ]);
     }
 
-    public function filtrarUsuario($key, $data) : bool
+    public function filtrarUsuario($key, $data): bool
     {
         $user = new Usuario();
         $user = $user->findby($key, $data);
-        return $user? true : false;
+        return $user ? true : false;
     }
 
-    public function relatorio() : void {
+    public function relatorio(): void
+    {
         dd('Atendente');
     }
 
-    public function salvarTelefone($codigo) : void 
+    public function salvarTelefone($codigo): bool
     {
-        $request = array_unique(Request::input('DS_FONE_USUARIO'));
-        $telefone = new TelefoneUsuario();
-        $telefonesUsuario = $this->buscarTelefoneUsuario('CD_USUARIO', $codigo[0]);
-        foreach($telefonesUsuario as $item){
-            foreach($request as $value){
-                if($item == $value){
-                    $this->views('configuracao', [
-                        'title' => "Cadastro telefone",
-                        'pag' => "finalizar",
-                        'imagem' => "/images/Forgot password-bro.png",
-                        'messagem' => "O telefone {$value} já foi cadastrado!",
-                        'link' => "/usuario/controle/{$_SESSION['id']}",
+        $telefones = Request::input('DS_FONE_USUARIO');
+        $telefone = new TelefoneUsuario;
+        if (is_array($telefones)) {
+            foreach ($telefones as $tel) {
+                $fone = $this->buscarTelefonesUsuario('DS_FONE_USUARIO', $tel);
+                if ($fone == []) { 
+                    $result = $telefone->create([
+                        'CD_USUARIO' => $codigo,
+                        'DS_FONE_USUARIO' => $tel]);
+                    if ($result) {
+                        dd("foi cadastrado");
+                        return true;
+                    } else {
+                        dd("não foi cadastrado");
+                        return false;
+                    }
+                } else {
+                    dd("Já foi cadastrado");
+                    return false;
+                }
+            }
+        } else {
+            $fone = $this->buscarTelefonesUsuario('DS_FONE_USUARIO', $telefones);
+            if ($fone != $telefones) {
+                $result = $telefone->create([
+                    'CD_USUARIO' => $codigo,
+                    'DS_FONE_USUARIO' => $telefones
+                ]);
+                if ($result) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function salvarEmail($codigo, $emails): mixed
+    {
+        $email = new EmailUsuario();
+        if (is_array($emails)) {
+            foreach ($emails as $e) {
+                $mail = $this->buscarEmailsUsuario('DS_EMAIL_USUARIO', $e);
+                if ($mail != $e) {
+                    $result = $email->create([
+                        'CD_USUARIO' => $codigo,
+                        'DS_EMAIL_USUARIO' => $e
                     ]);
+                    if ($result) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        } else {
+            $mail = $this->buscarEmailsUsuario('DS_EMAIL_USUARIO', $emails);
+            if ($mail != $emails) {
+                $result = $email->create([
+                    'CD_USUARIO' => $codigo,
+                    'DS_EMAIL_USUARIO' => $emails
+                ]);
+                if ($result) {
+                    return true;
+                } else {
+                    return false;
                 }
             }
         }
-        foreach($request as $item) {
-            $telefone = $telefone->create([
-                'CD_USUARIO' => $codigo[0],
-                'DS_FONE_USUARIO' => $item,
+    }
+
+    public function excluir($codigo): void
+    {
+        $filtro = $this->buscarUsuario('CD_USUARIO', $codigo[0]);
+        $request = Request::all();
+        if ($request['DS_USUARIO_SENHA'] == $filtro->getSenha()) {
+            $usuario = new Usuario();
+            $usuario = $usuario->delete('CD_USUARIO', $codigo[0]);
+            if (!$usuario) {
+                $this->views('login', [
+                    'title' => "Login",
+                ]);
+            } else {
+                $this->views('login', [
+                    'title' => "Login",
+                ]);
+            }
+        } else {
+            $this->views('configuracao', [
+                'title' => "Exclusao de Usuario",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "A senha esta incorreta!",
+                'link' => '/usuario/controle/' . $_SESSION['id'],
             ]);
         }
-        $this->views('configuracao', [
-            'title' => "Cadastro telefone",
-            'pag' => "finalizar",
-            'imagem' => "/images/Create-amico.png",
-            'mensagem' => "O telefone foi cadastrado com sucesso!",
-            'link' => "/usuario/controle/{$_SESSION['id']}",
-        ]);
-        
-    } 
-    
+    }
 
-
-    public function salvar() : void 
+    public function atualizar($codigo): void
     {
-        $request = Request::exception(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
-        $filtro1 = $this->filtrarUsuario('DS_USUARIO_USER',$request['DS_USUARIO_USER']);
-        $filtro2 = $this->filtrarUsuario('DS_CPF_USUARIO',$request['DS_CPF_USUARIO']);
-        $newUsuario = new Usuario();
-        if(!$filtro1 && !$filtro2) {
-            $result = $newUsuario->create($request);
-            if(!($result)) {
-                $this->views('sucesso', [
-                    'title' => "Cadastra-se",
+        $dadosContato = Request::exception(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
+
+        $filtro = $this->buscarUsuario('CD_USUARIO', $codigo[0]);
+
+        if ($filtro) {
+            $usuario = new Usuario();
+            $result = $usuario->update($dadosContato, 'CD_USUARIO', $codigo[0]);
+            if (!$result) {
+                $this->views('configuracao', [
+                    'title' => "Estética Automotiva",
+                    'pag' => "finalizar",
                     'imagem' => "/images/Forgot password-bro.png",
-                    'messagem' => "Não foi possivel cadastrar o usuario",
+                    'mensagem' => "Não foi possivel atualizar os dados do cliente!",
+                    'link' => '/usuario/controle/' . $_SESSION['id'],
+                ]);
+            } else {
+                $this->views('configuracao', [
+                    'title' => "Estética Automotiva",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'mensagem' => "O cliente foi atualizado com sucesso!",
+                    'link' => '/usuario/controle/' . $_SESSION['id'],
+                ]);
+            }
+        } else {
+            $this->views('configuracao', [
+                'title' => "Estética Automotiva",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O usuario não existe em nossa base de dados!",
+                'link' => '/usuario/controle/' . $_SESSION['id'],
+            ]);
+        }
+    }
+
+    public function salvar(): void
+    {
+        // Recebendo os Dados do Formulario
+        $contatos = Request::only(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
+        $dadosUsuario = Request::exception(['DS_FONE_USUARIO', 'DS_EMAIL_USUARIO']);
+        // Fazendo uma filtragem de cliente para que não haja clientes duplicados
+        $filtro = $this->buscarUsuario('DS_CPF_USUARIO', $dadosUsuario['DS_CPF_USUARIO']);
+        // Condicionar de cadastro
+        if (!($filtro)) {
+            $usuario = new Usuario();
+            $usuario = $usuario->create($dadosUsuario);
+            if (!$usuario) {
+                $this->views('sucesso', [
+                    'title' => "Cadastro Usuario",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'messagem' => "Não foi possivel cadastrar o usuario {$dadosUsuario['NM_USUARIO']}!",
                     'link' => '/',
                 ]);
-            } else {     
-                $usuario = $this->buscarUsuario('DS_CPF_USUARIO', $request['DS_CPF_USUARIO']);
-                $contato1 = new TelefoneUsuario();
-                $contato2 = new EmailUsuario();
-                $result1 = $contato1->create(['CD_USUARIO' => $usuario->getCodigo(), 'DS_EMAIL_USUARIO' => Request::input('DS_EMAIL_USUARIO')]);
-                $result2 = $contato2->create(['CD_USUARIO' => $usuario->getCodigo(), 'DS_FONE_USUARIO' => Request::input('DS_FONE_USUARIO')]);
-                if (!($result1 && $result2)) {
+            } else {
+                $usuario = $this->buscarUsuario('DS_CPF_USUARIO', $dadosUsuario['DS_CPF_USUARIO']);
+                $telefone = $this->salvarTelefone($usuario->getCodigo(), $contatos['DS_FONE_USUARIO']);
+                $email = $this->salvarEmail($usuario->getCodigo(), $contatos['DS_EMAIL_USUARIO']);
+                if (!($email && $telefone)) {
                     $this->views('sucesso', [
-                        'title' => "Cadastra-se",
-                        'imagem' => "/images/Create-amico.png",
-                        'mensagem' => "O usuario {$request['NM_FORNECEDOR']} foi cadastrado, porem seus contato não foram cadastrados!",
+                        'title' => "Cadastro Usuario",
+                        'imagem' => "/images/Forgot password-bro.png",
+                        'messagem' => "O Usuario {$dadosUsuario['NM_USUARIO']} foi cadastrado com sucesso! porem seus contato não foram salvos",
                         'link' => '/',
                     ]);
                 } else {
                     $this->views('sucesso', [
-                        'title' => "Cadastra-se",
+                        'title' => "Cadastro Usuario",
                         'imagem' => "/images/Create-amico.png",
-                        'messagem' => "O Usuario {$request['NM_USUARIO']} foi cadastrado com Sucesso!",
+                        'messagem' => "O Usuario {$dadosUsuario['NM_USUARIO']} e seus contatos foram cadastrado com sucesso!",
                         'link' => '/',
-                    ]);   
+                    ]);
                 }
             }
-        } else {
+        }
+        // Caso já exista um Usuario com o mesmo CPF o sistema deve emitir um mensagem de erro
+        else {
             $this->views('sucesso', [
-                'title' => "Cadastra-se",
+                'title' => "Cadastro Usuario",
                 'imagem' => "/images/Forgot password-bro.png",
-                'messagem' => "O Usuario {$request['NM_USUARIO']} já foi cadastrado!",
+                'messagem' => "O Usuario {$dadosUsuario['NM_USUARIO']} já foi cadastrado!",
                 'link' => '/',
             ]);
         }
     }
 
-    public function buscarUsuario($key, $data) : Usuario 
+    public function buscarUsuario($key, $data): Usuario | bool
     {
         $filters = new Filters();
         $usuario = new Usuario();
-        
+
         $filters->where($key, '=', $data);
-        
+
         $usuario->setfilters($filters);
         $usuario = $usuario->fetchAll();
 
-        return $usuario[0];
+        return $usuario[0] ?? false;
     }
 
-    private function buscarCidadeUsuario($key, $data) : Cidade 
+    private function buscarCidadeUsuario($key, $data): Cidade | bool
     {
         $filters = new Filters();
         $cidade = new Cidade();
@@ -179,7 +292,7 @@ class UsuarioController extends Controller
         return $cidade[0] ?? false;
     }
 
-    private function buscarTelefoneUsuario($key, $data) : array
+    private function buscarTelefonesUsuario($key, $data): array | bool
     {
         $filters = new Filters();
         $tefoneUsuario = new TelefoneUsuario();
@@ -192,7 +305,7 @@ class UsuarioController extends Controller
         return $tefoneUsuario ?? false;
     }
 
-    private function buscarEmailUsuario($key, $data) : array
+    private function buscarEmailsUsuario($key, $data): array | bool
     {
         $filters = new Filters();
         $emailTelefone = new EmailUsuario();

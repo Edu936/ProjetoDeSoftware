@@ -125,6 +125,7 @@ abstract class Routes
                     '/produto/atualizar/[0-9]+' => 'ProdutoController@atualizar',
                 //Usuario
                     '/usuario/salvar' => 'UsuarioController@salvar',
+                    '/usuario/apagar/[0-9]+' => 'UsuarioController@excluir',
                     '/usuario/atualizar/[0-9]+' => 'UsuarioController@atualizar',
                     '/usuario/salvar/telefone/[0-9]+' => 'UsuarioController@salvarTelefone',
                 //Fornecedor

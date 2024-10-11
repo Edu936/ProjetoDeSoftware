@@ -6,7 +6,7 @@
 <?php $this->stop() ?>
 
 <?php $this->start('js') ?>
-<script src="/javascript/paginas.js"></script>
+<script src="/javascript/sign-in.js"></script>
 <?php $this->stop() ?>
 
 <main>
@@ -31,11 +31,11 @@
                 </div>
                 <div class="dados">
                     <label for="telefone">Telefone:</label>
-                    <input type="tel" name="DS_FONE_USUARIO" id="telefone" required><br>
+                    <input type="tel" name="DS_FONE_USUARIO[]" id="telefone" required><br>
                 </div>
                 <div class="dados">
                     <label for="email">Email:</label>
-                    <input type="email" name="DS_EMAIL_USUARIO" id="email" required><br>
+                    <input type="email" name="DS_EMAIL_USUARIO[]" id="email" required><br>
                 </div>
             </fieldset>
             <fieldset>
@@ -95,6 +95,3 @@
         </form>
     </div>
 </main>
-<?php $this->start('js') ?>
-    <script src="/javascript/paginas.js"></script>
-<?php $this->stop() ?>

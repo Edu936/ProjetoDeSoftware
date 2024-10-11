@@ -55,7 +55,7 @@ class Usuario extends Model
     }
 
     //codigo
-    public function getCodigo(): int
+    public function getCodigo()
     {
         return $this->CD_USUARIO;
     }
