@@ -18,14 +18,14 @@
 
 <body>
     <?php
-    if ($this->e($title) == "Login" || $this->e($title) == "Sing-In" || $this->e($title) == "Cadastro Usuario") {
-        echo $this->section('content');
-    } else if($_SESSION['user'] != ""){
-        require_once('layout/header.php');
-        require_once('layout/asside.php');
-        echo "<main>" . $this->section('content') . "</main>";
-        require_once('layout/footer.php');
-    }
+        if ($this->e($title) == "Login" || $this->e($title) == "Sing-In" || $this->e($title) == "Cadastro Usuario") {
+            echo $this->section('content');
+        } else if($_SESSION['user'] != "") {
+            require_once('layout/header.php');
+            require_once('layout/asside.php');
+            echo "<main>{$this->section('content')}</main>";
+            require_once('layout/footer.php');
+        }
     ?>
 </body>
 

@@ -14,7 +14,7 @@ class Usuario extends Model
     private string $DS_RUA;
     private string $DS_BAIRRO;
     private string $DS_CEP;
-    private int $CD_CIDADE;
+    private mixed $CD_CIDADE;
 
     public function __construct()
     {

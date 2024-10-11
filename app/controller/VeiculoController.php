@@ -35,7 +35,7 @@ class VeiculoController extends Controller
     {
         $controller = new ClienteController();
         $clientes = $controller->buscarTodos();
-        $cliente = $controller->buscar('CD_CLIENTE', $value);
+        $cliente = $controller->buscarCliente('CD_CLIENTE', $value);
         $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "veiculo",
