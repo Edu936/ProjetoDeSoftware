@@ -146,7 +146,9 @@ class CidadeController extends Controller
 
     public function buscarCidade(string $key, mixed $data): Cidade | bool
     {
-        $cidade = $this->_filters->where($key, '=', $data);
+        $this->_filters->where($key, '=', $data);
+        $this->_cidade->setfilters($this->_filters);
+        $cidade = $this->_cidade->fetchAll();
         return $cidade[0] ?? false;
     }
 }
