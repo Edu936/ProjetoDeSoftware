@@ -43,7 +43,7 @@
                             <div id=\"telefone\" class=\"telefone\">
                                 <div class=\"dados\">
                                     <label for=\"telefone\"> Telefone:</label>
-                                    <input type=\"text\" name=\"DS_FONE_USUARIO[]\" placeholder=\"Numero do Telefone\">
+                                    <input type=\"fone\" name=\"DS_FONE_USUARIO[]\" placeholder=\"Numero do Telefone\">
                                 </div>
                             </div>
                             <div class=\"submit\">
@@ -60,7 +60,27 @@
                 ;
             }
             else if($this->e($pag) == "email") {
-                require_once('components/content/email-usuario.php');
+                echo"<div class=\"card\">
+                        <h1>Emails</h1>
+                        <form id=\"forme\" action=\"/usuario/salvar/email/{$_SESSION['id']}\" method=\"POST\">
+                            <div id=\"emails\" class=\"emails\">
+                                <div class=\"dados\">
+                                    <label for=\"telefone\"> Emails:</label>
+                                    <input type=\"email\" name=\"DS_EMAIL_USUARIO[]\" placeholder=\"Endereço e-mail\">
+                                </div>
+                            </div>
+                            <div class=\"submit\">
+                                <button type=\"button\" onclick=\"adicionarEmail()\">Adicionar</button>
+                                &nbsp;
+                                &nbsp;
+                                <button type=\"reset\">Limpar</button>
+                                &nbsp;
+                                &nbsp;
+                                <button type=\"submit\">Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>"
+                ;
             }
             else if ($this->e($pag) == "finalizar") {
                 require_once('components/content/finalizar.php');

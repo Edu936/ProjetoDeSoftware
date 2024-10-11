@@ -77,52 +77,92 @@ class UsuarioController extends Controller
         dd('Atendente');
     }
 
-    public function salvarTelefone($codigo): bool
+    public function salvarTelefone($codigo , $arrayTelefones=[]): mixed
     {
         $telefones = Request::input('DS_FONE_USUARIO');
         $telefone = new TelefoneUsuario;
-        if (is_array($telefones)) {
+        if ($arrayTelefones == []) {
             foreach ($telefones as $tel) {
                 $fone = $this->buscarTelefonesUsuario('DS_FONE_USUARIO', $tel);
                 if ($fone == []) { 
                     $result = $telefone->create([
+                        'CD_USUARIO' => $codigo[0],
+                        'DS_FONE_USUARIO' => $tel
+                    ]);
+                    if($result == null){
+                        return $this->views('configuracao', [
+                            'title' => "cadastro de usuario",
+                            'pag' => "finalizar",
+                            'imagem' => "/images/Forgot password-bro.png",
+                            'mensagem' => "Não foi possivel cadastrar esses telefones!",
+                            'link' => '/usuario/controle/' . $_SESSION['id'],
+                        ]);
+                    }
+                }
+            }
+            return $this->views('configuracao', [
+                'title' => "Cadastro de telefones",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "Os telefones foram cadastrados!",
+                'link' => '/usuario/controle/' . $_SESSION['id'],
+            ]);
+            
+        } else {
+            $reposta = false;
+            foreach($arrayTelefones as $tel){
+                $fone = $this->buscarTelefonesUsuario('DS_FONE_USUARIO', $tel);
+                if ($fone != $tel) {
+                    $result = $telefone->create([
                         'CD_USUARIO' => $codigo,
-                        'DS_FONE_USUARIO' => $tel]);
+                        'DS_FONE_USUARIO' => $tel
+                    ]);
                     if ($result) {
-                        dd("foi cadastrado");
-                        return true;
+                        $reposta = true;
                     } else {
-                        dd("não foi cadastrado");
-                        return false;
+                        $reposta = false;
                     }
                 } else {
-                    dd("Já foi cadastrado");
-                    return false;
+                    $reposta = false;
                 }
             }
-        } else {
-            $fone = $this->buscarTelefonesUsuario('DS_FONE_USUARIO', $telefones);
-            if ($fone != $telefones) {
-                $result = $telefone->create([
-                    'CD_USUARIO' => $codigo,
-                    'DS_FONE_USUARIO' => $telefones
-                ]);
-                if ($result) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
+            return $reposta;
         }
     }
 
-    public function salvarEmail($codigo, $emails): mixed
+    public function salvarEmail($codigo, $arrayEmails = []): mixed
     {
         $email = new EmailUsuario();
-        if (is_array($emails)) {
+        $emails = Request::input('DS_EMAIL_USUARIO');
+        if ($arrayEmails == []) {
             foreach ($emails as $e) {
+                $mail = $this->buscarEmailsUsuario('DS_EMAIL_USUARIO', $e);
+                if ($mail != $e) {
+                    $result = $email->create([
+                        'CD_USUARIO' => $codigo[0],
+                        'DS_EMAIL_USUARIO' => $e
+                    ]);
+                    if (!$result) {
+                        return $this->views('configuracao', [
+                            'title' => "Cadastro de Emails",
+                            'pag' => "finalizar",
+                            'imagem' => "/images/Forgot password-bro.png",
+                            'mensagem' => "Não foi possivel cadastrar esses telefones!",
+                            'link' => '/usuario/controle/' . $_SESSION['id'],
+                        ]);
+                    }
+                }
+            }
+            return $this->views('configuracao', [
+                'title' => "Cadastro de Emails",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "Os emails foram cadastrados!",
+                'link' => '/usuario/controle/' . $_SESSION['id'],
+            ]);
+        } else {
+            $return = false;
+            foreach($arrayEmails as $e) {
                 $mail = $this->buscarEmailsUsuario('DS_EMAIL_USUARIO', $e);
                 if ($mail != $e) {
                     $result = $email->create([
@@ -130,25 +170,15 @@ class UsuarioController extends Controller
                         'DS_EMAIL_USUARIO' => $e
                     ]);
                     if ($result) {
-                        return true;
+                        $return = true;
                     } else {
-                        return false;
+                        $return = false;
                     }
-                }
-            }
-        } else {
-            $mail = $this->buscarEmailsUsuario('DS_EMAIL_USUARIO', $emails);
-            if ($mail != $emails) {
-                $result = $email->create([
-                    'CD_USUARIO' => $codigo,
-                    'DS_EMAIL_USUARIO' => $emails
-                ]);
-                if ($result) {
-                    return true;
                 } else {
-                    return false;
+                    $return = false;
                 }
             }
+            return $return;
         }
     }
 
