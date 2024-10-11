@@ -1,20 +1,4 @@
-<div class="controller">
-    <div class="search">
-        <input type="search" id="buscarCidade">
-        <button id="buscar" onclick="bucarCidade()" >buscar</button>
-    </div>
-    <div class="dado">
-        <?php
-            if(!is_string($dados)){
-                echo $dados->getNome();
-                echo "<br>";
-                echo $dados->getEstado();
-                echo "<td><button onclick=\"editarCidade({$dados->getCodigo()})\">Editar</button></td>";
-                echo "<td><button onclick=\"excluirCidade({$dados->getCodigo()})\">Excluir</button></td>";
-            }
-        ?>
-    </div>
-</div>
+<h1 class="title">Controle de Cidades</h1>
 <div class="table">
     <table>
         <thead>

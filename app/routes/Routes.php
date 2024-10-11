@@ -43,11 +43,11 @@ abstract class Routes
                         '/cidade/excluir/[0-9]+' => 'CidadeController@excluir',
                 //Cliente
                     //Paginas 
-                        '/controle/cliente' => 'ClienteController@paginaDeControle',
                         '/cadastro/cliente' => 'ClienteController@paginaDeCadastro',
+                        '/controle/cliente' => 'ClienteController@paginaDeControle',
                         '/cliente/editar/[0-9]+' => 'ClienteController@paginaDeEdicao',
+                        '/cliente/buscar/[0-9]+' => 'ClienteController@paginaDeDetalhe',
                     //Ações
-                        '/cliente/buscar/[0-9]+' => 'ClienteController@buscar',
                         '/cliente/excluir/[0-9]+' => 'ClienteController@excluir',
                 //Veiculo
                     //Paginas

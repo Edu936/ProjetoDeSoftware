@@ -296,7 +296,8 @@ class UsuarioController extends Controller
         }
     }
 
-    public function buscarUsuario($key, $data): Usuario | bool
+    // Metodos de Busca
+    public function buscarUsuario(string $key, mixed $data): Usuario | bool
     {
         $filters = new Filters();
         $usuario = new Usuario();
@@ -309,12 +310,12 @@ class UsuarioController extends Controller
         return $usuario[0] ?? false;
     }
 
-    private function buscarCidadeUsuario($key, $data): Cidade | bool
+    private function buscarCidadeUsuario(string $key, int $data): Cidade | bool
     {
         $filters = new Filters();
         $cidade = new Cidade();
 
-        $filters->where($key, '=', (int)$data);
+        $filters->where($key, '=', $data);
 
         $cidade->setfilters($filters);
         $cidade = $cidade->fetchAll($filters);
@@ -322,7 +323,7 @@ class UsuarioController extends Controller
         return $cidade[0] ?? false;
     }
 
-    private function buscarTelefonesUsuario($key, $data): array | bool
+    private function buscarTelefonesUsuario(string $key, int $data): array | bool
     {
         $filters = new Filters();
         $tefoneUsuario = new TelefoneUsuario();
@@ -335,16 +336,16 @@ class UsuarioController extends Controller
         return $tefoneUsuario ?? false;
     }
 
-    private function buscarEmailsUsuario($key, $data): array | bool
+    private function buscarEmailsUsuario(string $key, int $data): array | bool
     {
         $filters = new Filters();
-        $emailTelefone = new EmailUsuario();
+        $emailUsuario = new EmailUsuario();
 
         $filters->where($key, '=', $data);
 
-        $emailTelefone->setfilters($filters);
-        $emailTelefone = $emailTelefone->fetchAll();
+        $emailUsuario->setfilters($filters);
+        $emailUsuario = $emailUsuario->fetchAll();
 
-        return $emailTelefone ?? false;
+        return $emailUsuario ?? false;
     }
 }

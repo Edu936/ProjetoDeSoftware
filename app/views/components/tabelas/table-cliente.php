@@ -1,6 +1,4 @@
-<div class="controller">
-
-</div>
+<h1 class="title">Controle de Clientes</h1>
 <div class="table">
     <table>
         <thead>
@@ -18,9 +16,9 @@
                 echo "<td>{$cliente->getCodigo()}</td>";
                 echo "<td>{$cliente->getNome()}</td>";
                 echo "<td>{$cliente->getCPF()}</td>";
-                echo "<td><button >Dados</button></td>";
-                echo "<td><button >Editar</button></td>";
-                echo "<td><button >Excluir</button></td>";
+                echo "<td><button onclick=\"buscarCliente({$cliente->getCodigo()})\">Dados</button></td>";
+                echo "<td><button onclick=\"editarCliente({$cliente->getCodigo()})\">Editar</button></td>";
+                echo "<td><button onclick=\"excluirCliente({$cliente->getCodigo()})\">Excluir</button></td>";
                 echo "</tr>";
             }
             ?>

@@ -1,4 +1,9 @@
 /* Configuração de estilo global dos cards de Formulario */
+section {
+    flex-direction: column;
+}
+
+
 .card {
     width: 50%;
     max-height: 80%;

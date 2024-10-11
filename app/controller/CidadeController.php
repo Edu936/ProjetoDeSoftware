@@ -10,7 +10,7 @@ class CidadeController extends Controller
 {
 
     /**
-     * Este metodo será responsavel por exibir as telas de cadastro
+     * Este metodo será responsavel por exibir a tela de cadastro de cidade
      */
     public function paginaDeCadastro(): void
     {
@@ -29,17 +29,15 @@ class CidadeController extends Controller
     }
 
     /**
-     * Este metodo será responsavel por exibir a telas de controle das cidades cadastradas
+     * Este metodo será responsavel por exibir uma tela que apresentará todas as cidades cadastradas no sistema
      */
     public function paginaDeControle(): void
     {
-        $dados = "";
         $cidades = $this->buscarTodos();
         echo $this->views('controle', [
-            'title' => "Controle de cidade",
             'pag' => "cidade",
             'cidades' => $cidades,
-            'dados' => $dados
+            'title' => "Controle de cidade",
         ]);
     }
 
@@ -56,6 +54,11 @@ class CidadeController extends Controller
             'cidade' => $cidade,
             'title' => "Edição de cidade",
         ]);
+    }
+
+    public function paginaDeDetalhes($codigo):void
+    {
+
     }
 
     public function buscar($value) :void 

@@ -1,7 +1,26 @@
-// Metodos De Busca
-function buscarCidade(value) {
-    window.location.href = `/cidade/buscar/${value}`;
+// Chamada de Pagina de Cidades
+function editarCidade(value) {
+    window.location.href = `/cidade/editar/${value}`;
 }
+
+function excluirCidade(value) {
+    window.location.href = `/cidade/excluir/${value}`;
+}
+
+// Chamada de Pagina de Cliente
+function buscarCliente(value) {
+    window.location.href = `/cliente/buscar/${value}`;
+}
+
+function editarCliente(value) {
+    window.location.href = `/cliente/editar/${value}`;
+}
+
+function excluirCliente(value) {
+    window.location.href = `/cliente/excluir/${value}`;
+}
+
+// Chamda de Pagina de Produto
 
 function buscarProduto(value) {
     window.location.href = `/produto/buscar/${value}`;
@@ -11,9 +30,7 @@ function buscarServico(value) {
     window.location.href = `/servico/buscar/${value}`;
 }
 
-function buscarCliente(value) {
-    window.location.href = `/cliente/buscar/${value}`;
-}
+
 
 function buscarFornecedor(value) {
     window.location.href = `/fornecedor/buscar/${value}`;
@@ -37,9 +54,7 @@ function buscarUsuario(value) {
 }
 
 // Metodos De Edição
-function editarCidade(value) {
-    window.location.href = `/cidade/editar/${value}`;
-}
+
 
 function editarOrcamento(value) {
     window.location.href = `/orcamento/editar/${value}`;
@@ -49,9 +64,7 @@ function editarPedido(value) {
     window.location.href = `/pedido/editar/${value}`;
 }
 
-function editarCliente(value) {
-    window.location.href = `/cliente/editar/${value}`;
-}
+
 
 function editarVeiculo(value) {
     window.location.href = `/veiculo/editar/${value}`;
@@ -70,13 +83,6 @@ function editarFornecedor(value) {
 }
 
 // Medotos de Exclusão
-function excluirCidade(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
-function excluirCidade(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
 
 function excluirProduto(value) {
     window.location.href = `/cidade/excluir/${value}`;
@@ -86,9 +92,7 @@ function excluirServico(value) {
     window.location.href = `/cidade/excluir/${value}`;
 }
 
-function excluirCliente(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
+
 
 function excluirFornecedor(value) {
     window.location.href = `/cidade/excluir/${value}`;
@@ -111,16 +115,6 @@ function selecionarPediod() {
     
 }
 
-function selecionarCidade() {
-    
-}
-
-function selecionarCliente() {
-    const option = document.querySelector('#cliente');
-    if(option.value != "Selecione o Cliente"){
-        window.location.href = `/cliente/buscar/${option.value}`;
-    }
-}
 
 function selecionarVeiculo() {
 
