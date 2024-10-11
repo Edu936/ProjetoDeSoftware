@@ -134,6 +134,8 @@ abstract class Routes
                     '/fornecedor/atualizar/[0-9]+' => 'FornecedorController@atualizar',
                 //Pedido
                     '/pedido/salvar' => 'PedidoController@salvar',
+                    '/pedido/cliente' => 'PedidoController@salvarCliente',
+                    '/pedido/veiculo' => 'PedidoController@salvarVeiculo',
                     '/pedido/atualizar/[0-9]+' => 'PedidoController@atualizar',
                 //Orcamento
                     '/orcamento/salvar' => 'OrcamentoController@salvar',

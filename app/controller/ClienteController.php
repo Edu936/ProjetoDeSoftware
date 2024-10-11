@@ -107,7 +107,7 @@ class ClienteController extends Controller
         return $emailCliente ?? false;
     }
 
-    private function buscarVeiculosCliente(string $key, int $data) : array | bool
+    public function buscarVeiculosCliente(string $key, int $data) : array | bool
     {
         $filters = new Filters();
         $veiculos = new Veiculo();

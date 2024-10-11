@@ -4,6 +4,8 @@ namespace app\controller;
 
 use app\models\Veiculo;
 use app\static\Request;
+use app\database\Filters;
+use app\models\Cliente;
 
 class VeiculoController extends Controller
 {
@@ -89,4 +91,31 @@ class VeiculoController extends Controller
         $veiculo = $veiculo->findby($key, $value);
         return $veiculo ? $veiculo : false;
     }
+
+    public function buscarVeiculo(string $key, mixed $data) : Veiculo | bool
+    {
+        $filters = new Filters();
+        $veiculo = new Veiculo();
+
+        $filters->where($key, '=', $data);
+
+        $veiculo->setfilters($filters);
+        $veiculo = $veiculo->fetchAll();
+
+        return $veiculo[0] ?? false;
+    }
+
+    public function buscarClienteVeiculo(string $key, int $data) : Cliente | bool
+    {
+        $filters = new Filters();
+        $cliente = new Cliente();
+
+        $filters->where($key, '=', $data);
+
+        $cliente->setfilters($filters);
+        $cliente = $cliente->fetchAll($filters);
+
+        return $cliente[0] ?? false;
+    }
+
 }

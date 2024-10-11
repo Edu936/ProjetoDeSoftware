@@ -18,7 +18,21 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "pedido") {
-                require_once('components/cadastros/form-pedido.php');
+                if($this->e($etapa) == "primeira"){
+                    require_once('components/pedido/primeiraEtapa.php');
+                } 
+                else if($this->e($etapa) == "segunda"){
+                    require_once('components/pedido/segundaEtapa.php');
+                }
+                else if($this->e($etapa) == "terceira") {
+                    require_once('components/pedido/terceiraEtapa.php');
+                }
+                else if($this->e($etapa) == "quarta") {
+                    require_once('components/pedido/quartaEtapa.php');
+                }
+                else if($this->e($etapa) == "quinta") {
+                    require_once('components/pedido/quintaEtapa.php');
+                }
             } 
             else if($this->e($pag) == "orcamento") {
                 require_once('components/cadastros/form-orcamento.php');
