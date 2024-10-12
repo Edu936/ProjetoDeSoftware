@@ -10,6 +10,14 @@ function excluirCidade(value) {
 }
 
 /**
+ * Veiculos
+ */
+function buscarVeiculoCliente() {
+    const selecVeiculoCliente = document.querySelector('#cliente');
+    window.location
+}
+
+/**
  * Clientes
  */
 function buscarCliente(value) {

@@ -9,7 +9,7 @@
     </select>
     &nbsp;
     &nbsp;
-    <button onclick="buscarCliente()">Buscar Dados</button>
+    <button onclick="buscarVeiculoCliente()">Buscar Dados</button>
 </div>
 <div class="form-veiculo">
     <?php
