@@ -22,12 +22,16 @@ class PedidoController extends Controller
 
     public function paginaDeCadastro() : void 
     {
+        $servicos = $this->controllerServico->buscarTodos();
+        $produtos = $this->controllerProduto->buscarTodos();
         $clientes = $this->controllerCliente->buscarTodos();
         $this->views('atendimento', [
             'title' => "Estética Automotiva",
             'pag' => "pedido",
             'etapa' => "primeira",
             'clientes' => $clientes,
+            'servicos' => $servicos,
+            'produtos' => $produtos,
         ]);   
     }
 

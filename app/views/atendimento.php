@@ -22,10 +22,10 @@
                 echo "<img src= \"images/Car wash-bro.png\"/>";
             } 
             else if($this->e($pag) == "pedido") {
-                require_once('');
+                require_once('components/cadastros/form-pedido.php');
             } 
             else if($this->e($pag) == "orcamento") {
-                require_once('');
+                require_once('components/cadastros/form-orcamento.php');
             }
             else if ($this->e($pag) == "finalizar") {
                 require_once('components/content/finalizar.php');

@@ -6,6 +6,10 @@ class Filters
 {
     private array $filters = [];
 
+    public function clear()
+    {
+        $this->filters = [];
+    }
 
     public function where (string $field, string $operator, mixed $value, string $logic ='')
     {

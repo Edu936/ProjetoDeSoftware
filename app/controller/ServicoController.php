@@ -100,11 +100,12 @@ class ServicoController extends Controller
         }
     }
 
-    public function buscarFornecedor(string $key, mixed $data) : Servico|bool
+    public function buscarServico(string $key, mixed $data) : Servico|bool
     {
-        $this->_filters->where($key, '=', $data);
+        $this->_filters->where($key, ' = ', $data);
         $this->_servico->setfilters($this->_filters);
         $servico = $this->_servico->fetchAll();
+        $this->_filters->clear();
         return $servico[0] ?? false;
     }
 }
