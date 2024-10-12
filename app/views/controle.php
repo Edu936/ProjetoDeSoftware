@@ -1,8 +1,8 @@
 <?php $this->layout('master', ['title' => $title]) ?>
 
 <?php $this->start('css') ?>
-<link rel="stylesheet" href="/style/master.css">
 <link rel="stylesheet" href="/style/menu.css">
+<link rel="stylesheet" href="/style/master.css">
 <link rel="stylesheet" href="/style/tables.css">
 <link rel="stylesheet" href="/style/detalhes.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -47,7 +47,8 @@
         }
         else if($this->e($pag) == "detalhe produto"){
             require_once('components/detalhes/produto.php');
-        } else if ($this->e($pag) == "finalizar") {
+        } 
+        else if ($this->e($pag) == "finalizar") {
             require_once('components/content/finalizar.php');
         }
         ?>

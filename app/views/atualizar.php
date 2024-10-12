@@ -11,7 +11,6 @@
 
 <?php $this->start('js') ?>
 <script src="/javascript/paginas.js"></script>
-<script src="/javascript/select.js"></script>
 <?php $this->stop() ?>
 
 <div class="content">

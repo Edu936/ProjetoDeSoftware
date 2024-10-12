@@ -1,11 +1,9 @@
-<!----------- Configuração da Pagina de Login ------------>
 <?php $this->layout('master', ['title' => $title]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/login.css">
 <?php $this->stop() ?>
 
-<!--------------- HTML da Pagina de Login ----------------->
 <main>
     <div class="image">
         <h1>Entre<br />E gerencie sua loja!</h1>

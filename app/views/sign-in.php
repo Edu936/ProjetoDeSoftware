@@ -6,7 +6,7 @@
 <?php $this->stop() ?>
 
 <?php $this->start('js') ?>
-<script src="/javascript/sign-in.js"></script>
+<script src="/javascript/paginas.js"></script>
 <?php $this->stop() ?>
 
 <main>
