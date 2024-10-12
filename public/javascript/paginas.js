@@ -14,7 +14,7 @@ function excluirCidade(value) {
  */
 function buscarVeiculoCliente() {
     const selecVeiculoCliente = document.querySelector('#cliente');
-    window.location
+    window.location.href = `/veiculo/buscar/cliente/${selecVeiculoCliente.value}`;
 }
 
 /**

@@ -54,8 +54,9 @@ abstract class Routes
                         '/controle/veiculo' => 'VeiculoController@paginaDeControle',
                         '/cadastro/veiculo' => 'VeiculoController@paginaDeCadastro',
                         '/veiculo/editar/[0-9]+' => 'VeiculoController@paginaDeEdicao',
+                        '/veiculo/buscar/[0-9]+' => 'VeiculoController@paginaDeDetalhe',
+                        '/veiculo/buscar/cliente/[0-9]+' => 'VeiculoController@cadastrar',
                     //Ações
-                        '/veiculo/buscar/[0-9]+' => 'VeiculoController@buscar',
                         '/veiculo/excluir/[0-9]+' => 'VeiculoController@excluir',
                 //Servico
                     //Paginas
