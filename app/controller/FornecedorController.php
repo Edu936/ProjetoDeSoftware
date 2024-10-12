@@ -10,6 +10,15 @@ use app\static\Request;
 
 class FornecedorController extends Controller
 {
+    private $_filters;
+    private $_fornecedor;
+
+    public function __construct()
+    {   
+        $this->_filters = new Filters();
+        $this->_fornecedor = new Fornecedor();
+    }
+
     public function paginaDeCadastro() : void
     {
         $card = "Cadastro De Fornecedor";
@@ -113,5 +122,13 @@ class FornecedorController extends Controller
     {
         $fornecedor = new Fornecedor();
         return $fornecedor->fetchAll();
+    }
+
+    public function buscarFornecedor(string $key, mixed $data) : Fornecedor|bool
+    {
+        $this->_filters->where($key, '=', $data);
+        $this->_fornecedor->setfilters($this->_filters);
+        $fornecedor = $this->_fornecedor->fetchAll();
+        return $fornecedor[0] ?? false;
     }
 }

@@ -21,7 +21,10 @@
     <section class="update">
         <?php
             if($this->e($pag) == "cidade"){
-                require_once ('components/atualizar/cidade.php');
+                require_once('components/atualizar/cidade.php');
+            }
+            else if($this->e($pag) == "produto") {
+                require_once('components/atualizar/produto.php');
             }
         ?>
     </section>

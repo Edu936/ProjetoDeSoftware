@@ -1,6 +1,4 @@
-<div class="controller">
-    
-</div>
+<h1>Controle de Fornecedores</h1>
 <div class="table">
     <table>
         <thead>
@@ -8,10 +6,7 @@
                 <th scope="col">Codigo</th>
                 <th scope="col">Nome</th>
                 <th scope="col">CNPJ</th>
-                <th scope="col">Cidade</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Email</th>
-                <th scope="colgroup" colspan="2">Ações</th>
+                <th scope="colgroup" colspan="3">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -21,11 +16,9 @@
                 echo "<td>{$fornecedor->getCodigo()}</td>";
                 echo "<td>{$fornecedor->getNome()}</td>";
                 echo "<td>{$fornecedor->getCNPJ()}</td>";
-                echo "<td>{$fornecedor->NM_CIDADE}</td>";
-                echo "<td>{$fornecedor->DS_FONE_FORNECEDOR}</td>";
-                echo "<td>{$fornecedor->DS_EMAIL_FORNECEDOR}</td>";
-                echo "<td><button >Editar</button></td>";
-                echo "<td><button >Excluir</button></td>";
+                echo "<td><button onclick=\"editarFornecedor({$fornecedor->getCodigo()})\">Editar</button></td>";
+                echo "<td><button onclick=\"buscarFornecedor({$fornecedor->getCodigo()})\">Detalhes</button></td>";
+                echo "<td><button onclick=\"excluirFornecedor({$fornecedor->getCodigo()})\">Excluir</button></td>";
                 echo "</tr>";
             }
             ?>

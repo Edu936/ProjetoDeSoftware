@@ -2,14 +2,14 @@
 
 namespace app\models;
 
-class ProdutoFornecedor extends Model
+class ProdutoServico extends Model
 {
     private int $CD_PRODUTO;
-    private int $CD_FORNECEDOR;
+    private int $CD_SERVICO;
 
     public function __construct()
     {
-        $this->table = "tb_fornecedor_produto";   
+        $this->table = "tb_servico_produto";   
     }
 
     public function setProduto($codigo) : void
@@ -17,9 +17,9 @@ class ProdutoFornecedor extends Model
         $this->CD_PRODUTO = $codigo;
     }
 
-    public function setFornecedor($codigo) : void
+    public function setServico($codigo) : void
     {
-        $this->CD_FORNECEDOR = $codigo;
+        $this->CD_SERVICO = $codigo;
     }
 
     public function getProduto() : int 
@@ -27,8 +27,8 @@ class ProdutoFornecedor extends Model
         return $this->CD_PRODUTO;
     }
 
-    public function getFornecedor() : int 
+    public function getServico() : int 
     {
-        return $this->CD_FORNECEDOR;    
+        return $this->CD_SERVICO;    
     }
 }

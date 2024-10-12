@@ -70,8 +70,8 @@ abstract class Routes
                         '/controle/produto' => 'ProdutoController@paginaDeControle',
                         '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
                         '/produto/editar/[0-9]+' => 'ProdutoController@paginaDeEdicao',
+                        '/produto/buscar/[0-9]+' => 'ProdutoController@paginaDeDetalhe',       
                     //Ações
-                        '/produto/buscar/[0-9]+' => 'ProdutoController@buscar',       
                         '/produto/excluir/[0-9]+' => 'ProdutoController@excluir',
                 //Usuario
                     //Paginas

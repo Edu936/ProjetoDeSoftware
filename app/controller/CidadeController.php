@@ -14,10 +14,10 @@ class CidadeController extends Controller
     function __construct()
     {
         $this->_cidade = new Cidade();
-        $this->_filters = new Filters;
+        $this->_filters = new Filters();
     }
 
-    public function paginaDeCadastro(): void
+    public function paginaDeCadastro() : void
     {
         $this->views('cadastro', [
             'title' => "Cadastro de cidade",
@@ -25,7 +25,7 @@ class CidadeController extends Controller
         ]);
     }
 
-    public function paginaDeControle(): void
+    public function paginaDeControle() : void
     {
         $cidades = $this->buscarTodos();
         $this->views('controle', [
@@ -35,9 +35,9 @@ class CidadeController extends Controller
         ]);
     }
 
-    public function paginaDeEdicao($codigo): void
+    public function paginaDeEdicao($codigo) : void
     {
-        $cidade = $this->_cidade->findby("CD_CIDADE", $codigo[0]);
+        $cidade = $this->buscarCidade("CD_CIDADE", $codigo[0]);
         $this->views('atualizar', [
             'title' => "Edição de cidade",
             'pag' => "cidade",
@@ -46,7 +46,7 @@ class CidadeController extends Controller
         ]);
     }
 
-    public function salvar(): void
+    public function salvar() : void
     {
         $request = Request::all();
         $filtro = $this->buscarCidade('NM_CIDADE', $request['NM_CIDADE']);
@@ -80,7 +80,7 @@ class CidadeController extends Controller
         }
     }
 
-    public function atualizar($codigo): void
+    public function atualizar($codigo) : void
     {
         $request = Request::all();
         $filtro = $this->buscarCidade('NM_CIDADE', $codigo[0]);
@@ -116,7 +116,7 @@ class CidadeController extends Controller
         }
     }
 
-    public function excluir($codigo): void
+    public function excluir($codigo) : void
     {
         $cidade = $this->_cidade->delete('CD_CIDADE', $codigo[0]);
         if (!$cidade) {
@@ -138,13 +138,12 @@ class CidadeController extends Controller
         }
     }
 
-    public function buscarTodos(): array
+    public function buscarTodos() : array
     {
-        $cidades = $this->_cidade->fetchAll();
-        return $cidades;
+        return $this->_cidade->fetchAll();
     }
 
-    public function buscarCidade(string $key, mixed $data): Cidade | bool
+    public function buscarCidade(string $key, mixed $data) : Cidade | bool
     {
         $this->_filters->where($key, '=', $data);
         $this->_cidade->setfilters($this->_filters);

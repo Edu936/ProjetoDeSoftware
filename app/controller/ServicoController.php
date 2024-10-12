@@ -2,11 +2,20 @@
 
 namespace app\controller;
 
-use app\models\Servico;
 use app\static\Request;
+use app\models\Servico;
+use app\database\Filters;
 
 class ServicoController extends Controller
 {
+    private $_filters;
+    private $_servico;
+
+    function __construct()
+    {
+        $this->_filters = new Filters();
+        $this->_servico = new Servico();
+    }
 
     public function paginaDeCadastro() : void
     {
@@ -89,5 +98,13 @@ class ServicoController extends Controller
                 'link' => '/cadastro/servico',
             ]);
         }
+    }
+
+    public function buscarFornecedor(string $key, mixed $data) : Servico|bool
+    {
+        $this->_filters->where($key, '=', $data);
+        $this->_servico->setfilters($this->_filters);
+        $servico = $this->_servico->fetchAll();
+        return $servico[0] ?? false;
     }
 }

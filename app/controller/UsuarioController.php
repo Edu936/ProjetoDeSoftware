@@ -14,7 +14,7 @@ class UsuarioController extends Controller
 {
     public function paginaDeControle($codigo): void
     {
-        $dataUsuario = $this->buscarUsuario('CD_USUARIO', $codigo[0]);
+        $dataUsuario = $this->buscarUsuario('CD_USUARIO', (int)$codigo[0]);
         $emailUsuario = $this->buscarEmailsUsuario('CD_USUARIO', $dataUsuario->getCodigo());
         $cidadeUsuario = $this->buscarCidadeUsuario('CD_CIDADE', $dataUsuario->getCidade());
         $telefoneUsuario = $this->buscarTelefonesUsuario('CD_USUARIO', $dataUsuario->getCodigo());
@@ -306,7 +306,6 @@ class UsuarioController extends Controller
 
         $usuario->setfilters($filters);
         $usuario = $usuario->fetchAll();
-
         return $usuario[0] ?? false;
     }
 

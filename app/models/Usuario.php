@@ -14,7 +14,7 @@ class Usuario extends Model
     private string $DS_RUA;
     private string $DS_BAIRRO;
     private string $DS_CEP;
-    private mixed $CD_CIDADE;
+    private ?int $CD_CIDADE;
 
     public function __construct()
     {
@@ -66,7 +66,7 @@ class Usuario extends Model
     }
 
     //Cidade
-    public function getCidade(): int
+    public function getCidade(): ?int
     {
         return $this->CD_CIDADE;
     }
