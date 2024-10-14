@@ -86,6 +86,7 @@ abstract class Routes
                         '/controle/orcamento' => 'OrcamentoController@paginaDeControle',
                         '/cadastro/orcamento' => 'OrcamentoController@paginaDeCadastro',
                         '/orcamento/editar/[0-9]+' => 'OrcamentoController@paginaDeEdicao',
+                        '/orcamento/detalhe/[0-9]+' => 'OrcamentoController@paginaDeDetalhe',
                         '/orcamento/buscar/[0-9]+' => 'OrcamentoController@exibirOrcamentos',
                     //Ações
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
@@ -95,6 +96,7 @@ abstract class Routes
                         '/controle/pedido' => 'PedidoController@paginaDeControle',
                         '/pedido/editar/[0-9]+' => 'PedidoController@paginaDeEdicao', 
                         '/pedido/buscar/cliente/[0-9]+' => 'PedidoController@segundaEtapa',                     
+                        '/pedido/orcamentos/cliente/[0-9]+' => 'PedidoController@terceiraEtapa',
                     //Ações
                         '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
                         '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',

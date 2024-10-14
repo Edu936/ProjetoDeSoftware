@@ -8,6 +8,7 @@ use app\models\OrcamentoProduto;
 use app\models\OrcamentoServico;
 use app\models\Servico;
 use app\static\Request;
+use League\Plates\Template\Func;
 
 class OrcamentoController extends Controller
 {
@@ -69,7 +70,25 @@ class OrcamentoController extends Controller
 
     public function paginaDeEdicao($codigo) : void 
     {
-            
+        $orcamento = $this->buscarOrcamento('CD_ORCAMENTO',$codigo[0]);
+        dd($orcamento);       
+    }
+
+    public function paginaDeDetalhe($codigo) : void
+    {
+        $orcamento = $this->buscarOrcamento('CD_ORCAMENTO',$codigo[0]);
+        $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $orcamento->getCliente());
+        $servicos = $this->buscarServicosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $produtos = $this->buscarProdutosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "detalhe orcamento",
+            'cliente'=> $cliente,
+            'orcamento' => $orcamento,
+            'servicos' => $servicos,
+            'produtos' => $produtos,
+        ]);
+
     }
 
     public function salvar() {
@@ -132,6 +151,15 @@ class OrcamentoController extends Controller
         return $valor;
     }
 
+    public function buscarOrcamento(string $key, mixed $data) : Orcamento
+    {
+        $this->_filters->where($key, '=', $data);
+        $this->_orcamento->setfilters($this->_filters);
+        $orcamento = $this->_orcamento->fetchAll();
+        $this->_filters->clear();
+        return $orcamento[0];
+    }
+
     public function buscarOrcamentos(string $key, mixed $data) : array|bool
     {
         $this->_filters->where($key, '=', $data);
@@ -148,7 +176,33 @@ class OrcamentoController extends Controller
 
         $this->_orcamento->setfilters($this->_filters);
         $orcamento = $this->_orcamento->fetchAll();
-
+        $this->_filters->clear();
         return $orcamento[0];
+    }
+
+    public function buscarServicosAcossiados(string $key, mixed $data) : array|bool
+    {
+        $servicos = [];
+        $this->_filters->where($key, '=', $data);
+        $this->_orcamentoServico->setfilters($this->_filters);
+        $servicosAssociados = $this->_orcamentoServico->fetchAll();
+        $this->_filters->clear();
+        foreach($servicosAssociados as $s) {
+            $servicos [] = $this->controllerServico->buscarServico('CD_SERVICO', $s->getServico());
+        }
+        return $servicos != [] ? $servicos : false;
+    }
+
+    public function buscarProdutosAcossiados(string $key, mixed $data) : array|bool
+    {
+        $produtos = [];
+        $this->_filters->where($key, '=', $data);
+        $this->_orcamentoProduto->setfilters($this->_filters);
+        $produtosAssociados  = $this->_orcamentoProduto->fetchAll();
+        $this->_filters->clear();
+        foreach($produtosAssociados as $p){
+            $produtos [] = $this->controllerProduto->buscarProduto('CD_PRODUTO', $p->getProduto());
+        }
+        return $produtos != [] ? $produtos : false;
     }
 }

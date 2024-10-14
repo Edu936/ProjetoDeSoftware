@@ -106,6 +106,10 @@ function buscarClientePedido() {
     }
 }
 
+function OrcamentosCliente(value) {
+    window.location.href = `/pedido/orcamentos/cliente/${value}`;
+}
+
 /**
  * Orcamentos
  */
@@ -114,6 +118,10 @@ function buscarOrcamentosCliente() {
     if(selectCliente.value != "null") {
         window.location.href = `/orcamento/buscar/${selectCliente.value}`;
     }
+}
+
+function detalheOrcamento(value) {
+    window.location.href = `/orcamento/detalhe/${value}`;
 }
 
 /**

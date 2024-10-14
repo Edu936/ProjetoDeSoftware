@@ -1,5 +1,5 @@
 <div class="action-pedido">
-    <button class="option-pedido">Buscar orçamento do cliente</button>
+    <button class="option-pedido" onclick="OrcamentosCliente('<?=$cliente->getCodigo()?>')">Buscar orçamento do cliente</button>
     &nbsp;
     &nbsp;
     <button class="option-pedido">Criar um pedido novo</button>

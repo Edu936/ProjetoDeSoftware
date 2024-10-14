@@ -49,6 +49,9 @@
         else if($this->e($pag) == "detalhe produto"){
             require_once('components/detalhes/produto.php');
         } 
+        else if($this->e($pag) == "detalhe orcamento"){
+            require_once('components/detalhes/orcamento.php');
+        } 
         else if ($this->e($pag) == "finalizar") {
             require_once('components/content/finalizar.php');
         }

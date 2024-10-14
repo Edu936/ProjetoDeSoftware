@@ -24,21 +24,9 @@
             } 
             else if($etapa == "segunda") {
                 require_once('pedidos-Etapas/segunda.php');
-                // echo "<div class=\"action-pedido\">";
-                // echo "<button class=\"option-pedido\">Buscar orçamento do cliente</button>";
-                // echo "&nbsp;";
-                // echo "&nbsp;";
-                // echo "<button class=\"option-pedido\">Criar um pedido novo</button>";
-                // echo "&nbsp;";
-                // echo "&nbsp;";
-                // echo "<p class=\"detalhe\">Nome: {$cliente->getNome()} &nbsp; CPF: {}</p>";
-                // echo "</div>";
-                // echo "<div class=\"form-pedido\">";
-                // echo "<img src=\"/images/Car wash-rafiki.png\">";
-                // echo "</div>";
             }
             else if($etapa == "terçeira") {
-
+                require_once('pedidos-Etapas/terceira.php');
             }
         ?>
     </div>
