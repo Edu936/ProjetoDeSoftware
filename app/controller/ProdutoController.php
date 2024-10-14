@@ -122,54 +122,81 @@ class ProdutoController extends Controller
     {
     }
 
+    public function excluir($codigo) : void
+    {
+        $result = $this->_produto->delete('CD_PRODUTO',$codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => "Exclusão de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "O produto foi apagado!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Exclusão de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O produto não pode ser apagado!",
+                'link' => '/controle/produto',
+            ]);
+        }
+    }
+
+    public function salvarFornecedorProduto($codigo) : bool
+    {
+        $request = Request::input('CD_FORNECEDOR');
+        return $this->_produtoFornecedor->create([
+            'CD_PRODUTO' => $codigo,
+            'CD_FORNECEDOR' => $request
+        ]);
+    }
+
     public function salvar()
     {
-        // $request = Request::exception(['CD_FORNECEDOR']);
-        // $filtro = $this->buscarProduto('NM_PRODUTO', $request['NM_PRODUTO']);
-        // $produto = new Produto();
-        // if ($filtro->getNome() != $request['NM_PRODUTO']) {
-        //     $result = $produto->create($request);
-        //     if (!$result) {
-        //         $this->views('cadastro', [
-        //             'title' => "Cadastros Produtos",
-        //             'pag' => "finalizar",
-        //             'imagem' => "/images/Forgot password-bro.png",
-        //             'mensagem' => "Não foi possivel cadastrar o produto {$request['NM_FORNECEDOR']}!",
-        //             'link' => '/cadastro/produto',
-        //         ]);
-        //     } else {
-        //         $produtoCadastrado = $this->buscarPorNome($request['NM_PRODUTO']);
-        //         $request = Request::input('CD_FORNECEDOR');
-        //         $campos = ['CD_FORNECEDOR' => (int)$request, 'CD_PRODUTO' => $produtoCadastrado->getCodigo()];
-        //         $Pro_For = new ProdutoFornecedor();
-        //         $result = $Pro_For->create($campos);
-        //         if (!$result) {
-        //             $this->views('cadastro', [
-        //                 'title' => "Cadastros Produtos",
-        //                 'pag' => "finalizar",
-        //                 'imagem' => "/images/Forgot password-bro.png",
-        //                 'mensagem' => "O cadastro do produto foi realizado, mas não foi possivel associar o fornecedor ao produto!",
-        //                 'link' => '/cadastro/produto',
-        //             ]);
-        //         } else {
-        //             $this->views('cadastro', [
-        //                 'title' => "Cadastros Produtos",
-        //                 'pag' => "finalizar",
-        //                 'imagem' => "/images/Create-amico.png",
-        //                 'mensagem' => "O produto {$produtoCadastrado->getNome()} foi cadastrado com sucesso!",
-        //                 'link' => '/cadastro/produto',
-        //             ]);
-        //         }
-        //     }
-        // } else {
-        //     $this->views('cadastro', [
-        //         'title' => "Cadastro Produtos",
-        //         'pag' => "finalizar",
-        //         'imagem' => "/images/Forgot password-bro.png",
-        //         'mensagem' => "Esse produto já foi cadastrado!",
-        //         'link' => '/cadastro/produto',
-        //     ]);
-        // }
+        $request = Request::exception(['CD_FORNECEDOR']);
+        $filtro = $this->buscarProduto('NM_PRODUTO', $request['NM_PRODUTO']);
+        if (!$filtro) {
+            $result = $this->_produto->create($request);
+            if (!$result) {
+                $this->views('cadastro', [
+                    'title' => "Cadastros Produtos",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Não foi possivel cadastrar o produto {$request['NM_FORNECEDOR']}!",
+                    'link' => '/cadastro/produto',
+                ]);
+            } else {
+                $produtoCadastrado = $this->buscarProduto('NM_PRODUTO',$request['NM_PRODUTO']);
+                $fornecedor = $this->salvarFornecedorProduto($produtoCadastrado->getCodigo());
+                if (!$fornecedor) {
+                    $this->views('cadastro', [
+                        'title' => "Cadastros Produtos",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Forgot password-bro.png",
+                        'mensagem' => "O cadastro do produto foi realizado, mas não foi possivel associar o fornecedor ao produto!",
+                        'link' => '/cadastro/produto',
+                    ]);
+                } else {
+                    $this->views('cadastro', [
+                        'title' => "Cadastros Produtos",
+                        'pag' => "finalizar",
+                        'imagem' => "/images/Create-amico.png",
+                        'mensagem' => "O produto {$produtoCadastrado->getNome()} foi cadastrado com sucesso!",
+                        'link' => '/cadastro/produto',
+                    ]);
+                }
+            }
+        } else {
+            $this->views('cadastro', [
+                'title' => "Cadastro Produtos",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Esse produto já foi cadastrado!",
+                'link' => '/cadastro/produto',
+            ]);
+        }
     }
 
     public function buscarTodos() : array
@@ -182,6 +209,7 @@ class ProdutoController extends Controller
         $this->_filters->where($key, '=', $data);
         $this->_produto->setfilters($this->_filters);
         $produto = $this->_produto->fetchAll();
+        $this->_filters->clear();
         return $produto[0] ?? false;
     }
 
