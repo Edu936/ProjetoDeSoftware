@@ -27,6 +27,11 @@ class PedidoController extends Controller
         $this->controllerOrcamento = new OrcamentoController();
     }
 
+    public function paginaDeControle(): void 
+    {
+        
+    }
+
     public function primeiraEtapa() : void 
     {
         $clientes = $this->controllerCliente->buscarTodos();

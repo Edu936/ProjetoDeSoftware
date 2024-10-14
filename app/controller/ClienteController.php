@@ -68,7 +68,14 @@ class ClienteController extends Controller
         ]);
     }
 
-    public function paginaDeDetalhe($codigo): void {}
+    public function paginaDeDetalhe($codigo): void 
+    {
+        $this->views('controle', [
+            'title' => 'Dados Do Cliente',
+            'pag' => 'detalhe cliente',
+            'link' => '/controle/cliente'
+        ]);
+    }
 
     public function buscarTodos(): array
     {
