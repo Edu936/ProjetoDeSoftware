@@ -50,12 +50,8 @@ function excluirProduto(value) {
 /**
  * Serviços
  */
-function buscarServico(value) {
-    window.location.href = `/servico/buscar/${value}`;
-}
-
 function editarServico(value) {
-    window.location.href = `/servico/buscar/${value}`;
+    window.location.href = `/servico/editar/${value}`;
 }
 
 function excluirServico(value) {

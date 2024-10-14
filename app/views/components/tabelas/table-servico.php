@@ -6,7 +6,7 @@
                 <th scope="col">Codigo</th>
                 <th scope="col">Serviços</th>
                 <th scope="col">Valor</th>
-                <th scope="colgroup" colspan="3">Ações</th>
+                <th scope="colgroup" colspan="2">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +17,6 @@
                 echo "<td class=\"dadoCidade\">{$servico->getNome()}</td>";
                 echo "<td class=\"dadoCidade\">R\$ {$servico->getValor()},00</td>";
                 echo "<td><button onclick=\"editarServico({$servico->getCodigo()})\">Editar</button></td>";
-                echo "<td><button onclick=\"buscarServico({$servico->getCodigo()})\">Detalhes</button></td>";
                 echo "<td><button onclick=\"excluirServico({$servico->getCodigo()})\">Excluir</button></td>";
                 echo "</tr>";
             }

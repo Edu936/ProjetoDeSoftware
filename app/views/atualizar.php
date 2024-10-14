@@ -28,6 +28,9 @@
             else if($this->e($pag) == "cliente") {
                 require_once('components/atualizar/cliente.php');
             }
+            else if($this->e($pag) == "servico") {
+                require_once('components/atualizar/servico.php');
+            }
         ?>
     </section>
 </div>
