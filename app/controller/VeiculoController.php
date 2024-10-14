@@ -132,4 +132,13 @@ class VeiculoController extends Controller
         return $cliente[0] ?? false;
     }
 
+    public function buscarVeiculoDoCliente(string $key, mixed $data) : array | bool
+    {
+        $this->_filters->where($key, '=', $data);
+
+        $this->_veiculo->setfilters($this->_filters);
+        $veiculo = $this->_veiculo->fetchAll();
+
+        return $veiculo ?? false;
+    }
 }

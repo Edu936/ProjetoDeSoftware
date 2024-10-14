@@ -32,6 +32,7 @@ fieldset {
     margin: 5px 0px 5px 0px;
     border: 1.5px solid rgb(177, 114, 206);
     border-radius: 8px;
+    padding-bottom: 0px;
 }
 
 legend {

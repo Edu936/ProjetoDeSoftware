@@ -13,18 +13,30 @@
         <fieldset>
             <legend>Serviços acossiados</legend>
             <?php
-            foreach ($servicos as $servico) {
-                echo "<p>{$servico->getNome()}</p><br/>";
+            if($servicos){
+                foreach ($servicos as $servico) {
+                    echo "<p>{$servico->getNome()}</p><br/>";
+                }
+            } else {
+                echo "<p>Não a serviços associados a esse orçamento.</p>";
             }
             ?>
         </fieldset>
         <fieldset>
             <legend>Produtos acossiados</legend>
             <?php
-            foreach ($produtos as $produto) {
-                echo "<p>{$produto->getNome()}</p><br/>";
+            if($produtos) {
+                foreach ($produtos as $produto) {
+                    echo "<p>{$produto->getNome()}</p><br/>";
+                }
+            } else {
+                echo "<p>Não a produtos associados a esse orçamento.</p>";
             }
             ?>
         </fieldset>
+    </div>
+    <div class="card-details-option">
+        <button>Associar Serviço</button>
+        <button>Associar Produto</button>
     </div>
 </div>

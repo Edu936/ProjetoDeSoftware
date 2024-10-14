@@ -69,17 +69,47 @@ class PedidoController extends Controller
     {
         $orcamento = $this->controllerOrcamento->buscarOrcamento('CD_ORCAMENTO',$codigo[0]);
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $orcamento->getCliente());
-        $servicos = $this->controllerOrcamento->buscarServicosAcossiados('CD_ORCAMENTO', $codigo[0]);
-        $produtos = $this->controllerOrcamento->buscarProdutosAcossiados('CD_ORCAMENTO', $codigo[0]);
-        $data = date('d/m/Y');
-        dd($data);
-        $pedido = new Pedido();
-
-
+        $veiculos = $this->controllerVeiculo->buscarVeiculoDoCliente('CD_CLIENTE', $cliente->getCodigo());
+        $servicosSelecionados = $this->controllerOrcamento->buscarServicosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $produtosSelecionados = $this->controllerOrcamento->buscarProdutosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $produtos = $this->controllerProduto->buscarTodos();
+        $servicos = $this->controllerServico->buscarTodos();
+        $this->views('atendimento', [
+            'title' => "Cadastro de Pedido",
+            'pag' => "pedido",
+            'etapa' => "quarta",
+            'cliente' => $cliente,
+            'veiculos' => $veiculos,
+            'servicosSelect' => $servicosSelecionados,
+            'produtosSelect' => $produtosSelecionados,
+            'produtos' => $produtos,
+            'servicos' => $servicos,
+            'link' => "/pedido/buscar/cliente/{$cliente->getCodigo()}",
+        ]);
+        
     }
 
-    public function salvar() : void 
+    private function precificarPedido(array $produtos, array $servicos) : float 
     {
-       
+        $valor = 0;
+        foreach($produtos as $produto) {
+            if($produto != "") {
+                $p = $this->controllerProduto->buscarProduto('CD_PRODUTO', (int)$produto);
+                $valor += $p->getValor();
+            }
+        }
+        foreach($servicos as $servico) {
+            if($servico != "") {
+                $s = $this->controllerServico->buscarServico('CD_SERVICO', (int)$servico);
+                $valor += $s->getValor();
+            }
+        }
+        return $valor;
+    }
+
+    public function salvar($codigo) : void 
+    {
+        $request = Request::input('CD_PRODUTO');
+        
     }
 }

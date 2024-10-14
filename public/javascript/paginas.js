@@ -110,6 +110,10 @@ function OrcamentosCliente(value) {
     window.location.href = `/pedido/orcamentos/cliente/${value}`;
 }
 
+function criarPedidoOrcamento(value) {
+    window.location.href = `/pedido/orcamentos/salvar/${value}`;
+}
+
 /**
  * Orcamentos
  */

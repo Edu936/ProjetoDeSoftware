@@ -204,7 +204,7 @@ class ProdutoController extends Controller
         $this->_produtoServico->setfilters($this->_filters);
         $produtoServico = $this->_produtoServico->fetchAll();
         foreach($produtoServico as $value) {
-            $produtos [] = $this->_controllerServico->buscarFornecedor('CD_FORNECEDOR', $value->getFornecedor());
+            $produtos [] = $this->_controllerServico->buscarServico('CD_FORNECEDOR', $value->getFornecedor());
         }
         return $produtos ?? false;
     }

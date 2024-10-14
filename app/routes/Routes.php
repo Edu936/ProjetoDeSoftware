@@ -92,11 +92,12 @@ abstract class Routes
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
                     //Paginas
+                    '/controle/pedido' => 'PedidoController@paginaDeControle',
+                    '/pedido/editar/[0-9]+' => 'PedidoController@paginaDeEdicao', 
                         '/cadastro/pedido' => 'PedidoController@primeiraEtapa',
-                        '/controle/pedido' => 'PedidoController@paginaDeControle',
-                        '/pedido/editar/[0-9]+' => 'PedidoController@paginaDeEdicao', 
                         '/pedido/buscar/cliente/[0-9]+' => 'PedidoController@segundaEtapa',                     
                         '/pedido/orcamentos/cliente/[0-9]+' => 'PedidoController@terceiraEtapa',
+                        '/pedido/orcamentos/salvar/[0-9]+' => 'PedidoController@quartaEtapa', 
                     //Ações
                         '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
                         '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',
@@ -137,7 +138,7 @@ abstract class Routes
                     '/fornecedor/salvar' => 'FornecedorController@salvar',
                     '/fornecedor/atualizar/[0-9]+' => 'FornecedorController@atualizar',
                 //Pedido
-                    '/pedido/salvar' => 'PedidoController@salvar',
+                    '/pedido/salvar/[0-9]+' => 'PedidoController@salvar',
                     '/pedido/cliente' => 'PedidoController@salvarCliente',
                     '/pedido/veiculo' => 'PedidoController@salvarVeiculo',
                     '/pedido/atualizar/[0-9]+' => 'PedidoController@atualizar',
