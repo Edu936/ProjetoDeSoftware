@@ -7,7 +7,7 @@ use DateTime;
 class Orcamento extends Model
 {
     private int $CD_ORCAMENTO;
-    private mixed $DT_ORCAMENTO;
+    private $DT_ORCAMENTO;
     private float $VL_ORCAMENTO;
     private int $CD_CLIENTE;
 
@@ -30,7 +30,8 @@ class Orcamento extends Model
     //Data do orçamento
     public function getData(): mixed
     {
-        return $this->DT_ORCAMENTO;
+        $data_formatada = new DateTime($this->DT_ORCAMENTO);
+        return $data_formatada->format('d/m/Y');
     }
 
     public function setData(string $data): void

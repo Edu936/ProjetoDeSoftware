@@ -86,8 +86,8 @@ abstract class Routes
                         '/controle/orcamento' => 'OrcamentoController@paginaDeControle',
                         '/cadastro/orcamento' => 'OrcamentoController@paginaDeCadastro',
                         '/orcamento/editar/[0-9]+' => 'OrcamentoController@paginaDeEdicao',
+                        '/orcamento/buscar/[0-9]+' => 'OrcamentoController@exibirOrcamentos',
                     //Ações
-                        '/orcamento/buscar/[0-9]+' => 'OrcamentoController@buscar',
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
                     //Paginas

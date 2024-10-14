@@ -1,6 +1,7 @@
 <?php $this->layout('master', ['title' => $title]) ?>
 
 <?php $this->start('css') ?>
+<link rel="stylesheet" href="/style/card.css">
 <link rel="stylesheet" href="/style/menu.css">
 <link rel="stylesheet" href="/style/master.css">
 <link rel="stylesheet" href="/style/tables.css">

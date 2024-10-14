@@ -46,9 +46,24 @@ class OrcamentoController extends Controller
 
     public function paginaDeControle() : void
     {
+        $clientes = $this->controllerCliente->buscarTodos();
         $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "orcamento",
+            'clientes' => $clientes,
+            'orcamentos' => false,
+            'link' => '/controle',
+        ]);
+    }
+
+    public function exibirOrcamentos($codigo) : void
+    {
+        $orcamentos = $this->buscarOrcamentos('CD_CLIENTE', $codigo[0]);
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "orcamento",
+            'orcamentos' => $orcamentos,
+            'link' => '/controle/orcamento'
         ]);
     }
 
@@ -117,7 +132,16 @@ class OrcamentoController extends Controller
         return $valor;
     }
 
-    private function buscarUltimoRegistro() : Orcamento 
+    public function buscarOrcamentos(string $key, mixed $data) : array|bool
+    {
+        $this->_filters->where($key, '=', $data);
+        $this->_orcamento->setfilters($this->_filters);
+        $orcamentos = $this->_orcamento->fetchAll();
+        $this->_filters->clear();
+        return $orcamentos ?? false;
+    }
+
+    public function buscarUltimoRegistro() : Orcamento 
     {
         $this->_filters->orderBy('CD_ORCAMENTO', 'DESC');
         $this->_filters->limit(1);
