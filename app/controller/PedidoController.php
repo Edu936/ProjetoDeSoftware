@@ -3,7 +3,6 @@
 namespace app\controller;
 
 use app\database\Filters;
-use app\models\Cliente;
 use app\models\Pedido;
 use app\static\Request;
 

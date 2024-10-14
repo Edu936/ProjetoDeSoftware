@@ -14,11 +14,31 @@ use app\models\TelefoneCliente;
 
 class ClienteController extends Controller
 {
+    private $_pedido; 
+    private $_cliente;
+    private $_veiculo;
+    private $_filters;
+    private $_orcamento;
+    private $_emailCliente;     
+    private $_telefoneCliente;
+    private $controllerCidade;
+
+    public function __construct()
+    {
+        $this->_pedido = new Pedido();
+        $this->_cliente = new Cliente();
+        $this->_veiculo = new Veiculo();
+        $this->_filters = new Filters();
+        $this->_orcamento =  new Orcamento();
+        $this->_emailCliente = new EmailCliente();
+        $this->_telefoneCliente = new TelefoneCliente();
+        $this->controllerCidade = new CidadeController();
+    }
+
     public function paginaDeCadastro() : void
     {
-        $cidade = new Cidade();
-        $cidades = $cidade->fetchAll();
-        echo $this->views('cadastro', [
+        $cidades = $this->controllerCidade->buscarTodos();
+        $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "cliente",
             'cidades' => $cidades,
@@ -28,7 +48,7 @@ class ClienteController extends Controller
     public function paginaDeControle() : void
     {
         $clientes = $this->buscarTodos();
-        echo $this->views('controle', [
+        $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "cliente",
             'clientes' => $clientes,
@@ -45,114 +65,76 @@ class ClienteController extends Controller
 
     }
 
-    // Metodos de Busca
     public function buscarTodos() : array
     {
-        $cliente = new Cliente();
-
-        $clientes = $cliente->fetchAll();
-
+        $clientes = $this->_cliente->fetchAll();
         return $clientes;
     }
 
     public function buscarCliente(string $key, mixed $data) : Cliente | bool
     {
-        $filters = new Filters();
-        $cliente = new Cliente();
-
-        $filters->where($key, '=', $data);
-
-        $cliente->setfilters($filters);
-        $cliente = $cliente->fetchAll();
-
+        $this->_filters->where($key, '=', $data);
+        $this->_cliente->setfilters($this->_filters);
+        $cliente = $this->_cliente->fetchAll();
+        $this->_filters->clear();
         return $cliente[0] ?? false;
     }
 
-    private function buscarCidadeCliente(string $key, int $data) : Cidade | bool
+    public function buscarCidadeCliente(string $key, int $data) : Cidade | bool
     {
-        $filters = new Filters();
-        $cidade = new Cidade();
-
-        $filters->where($key, '=', $data);
-
-        $cidade->setfilters($filters);
-        $cidade = $cidade->fetchAll($filters);
-
-        return $cidade[0] ?? false;
+        return $this->controllerCidade->buscarCidade($key,$data);
     }
 
-    private function buscarTelefonesCliente(string $key, int $data): array | bool
+    public function buscarTelefonesCliente(string $key, int $data): array | bool
     {
-        $filters = new Filters();
-        $telefoneCliente = new TelefoneCliente();
-
-        $filters->where($key, '=', $data);
-
-        $telefoneCliente->setfilters($filters);
-        $telefoneCliente = $telefoneCliente->fetchAll();
-
-        return $telefoneCliente ?? false;
+        $this->_filters->where($key, '=', $data);
+        $this->_telefoneCliente->setfilters($this->_filters);
+        $telefonesCliente = $this->_telefoneCliente->fetchAll();
+        $this->_filters->clear();
+        return $telefonesCliente ?? false;
     }
 
-    private function buscarEmailsCliente(string $key, int $data): array | bool
+    public function buscarEmailsCliente(string $key, int $data): array | bool
     {
-        $filters = new Filters();
-        $emailCliente= new EmailCliente();
-
-        $filters->where($key, '=', $data);
-
-        $emailCliente->setfilters($filters);
-        $emailCliente = $emailCliente->fetchAll();
-
-        return $emailCliente ?? false;
+        $this->_filters->where($key, '=', $data);
+        $this->_emailCliente->setfilters($this->_filters);
+        $emailsCliente = $this->_emailCliente->fetchAll();
+        $this->_filters->clear();
+        return $emailsCliente ?? false;
     }
 
     public function buscarVeiculosCliente(string $key, int $data) : array | bool
     {
-        $filters = new Filters();
-        $veiculos = new Veiculo();
-
-        $filters->where($key, '=', $data);
-
-        $veiculos->setfilters($filters);
-        $veiculos = $veiculos->fetchAll();
-
+        $this->_filters->where($key, '=', $data);
+        $this->_veiculo->setfilters($this->_filters);
+        $veiculos = $this->_veiculo->fetchAll();
+        $this->_filters->clear();
         return $veiculos ?? false;
     }
 
-    private function buscarOrcamentosCliente(string $key, int $data) : array | bool
+    public function buscarOrcamentosCliente(string $key, int $data) : array | bool
     {
-        $filters = new Filters();
-        $orcamentos = new Orcamento();
-
-        $filters->where($key, '=', $data);
-
-        $orcamentos->setfilters($filters);
-        $orcamentos = $orcamentos->fetchAll();
-
+        $this->_filters->where($key, '=', $data);
+        $this->_orcamento->setfilters($this->_filters);
+        $orcamentos = $this->_orcamento->fetchAll();
+        $this->_filters->clear();
         return $orcamentos ?? false;
     }
 
-    private function buscarPedidosCliente(string $key, int $data) : array | bool
+    public function buscarPedidosCliente(string $key, int $data) : array | bool
     {
-        $filters = new Filters();
-        $pedidos = new Pedido();
-
-        $filters->where($key, '=', $data);
-
-        $pedidos->setfilters($filters);
-        $pedidos = $pedidos->fetchAll();
-
+        $this->_filters->where($key, '=', $data);
+        $this->_pedido->setfilters($this->_filters);
+        $pedidos = $this->_pedido->fetchAll();
+        $this->_filters->clear();
         return $pedidos ?? false;
     }
 
-    // excluir
     public function excluir($codigo) : void 
     {
-        $cliente = new Cliente();
         $filtro = $this->buscarPedidosCliente('CD_CLIENTE', $codigo[0]);
         if($filtro == []){
-            $result = $cliente->delete('CD_CLIENTE', $codigo[0]);
+            $result = $this->_cliente->delete('CD_CLIENTE', $codigo[0]);
             if($result){
                 $this->views('configuracao', [
                     'title' => "Exclusao de cliente",
@@ -182,7 +164,6 @@ class ClienteController extends Controller
         }    
     }
 
-    // atulaizar
     public function atualizar($codigo) : void 
     {
         
