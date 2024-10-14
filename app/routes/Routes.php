@@ -91,9 +91,10 @@ abstract class Routes
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
                     //Paginas
+                        '/cadastro/pedido' => 'PedidoController@primeiraEtapa',
                         '/controle/pedido' => 'PedidoController@paginaDeControle',
-                        '/cadastro/pedido' => 'PedidoController@paginaDeCadastro',
-                        '/pedido/editar/[0-9]+' => 'PedidoController@paginaDeEdicao',                       
+                        '/pedido/editar/[0-9]+' => 'PedidoController@paginaDeEdicao', 
+                        '/pedido/buscar/cliente/[0-9]+' => 'PedidoController@segundaEtapa',                     
                     //Ações
                         '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
                         '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',

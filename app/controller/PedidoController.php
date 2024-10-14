@@ -2,11 +2,15 @@
 
 namespace app\controller;
 
+use app\database\Filters;
 use app\models\Cliente;
+use app\models\Pedido;
 use app\static\Request;
 
 class PedidoController extends Controller
 {
+    private $_pedido;
+    private $_filters;
     private $controllerCliente;
     private $controllerServico;
     private $controllerProduto;
@@ -14,69 +18,50 @@ class PedidoController extends Controller
 
     public function __construct()
     {
+        $this->_pedido = new Pedido();
+        $this->_filters = new Filters();
         $this->controllerCliente = new ClienteController;
         $this->controllerServico = new ServicoController;
         $this->controllerProduto = new ProdutoController;
         $this->controllerVeiculo = new VeiculoController;
     }
 
-    public function paginaDeCadastro() : void 
+    public function primeiraEtapa() : void 
     {
-        $servicos = $this->controllerServico->buscarTodos();
-        $produtos = $this->controllerProduto->buscarTodos();
         $clientes = $this->controllerCliente->buscarTodos();
         $this->views('atendimento', [
-            'title' => "Estética Automotiva",
+            'title' => "Cadastro de Pedido",
             'pag' => "pedido",
             'etapa' => "primeira",
             'clientes' => $clientes,
-            'servicos' => $servicos,
-            'produtos' => $produtos,
+            'link' => '/atendimento',
         ]);   
     }
 
-    public function salvarCliente() : void 
+    public function segundaEtapa($codigo) : void 
     {
-        $request = Request::all();
-        $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', (int)$request['CD_CLIENTE']);
-        $veiculos = $this->controllerCliente->buscarVeiculosCliente('CD_CLIENTE', (int)$request['CD_CLIENTE']);
+        $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $codigo[0]);   
         $this->views('atendimento', [
-            'title' => "Estética Automotiva",
+            'title' => "Cadastro de Pedido",
             'pag' => "pedido",
             'etapa' => "segunda",
             'cliente' => $cliente,
-            'veiculos' => $veiculos,
+            'link' => '/cadastro/pedido',
         ]);
     }
 
-    public function salvarVeiculo() : void
-    {
-        $request = Request::all();
-        $veiculo = $this->controllerVeiculo->buscarVeiculo('CD_VEICULO', (int)$request['CD_VEICULO']);
-        $cliente = $this->controllerVeiculo->buscarClienteVeiculo('CD_CLIENTE', $veiculo->getCliente());
-        $this->views('atendimento', [
-            'title' => "Estética Automotiva",
-            'pag' => "pedido",
-            'etapa' => "terceira",
-            'cliente' => $cliente,
-            'veiculo' => $veiculo,
-        ]);
-    }
-
-    public function paginaDeControle() : void
-    {
-        $this->views('controle', [
-            'title' => "Estética Automotiva",
-            'pag' => "pedido",
-        ]);
-    }
-
-    public function paginaDeEdicao($codigo) : void 
+    public function terceiraEtapa($codigo) : void 
     {
 
     }
 
-    public function salvar() {
-        dd(Request::all());
+    public function quartaEtapa($codigo) : void
+    {
+        
+    }
+
+    public function salvar() : void 
+    {
+       
     }
 }

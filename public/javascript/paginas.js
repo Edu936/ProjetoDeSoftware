@@ -95,6 +95,17 @@ function usuarioEditar(value) {
 function usuarioExcluir(value) {
     window.location.href = `/usuario/excluir/${value}`;
 }
+
+/**
+ * Pedido
+ */
+function buscarClientePedido() {
+    const selectCliente = document.querySelector('#cliente-pedido');
+    if(selectCliente.value != "null") {
+        window.location.href = `/pedido/buscar/cliente/${selectCliente.value}`;
+    }
+}
+
 /**
  * Global
  */

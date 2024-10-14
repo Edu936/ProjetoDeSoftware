@@ -116,7 +116,7 @@ form {
     color:white;
     border-radius: 4px;
     height: 20px;
-
+    cursor: pointer;
 }
 
 .form-veiculo {
