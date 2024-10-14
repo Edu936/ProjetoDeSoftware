@@ -85,10 +85,14 @@ class ProdutoController extends Controller
     public function paginaDeDetalhe($codigo): void
     {
         $produto = $this->buscarProduto("CD_PRODUTO", $codigo[0]);
+        $servicos = $this->ServicosProduto('CD_PRODUTO',$codigo[0]);
+        $fornecedores = $this->fornecedoresProduto('CD_PRODUTO', $codigo[0]);
         $this->views('controle', [
             'title' => "Edição de produto",
             'pag' => "detalhe produto",
             'produto' => $produto,
+            'servicos' => $servicos,
+            'fornecedores' => $fornecedores,
             'link' => '/controle/produto',
         ]);
     }
@@ -236,7 +240,7 @@ class ProdutoController extends Controller
         return $produto[0] ?? false;
     }
 
-    public function fornecedoresProduto(string $key, int $data) : array
+    public function fornecedoresProduto(string $key, int $data) : array| bool
     {
         $fornecedores = [];
         $this->_filters->where($key, '=', $data);
@@ -245,10 +249,11 @@ class ProdutoController extends Controller
         foreach($produtoFornecedor as $value) {
             $fornecedores [] = $this->_controllerFornecedor->buscarFornecedor('CD_FORNECEDOR', $value->getFornecedor());
         }
-        return $fornecedores ?? false;
+        $this->_filters->clear();
+        return $fornecedores != [] ?$fornecedores: false;
     }
 
-    public function ServicosProduto(string $key, int $data) : array
+    public function ServicosProduto(string $key, int $data) : array | bool
     {
         $produtos = [];
         $this->_filters->where($key, '=', $data);
@@ -257,6 +262,7 @@ class ProdutoController extends Controller
         foreach($produtoServico as $value) {
             $produtos [] = $this->_controllerServico->buscarServico('CD_FORNECEDOR', $value->getFornecedor());
         }
-        return $produtos ?? false;
+        $this->_filters->clear();
+        return $produtos != [] ? $produtos : false;
     }
 }

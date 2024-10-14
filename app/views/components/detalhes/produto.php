@@ -11,24 +11,34 @@
         </fieldset>
         <fieldset>
             <legend>Serviços acossiados</legend>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
-            <p>Lavagem Detalhada</p>
+            <?php
+            if($servicos) {
+                foreach($servicos as $servico){
+                    echo "<p>{$servico->getNome()}</p><br>";
+                }
+            } else {
+                echo "<p>Esse produto não esta associado a nenhum serviço!</p>";
+            }
+            ?>
         </fieldset>
         <fieldset>
             <legend>Fornecedores acossiados</legend>
-            <p>Lava Rapido Exprez</p>
+            <?php
+            if($fornecedores) {
+                foreach($fornecedores as $fornecedor){
+                    echo "<p>{$fornecedor->getNome()}</p><br>";
+                }
+            } else {
+                echo "<p>Esse produto não esta associado a nenhum fornecedor!</p>";
+            }
+            ?>
         </fieldset>
     </div>
     <div class="card-details-option">
         <button>Associar Serviço</button>
         <button>Associar Fornecedor</button>
-        <button>Voltar</button>
+        <button>Repor Estoque</button>
+        <button>Dar Baixa em Produto</button>
+        <button onclick="pagina('<?=$link?>')">Voltar</button>
     </div>
 </div>
