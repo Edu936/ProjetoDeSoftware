@@ -9,10 +9,6 @@
             <label for="valor">Valor do Produto:</label><br />
             <input type="number" name="VL_PRODUTO" id="valor" value="<?=$produto->getValor()?>" required />
         </div>
-        <div class="dados">
-            <label for="quantidade">Quantidade Inicial:</label><br />
-            <input type="number" name="QTD_PRODUTO" id="quantidade" value="<?=$produto->getQuantidade()?>"/>
-        </div>
         <div class="submit">
             <input type="reset" value="Limpar" />
             &nbsp;

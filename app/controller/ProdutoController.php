@@ -59,6 +59,29 @@ class ProdutoController extends Controller
         ]);
     }
 
+    public function atualizar($codigo) : void 
+    {
+        $request = Request::all();
+        $result = $this->_produto->update($request, 'CD_PRODUTO', $codigo[0]);
+        if($result){
+            $this->views('controle', [
+                'title' => "Atualização de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "O produto {$request['NM_PRODUTO']} foi atualizado com sucesso!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Atualização de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel atualizar o produto!",
+                'link' => '/controle/produto',
+            ]);
+        }
+    }
+
     public function paginaDeDetalhe($codigo): void
     {
         $produto = $this->buscarProduto("CD_PRODUTO", $codigo[0]);
