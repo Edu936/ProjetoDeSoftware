@@ -94,16 +94,15 @@ abstract class Routes
                     //Ações
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
-                    //Paginas
+                    '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
+                    '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',
+                    '/cadastro/pedido' => 'PedidoController@primeiraEtapa',
                     '/controle/pedido' => 'PedidoController@paginaDeControle',
                     '/pedido/editar/[0-9]+' => 'PedidoController@paginaDeEdicao', 
-                        '/cadastro/pedido' => 'PedidoController@primeiraEtapa',
-                        '/pedido/buscar/cliente/[0-9]+' => 'PedidoController@segundaEtapa',                     
-                        '/pedido/orcamentos/cliente/[0-9]+' => 'PedidoController@terceiraEtapa',
-                        '/pedido/orcamentos/salvar/[0-9]+' => 'PedidoController@quartaEtapa', 
-                    //Ações
-                        '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
-                        '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',
+                    '/pedido/orcamentos/[0-9]+' => 'PedidoController@quintaEtapa', 
+                    '/pedido/buscar/cliente/[0-9]+' => 'PedidoController@segundaEtapa',                     
+                    '/pedido/orcamento/detalhe/[0-9]+' => 'PedidoController@quartaEtapa',
+                    '/pedido/orcamentos/cliente/[0-9]+' => 'PedidoController@terceiraEtapa',
                 //Fornecedor
                     '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',    
                     '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',    

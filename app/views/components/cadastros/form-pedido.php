@@ -28,9 +28,6 @@
             else if($etapa == "terçeira") {
                 require_once('pedidos-Etapas/terceira.php');
             }
-            else if($etapa == "quarta") {
-                require_once('pedidos-Etapas/quarta.php');
-            }
             else if($etapa == "quinta") {
                 require_once('pedidos-Etapas/quinta.php');
             }

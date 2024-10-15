@@ -27,17 +27,14 @@ class PedidoController extends Controller
         $this->controllerOrcamento = new OrcamentoController();
     }
 
-    public function paginaDeControle(): void 
-    {
-        
-    }
-
-    public function paginaDeDetalhe($codigo) : void
-    {
-    }
-
+    /**
+     * Metodos para o cadastro de um novo pedido
+     */
     public function primeiraEtapa() : void 
     {
+        /**
+         * Esse metodo busca todo os clientes que estão cadastrados no sistema e envia para a pagina de pedido na primeira etapa
+         */
         $clientes = $this->controllerCliente->buscarTodos();
         $this->views('atendimento', [
             'title' => "Cadastro de Pedido",
@@ -50,31 +47,58 @@ class PedidoController extends Controller
 
     public function segundaEtapa($codigo) : void 
     {
+        /**
+         * Esse metodo recebe o codigo do cliente selecionado pelo atendente e busca todos os dados desse cliente
+         */
+        $clientes = $this->controllerCliente->buscarTodos();
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $codigo[0]);   
         $this->views('atendimento', [
             'title' => "Cadastro de Pedido",
             'pag' => "pedido",
             'etapa' => "segunda",
-            'cliente' => $cliente,
+            'clientes' => $clientes,
+            'clienteSelecionado' => $cliente,
             'link' => '/cadastro/pedido',
         ]);
     }
 
     public function terceiraEtapa($codigo) : void 
     {
+        /**
+         * Esse metodo recebe o codigo do cliente selecionado pelo atendente e busca todo os orçamentos realizados pelo o mesmo.
+         */
+        $clientes = $this->controllerCliente->buscarTodos();
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $codigo[0]);   
         $orcamentos = $this->controllerOrcamento->buscarOrcamentos('CD_CLIENTE', (int)$codigo[0]);
         $this->views('atendimento', [
             'title' => "Cadastro de Pedido",
             'pag' => "pedido",
             'etapa' => "terçeira",
-            'cliente' => $cliente,
+            'clientes' => $clientes,
+            'clienteSelecionado' => $cliente,
             'orcamentos' => $orcamentos,
             'link' => "/pedido/buscar/cliente/{$codigo[0]}",
         ]);
     }
 
-    public function quartaEtapa($codigo) : void
+    public function quartaEtapa($codigo) : void 
+    {
+        $orcamento = $this->controllerOrcamento->buscarOrcamento('CD_ORCAMENTO',$codigo[0]);
+        $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $orcamento->getCliente());
+        $servicos = $this->controllerOrcamento->buscarServicosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $produtos = $this->controllerOrcamento->buscarProdutosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "detalhe orcamento",
+            'cliente'=> $cliente,
+            'orcamento' => $orcamento,
+            'servicos' => $servicos,
+            'produtos' => $produtos,
+            'link' => "/pedido/orcamentos/cliente/{$cliente->getCodigo()}",
+        ]);
+    }
+
+    public function quintaEtapa($codigo) : void
     {
         $orcamento = $this->controllerOrcamento->buscarOrcamento('CD_ORCAMENTO',$codigo[0]);
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $orcamento->getCliente());
@@ -116,9 +140,19 @@ class PedidoController extends Controller
         return $valor;
     }
 
-    public function salvar($codigo) : void 
+    public function salvar() : void 
     {
-        $request = Request::input('CD_PRODUTO');
         
     }
+
+    public function excluir($codigo) : void
+    {
+
+    }
+
+    public function atualizar($codigo) : void {
+
+    }
+
+
 }

@@ -36,7 +36,6 @@
         </fieldset>
     </div>
     <div class="card-details-option">
-        <button>Associar Serviço</button>
-        <button>Associar Produto</button>
+        <button onclick="pagina('<?=$link?>')">Voltar</button>
     </div>
 </div>
