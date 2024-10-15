@@ -2,11 +2,20 @@
 
 namespace app\controller;
 
-use app\models\Servico;
 use app\static\Request;
+use app\models\Servico;
+use app\database\Filters;
 
 class ServicoController extends Controller
 {
+    private $_filters;
+    private $_servico;
+
+    function __construct()
+    {
+        $this->_filters = new Filters();
+        $this->_servico = new Servico();
+    }
 
     public function paginaDeCadastro() : void
     {
@@ -26,6 +35,17 @@ class ServicoController extends Controller
         ]);
     }
 
+    public function paginaDeEdicao($codigo) : void 
+    {
+        $servico = $this->buscarServico("CD_SERVICO", $codigo[0]);
+        $this->views('atualizar', [
+            'title' => "Edição de Serviço",
+            'pag' => "servico",
+            'servico' => $servico,
+            'link' => '/controle/servico',
+        ]);
+    }
+    
     public function relatorio() : void {
         dd('Atendente');
     }
@@ -82,6 +102,60 @@ class ServicoController extends Controller
                 'imagem' => "/images/Forgot password-bro.png",
                 'mensagem' => "Este serviço ja foi cadastrado!",
                 'link' => '/cadastro/servico',
+            ]);
+        }
+    }
+
+    public function excluir ($codigo) : void 
+    {
+        $result = $this->_servico->delete('CD_SERVICO', $codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => "exclusão Serviço",
+                'pag' => "finalizar",
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "O serviço foi apagado com sucesso!",
+                'link' => '/controle/servico',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "exclusão Serviço",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O serviço não pode ser apagado!",
+                'link' => '/controle/servico',
+            ]);
+        }
+    }
+
+    public function buscarServico(string $key, mixed $data) : Servico|bool
+    {
+        $this->_filters->where($key, ' = ', $data);
+        $this->_servico->setfilters($this->_filters);
+        $servico = $this->_servico->fetchAll();
+        $this->_filters->clear();
+        return $servico[0] ?? false;
+    }
+
+    public function atualizar($codigo) : void 
+    {
+        $request = Request::all();
+        $result = $this->_servico->update($request, 'CD_SERVICO', $codigo[0]);
+        if($result){
+            $this->views('controle', [
+                'title' => "Atualização de Serviço",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "O serviço {$request['NM_SERVICO']} foi atualizado com sucesso!",
+                'link' => '/controle/servico',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Atualização de Serviço",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O serviço não pode ser atualizado!",
+                'link' => '/controle/servico',
             ]);
         }
     }

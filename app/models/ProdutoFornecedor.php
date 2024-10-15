@@ -4,8 +4,8 @@ namespace app\models;
 
 class ProdutoFornecedor extends Model
 {
-    private int $codigoProduto;
-    private int $codigoFornecedor;
+    private int $CD_PRODUTO;
+    private int $CD_FORNECEDOR;
 
     public function __construct()
     {
@@ -14,21 +14,21 @@ class ProdutoFornecedor extends Model
 
     public function setProduto($codigo) : void
     {
-        $this->codigoProduto = $codigo;
+        $this->CD_PRODUTO = $codigo;
     }
 
     public function setFornecedor($codigo) : void
     {
-        $this->codigoFornecedor = $codigo;
+        $this->CD_FORNECEDOR = $codigo;
     }
 
     public function getProduto() : int 
     {
-        return $this->codigoProduto;    
+        return $this->CD_PRODUTO;
     }
 
     public function getFornecedor() : int 
     {
-        return $this->codigoFornecedor;    
+        return $this->CD_FORNECEDOR;    
     }
 }

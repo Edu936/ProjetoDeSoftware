@@ -39,7 +39,7 @@ class Veiculo extends Model
     }
 
     //Placa
-    public function getPlaca(): string
+    public function getPalca()
     {
         return $this->DS_PLACA;
     }

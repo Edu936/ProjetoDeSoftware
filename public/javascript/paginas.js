@@ -1,139 +1,168 @@
-// Metodos De Busca
-function buscarCidade(value) {
-    window.location.href = `/cidade/buscar/${value}`;
-}
-
-function buscarProduto(value) {
-    window.location.href = `/produto/buscar/${value}`;
-}
-
-function buscarServico(value) {
-    window.location.href = `/servico/buscar/${value}`;
-}
-
-function buscarCliente(value) {
-    window.location.href = `/cliente/buscar/${value}`;
-}
-
-function buscarFornecedor(value) {
-    window.location.href = `/fornecedor/buscar/${value}`;
-}
-
-function buscarOrcamento(value) {
-    window.location.href = `/orcamento/buscar/${value}`;
-}
-
-function buscarPedido(value) {
-    window.location.href = `/pedido/buscar/${value}`;
-}
-
-function buscarVeiculo(value) {
-    window.location.href = `/pedido/buscar/${value}`;
-}
-
-// Metodos De Edição
+/**
+ * Cidades
+ */
 function editarCidade(value) {
     window.location.href = `/cidade/editar/${value}`;
 }
 
-function editarOrcamento(value) {
-    window.location.href = `/orcamento/editar/${value}`;
+function excluirCidade(value) {
+    window.location.href = `/cidade/excluir/${value}`;
 }
 
-function editarPedido(value) {
-    window.location.href = `/pedido/editar/${value}`;
+/**
+ * Veiculos
+ */
+function buscarVeiculoCliente() {
+    const selecVeiculoCliente = document.querySelector('#cliente');
+    window.location.href = `/veiculo/buscar/cliente/${selecVeiculoCliente.value}`;
+}
+
+function editarVeiculo(value) {
+
+}
+
+/**
+ * Clientes
+ */
+function buscarCliente(value) {
+    window.location.href = `/cliente/buscar/${value}`;
 }
 
 function editarCliente(value) {
     window.location.href = `/cliente/editar/${value}`;
 }
 
-function editarVeiculo(value) {
-    window.location.href = `/veiculo/editar/${value}`;
+function excluirCliente(value) {
+    window.location.href = `/cliente/excluir/${value}`;
+}
+
+function associarNumero(value) {
+
+}
+
+function associarEmail(value) {
+
+}
+
+/**
+ * Produtos
+ */
+function buscarProduto(value) {
+    window.location.href = `/produto/buscar/${value}`;
 }
 
 function editarProduto(value) {
     window.location.href = `/produto/editar/${value}`;
 }
 
+function excluirProduto(value) {
+    window.location.href = `/produto/excluir/${value}`;
+}
+
+function associarServico(value) {
+    window.location.href = `/produto/associar/servico/${value}`;
+}
+
+function associarFornecedor(value) {
+    window.location.href = `/produto/associar/fornecedor/${value}`;
+}
+
+function inserirProduto(value) {
+    window.location.href = `/produto/inserir/${value}`;
+}
+
+function debitarProduto(value) {
+    window.location.href = `/produto/debitar/${value}`;
+}
+
+/**
+ * Serviços
+ */
 function editarServico(value) {
     window.location.href = `/servico/editar/${value}`;
+}
+
+function excluirServico(value) {
+    window.location.href = `/servico/excluir/${value}`;
+}
+
+/**
+ * Fornecedor
+ */
+function buscarFornecedor(value) {
+    window.location.href = `/fornecedor/buscar/${value}`;
 }
 
 function editarFornecedor(value) {
     window.location.href = `/fornecedor/editar/${value}`;
 }
 
-// Medotos de Exclusão
-function excluirCidade(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
-function excluirCidade(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
-function excluirProduto(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
-function excluirServico(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
-function excluirCliente(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
 function excluirFornecedor(value) {
-    window.location.href = `/cidade/excluir/${value}`;
+    window.location.href = `/fornecedor/excluir/${value}`;
 }
 
-function excluirOrcamento(value) {
-    window.location.href = `/cidade/excluir/${value}`;
+function associarEmailFornecedor(value) {
+
 }
 
-function excluirPedido(value) {
-    window.location.href = `/cidade/excluir/${value}`;
-}
-
-// Metodo de Seleção
-function selecionarOrcamento() {
+function associarTelefoneFornecedor(value) {
     
 }
 
-function selecionarPediod() {
-    
+/**
+ * Usuario
+ */
+function usuarioTelefone(value) {
+    window.location.href = `/usuario/telefone/${value}`;
 }
 
-function selecionarCidade() {
-    
+function usuarioEmail(value) {
+    window.location.href = `/usuario/email/${value}`;
 }
 
-function selecionarCliente() {
-    const option = document.querySelector('#cliente');
-    if(option.value != "Selecione o Cliente"){
-        window.location.href = `/cliente/buscar/${option.value}`;
+function usuarioEditar(value) {
+    window.location.href = `/usuario/editar/${value}`;
+}
+
+function usuarioExcluir(value) {
+    window.location.href = `/usuario/excluir/${value}`;
+}
+
+/**
+ * Pedido
+ */
+function buscarClientePedido() {
+    const selectCliente = document.querySelector('#cliente-pedido');
+    if(selectCliente.value != "null") {
+        window.location.href = `/pedido/buscar/cliente/${selectCliente.value}`;
     }
 }
 
-function selecionarVeiculo() {
-
+function OrcamentosCliente(value) {
+    window.location.href = `/pedido/orcamentos/cliente/${value}`;
 }
 
-function selecionarProduto() {
-
+function criarPedidoOrcamento(value) {
+    window.location.href = `/pedido/orcamentos/salvar/${value}`;
 }
 
-function selecionarServico() {
-
+/**
+ * Orcamentos
+ */
+function buscarOrcamentosCliente() {
+    const selectCliente = document.querySelector('#cliente-orcamento');
+    if(selectCliente.value != "null") {
+        window.location.href = `/orcamento/buscar/${selectCliente.value}`;
+    }
 }
 
-function selecionarFornecedor() {
-
+function detalheOrcamento(value) {
+    window.location.href = `/orcamento/detalhe/${value}`;
 }
 
-// Metodo aciliar de Pagina
+/**
+ * Global
+ */
 function pagina(pagina) {
     window.location.href = pagina;
 }

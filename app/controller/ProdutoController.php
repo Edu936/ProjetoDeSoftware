@@ -2,17 +2,35 @@
 
 namespace app\controller;
 
+use app\database\Filters;
+use app\models\Fornecedor;
 use app\models\Produto;
 use app\models\ProdutoFornecedor;
+use app\models\ProdutoServico;
 use app\static\Request;
 
 class ProdutoController extends Controller
 {
+    private $_produto;
+    private $_filters;
+    private $_produtoServico;
+    private $_produtoFornecedor;
+    private $_controllerServico;
+    private $_controllerFornecedor;
 
-    public function paginaDeCadastro()
+    public function __construct()
     {
-        $controller = new FornecedorController();
-        $fornecedores = $controller->buscarTodos();
+        $this->_produto = new Produto();
+        $this->_filters = new Filters();
+        $this->_produtoServico = new ProdutoServico();
+        $this->_produtoFornecedor = new ProdutoFornecedor();
+        $this->_controllerServico = new ServicoController();
+        $this->_controllerFornecedor = new FornecedorController();
+    }
+
+    public function paginaDeCadastro() : void
+    {
+        $fornecedores = $this->_controllerFornecedor->buscarTodos();
         $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "produto",
@@ -20,41 +38,131 @@ class ProdutoController extends Controller
         ]);
     }
 
-    public function paginaDeControle(): void
+    public function paginaDeControle() : void
     {
-        $produto = $this->buscarTodos();
+        $produtos = $this->buscarTodos();
         $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "produto",
-            'produtos' => $produto
+            'produtos' => $produtos
         ]);
     }
 
-    public function relatorio() : void {
-        dd('Atendente');
+    public function paginaDeEdicao($codigo) : void 
+    {
+        $produto = $this->buscarProduto("CD_PRODUTO", $codigo[0]);
+        $this->views('atualizar', [
+            'title' => "Edição de produto",
+            'pag' => "produto",
+            'produto' => $produto,
+            'link' => '/controle/produto',
+        ]);
     }
 
-    private function buscarPorNome(string $name): Produto
+    public function paginaDeDetalhe($codigo) : void
     {
-        $product = new Produto();
-        $product->setNome("");
-        $product->setCodigo(0);
-        $product->setValor(0);
-        $product->setQuantidade(0);
+        $produto = $this->buscarProduto("CD_PRODUTO", $codigo[0]);
+        $servicos = $this->ServicosProduto('CD_PRODUTO',$codigo[0]);
+        $fornecedores = $this->fornecedoresProduto('CD_PRODUTO', $codigo[0]);
+        $this->views('controle', [
+            'title' => "Edição de produto",
+            'pag' => "detalhe produto",
+            'produto' => $produto,
+            'servicos' => $servicos,
+            'fornecedores' => $fornecedores,
+            'link' => '/controle/produto',
+        ]);
+    }
 
-        $produto = new Produto();
-        $produto = $produto->findby('NM_PRODUTO', $name);
+    public function paginaDeInserir($codigo) : void 
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $this->views('cadastro', [
+            'title' => 'Inserir Produto',
+            'pag' => 'inserir produto',
+            'produto' => $produto,
+            'link' => '/controle/produto',
+        ]);
+    }
 
-        return $produto ? $produto : $product;
+    public function paginaDeDebitar($codigo) : void
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $this->views('cadastro', [
+            'title' => 'Debitar Produto',
+            'pag' => 'debitar produto',
+            'produto' => $produto,
+            'link' => '/controle/produto',
+        ]);
+    }
+
+    public function associarServico($codigo): void 
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $servicos = $this->_controllerServico->buscarTodos();
+        $this->views('cadastro', [
+            'title' => 'Associar Serviços',
+            'pag' => 'associar servico',
+            'produto' => $produto,
+            'servicos' => $servicos,
+            'link' => '/controle/produto',
+        ]);
+    }
+
+    public function associarFornecedor($codigo): void
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $fornecedores = $this->_controllerFornecedor->buscarTodos();
+        $this->views('cadastro', [
+            'title' => 'Associar Fornecedores',
+            'pag' => 'associar fornecedor',
+            'produto' => $produto,
+            'fornecedores' => $fornecedores,
+            'link' => '/controle/produto'
+        ]);
+    }
+
+    public function relatorio() : void 
+    {
+    }
+
+    public function excluir($codigo) : void
+    {
+        $result = $this->_produto->delete('CD_PRODUTO',$codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => "Exclusão de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "O produto foi apagado!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Exclusão de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O produto não pode ser apagado!",
+                'link' => '/controle/produto',
+            ]);
+        }
+    }
+
+    public function salvarFornecedorProduto($codigo) : bool
+    {
+        $request = Request::input('CD_FORNECEDOR');
+        return $this->_produtoFornecedor->create([
+            'CD_PRODUTO' => $codigo,
+            'CD_FORNECEDOR' => $request
+        ]);
     }
 
     public function salvar()
     {
         $request = Request::exception(['CD_FORNECEDOR']);
-        $filtro = $this->buscarPorNome($request['NM_PRODUTO']);
-        $produto = new Produto();
-        if ($filtro->getNome() != $request['NM_PRODUTO']) {
-            $result = $produto->create($request);
+        $filtro = $this->buscarProduto('NM_PRODUTO', $request['NM_PRODUTO']);
+        if (!$filtro) {
+            $result = $this->_produto->create($request);
             if (!$result) {
                 $this->views('cadastro', [
                     'title' => "Cadastros Produtos",
@@ -64,12 +172,9 @@ class ProdutoController extends Controller
                     'link' => '/cadastro/produto',
                 ]);
             } else {
-                $produtoCadastrado = $this->buscarPorNome($request['NM_PRODUTO']);
-                $request = Request::input('CD_FORNECEDOR');
-                $campos = ['CD_FORNECEDOR' => (int)$request, 'CD_PRODUTO' => $produtoCadastrado->getCodigo()];
-                $Pro_For = new ProdutoFornecedor();
-                $result = $Pro_For->create($campos);
-                if (!$result) {
+                $produtoCadastrado = $this->buscarProduto('NM_PRODUTO',$request['NM_PRODUTO']);
+                $fornecedor = $this->salvarFornecedorProduto($produtoCadastrado->getCodigo());
+                if (!$fornecedor) {
                     $this->views('cadastro', [
                         'title' => "Cadastros Produtos",
                         'pag' => "finalizar",
@@ -98,8 +203,66 @@ class ProdutoController extends Controller
         }
     }
 
-    public function buscarTodos(){
-        $produto = new Produto();
-        return $produto->fetchAll();
+    public function atualizar($codigo) : void 
+    {
+        $request = Request::all();
+        $result = $this->_produto->update($request, 'CD_PRODUTO', $codigo[0]);
+        if($result){
+            $this->views('controle', [
+                'title' => "Atualização de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "O produto {$request['NM_PRODUTO']} foi atualizado com sucesso!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Atualização de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel atualizar o produto!",
+                'link' => '/controle/produto',
+            ]);
+        }
+    }
+
+    public function buscarTodos() : array
+    {
+        return $this->_produto->fetchAll();
+    }
+
+    public function buscarProduto(string $key, mixed $data) : Produto|bool 
+    {
+        $this->_filters->where($key, '=', $data);
+        $this->_produto->setfilters($this->_filters);
+        $produto = $this->_produto->fetchAll();
+        $this->_filters->clear();
+        return $produto[0] ?? false;
+    }
+
+    public function fornecedoresProduto(string $key, int $data) : array| bool
+    {
+        $fornecedores = [];
+        $this->_filters->where($key, '=', $data);
+        $this->_produtoFornecedor->setfilters($this->_filters);
+        $produtoFornecedor = $this->_produtoFornecedor->fetchAll();
+        foreach($produtoFornecedor as $value) {
+            $fornecedores [] = $this->_controllerFornecedor->buscarFornecedor('CD_FORNECEDOR', $value->getFornecedor());
+        }
+        $this->_filters->clear();
+        return $fornecedores != [] ?$fornecedores: false;
+    }
+
+    public function ServicosProduto(string $key, int $data) : array | bool
+    {
+        $produtos = [];
+        $this->_filters->where($key, '=', $data);
+        $this->_produtoServico->setfilters($this->_filters);
+        $produtoServico = $this->_produtoServico->fetchAll();
+        foreach($produtoServico as $value) {
+            $produtos [] = $this->_controllerServico->buscarServico('CD_FORNECEDOR', $value->getFornecedor());
+        }
+        $this->_filters->clear();
+        return $produtos != [] ? $produtos : false;
     }
 }

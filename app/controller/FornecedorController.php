@@ -10,7 +10,18 @@ use app\static\Request;
 
 class FornecedorController extends Controller
 {
-    public function paginaDeCadastro(): void
+    private $_filters;
+    private $_fornecedor;
+    private $controllerCidade;
+
+    public function __construct()
+    {   
+        $this->_filters = new Filters();
+        $this->_fornecedor = new Fornecedor();
+        $this->controllerCidade = new CidadeController();
+    }
+
+    public function paginaDeCadastro() : void
     {
         $card = "Cadastro De Fornecedor";
         $route = '/fornecedor/salvar';
@@ -29,7 +40,7 @@ class FornecedorController extends Controller
         ]);
     }
 
-    public function paginaDeControle(): void
+    public function paginaDeControle() : void
     {
         $filter = new Filters();
         $filter->join("TB_FONE_FORNECEDOR", "TB_FONE_FORNECEDOR.CD_FORNECEDOR", "=", "TB_FORNECEDOR.CD_FORNECEDOR", "LEFT JOIN");
@@ -46,11 +57,56 @@ class FornecedorController extends Controller
         ]);
     }
 
+    public function paginaDeEdicao($codigo) : void
+    {
+        $cidades = $this->controllerCidade->buscarTodos();
+        $fornecedor = $this->buscarFornecedor('CD_FORNECEDOR', $codigo[0]);
+        $this->views('atualizar', [
+            'title' => 'Atualizar Fornecedor',
+            'pag' => 'fornecedor',
+            'cidades' => $cidades,
+            'fornecedor' => $fornecedor,
+            'link' => '/controle/fornecedor'
+        ]);
+    }
+
+    public function paginaDeDetalhes($codigo) : void
+    {
+        $fornecedor = $this->buscarFornecedor('CD_FORNECEDOR', $codigo[0]);
+        $this->views('controle', [
+            'title' => 'Detalhe do Fornecedor',
+            'pag' => 'detalhe fornecedor',
+            'fornecedor' => $fornecedor,
+        ]);
+    }
+
     public function buscar($key, $value)
     {
         $fornecedor = new Fornecedor();
         $fornecedor = $fornecedor->findby($key, $value);
         return $fornecedor ? $fornecedor : false;
+    }
+
+    public function atualizar($codigo) {
+        $request = Request::all();
+        $result = $this->_fornecedor->update($request, 'CD_FORNECEDOR', $codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => "Atualização de Fornecedor",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel atualizar o fornecedor {$request['NM_FORNECEDOR']}!",
+                'link' => '/controle/fornecedor',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Atualização de Fornecedor",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "O fornecedor {$request['NM_FORNECEDOR']} foi atualizado!",
+                'link' => '/controle/fornecedor',
+            ]);
+        }
     }
 
     public function salvar()
@@ -104,9 +160,39 @@ class FornecedorController extends Controller
         }
     }
 
+    public function excluir($codigo): void
+    {
+        $result = $this->_fornecedor->delete('CD_FORNECEDOR', $codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => 'Exclusão de Fornecedor',
+                'pag' => 'finalizar',
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "Esse fornededor foi excluido com sucesso!",
+                'link' => '/controle/fornecedor',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => 'Exclusão de Fornecedor',
+                'pag' => 'finalizar',
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Esse fornededor não pode ser excluido!",
+                'link' => '/controle/fornecedor',
+            ]);
+        }
+    }
+
     public function buscarTodos(): array
     {
         $fornecedor = new Fornecedor();
         return $fornecedor->fetchAll();
+    }
+
+    public function buscarFornecedor(string $key, mixed $data) : Fornecedor|bool
+    {
+        $this->_filters->where($key, '=', $data);
+        $this->_fornecedor->setfilters($this->_filters);
+        $fornecedor = $this->_fornecedor->fetchAll();
+        return $fornecedor[0] ?? false;
     }
 }

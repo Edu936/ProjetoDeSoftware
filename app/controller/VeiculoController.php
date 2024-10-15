@@ -4,13 +4,28 @@ namespace app\controller;
 
 use app\models\Veiculo;
 use app\static\Request;
+use app\database\Filters;
+use app\models\Cliente;
 
 class VeiculoController extends Controller
 {
+    private $_veiculo;
+    private $_filters;
+    private $_cliente;
+    private $_controllerCliente;
+
+
+    public function __construct()
+    {
+        $this->_veiculo = new Veiculo();
+        $this->_filters = new Filters();
+        $this->_cliente = new Cliente();
+        $this->_controllerCliente = new ClienteController();
+    }
+
     public function paginaDeCadastro() : void 
     {
-        $controller = new ClienteController();
-        $clientes = $controller->buscarTodos();
+        $clientes = $this->_controllerCliente->buscarTodos();
         $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "veiculo",
@@ -19,19 +34,10 @@ class VeiculoController extends Controller
         ]);    
     }
 
-    public function paginaDeControle() : void
+    public function cadastrar($codigo) : void 
     {
-        $this->views('controle', [
-            'title' => "Estética Automotiva",
-            'pag' => "veiculo",
-        ]);
-    }
-
-    public function cadastrar($value) : void 
-    {
-        $controller = new ClienteController();
-        $clientes = $controller->buscarTodos();
-        $cliente = $controller->buscar('CD_CLIENTE', $value);
+        $clientes = $this->_controllerCliente->buscarTodos();
+        $cliente = $this->_controllerCliente->buscarCliente('CD_CLIENTE', $codigo[0]);
         $this->views('cadastro', [
             'title' => "Estética Automotiva",
             'pag' => "veiculo",
@@ -41,14 +47,37 @@ class VeiculoController extends Controller
         ]);
     }
 
-    public function salvar ($value) : void
+    public function paginaDeControle() : void
+    {
+        $veiculos = $this->buscarTodos();
+        $this->views('controle', [
+            'title' => "Estética Automotiva",
+            'pag' => "veiculo",
+            'veiculos' => $veiculos,
+        ]);
+    }
+
+    public function paginaDeEdicao($codigo) : void {
+        
+    }
+
+    public function paginaDeDetalhe($codigo) : void 
+    {
+        $veiculo = $this->buscarVeiculo('CD_VEICULO', $codigo);
+        $this->views('controle', [
+            'title' => "Detalhe do Veiculo",
+            'pag' => "veiculo",
+            'detalhe veiculo' => $veiculo,
+        ]);
+    }
+
+    public function salvar ($codigo) : void
     {
         $request = Request::all();
-        $request += ['CD_CLIENTE' => $value[0]];
-        $filtro = $this->filtro("DS_PLACA", $request['DS_PLACA']);
-        $veiculo = new Veiculo;
-        if($filtro == false) {
-            $result = $veiculo->create($request);
+        $request += ['CD_CLIENTE' => $codigo[0]];
+        $filtro = $this->buscarVeiculo("DS_PLACA", $request['DS_PLACA']);
+        if(!$filtro) {
+            $result = $this->_veiculo->create($request);
             if(!$result){
                 $this->views('cadastro', [
                     'title' => "Cadastro Veiculo",
@@ -79,10 +108,43 @@ class VeiculoController extends Controller
         }
     }
 
-    public function filtro ($key, $value) : bool | Veiculo
+    public function buscarTodos() : array
     {
-        $veiculo = new Veiculo;
-        $veiculo = $veiculo->findby($key, $value);
-        return $veiculo ? $veiculo : false;
+        $this->_filters->join('tb_cliente', 'tb_cliente.CD_CLIENTE', '=', 'tb_veiculo.CD_CLIENTE', 'LEFT JOIN');
+
+        $this->_veiculo->setfilters($this->_filters);
+        $veiculos = $this->_veiculo->fetchAll();
+
+        return $veiculos;
+    }
+    
+    public function buscarVeiculo(string $key, mixed $data) : Veiculo | bool
+    {
+        $this->_filters->where($key, '=', $data);
+
+        $this->_veiculo->setfilters($this->_filters);
+        $veiculo = $this->_veiculo->fetchAll();
+
+        return $veiculo[0] ?? false;
+    }
+
+    public function buscarClienteVeiculo(string $key, int $data) : Cliente | bool
+    {
+        $this->_filters->where($key, '=', $data);
+
+        $this->_cliente->setfilters($this->_filters);
+        $cliente = $this->_cliente->fetchAll($this->_filters);
+
+        return $cliente[0] ?? false;
+    }
+
+    public function buscarVeiculoDoCliente(string $key, mixed $data) : array | bool
+    {
+        $this->_filters->where($key, '=', $data);
+
+        $this->_veiculo->setfilters($this->_filters);
+        $veiculo = $this->_veiculo->fetchAll();
+
+        return $veiculo ?? false;
     }
 }

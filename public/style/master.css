@@ -1,6 +1,16 @@
-/* Configuração de Estilo geral da Pagina */
 * {
     box-sizing: border-box;
+}
+
+* ::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 8px;
+    background-color: rgb(47, 42, 66);
+}
+
+* ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgb(177, 114, 206);
 }
 
 body {
@@ -11,7 +21,6 @@ body {
     background-color: rgb(32, 27, 44);
 }
 
-/* Configuração de Estilo do Header da Pagina */
 header {
     top: 0%;
     left: 0%;
@@ -20,69 +29,19 @@ header {
     width: 100vw;
     display: flex;
     position: fixed;
+    align-items: center;
+    justify-content: end;
+    padding: 0px 40px 0px 30px;
     border-bottom: solid 1px rgb(146, 227, 169)
 }
 
-.sidebar-active {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    padding: 0% 0% 0% 1.5%;
-}
-
-.active-sidebar > i {
-    color: white;
-}
-
-.search {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search > input {
-    width: 80%;
-}
-
-.unit {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.description-unit {
-    width: 80%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-
-.unit > span {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-unit {
-    width: 35px;
-    min-height: 35px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Configuração de Estilo da Sidebar da Pagina */
 aside {
-    top:8vh;
+    top:0vh;
+    z-index: 1;
     width: 13vw;
-    height: 91vh;
+    height: 99vh;
     position: fixed;
+    background-color: rgb(32, 27, 44);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
 }
 
@@ -166,7 +125,6 @@ aside {
     justify-content: center;
 }
 
-/* Configuração de Estilo do Main da Pagina */
 main {
     top: 10vh;
     left: 14vw;
@@ -181,6 +139,11 @@ main {
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
 }
 
+main > img {
+    width: 50%;
+    height: 100%;
+}
+
 .content {
     margin: 0%;
     padding: 0%;
@@ -189,30 +152,6 @@ main {
     display: flex;
     max-width: 100%;
     max-height: 100%;
-}
-
-main > img {
-    width: 50%;
-    height: 100%;
-}
-
-iframe {
-    margin: 0;
-    width: 99%;
-    height: 99%;
-    display: block;
-}
-
-.Atendimento {
-    margin: 0;
-    border-radius: 8px;
-    background-color: #453c64;
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
-    
-}
-
-.Atendimento > h4 {
-    text-align: center;
 }
 
 section {
@@ -247,12 +186,38 @@ section > button:hover {
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
 }
 
-.resposta {
-    width: 50%;
+.finalizar {
+    width: 90%;
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 80%;
 }
 
-/* Configuração de Estilo da rodapé da Pagina */
+.finalizar > img {
+    width: 60%;
+    height: 100%;
+    max-width: 60%;
+    max-height: 100%;
+}
+
+.finalizar >  button {
+    margin: 0;
+    width: 6%;
+    height: 20px;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(177, 114, 206);
+}
+
 footer {
     bottom: 0;
     height: 1vh;
@@ -261,13 +226,15 @@ footer {
     background-color: rgb(146, 227, 169);
 }
 
-/* hover */
+.finalizar > button:hover {
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
+}
+
 .options:hover {
     border-radius: 8px;
     background-color: rgb(185, 185, 185);
 }
 
-/* Responsividade da Pagina */
 @media (width <1050px) {
     .options>a>span {
         display: none;
@@ -275,25 +242,9 @@ footer {
     .options>a>i {
         width: 100%;
     }
-    .description-unit {
-        display: none;
-    }
-    .unit > span {
-        width: 90%;
-        justify-content: end;
-    }
 }
 
 @media (width <400px) {
-    .search {
-        display: none;
-    }
-    .unit {
-        width: 75%;
-    }
-    .unit > span {
-        margin: 2%;
-    }
     aside {
         display: none;
     }

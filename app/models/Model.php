@@ -71,7 +71,7 @@ abstract class Model
             $prepare = $connection->prepare($sql);
             return $prepare->execute($data);
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            
         }
     }
 

@@ -4,7 +4,7 @@ namespace app\models;
 
 class Usuario extends Model
 {
-    private int $CD_USUARIO;
+    private string $CD_USUARIO;
     private string $NM_USUARIO;
     private string $DS_USUARIO_CARGO;
     private string $DS_CPF_USUARIO;
@@ -14,7 +14,7 @@ class Usuario extends Model
     private string $DS_RUA;
     private string $DS_BAIRRO;
     private string $DS_CEP;
-    private int $CD_CIDADE;
+    private ?int $CD_CIDADE;
 
     public function __construct()
     {
@@ -55,7 +55,7 @@ class Usuario extends Model
     }
 
     //codigo
-    public function getCodigo(): int
+    public function getCodigo()
     {
         return $this->CD_USUARIO;
     }
@@ -66,7 +66,7 @@ class Usuario extends Model
     }
 
     //Cidade
-    public function getCidade(): int
+    public function getCidade(): ?int
     {
         return $this->CD_CIDADE;
     }

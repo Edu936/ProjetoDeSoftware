@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => 'Cadastra-se']) ?>
+<?php $this->layout('master', ['title' => $title]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/sign-in.css">
@@ -31,11 +31,11 @@
                 </div>
                 <div class="dados">
                     <label for="telefone">Telefone:</label>
-                    <input type="tel" name="DS_FONE_USUARIO" id="telefone" required><br>
+                    <input type="tel" name="DS_FONE_USUARIO[]" id="telefone" required><br>
                 </div>
                 <div class="dados">
                     <label for="email">Email:</label>
-                    <input type="email" name="DS_EMAIL_USUARIO" id="email" required><br>
+                    <input type="email" name="DS_EMAIL_USUARIO[]" id="email" required><br>
                 </div>
             </fieldset>
             <fieldset>
@@ -95,6 +95,3 @@
         </form>
     </div>
 </main>
-<?php $this->start('js') ?>
-    <script src="/javascript/paginas.js"></script>
-<?php $this->stop() ?>

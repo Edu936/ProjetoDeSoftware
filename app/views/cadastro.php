@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => 'Estética Automotiva']) ?>
+<?php $this->layout('master', ['title' => $title]) ?>
 
 <?php $this->start('css') ?>
 <link rel="stylesheet" href="/style/card.css">
@@ -33,6 +33,14 @@
             require_once('components/cadastros/form-cliente.php');
         } else if ($this->e($pag) == "veiculo") {
             require_once('components/cadastros/form-veiculo.php');
+        } else if ($this->e($pag) == "inserir produto") {
+            require_once('components/cadastros/form-inserir-produto.php');
+        } else if ($this->e($pag) == "debitar produto") {
+            require_once('components/cadastros/form-debitar-produto.php');
+        } else if ($this->e($pag) == "associar servico") {
+            require_once('components/cadastros/form-produto-servico.php');
+        } else if ($this->e($pag) == "associar fornecedor") {
+            require_once('components/cadastros/form-produto-fornecedor.php');
         } else if ($this->e($pag) == "finalizar") {
             require_once('components/content/finalizar.php');
         }

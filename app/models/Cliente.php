@@ -11,7 +11,7 @@ class Cliente extends Model
     private string $DS_RUA;
     private string $DS_BAIRRO;
     private string $DS_CEP;
-    private int $CD_CIDADE;
+    private mixed $CD_CIDADE;
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class Cliente extends Model
     }
 
     //Cidade
-    public function getCidade(): int
+    public function getCidade()
     {
         return $this->CD_CIDADE;
     }

@@ -6,6 +6,10 @@ class Filters
 {
     private array $filters = [];
 
+    public function clear()
+    {
+        $this->filters = [];
+    }
 
     public function where (string $field, string $operator, mixed $value, string $logic ='')
     {
@@ -21,12 +25,12 @@ class Filters
         }
 
         $value = strip_tags($formatter);
-        $this->filters ['where'] [] = " {$field} {$operator} {$value} {$logic}"; 
+        $this->filters ['WHERE'] [] = " {$field} {$operator} {$value} {$logic}"; 
     }
     
     public function limit(int $limit)
     {
-        $this->filters['limit'] = "limit {$limit}";
+        $this->filters['LIMIT'] = "limit {$limit}";
     }
 
     public function orderBy(string $field, string $order = "ASC")
@@ -41,8 +45,8 @@ class Filters
 
     public function dump()
     {
-        $filter = !empty($this->filters['where'])? 'where'.implode ('',$this->filters['where']):'';
-        $filter .= !empty($this->filters['JOIN'])? implode ('',$this->filters['JOIN']):'';
+        $filter = !empty($this->filters['JOIN'])? implode ('',$this->filters['JOIN']):'';
+        $filter .= !empty($this->filters['WHERE'])? 'WHERE'.implode ('',$this->filters['WHERE']):'';
         $filter .= $this->filters['ORDER'] ?? '';
         $filter .= $this->filters['limit'] ?? '';
         return $filter;
