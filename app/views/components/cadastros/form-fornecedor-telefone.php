@@ -1,10 +1,10 @@
 <div class="card">
     <h1>Telefones</h1>
-    <form id="forme" action="/usuario/salvar/telefone/<?=$_SESSION['id']?>" method="POST">
+    <form id="forme" action="/fornecedor/salvar/telefone/<?=$fornecedor->getCodigo()?>" method="POST">
         <div id="telefone" class="telefone">
             <div class="dados">
-                <label> Telefone:</label>
-                <input type="fone" name="DS_FONE_USUARIO[]" placeholder="Numero do Telefone">
+                <label>Telefone:</label>
+                <input type="fone" name="DS_FONE_FORNECEDOR[]" placeholder="Numero do Telefone">
             </div>
         </div>
         <div class="submit">

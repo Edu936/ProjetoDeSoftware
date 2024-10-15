@@ -1,10 +1,10 @@
 <div class="card">
     <h1>Emails</h1>
-    <form id="forme" action="/usuario/salvar/email/<?=$_SESSION['id']?>" method="POST">
+    <form id="forme" action="/cliente/salvar/email/<?=$cliente->getCodigo()?>" method="POST">
         <div id="emails" class="emails">
             <div class="dados">
-                <label for="telefone"> Emails:</label>
-                <input type="email" name="DS_EMAIL_USUARIO[]" placeholder="Endereço e-mail">
+                <label> Emails:</label>
+                <input type="email" name="DS_EMAIL_CLIENTE[]" placeholder="Endereço e-mail">
             </div>
         </div>
         <div class="submit">

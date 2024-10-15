@@ -35,10 +35,10 @@
         </fieldset>
     </div>
     <div class="card-details-option">
-        <button>Associar Serviço</button>
-        <button>Associar Fornecedor</button>
-        <button>Repor Estoque</button>
-        <button>Dar Baixa em Produto</button>
+        <button onclick="associarServico('<?=$produto->getCodigo()?>')">Associar Serviço</button>
+        <button onclick="associarFornecedor('<?=$produto->getCodigo()?>')">Associar Fornecedor</button>
+        <button onclick="inserirProduto('<?=$produto->getCodigo()?>')">Repor Estoque</button>
+        <button onclick="debitarProduto('<?=$produto->getCodigo()?>')">Dar Baixa em Produto</button>
         <button onclick="pagina('<?=$link?>')">Voltar</button>
     </div>
 </div>
