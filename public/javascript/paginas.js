@@ -47,6 +47,22 @@ function excluirProduto(value) {
     window.location.href = `/produto/excluir/${value}`;
 }
 
+function associarServico(value) {
+    window.location.href = `/produto/associar/servico/${value}`;
+}
+
+function associarFornecedor(value) {
+    window.location.href = `/produto/associar/fornecedor/${value}`;
+}
+
+function inserirProduto(value) {
+    window.location.href = `/produto/inserir/${value}`;
+}
+
+function debitarProduto(value) {
+    window.location.href = `/produto/debitar/${value}`;
+}
+
 /**
  * Serviços
  */

@@ -59,30 +59,7 @@ class ProdutoController extends Controller
         ]);
     }
 
-    public function atualizar($codigo) : void 
-    {
-        $request = Request::all();
-        $result = $this->_produto->update($request, 'CD_PRODUTO', $codigo[0]);
-        if($result){
-            $this->views('controle', [
-                'title' => "Atualização de Produto",
-                'pag' => "finalizar",
-                'imagem' => "/images/Create-amico.png",
-                'mensagem' => "O produto {$request['NM_PRODUTO']} foi atualizado com sucesso!",
-                'link' => '/controle/produto',
-            ]);
-        } else {
-            $this->views('controle', [
-                'title' => "Atualização de Produto",
-                'pag' => "finalizar",
-                'imagem' => "/images/Forgot password-bro.png",
-                'mensagem' => "Não foi possivel atualizar o produto!",
-                'link' => '/controle/produto',
-            ]);
-        }
-    }
-
-    public function paginaDeDetalhe($codigo): void
+    public function paginaDeDetalhe($codigo) : void
     {
         $produto = $this->buscarProduto("CD_PRODUTO", $codigo[0]);
         $servicos = $this->ServicosProduto('CD_PRODUTO',$codigo[0]);
@@ -97,52 +74,52 @@ class ProdutoController extends Controller
         ]);
     }
 
+    public function paginaDeInserir($codigo) : void 
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $this->views('cadastro', [
+            'title' => 'Inserir Produto',
+            'pag' => 'inserir produto',
+            'produto' => $produto,
+            'link' => '/controle/produto',
+        ]);
+    }
+
+    public function paginaDeDebitar($codigo) : void
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $this->views('cadastro', [
+            'title' => 'Debitar Produto',
+            'pag' => 'debitar produto',
+            'produto' => $produto,
+            'link' => '/controle/produto',
+        ]);
+    }
+
     public function associarServico($codigo): void 
     {
-        $request = Request::all();
-        $servico = $this->ServicosProduto('CD_SERVICO', $codigo[0]);
-        dd($servico);
-        $result = $this->_produtoServico->create($request);
-        if($result){
-            $this->views('controle', [
-                'title' => "Associar produtos a serviços",
-                'pag' => "finalizar",
-                'imagem' => "/images/Create-amico.png",
-                'mensagem' => "O Serviço foi associado com sucesso!",
-                'link' => '/controle/produto',
-            ]);
-        } else {
-            $this->views('controle', [
-                'title' => "Associar produtos a serviços",
-                'pag' => "finalizar",
-                'imagem' => "/images/Create-amico.png",
-                'mensagem' => "Não foi possivel associado o produto ao serviço!",
-                'link' => '/controle/produto',
-            ]);
-        }
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $servicos = $this->_controllerServico->buscarTodos();
+        $this->views('cadastro', [
+            'title' => 'Associar Serviços',
+            'pag' => 'associar servico',
+            'produto' => $produto,
+            'servicos' => $servicos,
+            'link' => '/controle/produto',
+        ]);
     }
 
     public function associarFornecedor($codigo): void
     {
-        $request = Request::all();
-        $result = $this->_produtoFornecedor->create($request);
-        if($result){
-            $this->views('controle', [
-                'title' => "Associar produtos a fornecedor",
-                'pag' => "finalizar",
-                'imagem' => "/images/Create-amico.png",
-                'mensagem' => "O Serviço foi associado com sucesso!",
-                'link' => '/controle/produto',
-            ]);
-        } else {
-            $this->views('controle', [
-                'title' => "Associar produtos a fornecedor",
-                'pag' => "finalizar",
-                'imagem' => "/images/Create-amico.png",
-                'mensagem' => "Não foi possivel associado o produto ao fornecedor!",
-                'link' => '/controle/produto',
-            ]);
-        }
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $fornecedores = $this->_controllerFornecedor->buscarTodos();
+        $this->views('cadastro', [
+            'title' => 'Associar Fornecedores',
+            'pag' => 'associar fornecedor',
+            'produto' => $produto,
+            'fornecedores' => $fornecedores,
+            'link' => '/controle/produto'
+        ]);
     }
 
     public function relatorio() : void 
@@ -222,6 +199,29 @@ class ProdutoController extends Controller
                 'imagem' => "/images/Forgot password-bro.png",
                 'mensagem' => "Esse produto já foi cadastrado!",
                 'link' => '/cadastro/produto',
+            ]);
+        }
+    }
+
+    public function atualizar($codigo) : void 
+    {
+        $request = Request::all();
+        $result = $this->_produto->update($request, 'CD_PRODUTO', $codigo[0]);
+        if($result){
+            $this->views('controle', [
+                'title' => "Atualização de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "O produto {$request['NM_PRODUTO']} foi atualizado com sucesso!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Atualização de Produto",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel atualizar o produto!",
+                'link' => '/controle/produto',
             ]);
         }
     }

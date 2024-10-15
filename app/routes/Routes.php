@@ -66,14 +66,17 @@ abstract class Routes
                     //Ações
                         '/servico/buscar/[0-9]+' => 'ServicoController@buscar',
                         '/servico/excluir/[0-9]+' => 'ServicoController@excluir',
-                //Produto
-                    //Paginas
-                        '/controle/produto' => 'ProdutoController@paginaDeControle',
-                        '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
-                        '/produto/editar/[0-9]+' => 'ProdutoController@paginaDeEdicao',
-                        '/produto/buscar/[0-9]+' => 'ProdutoController@paginaDeDetalhe',       
-                    //Ações
-                        '/produto/excluir/[0-9]+' => 'ProdutoController@excluir',
+                //Produto        
+                    '/produto/relatorio' => 'ProdutoController@relatorio', 
+                    '/produto/excluir/[0-9]+' => 'ProdutoController@excluir',
+                    '/controle/produto' => 'ProdutoController@paginaDeControle',
+                    '/cadastro/produto' => 'ProdutoController@paginaDeCadastro',
+                    '/produto/editar/[0-9]+' => 'ProdutoController@paginaDeEdicao',
+                    '/produto/buscar/[0-9]+' => 'ProdutoController@paginaDeDetalhe',    
+                    '/produto/inserir/[0-9]+' => 'ProdutoController@paginaDeInserir',   
+                    '/produto/debitar/[0-9]+' => 'ProdutoController@paginaDeDebitar',   
+                    '/produto/associar/servico/[0-9]+' => 'ProdutoController@associarServico',   
+                    '/produto/associar/fornecedor/[0-9]+' => 'ProdutoController@associarFornecedor',  
                 //Usuario
                     //Paginas
                         '/usuario/editar/[0-9]+' => 'UsuarioController@paginaDeEdicao',
