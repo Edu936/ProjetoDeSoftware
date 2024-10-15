@@ -31,6 +31,12 @@
             else if($etapa == "quarta") {
                 require_once('pedidos-Etapas/quarta.php');
             }
+            else if($etapa == "quinta") {
+                require_once('pedidos-Etapas/quinta.php');
+            }
+            else if($etapa == "sexta") {
+                require_once('pedidos-Etapas/sexta.php');
+            }
         ?>
     </div>
 </div>
