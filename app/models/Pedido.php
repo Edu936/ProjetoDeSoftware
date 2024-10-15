@@ -7,7 +7,7 @@ use DateTime;
 class Pedido extends Model
 {
     private int $CD_PEDIDO;
-    private DateTime $DT_PEDIDO;
+    private mixed $DT_PEDIDO;
     private string $DS_STATUS;
     private float $VL_TOTAL;
     private float $VL_DESCONTO;
@@ -17,7 +17,7 @@ class Pedido extends Model
     private int $CD_USUARIO;
     private int $CD_CLIENTE;
     private int $CD_VEICULO;
-    private int $CD_ORCAMENTO;
+    private ?int $CD_ORCAMENTO;
 
     public function __construct()
     {
@@ -36,12 +36,12 @@ class Pedido extends Model
     }
 
     //Data do pedido
-    public function getData(): DateTime
+    public function getData(): mixed
     {
         return $this->DT_PEDIDO;
     }
 
-    public function setData(string $data): void
+    public function setData(mixed $data): void
     {
         $this->DT_PEDIDO = $data;
     }
@@ -147,7 +147,7 @@ class Pedido extends Model
     }
 
     //Orcamento que originou o pedido
-    public function getOrcamento() : int 
+    public function getOrcamento() : int
     {
         return $this->CD_ORCAMENTO; 
     }
