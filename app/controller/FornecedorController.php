@@ -12,11 +12,13 @@ class FornecedorController extends Controller
 {
     private $_filters;
     private $_fornecedor;
+    private $controllerCidade;
 
     public function __construct()
     {   
         $this->_filters = new Filters();
         $this->_fornecedor = new Fornecedor();
+        $this->controllerCidade = new CidadeController();
     }
 
     public function paginaDeCadastro() : void
@@ -57,7 +59,15 @@ class FornecedorController extends Controller
 
     public function paginaDeEdicao($codigo) : void
     {
-
+        $cidades = $this->controllerCidade->buscarTodos();
+        $fornecedor = $this->buscarFornecedor('CD_FORNECEDOR', $codigo[0]);
+        $this->views('atualizar', [
+            'title' => 'Atualizar Fornecedor',
+            'pag' => 'fornecedor',
+            'cidades' => $cidades,
+            'fornecedor' => $fornecedor,
+            'link' => '/controle/fornecedor'
+        ]);
     }
 
     public function buscar($key, $value)

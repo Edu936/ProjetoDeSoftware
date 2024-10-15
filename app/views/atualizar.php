@@ -30,6 +30,9 @@
             }
             else if($this->e($pag) == "servico") {
                 require_once('components/atualizar/servico.php');
+            } 
+            else if($this->e($pag) == "fornecedor") {
+                require_once('components/atualizar/fornecedor.php');
             }
         ?>
     </section>

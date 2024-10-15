@@ -105,13 +105,11 @@ abstract class Routes
                         '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
                         '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',
                 //Fornecedor
-                    //Paginas
-                        '/controle/fornecedor' => 'FornecedorController@paginaDeControle',
-                        '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',    
-                        '/fornecedor/editar/[0-9]+' => 'FornecedorController@paginaDeEdicao',
-                    //Ações
-                        '/fornecedor/buscar/[0-9]+' => 'FornecedorController@buscar',
-                        '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',    
+                    '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',    
+                    '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',    
+                    '/controle/fornecedor' => 'FornecedorController@paginaDeControle',
+                    '/fornecedor/buscar/[0-9]+' => 'FornecedorController@buscar',
+                    '/fornecedor/editar/[0-9]+' => 'FornecedorController@paginaDeEdicao',
             ],
             'post' => [
                 //Home

@@ -30,7 +30,7 @@ class Fornecedor extends Model
     }
 
     //Cidade
-    public function getCidade(): int
+    public function getCidade(): ?int
     {
         return $this->CD_CIDADE;
     }

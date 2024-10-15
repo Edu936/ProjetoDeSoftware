@@ -6,7 +6,7 @@
             <div id="options-ford">
                 <div class="dadosP">
                     <label for="fornecedor">Selecione o Fornecedor: </label>
-                    <select name="CD_PRODUTO[]" id="fornecedor">
+                    <select name="CD_FORNECEDOR[]" id="fornecedor">
                         <option value="" selected>Escolha um Fornecedor</option>
                         <?php
                             foreach($fornecedores as $fornecedor) {
