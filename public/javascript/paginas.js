@@ -17,6 +17,10 @@ function buscarVeiculoCliente() {
     window.location.href = `/veiculo/buscar/cliente/${selecVeiculoCliente.value}`;
 }
 
+function editarVeiculo(value) {
+
+}
+
 /**
  * Clientes
  */
@@ -30,6 +34,14 @@ function editarCliente(value) {
 
 function excluirCliente(value) {
     window.location.href = `/cliente/excluir/${value}`;
+}
+
+function associarNumero(value) {
+
+}
+
+function associarEmail(value) {
+
 }
 
 /**
@@ -87,6 +99,14 @@ function editarFornecedor(value) {
 
 function excluirFornecedor(value) {
     window.location.href = `/fornecedor/excluir/${value}`;
+}
+
+function associarEmailFornecedor(value) {
+
+}
+
+function associarTelefoneFornecedor(value) {
+    
 }
 
 /**

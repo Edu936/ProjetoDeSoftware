@@ -108,7 +108,7 @@ abstract class Routes
                     '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',    
                     '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',    
                     '/controle/fornecedor' => 'FornecedorController@paginaDeControle',
-                    '/fornecedor/buscar/[0-9]+' => 'FornecedorController@buscar',
+                    '/fornecedor/buscar/[0-9]+' => 'FornecedorController@paginaDeDetalhes',
                     '/fornecedor/editar/[0-9]+' => 'FornecedorController@paginaDeEdicao',
             ],
             'post' => [

@@ -46,6 +46,7 @@
         else if ($this->e($pag) == "fornecedor") {
             require_once('components/tabelas/table-fornecedor.php');
         }
+        // Detalhes
         else if($this->e($pag) == "detalhe produto"){
             require_once('components/detalhes/produto.php');
         } 
@@ -55,6 +56,16 @@
         else if($this->e($pag) == "detalhe cliente"){
             require_once('components/detalhes/cliente.php');
         } 
+        else if($this->e($pag) == "detalhe fornecedor"){
+            require_once('components/detalhes/fornecedor.php');
+        } 
+        else if($this->e($pag) == "detalhe pedido"){
+            require_once('components/detalhes/pedido.php');
+        } 
+        else if($this->e($pag) == "detalhe veiculo"){
+            require_once('components/detalhes/veiculo.php');
+        } 
+        // Finalizar
         else if ($this->e($pag) == "finalizar") {
             require_once('components/content/finalizar.php');
         }

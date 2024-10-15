@@ -70,11 +70,43 @@ class FornecedorController extends Controller
         ]);
     }
 
+    public function paginaDeDetalhes($codigo) : void
+    {
+        $fornecedor = $this->buscarFornecedor('CD_FORNECEDOR', $codigo[0]);
+        $this->views('controle', [
+            'title' => 'Detalhe do Fornecedor',
+            'pag' => 'detalhe fornecedor',
+            'fornecedor' => $fornecedor,
+        ]);
+    }
+
     public function buscar($key, $value)
     {
         $fornecedor = new Fornecedor();
         $fornecedor = $fornecedor->findby($key, $value);
         return $fornecedor ? $fornecedor : false;
+    }
+
+    public function atualizar($codigo) {
+        $request = Request::all();
+        $result = $this->_fornecedor->update($request, 'CD_FORNECEDOR', $codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => "Atualização de Fornecedor",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel atualizar o fornecedor {$request['NM_FORNECEDOR']}!",
+                'link' => '/controle/fornecedor',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Atualização de Fornecedor",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "O fornecedor {$request['NM_FORNECEDOR']} foi atualizado!",
+                'link' => '/controle/fornecedor',
+            ]);
+        }
     }
 
     public function salvar()
@@ -124,6 +156,28 @@ class FornecedorController extends Controller
                 'imagem' => "/images/Forgot password-bro.png",
                 'mensagem' => "Esse fornededor já foi cadastrado!",
                 'link' => '/cadastro/fornecedor',
+            ]);
+        }
+    }
+
+    public function excluir($codigo): void
+    {
+        $result = $this->_fornecedor->delete('CD_FORNECEDOR', $codigo[0]);
+        if(!$result){
+            $this->views('controle', [
+                'title' => 'Exclusão de Fornecedor',
+                'pag' => 'finalizar',
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "Esse fornededor foi excluido com sucesso!",
+                'link' => '/controle/fornecedor',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => 'Exclusão de Fornecedor',
+                'pag' => 'finalizar',
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Esse fornededor não pode ser excluido!",
+                'link' => '/controle/fornecedor',
             ]);
         }
     }

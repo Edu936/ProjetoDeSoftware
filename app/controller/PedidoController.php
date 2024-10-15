@@ -32,6 +32,10 @@ class PedidoController extends Controller
         
     }
 
+    public function paginaDeDetalhe($codigo) : void
+    {
+    }
+
     public function primeiraEtapa() : void 
     {
         $clientes = $this->controllerCliente->buscarTodos();

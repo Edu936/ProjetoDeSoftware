@@ -61,8 +61,14 @@ class VeiculoController extends Controller
         
     }
 
-    public function paginaDeDetalhe($codigo) : void {
-
+    public function paginaDeDetalhe($codigo) : void 
+    {
+        $veiculo = $this->buscarVeiculo('CD_VEICULO', $codigo);
+        $this->views('controle', [
+            'title' => "Detalhe do Veiculo",
+            'pag' => "veiculo",
+            'detalhe veiculo' => $veiculo,
+        ]);
     }
 
     public function salvar ($codigo) : void
