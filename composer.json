@@ -1,19 +1,18 @@
 {
-    "name": "dudum/projeto_php",
-    "description": "Projeto de Software",
+    "name": "fesfx/projeto-de-software",
+    "description": "Projeto De Software",
     "authors": [
         {
-            "name": "Eduardo Vieira",
-            "email": "edu.vieira936@gmail.com"
+            "name": "Eduardo Vieira"
         }
     ],
     "require": {
         "league/plates": "^3.5",
-        "symfony/var-dumper": "^7.1"
+        "symfony/var-dumper": "^6.0"
     },
     "autoload": {
         "psr-4": {
-            "app\\":"app"
+            "app\\": "app"
         },
         "files": [
             "app/helpers/json.php"
