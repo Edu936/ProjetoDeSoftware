@@ -7,11 +7,11 @@ use DateTime;
 class Parcela extends Model 
 {
     private int $CD_PAGAMENTO;
-    private DateTime $DT_VENCIMENTO;
+    private $DT_VENCIMENTO;
     private string $DS_STATUS_PAGAMENTO;
     private float $VL_PARCELA;
     private float $VL_JUROS;  
-    private DateTime $DT_PAGAMENTO;  
+    private $DT_PAGAMENTO;  
 
     public function __construct()
     {
@@ -30,23 +30,23 @@ class Parcela extends Model
     }
 
     //Data de vencimento do pagamento da parcela
-    public function getVencimento(): DateTime
+    public function getVencimento()
     {
         return $this->DT_VENCIMENTO;
     }
 
-    public function setVencimento(DateTime $data): void
+    public function setVencimento($data): void
     {
         $this->DT_VENCIMENTO = $data->format('d/m/Y');
     }
 
     //Data de pagamento da parcela 
-    public function getPagamento() : DateTime
+    public function getPagamento()
     {
         return $this->DT_PAGAMENTO;
     }
 
-    public function setPagamento(DateTime $data): void
+    public function setPagamento($data): void
     {
         $this->DT_PAGAMENTO = $data->format('d/m/Y');
     }

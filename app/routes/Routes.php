@@ -12,6 +12,7 @@ abstract class Routes
     {
         return [
             'get' => [
+                '/teste/[0-9]+' => 'PagamentoController@salvar',
                 //Home
                     '/' => 'HomeController@login',
                     '/sign-in' => 'HomeController@signIn',

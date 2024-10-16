@@ -14,7 +14,7 @@ class Pedido extends Model
     private float $VL_LIQUIDO;
     private int $NU_PARCELAS;
     private string $DS_TIPO;
-    private int $CD_USUARIO;
+    private ?int $CD_USUARIO;
     private int $CD_CLIENTE;
     private ?int $CD_VEICULO;
     private ?int $CD_ORCAMENTO;

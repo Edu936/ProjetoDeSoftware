@@ -193,7 +193,7 @@ class PedidoController extends Controller
                     $this->_pedido->setValor($valor);
     
                     $data = [
-                        'DT_PEDIDO' => $this->_pedido->getData(),
+                        'DT_PEDIDO' => date('Y-m-d'),
                         'DS_STATUS' => "Aguardando Inicio",
                         'VL_TOTAL' => $this->_pedido->getValor(),
                         'VL_DESCONTO' => 00,
@@ -207,7 +207,6 @@ class PedidoController extends Controller
                     ];
     
                     $result = $this->_pedido->create($data);
-    
                     if ($result) {
                         $pedido = $this->buscarUltimoRegistro();
                         $this->salvarProdudoPedido($pedido->getCodigo(), $produtos);
@@ -244,7 +243,7 @@ class PedidoController extends Controller
                     'title' => 'Cadastrar Pedido',
                     'pag' => 'finalizar',
                     'imagem' => '/images/Forgot password-bro.png',
-                    'mensagem' => 'Você não inseriu nenhum produto que não temos no Estoque!',
+                    'mensagem' => 'Você não inseriu um produto que não temos no Estoque!',
                     'link' => '/cadastro/pedido',
                 ]);
             }     

@@ -109,24 +109,16 @@ class UsuarioController extends Controller
             ]);
             
         } else {
-            $reposta = false;
-            foreach($arrayTelefones as $tel){
-                $fone = $this->buscarTelefonesUsuario('DS_FONE_USUARIO', $tel);
-                if ($fone != $tel) {
-                    $result = $telefone->create([
-                        'CD_USUARIO' => $codigo,
-                        'DS_FONE_USUARIO' => $tel
-                    ]);
-                    if ($result) {
-                        $reposta = true;
-                    } else {
-                        $reposta = false;
-                    }
-                } else {
-                    $reposta = false;
-                }
+            $fone = $this->buscarTelefonesUsuario('DS_FONE_Usuario', $arrayTelefones[0]);
+            if($fone){
+                dd("foi");
+                return false;
+            } else {
+                return $telefone->create([
+                    'CD_USUARIO' => $codigo,
+                    'DS_FONE_USUARIO' => $arrayTelefones[0],
+                ]);
             }
-            return $reposta;
         }
     }
 
@@ -161,24 +153,16 @@ class UsuarioController extends Controller
                 'link' => '/usuario/controle/' . $_SESSION['id'],
             ]);
         } else {
-            $return = false;
-            foreach($arrayEmails as $e) {
-                $mail = $this->buscarEmailsUsuario('DS_EMAIL_USUARIO', $e);
-                if ($mail != $e) {
-                    $result = $email->create([
-                        'CD_USUARIO' => $codigo,
-                        'DS_EMAIL_USUARIO' => $e
-                    ]);
-                    if ($result) {
-                        $return = true;
-                    } else {
-                        $return = false;
-                    }
-                } else {
-                    $return = false;
-                }
+            $fone = $this->buscarEmailsUsuario('DS_EMAIL_Usuario', $arrayEmails[0]);
+            if($fone){
+                dd("foi");
+                return false;
+            } else {
+                return $email->create([
+                    'CD_USUARIO' => $codigo,
+                    'DS_EMAIL_USUARIO' => $arrayEmails[0],
+                ]);
             }
-            return $return;
         }
     }
 
@@ -322,7 +306,7 @@ class UsuarioController extends Controller
         return $cidade[0] ?? false;
     }
 
-    private function buscarTelefonesUsuario(string $key, int $data): array | bool
+    private function buscarTelefonesUsuario(string $key, mixed $data): array | bool
     {
         $filters = new Filters();
         $tefoneUsuario = new TelefoneUsuario();
@@ -335,7 +319,7 @@ class UsuarioController extends Controller
         return $tefoneUsuario ?? false;
     }
 
-    private function buscarEmailsUsuario(string $key, int $data): array | bool
+    private function buscarEmailsUsuario(string $key, mixed $data): array | bool
     {
         $filters = new Filters();
         $emailUsuario = new EmailUsuario();

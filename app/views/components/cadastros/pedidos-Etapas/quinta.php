@@ -12,7 +12,7 @@
                 <select name="CD_VEICULO" id="veiculo">
                     <?php
                         foreach($veiculos as $veiculo) {
-                            echo "<option value=\"{$veiculo->getCodigo()}\">{$veiculo->getPalca()}</option>";
+                            echo "<option value=\"{$veiculo->getCodigo()}\">{$veiculo->getModelo()} - {$veiculo->getPalca()}</option>";
                         }
                     ?>
                 </select>
