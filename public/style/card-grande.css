@@ -120,3 +120,17 @@ fieldset {
     background-color: rgb(177, 114, 206);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337);
 }
+
+.dados-cliente, .dados-usuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(32, 27, 44, 0.39);
+    border-radius: 8px;
+    margin-top: 2px;
+    padding: 0px 20px 0px 20px;
+}
+
+.dados-usuario {
+    margin-bottom: 20px;
+}

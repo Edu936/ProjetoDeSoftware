@@ -16,7 +16,7 @@ class Pedido extends Model
     private string $DS_TIPO;
     private int $CD_USUARIO;
     private int $CD_CLIENTE;
-    private int $CD_VEICULO;
+    private ?int $CD_VEICULO;
     private ?int $CD_ORCAMENTO;
 
     public function __construct()
@@ -38,7 +38,8 @@ class Pedido extends Model
     //Data do pedido
     public function getData(): mixed
     {
-        return $this->DT_PEDIDO;
+        $data_formatada = new DateTime($this->DT_PEDIDO);
+        return $data_formatada->format('d/m/Y');
     }
 
     public function setData(mixed $data): void

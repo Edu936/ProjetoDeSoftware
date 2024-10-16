@@ -4,23 +4,23 @@
         <thead>
             <tr>
                 <th scope="col">Codigo</th>
+                <th scope="col">Cliente</th>
                 <th scope="col">Data</th>
-                <th scope="col">Preço Pedido</th>
+                <th scope="col">Preço Final</th>
                 <th scope="col">Status</th>
-                <th scope="colgroup" colspan="3">Ações</th>
+                <th scope="colgroup">Ações</th>
             </tr>
         </thead>
         <tbody >
             <?php
-            foreach ($pedidos as $pedidos) {
+            foreach ($pedidos as $pedido) {
                 echo "<tr>";
-                echo "<td>{$pedidos->getCodigo()}</td>";
-                echo "<td>{$pedidos->getData()}</td>";
-                echo "<td>R\${$pedidos->getValor()},00</td>";
-                echo "<td>{$pedidos->getQuantidade()}</td>";
-                echo "<td><button onclick=\"editarPedidos({$pedidos->getCodigo()})\">Editar</button></td>";
-                echo "<td><button onclick=\"buscarPedidos({$pedidos->getCodigo()})\">Detalhes</button></td>";
-                echo "<td><button onclick=\"excluirPedidos({$pedidos->getCodigo()})\">Excluir</button></td>";
+                echo "<td>{$pedido->getCodigo()}</td>";
+                echo "<td>{$pedido->NM_CLIENTE}</td>";
+                echo "<td>{$pedido->getData()}</td>";
+                echo "<td>R\$ {$pedido->getValorLiquido()},00</td>";
+                echo "<td>{$pedido->getStatus()}</td>";
+                echo "<td><button onclick=\"buscarPedidos({$pedido->getCodigo()})\">Detalhes</button></td>";
                 echo "</tr>";
             }
             ?>

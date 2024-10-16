@@ -265,4 +265,15 @@ class ProdutoController extends Controller
         $this->_filters->clear();
         return $produtos != [] ? $produtos : false;
     }
+
+    public function descontaProduto(int $codigo) : bool
+    {
+        $produto = $this->buscarProduto('CD_PRODUTO', $codigo);
+        if($produto->getQuantidade() > 0){
+            $this->_produto->update(['QTD_PRODUTO' => $produto->getQuantidade() - 1], 'CD_PRODUTO', $codigo);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
