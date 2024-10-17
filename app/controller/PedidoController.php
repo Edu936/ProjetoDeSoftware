@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\database\Filters;
+use app\models\OrcamentoProduto;
 use app\models\Pedido;
 use app\models\PedidoProduto;
 use app\models\PedidoServico;
@@ -117,10 +118,14 @@ class PedidoController extends Controller
 
     public function quartaEtapa($codigo): void
     {
+        $_orcamentoProduto = new OrcamentoProduto();
         $orcamento = $this->controllerOrcamento->buscarOrcamento('CD_ORCAMENTO', $codigo[0]);
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $orcamento->getCliente());
         $servicos = $this->controllerOrcamento->buscarServicosAcossiados('CD_ORCAMENTO', $codigo[0]);
         $produtos = $this->controllerOrcamento->buscarProdutosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $this->_filters->where('CD_ORCAMENTO', '=', $codigo[0]);
+        $_orcamentoProduto->setfilters($this->_filters);
+        $produtosAssociados  = $_orcamentoProduto->fetchAll();
         $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "detalhe orcamento",
@@ -128,6 +133,7 @@ class PedidoController extends Controller
             'orcamento' => $orcamento,
             'servicos' => $servicos,
             'produtos' => $produtos,
+            'quantidade' => $produtosAssociados[0]->QTD_PRODUTO,
             'link' => "/pedido/orcamentos/cliente/{$cliente->getCodigo()}",
         ]);
     }

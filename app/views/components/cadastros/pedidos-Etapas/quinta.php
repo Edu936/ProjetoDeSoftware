@@ -23,14 +23,18 @@
             <div id="options-prod">
                 <?php
                 if($produtosSelect){
+                    echo "<fieldset>";
                     echo "<div class=\"dados\">";
                         foreach($produtosSelect as $produto) {
                         echo "<label for=\"produto\">Selecione o Produto: </label>";
                         echo "<select name=\"CD_PRODUTO[]\" id=\"produto\">";
                         echo "<option value=\"{$produto->getCodigo()}\" selected>{$produto->getNome()}</option>";
                         echo "</select>";
+                        echo "<label for=\"quantidadeProduto\">Digite a quantidade de produtos:</label>";
+                        echo "<input type=\"number\" name=\"QTD_PRODUTO[]\" id=\"quantidadeProduto\">";
                         }
                     echo "</div>";
+                    echo "</fieldset>";
                 }
                 ?>
                 <div class="dadosP">
@@ -43,6 +47,8 @@
                             }
                         ?>
                     </select>
+                    <label for="quantidadeProduto">Digite a quantidade de produtos:</label>
+                    <input type="number" name="QTD_PRODUTO[]" id="quantidadeProduto">
                 </div>
             </div>
         </fieldset>
