@@ -266,14 +266,27 @@ class ProdutoController extends Controller
         return $produtos != [] ? $produtos : false;
     }
 
-    public function descontaProduto(int $codigo) : bool
+    public function descontaProduto(array $produtos , array $quantidade)
     {
-        $produto = $this->buscarProduto('CD_PRODUTO', $codigo);
-        if($produto->getQuantidade() > 0){
-            $this->_produto->update(['QTD_PRODUTO' => $produto->getQuantidade() - 1], 'CD_PRODUTO', $codigo);
-            return true;
-        } else {
-            return false;
+        $x = count($produtos);
+        for($i = 0; $i < $x; $i++) {
+            // Verifica se a quantidade em estoque é suficiente
+            if($produtos[$i]->getQuantidade() > 0) {
+                // Subtrai a quantidade
+                $valor = $produtos[$i]->getQuantidade() - $quantidade[$i];
+    
+                // Certifica-se de que o valor nunca fique negativo
+                if ($valor < 0) {
+                    return false; // Não há estoque suficiente
+                }
+    
+                // Atualiza o valor correto de QTD_PRODUTO
+                $data = ['QTD_PRODUTO' => $valor];
+                $produtos[$i]->update($data, 'CD_PRODUTO', $produtos[$i]->getCodigo());
+            } else {
+                return false;
+            }
         }
+        return true;
     }
 }

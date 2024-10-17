@@ -12,7 +12,7 @@ class Pedido extends Model
     private float $VL_TOTAL;
     private float $VL_DESCONTO;
     private float $VL_LIQUIDO;
-    private int $NU_PARCELAS;
+    private $NU_PARCELAS;
     private string $DS_TIPO;
     private ?int $CD_USUARIO;
     private int $CD_CLIENTE;
@@ -98,7 +98,7 @@ class Pedido extends Model
     }
 
     
-    public function getParcelas() : int
+    public function getParcelas() 
     {
         return $this->NU_PARCELAS;
     }

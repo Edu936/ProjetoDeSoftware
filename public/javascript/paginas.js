@@ -153,6 +153,10 @@ function CadastrarPedidoNovo(value) {
 function OrcamentoPedidoDetalhe(value) {
     window.location.href = `/pedido/orcamento/detalhe/${value}`;
 }
+
+function detalhePedido(value) {
+    window.location.href = `/pedido/detalhe/${value}`;
+}
 /**
  * Orcamentos
  */

@@ -32,6 +32,8 @@
                             }
                         ?>
                     </select>
+                    <label for="quantidadeProduto">Digite a quantidade de produtos:</label>
+                    <input type="number" name="QTD_PRODUTO[]" id="quantidadeProduto">
                 </div>
             </div>
         </fieldset>

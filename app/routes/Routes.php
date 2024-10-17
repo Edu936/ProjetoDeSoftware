@@ -106,6 +106,7 @@ abstract class Routes
                     '/pedido/orcamento/detalhe/[0-9]+' => 'PedidoController@quartaEtapa',
                     '/pedido/orcamentos/salvar/[0-9]+' => 'PedidoController@quintaEtapa', 
                     '/pedido/orcamentos/cliente/[0-9]+' => 'PedidoController@terceiraEtapa',
+                    '/pedido/detalhe/[0-9]+' => 'PedidoController@paginaDeDetalhes',
                 //Fornecedor
                     '/fornecedor/excluir/[0-9]+' => 'FornecedorController@excluir',    
                     '/cadastro/fornecedor' => 'FornecedorController@paginaDeCadastro',    

@@ -10,7 +10,7 @@ class Parcela extends Model
     private $DT_VENCIMENTO;
     private string $DS_STATUS_PAGAMENTO;
     private float $VL_PARCELA;
-    private float $VL_JUROS;  
+    private $VL_JUROS;  
     private $DT_PAGAMENTO;  
 
     public function __construct()

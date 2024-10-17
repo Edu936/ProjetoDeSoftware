@@ -26,12 +26,14 @@ header {
     left: 0%;
     margin: 0%;
     height: 8vh;
+    z-index: 1;
     width: 100vw;
     display: flex;
     position: fixed;
     align-items: center;
     justify-content: end;
     padding: 0px 40px 0px 30px;
+    background-color: rgb(32, 27, 44);
     border-bottom: solid 1px rgb(146, 227, 169)
 }
 

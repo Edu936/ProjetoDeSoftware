@@ -35,12 +35,29 @@ class PedidoController extends Controller
         $this->controllerOrcamento = new OrcamentoController();
     }
 
-    public function paginaDeControle(){
+    public function paginaDeControle() : void
+    {
         $pedidos = $this->buscarTodos();
         $this->views('controle', [
             'title' => 'Controle de Pedido',
             'pag' => 'pedido',
             'pedidos' => $pedidos
+        ]);
+    }
+
+    public function paginaDeDetalhes($codigo) : void
+    {
+        $produtos = $this->buscarProdutosAcossiados($codigo[0]);
+        $servicos = $this->buscarServicoAcossiados($codigo[0]);
+        $pedido = $this->buscarPedido("CD_PEDIDO", $codigo[0]);
+        $cliente = $this->controllerCliente->buscarCliente("CD_CLIENTE", $pedido->getCliente());
+        $this->views('controle', [
+            'title' => 'Descrição do Pedido',
+            'pag' => 'detalhe pedido',
+            'pedido' => $pedido,
+            'produtos' => $produtos,
+            'servicos' => $servicos,
+            'cliente' => $cliente
         ]);
     }
 
@@ -166,21 +183,18 @@ class PedidoController extends Controller
         $orcamento = Request::input('CD_ORCAMENTO');
         $servicos = $this->trazerServicos(Request::input('CD_SERVICO'));
         $produtos = $this->trazerProdutos(Request::input('CD_PRODUTO'));
+        $quantidade = Request::input('QTD_PRODUTO');
         if ($servicos != [] || $produtos != []) {
             $veiculo = Request::input('CD_VEICULO');
+            $r = true;
             if ($produtos != []) {
-                foreach ($produtos as $p) {
-                    $r = $this->controllerProduto->descontaProduto($p->getCodigo());
-                    if(!$r){
-                        break;
-                    }
-                }
+                $r = $this->controllerProduto->descontaProduto($produtos,$quantidade);
             }
             if ($r) {
                 if ($veiculo != "" ? true : $veiculo == "" && ($produtos != [] && $servicos == [])) {
                     $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $codigo[0]);
                     $usuario = $this->controllerUsuario->buscarUsuario('CD_USUARIO', $_SESSION['id']);
-                    $valor = $this->precificarPedido(Request::input('CD_PRODUTO'), Request::input('CD_SERVICO'));
+                    $valor = $this->precificarPedido(Request::input('CD_PRODUTO'),Request::input('QTD_PRODUTO'), Request::input('CD_SERVICO'));
                     $veiculo != "" ? $veiculo = $this->controllerVeiculo->buscarVeiculo('CD_VEICULO', $veiculo): $veiculo = false;
                     $orcamento != "Não possui orçamento" ? $orcamento = $this->controllerOrcamento->buscarOrcamento('CD_ORCAMENTO', $orcamento) : $orcamento = false;
     
@@ -243,7 +257,7 @@ class PedidoController extends Controller
                     'title' => 'Cadastrar Pedido',
                     'pag' => 'finalizar',
                     'imagem' => '/images/Forgot password-bro.png',
-                    'mensagem' => 'Você não inseriu um produto que não temos no Estoque!',
+                    'mensagem' => 'Você inseriu um produto que não temos no Estoque!',
                     'link' => '/cadastro/pedido',
                 ]);
             }     
@@ -258,13 +272,40 @@ class PedidoController extends Controller
         }
     }
 
-    private function precificarPedido(array $produtos, array $servicos): float
+    public function buscarProdutosAcossiados($codigo) : array
+    {
+        $produtos = [];
+        $this->_filters->where('CD_PEDIDO', '=', $codigo);
+        $this->_pedidoProduto->setfilters($this->_filters);
+        $produtosA = $this->_pedidoProduto->fetchAll();
+        $this->_filters->clear();
+        foreach($produtosA as $p){
+            $produtos [] = $this->controllerProduto->buscarProduto('CD_PRODUTO', $p->getProduto()); 
+        }
+        return $produtos;
+    }
+
+    public function buscarServicoAcossiados($codigo) : array
+    {
+        $servicos = [];
+        $this->_filters->where('CD_PEDIDO', '=', $codigo);
+        $this->_pedidoServico->setfilters($this->_filters);
+        $servicosA = $this->_pedidoServico->fetchAll();
+        $this->_filters->clear();
+        foreach($servicosA as $s){
+            $servicos [] = $this->controllerServico->buscarServico('CD_SERVICO', $s->getServico());
+        }
+        return $servicos;
+    }
+
+    private function precificarPedido(array $produtos, array $quantidade, array $servicos): float
     {
         $valor = 0;
-        foreach ($produtos as $produto) {
+        foreach ($produtos as $x => $produto) {
             if ($produto != "") {
                 $p = $this->controllerProduto->buscarProduto('CD_PRODUTO', (int)$produto);
-                $valor += $p->getValor();
+                
+                $valor += ($p->getValor()*$quantidade[$x]);
             }
         }
         foreach ($servicos as $servico) {
@@ -371,6 +412,8 @@ class PedidoController extends Controller
             'DS_TIPO' => $pedido->getTipoPagamento(),
         ];
         $result = $this->_pedido->update($data, 'CD_PEDIDO', $codigo[0]);
+        $pagamento = new PagamentoController;
+        $pagamento->salvar($codigo[0]);
         if($result){
             $this->views('atendimento', [
                 'title' => "Cadastros Pedido",

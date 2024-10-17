@@ -20,7 +20,7 @@
                 echo "<td>{$pedido->getData()}</td>";
                 echo "<td>R\$ {$pedido->getValorLiquido()},00</td>";
                 echo "<td>{$pedido->getStatus()}</td>";
-                echo "<td><button onclick=\"buscarPedidos({$pedido->getCodigo()})\">Detalhes</button></td>";
+                echo "<td><button onclick=\"detalhePedido({$pedido->getCodigo()})\">Detalhes</button></td>";
                 echo "</tr>";
             }
             ?>
