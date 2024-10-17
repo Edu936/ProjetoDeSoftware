@@ -31,14 +31,14 @@
             echo "</li>";
             ?>
             <?php
-            if ($_SESSION['cargo'] != "Atendente") {
-                echo "<li class=\"options\">";
-                echo "<a href=\"/estatistica\">";
-                echo "<i class=\"bi bi-graph-up\"></i>";
-                echo "<span>Estatisticas</span>";
-                echo "</a>";
-                echo "</li>";
-            }
+            // if ($_SESSION['cargo'] != "Atendente") {
+            //     echo "<li class=\"options\">";
+            //     echo "<a href=\"/estatistica\">";
+            //     echo "<i class=\"bi bi-graph-up\"></i>";
+            //     echo "<span>Estatisticas</span>";
+            //     echo "</a>";
+            //     echo "</li>";
+            // }
             ?>
             <?php
             echo "<li class=\"options\">";
