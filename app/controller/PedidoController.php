@@ -58,7 +58,8 @@ class PedidoController extends Controller
             'pedido' => $pedido,
             'produtos' => $produtos,
             'servicos' => $servicos,
-            'cliente' => $cliente
+            'cliente' => $cliente,
+            'link' => '/controle/pedido',
         ]);
     }
 
@@ -229,7 +230,7 @@ class PedidoController extends Controller
                     $result = $this->_pedido->create($data);
                     if ($result) {
                         $pedido = $this->buscarUltimoRegistro();
-                        $this->salvarProdudoPedido($pedido->getCodigo(), $produtos);
+                        $this->salvarProdudoPedido($pedido->getCodigo(), $produtos, $quantidade);
                         $this->salvarServicoPedido($pedido->getCodigo(), $servicos);
                         $this->views('atendimento', [
                             'title' => 'Cadastro de Pedido',
@@ -392,13 +393,14 @@ class PedidoController extends Controller
         }
     }
 
-    public function salvarProdudoPedido(int $pedido, array $produtos)
+    public function salvarProdudoPedido(int $pedido, array $produtos, array $quantidade)
     {
-        foreach ($produtos as $p) {
+        foreach ($produtos as $x=>$p) {
             $this->_pedidoProduto->create([
                 'CD_PEDIDO' => $pedido,
                 'CD_PRODUTO' => $p->getCodigo(),
-                'DS_STATUS' => 'não entregue'
+                'DS_STATUS' => 'não entregue',
+                'QTD_PRODUTO' => $quantidade[$x],
             ]);
         }
     }

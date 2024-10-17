@@ -43,4 +43,15 @@ class PagamentoController extends Controller
         $this->_filters->clear();
         return $parcela[0];
     }
+
+    public function pagarParcela($codigo) {
+
+    }
+
+    public function buscarParcelas($codigo) {
+        $this->_filters->where('CD_PEDIDO', '=', $codigo[0]);
+        $this->_parcela->setfilters($this->_filters);
+        $parcelas = $this->_parcela->fetchAll();
+        dd($parcelas);
+    }
 }

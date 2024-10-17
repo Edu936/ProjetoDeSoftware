@@ -26,7 +26,7 @@
             <?php
             if($produtos) {
                 foreach ($produtos as $produto) {
-                    echo "<p>{$produto->getNome()}</p><br/>";
+                    echo "<p>Nome: {$produto->getNome()}</p> <p>Valor: R\$ {$produto->getValor()},00</p><br/>";
                 }
             } else {
                 echo "<p>Não a produtos associados a esse orçamento.</p>";
@@ -36,6 +36,7 @@
     </div>
     <div class="card-details-option">
         <button onclick="pagina('<?=$link?>')">Voltar</button>
-        <button onclick="pagina('<?=$relatorio?>')">relatorio</button>
+        <button onclick="pagamentosPedido('<?=$pedido->getCodigo()?>')">Pagamentos</button>
+        <button onclick="relatorioPedido('<?=$pedido->getCodigo()?>')">relatorio</button>
     </div>
 </div>

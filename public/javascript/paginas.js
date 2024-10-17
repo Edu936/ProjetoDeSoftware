@@ -131,6 +131,15 @@ function usuarioExcluir(value) {
 /**
  * Pedido
  */
+
+function pagamentosPedido(value) {
+    window.location.href = `/pedido/pagamento/${value}`;
+}
+
+function relatorioPedido(value) {
+    window.location.href = `/pedido/relatorio/${value}`;
+}
+
 function buscarClientePedido() {
     const selectCliente = document.querySelector('#cliente-pedido');
     if(selectCliente.value != "null") {

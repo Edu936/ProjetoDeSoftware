@@ -2,6 +2,8 @@
 
 namespace app\routes;
 
+use app\controller\PagamentoController;
+
 /**
  * Essa classe so possui o metodo get esse metodo retorna todas as rotas que nosso website possui.
  */
@@ -95,6 +97,8 @@ abstract class Routes
                     //Ações
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
+                    '/pedido/pagamento/[0-9]+' => 'PagamentoController@buscarParcelas',
+                    '/pedido/relatorio/[0-9]+' => 'PedidoControler@relatorio',
                     '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
                     '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',
                     '/cadastro/pedido' => 'PedidoController@primeiraEtapa',
