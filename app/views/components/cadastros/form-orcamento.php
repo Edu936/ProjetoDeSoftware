@@ -24,10 +24,13 @@
                         <option value="" selected>Escolha um Produto</option>
                         <?php
                             foreach($produtos as $produto) {
-                                echo "<option value=\"{$produto->getCodigo()}\">{$produto->getNome()}</option>";
+                                echo "<option value=\"{$produto->getCodigo()}\">{$produto->getNome()} R\${$produto->getValor()},00</option>";
                             }
                         ?>
+                        
                     </select>
+                    <label for="quantidadeProduto">Digite a quantidade de produtos:</label>
+                    <input type="number" name="QTD_PRODUTO[]" id="quantidadeProduto">
                 </div>
             </div>
         </fieldset>
@@ -40,7 +43,7 @@
                         <option value="" selected>Escolha um Serviços</option>
                         <?php
                             foreach($servicos as $servico) {
-                                echo "<option value=\"{$servico->getCodigo()}\">{$servico->getNome()}</option>";
+                                echo "<option value=\"{$servico->getCodigo()}\">{$servico->getNome()}  R\${$servico->getValor()},00</option>";
                             }
                         ?>
                     </select>

@@ -27,7 +27,7 @@
             <?php
             if($produtos) {
                 foreach ($produtos as $produto) {
-                    echo "<p>{$produto->getNome()}</p><br/>";
+                    echo "<p>Produto: {$produto->getNome()} | Quantidade: {$quantidade}</p><br/>";
                 }
             } else {
                 echo "<p>Não a produtos associados a esse orçamento.</p>";

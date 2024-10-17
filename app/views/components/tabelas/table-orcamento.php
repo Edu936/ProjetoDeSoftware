@@ -34,7 +34,7 @@
                     echo "<td>{$orcamento->getData()}</td>";
                     echo "<td>R\${$orcamento->getValor()},00</td>";
                     echo "<td><button onclick=\"editarProduto({$orcamento->getCodigo()})\">Editar</button></td>";
-                    echo "<td><button onclick=\"buscarProduto({$orcamento->getCodigo()})\">Detalhes</button></td>";
+                    echo "<td><button onclick=\"detalheOrcamento({$orcamento->getCodigo()})\">Detalhes</button></td>";
                     echo "<td><button onclick=\"excluirProduto({$orcamento->getCodigo()})\">Excluir</button></td>";
                     echo "</tr>";
                 }

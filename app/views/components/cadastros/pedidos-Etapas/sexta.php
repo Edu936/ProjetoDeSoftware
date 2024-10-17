@@ -28,7 +28,7 @@
                         <option value="" selected></option>
                         <?php
                             foreach($produtos as $produto) {
-                                echo "<option value=\"{$produto->getCodigo()}\">{$produto->getNome()}</option>";
+                                echo "<option value=\"{$produto->getCodigo()}\">{$produto->getNome()} R\${$produto->getValor()},00</option>";
                             }
                         ?>
                     </select>
@@ -46,7 +46,7 @@
                         <option value="" selected></option>
                         <?php
                             foreach($servicos as $servico) {
-                                echo "<option value=\"{$servico->getCodigo()}\">{$servico->getNome()}</option>";
+                                echo "<option value=\"{$servico->getCodigo()}\">{$servico->getNome()} R\${$servico->getValor()}</option>";
                             }
                         ?>
                     </select>

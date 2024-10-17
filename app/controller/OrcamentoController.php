@@ -80,6 +80,9 @@ class OrcamentoController extends Controller
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $orcamento->getCliente());
         $servicos = $this->buscarServicosAcossiados('CD_ORCAMENTO', $codigo[0]);
         $produtos = $this->buscarProdutosAcossiados('CD_ORCAMENTO', $codigo[0]);
+        $this->_filters->where('CD_ORCAMENTO', '=', $codigo[0]);
+        $this->_orcamentoProduto->setfilters($this->_filters);
+        $produtosAssociados  = $this->_orcamentoProduto->fetchAll();
         $this->views('controle', [
             'title' => "Estética Automotiva",
             'pag' => "detalhe orcamento",
@@ -87,6 +90,8 @@ class OrcamentoController extends Controller
             'orcamento' => $orcamento,
             'servicos' => $servicos,
             'produtos' => $produtos,
+            'quantidade' => $produtosAssociados[0]->QTD_PRODUTO,
+            'link' => '/controle/orcamento'
         ]);
 
     }
@@ -94,7 +99,7 @@ class OrcamentoController extends Controller
     public function salvar() {
         // dd($this->buscarUltimoRegistro());
         $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', Request::input('CD_CLIENTE'));
-        $valorOrcamento = $this->precificarOrcamento(Request::input('CD_PRODUTO'), Request::input('CD_SERVICO'));
+        $valorOrcamento = $this->precificarOrcamento(Request::input('CD_PRODUTO'), Request::input('QTD_PRODUTO'), Request::input('CD_SERVICO'));
         $data = date('Y-m-d');
         $result = $this->_orcamento->create([
             'VL_ORCAMENTO' => $valorOrcamento,
@@ -105,11 +110,13 @@ class OrcamentoController extends Controller
             $orcamento = $this->buscarUltimoRegistro();
             $produtos = Request::input('CD_PRODUTO');
             $servicos = Request::input('CD_SERVICO');
-            foreach($produtos as $produto){
+            $quantidade = Request::input('QTD_PRODUTO');
+            foreach($produtos as $x => $produto){
                 if($produto != "") {
                     $this->_orcamentoProduto->create([
                         'CD_ORCAMENTO' => $orcamento->getCodigo(),
                         'CD_PRODUTO' => $produto,
+                        'QTD_PRODUTO' => $quantidade[$x],
                     ]);
                 }
             }
@@ -133,17 +140,18 @@ class OrcamentoController extends Controller
         }
     }
 
-    private function precificarOrcamento(array $produtos, array $servicos) : float 
+    private function precificarOrcamento(array $produtos, array $quantidade, array $servicos): float
     {
         $valor = 0;
-        foreach($produtos as $produto) {
-            if($produto != "") {
+        foreach ($produtos as $x => $produto) {
+            if ($produto != "") {
                 $p = $this->controllerProduto->buscarProduto('CD_PRODUTO', (int)$produto);
-                $valor += $p->getValor();
+                
+                $valor += ($p->getValor()*$quantidade[$x]);
             }
         }
-        foreach($servicos as $servico) {
-            if($servico != "") {
+        foreach ($servicos as $servico) {
+            if ($servico != "") {
                 $s = $this->controllerServico->buscarServico('CD_SERVICO', (int)$servico);
                 $valor += $s->getValor();
             }
