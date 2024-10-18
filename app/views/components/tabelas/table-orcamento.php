@@ -22,7 +22,7 @@
                 <th scope="col">Codigo</th>
                 <th scope="col">Data</th>
                 <th scope="col">Valor</th>
-                <th scope="colgroup" colspan="3">Ações</th>
+                <th scope="colgroup" colspan="2">Ações</th>
             </tr>
         </thead>
         <tbody >
@@ -33,9 +33,8 @@
                     echo "<td>{$orcamento->getCodigo()}</td>";
                     echo "<td>{$orcamento->getData()}</td>";
                     echo "<td>R\${$orcamento->getValor()},00</td>";
-                    echo "<td><button onclick=\"editarProduto({$orcamento->getCodigo()})\">Editar</button></td>";
                     echo "<td><button onclick=\"detalheOrcamento({$orcamento->getCodigo()})\">Detalhes</button></td>";
-                    echo "<td><button onclick=\"excluirProduto({$orcamento->getCodigo()})\">Excluir</button></td>";
+                    echo "<td><button onclick=\"excluirOrcamento({$orcamento->getCodigo()})\">Excluir</button></td>";
                     echo "</tr>";
                 }
             }

@@ -213,4 +213,25 @@ class OrcamentoController extends Controller
         }
         return $produtos != [] ? $produtos : false;
     }
+
+    public function excluir($codigo) {
+        $resposta = $this->_orcamento->delete('CD_ORCAMENTO', $codigo[0]);
+        if(!$resposta){
+            $this->views('controle', [
+                'title' => "Excluir Orçamento",
+                'pag' => "finalizar",
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "O orçamento foi excluido com sucesso!",
+                'link' => '/controle/orcamento',
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Excluir Orçamento",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O orçamento não foi excluido!",
+                'link' => '/controle/orcamento',
+            ]);
+        }
+    }
 }

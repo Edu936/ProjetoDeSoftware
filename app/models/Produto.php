@@ -8,6 +8,7 @@ class Produto extends Model
     private string $NM_PRODUTO;
     private float $VL_PRODUTO;
     private int $QTD_PRODUTO;  
+    private int $quantidadeAssociada;
 
     public function __construct()
     {
@@ -52,5 +53,15 @@ class Produto extends Model
     public function setQuantidade($quantidade) : void 
     {
         $this->QTD_PRODUTO=$quantidade;
+    }
+
+    public function setQuantidadeAcossiada($v) : void
+    {
+        $this->quantidadeAssociada = $v;
+    }
+    
+    public function quantidadeProduto() 
+    {
+        return $this->quantidadeAssociada;
     }
 }

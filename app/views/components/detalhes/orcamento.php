@@ -8,7 +8,7 @@
             <p>Nome do Cliente: <?=$cliente->getNome()?></p>
             <p>Codigo do Orcamento: <?=$orcamento->getCodigo()?></p>
             <p>data: <?=$orcamento->getData()?></p>
-            <p>Valor Total: <?=$orcamento->getValor()?></p>
+            <p>Valor Total: R$ <?=$orcamento->getValor()?>,00</p>
         </fieldset>
         <fieldset>
             <legend>Serviços acossiados</legend>

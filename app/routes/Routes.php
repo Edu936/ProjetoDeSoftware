@@ -97,8 +97,9 @@ abstract class Routes
                     //Ações
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
+                    '/pagar/pedido/[0-9]+' => 'PagamentoController@pagarParcela',
                     '/pedido/pagamento/[0-9]+' => 'PagamentoController@buscarParcelas',
-                    '/pedido/relatorio/[0-9]+' => 'PedidoControler@relatorio',
+                    '/pedido/relatorio/[0-9]+' => 'PedidoController@relatorio',
                     '/pedido/buscar/[0-9]+' => 'PedidoController@buscar',
                     '/pedido/excluir/[0-9]+' => 'PedidoController@excluir',
                     '/cadastro/pedido' => 'PedidoController@primeiraEtapa',

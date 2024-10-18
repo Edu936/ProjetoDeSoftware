@@ -65,6 +65,9 @@
         else if($this->e($pag) == "detalhe veiculo"){
             require_once('components/detalhes/veiculo.php');
         } 
+        else if($this->e($pag) == "detalhe parcelas"){
+            require_once('components/tabelas/table-parcela.php');
+        } 
         // Finalizar
         else if ($this->e($pag) == "finalizar") {
             require_once('components/content/finalizar.php');

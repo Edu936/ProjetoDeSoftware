@@ -4,10 +4,12 @@ namespace app\controller;
 
 use app\database\Filters;
 use app\models\OrcamentoProduto;
+use app\models\Parcela;
 use app\models\Pedido;
 use app\models\PedidoProduto;
 use app\models\PedidoServico;
 use app\static\Request;
+use League\Plates\Template\Functions;
 
 class PedidoController extends Controller
 {
@@ -286,8 +288,9 @@ class PedidoController extends Controller
         $this->_pedidoProduto->setfilters($this->_filters);
         $produtosA = $this->_pedidoProduto->fetchAll();
         $this->_filters->clear();
-        foreach($produtosA as $p){
-            $produtos [] = $this->controllerProduto->buscarProduto('CD_PRODUTO', $p->getProduto()); 
+        foreach($produtosA as $x => $p){
+            $produtos [] = $this->controllerProduto->buscarProduto('CD_PRODUTO', $p->getProduto());
+            $produtos [$x]->setQuantidadeAcossiada($p->QTD_PRODUTO);
         }
         return $produtos;
     }
@@ -376,6 +379,7 @@ class PedidoController extends Controller
     {
         $this->_filters->where('DS_TIPO', '!=' , '');
         $this->_filters->join('tb_cliente', 'tb_cliente.CD_CLIENTE', '=', 'tb_pedido.CD_CLIENTE');
+        $this->_filters->orderBy('CD_PEDIDO');
         $this->_pedido->setfilters($this->_filters);
         $pedidos = $this->_pedido->fetchAll();
         $this->_filters->clear();
@@ -441,6 +445,27 @@ class PedidoController extends Controller
         }
     }
     
+    public function relatorio($codigo) {
+        $pedido = $this->buscarPedido('CD_PEDIDO', $codigo[0]);
+        $produtos = $this->buscarProdutosAcossiados($codigo[0]);
+        $servicos = $this->buscarServicoAcossiados($codigo[0]);
+        $parcelas = $this->buscarPagamentoAssociados($codigo[0]);
+        $this->views('relatorio', [
+            'title' => 'Relatorio Pedido',
+            'pag' => 'relatorio',
+            'link' => '/pedido/detalhe/'.$pedido->getCodigo(),
+        ]);
+    }
+
+    private function buscarPagamentoAssociados($codigo) {
+        $parcelas = new Parcela();
+        $this->_filters->where('CD_PEDIDO', '=', $codigo);
+        $parcelas->setfilters($this->_filters);
+        $parcelas = $parcelas->fetchAll();
+        $this->_filters->clear();
+        return $parcelas;
+    }
+
     public function excluir($codigo): void {}
 
     public function atualizar($codigo): void {}

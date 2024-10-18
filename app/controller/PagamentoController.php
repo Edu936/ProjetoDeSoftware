@@ -45,13 +45,46 @@ class PagamentoController extends Controller
     }
 
     public function pagarParcela($codigo) {
-
+        $parcela = $this->buscar('CD_PAGAMENTO',$codigo[0]);
+        $result = $this->_parcela->update([
+            'DS_STATUS_PAGAMENTO' => 'Confirmado',
+            'DT_PAGAMENTO' => date('Y-m-d')
+        ],'CD_PAGAMENTO', $codigo[0]);
+        if($result){
+            $this->views('controle', [
+                'title' => "Pagamento Pedido",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "A parcela foi marcada como paga sucesso!",
+                'link' => '/pedido/pagamento/'.$parcela->CD_PEDIDO,
+            ]);
+        } else {
+            $this->views('controle', [
+                'title' => "Pagamento Pedido",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Erro ao tentar pagar parcela!",
+                'link' => '/pedido/pagamento/'.$parcela->CD_PEDIDO,
+            ]);
+        }
     }
 
     public function buscarParcelas($codigo) {
         $this->_filters->where('CD_PEDIDO', '=', $codigo[0]);
         $this->_parcela->setfilters($this->_filters);
         $parcelas = $this->_parcela->fetchAll();
-        dd($parcelas);
+        $this->views('controle', [
+            'title' => 'Descrição do Pedido',
+            'pag' => 'detalhe parcelas',
+            'parcelas' => $parcelas,
+            'link' => '/pedido/detalhe/'.$codigo[0],
+        ]);
+    }
+
+    public function buscar($key, $data) {
+        $this->_filters->where($key, '=', $data);
+        $this->_parcela->setfilters($this->_filters);
+        $parcela = $this->_parcela->fetchAll();
+        return $parcela[0];
     }
 }

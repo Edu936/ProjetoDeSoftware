@@ -132,6 +132,10 @@ function usuarioExcluir(value) {
  * Pedido
  */
 
+function pagarParcela(value) {
+    window.location.href = `/pagar/pedido/${value}`;
+}
+
 function pagamentosPedido(value) {
     window.location.href = `/pedido/pagamento/${value}`;
 }
@@ -178,6 +182,10 @@ function buscarOrcamentosCliente() {
 
 function detalheOrcamento(value) {
     window.location.href = `/orcamento/detalhe/${value}`;
+}
+
+function excluirOrcamento(value) {
+    window.location.href = `/orcamento/excluir/${value}`;
 }
 
 /**

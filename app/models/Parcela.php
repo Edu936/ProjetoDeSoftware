@@ -32,7 +32,8 @@ class Parcela extends Model
     //Data de vencimento do pagamento da parcela
     public function getVencimento()
     {
-        return $this->DT_VENCIMENTO;
+        $data_formatada = new DateTime($this->DT_VENCIMENTO);
+        return $data_formatada->format('d/m/Y');
     }
 
     public function setVencimento($data): void
@@ -43,7 +44,7 @@ class Parcela extends Model
     //Data de pagamento da parcela 
     public function getPagamento()
     {
-        return $this->DT_PAGAMENTO;
+        return $this->DT_PAGAMENTO ?? "Não foi paga";
     }
 
     public function setPagamento($data): void
