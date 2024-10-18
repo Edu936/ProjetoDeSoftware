@@ -26,9 +26,9 @@ button {
 .relatorio-body {
     width: 85%;
     padding: 10px;
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(236, 236, 236);
     color: rgb(41, 38, 38);
-
+    border-radius: 8px;
 }
 .relatorio-body > h2 {
     margin: 0%;
