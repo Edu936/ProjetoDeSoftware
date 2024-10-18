@@ -466,6 +466,59 @@ class PedidoController extends Controller
         return $parcelas;
     }
 
+    public function alterarStatus($codigo) {
+        $pedido = $this->buscarPedido('CD_PEDIDO', $codigo[0]);
+        if($pedido->getStatus() == "Aguardando Inicio") {
+            $result = $this->_pedido->update(['DS_STATUS' => 'Em Andamento'],'CD_PEDIDO', $codigo[0]);
+            if($result){
+                $this->views('controle', [
+                    'title' => "Cadastros Pedido",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'mensagem' => "O status do pedido foi atualizado com sucesso!",
+                    'link' => '/controle/pedido',
+                ]);
+            }else {
+                $this->views('controle', [
+                    'title' => "Edição Pedido",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Não foi possivel alterar o status do pedido!",
+                    'link' => '/controle/pedido',
+                ]);
+            }
+        }
+        else if($pedido->getStatus() == "Em Andamento") {
+            $result = $this->_pedido->update(['DS_STATUS' => 'Finalizado'],'CD_PEDIDO', $codigo[0]);
+            if($result){
+                $this->views('controle', [
+                    'title' => "Cadastros Pedido",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Create-amico.png",
+                    'mensagem' => "O status do pedido foi atualizado com sucesso!",
+                    'link' => '/controle/pedido',
+                ]);
+            }else {
+                $this->views('controle', [
+                    'title' => "Edição Pedido",
+                    'pag' => "finalizar",
+                    'imagem' => "/images/Forgot password-bro.png",
+                    'mensagem' => "Não foi possivel alterar o status do pedido!",
+                    'link' => '/controle/pedido',
+                ]);
+            }
+        }
+        else {
+            $this->views('controle', [
+                'title' => "Edição Pedido",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "O pedido Não pode ter mais o status alterado!",
+                'link' => '/controle/pedido',
+            ]);
+        }
+    }
+
     public function excluir($codigo): void {}
 
     public function atualizar($codigo): void {}

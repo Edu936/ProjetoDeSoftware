@@ -132,6 +132,10 @@ function usuarioExcluir(value) {
  * Pedido
  */
 
+function alterarStatus(value) {
+    window.location.href = `/pedido/alterar/status/${value}`;
+}
+
 function pagarParcela(value) {
     window.location.href = `/pagar/pedido/${value}`;
 }

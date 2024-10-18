@@ -85,6 +85,52 @@ class ProdutoController extends Controller
         ]);
     }
 
+    public function inserir($codigo) {
+        $pedido = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $pedido->setQuantidade($pedido->getQuantidade()+Request::input('QTD_PRODUTO'));
+        $result = $this->_produto->update(['QTD_PRODUTO' => $pedido->getQuantidade()], 'CD_PRODUTO', $codigo[0]);
+        if($result){
+            $this->views('cadastro', [
+                'title' => "Inserir de Produtos",
+                'pag' => "finalizar",
+                'imagem' => "/images/Create-amico.png",
+                'mensagem' => "Foi inserido com sucesso mais unidades do produto!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('cadastro', [
+                'title' => "Inserir Produtos",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel inseriri mais unidades do produto!",
+                'link' => '/controle/produto',
+            ]);
+        }
+    }
+
+    public function debitar($codigo) {
+        $pedido = $this->buscarProduto('CD_PRODUTO', $codigo[0]);
+        $pedido->setQuantidade($pedido->getQuantidade()-Request::input('QTD_PRODUTO'));
+        $result = $this->_produto->update(['QTD_PRODUTO' => $pedido->getQuantidade()], 'CD_PRODUTO', $codigo[0]);
+        if($result){
+            $this->views('cadastro', [
+                'title' => "Inserir de Produtos",
+                'pag' => "finalizar",
+                'imagem' => "/images/Inbox cleanup-rafiki.png",
+                'mensagem' => "Foi debitado com sucesso as unidades do produto!",
+                'link' => '/controle/produto',
+            ]);
+        } else {
+            $this->views('cadastro', [
+                'title' => "Inserir Produtos",
+                'pag' => "finalizar",
+                'imagem' => "/images/Forgot password-bro.png",
+                'mensagem' => "Não foi possivel debitar as unidades do produto!",
+                'link' => '/controle/produto',
+            ]);
+        }
+    }
+
     public function paginaDeDebitar($codigo) : void
     {
         $produto = $this->buscarProduto('CD_PRODUTO', $codigo[0]);

@@ -5,6 +5,7 @@ namespace app\controller;
 use app\database\Filters;
 use app\models\EmailFornecedor;
 use app\models\Fornecedor;
+use app\models\ProdutoFornecedor;
 use app\models\TelefoneFornecedor;
 use app\static\Request;
 
@@ -13,12 +14,16 @@ class FornecedorController extends Controller
     private $_filters;
     private $_fornecedor;
     private $controllerCidade;
+    // private $controllerProduto;
+    // private $_produtoFornecedor;
 
     public function __construct()
     {   
         $this->_filters = new Filters();
         $this->_fornecedor = new Fornecedor();
         $this->controllerCidade = new CidadeController();
+        // $this->controllerProduto = new ProdutoController();
+        // $this->_produtoFornecedor = new ProdutoFornecedor();
     }
 
     public function paginaDeCadastro() : void
@@ -73,10 +78,13 @@ class FornecedorController extends Controller
     public function paginaDeDetalhes($codigo) : void
     {
         $fornecedor = $this->buscarFornecedor('CD_FORNECEDOR', $codigo[0]);
+        $produtos = $this->buscarProduto($codigo[0]);
         $this->views('controle', [
             'title' => 'Detalhe do Fornecedor',
             'pag' => 'detalhe fornecedor',
             'fornecedor' => $fornecedor,
+            'produtos' => $produtos,
+            'link' => '/controle/fornecedor'
         ]);
     }
 
@@ -186,6 +194,21 @@ class FornecedorController extends Controller
     {
         $fornecedor = new Fornecedor();
         return $fornecedor->fetchAll();
+    }
+
+    public function buscarProduto($codigo) {
+        $produtoFornecedor = new ProdutoFornecedor();
+        $controllerProduto = new ProdutoController();
+        $produtos = [];
+        $this->_filters->clear();
+        $this->_filters->where('CD_FORNECEDOR', '=', (int)$codigo);
+        $produtoFornecedor->setfilters($this->_filters);
+        $produtosA = $produtoFornecedor->fetchAll();
+        $this->_filters->clear();
+        foreach($produtosA as $s){
+            $produtos [] = $controllerProduto->buscarProduto('CD_PRODUTO', $s->getFornecedor());
+        }
+        return $produtos;
     }
 
     public function buscarFornecedor(string $key, mixed $data) : Fornecedor|bool

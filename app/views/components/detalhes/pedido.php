@@ -43,5 +43,6 @@
         <button onclick="pagina('<?=$link?>')">Voltar</button>
         <button onclick="pagamentosPedido('<?=$pedido->getCodigo()?>')">Pagamentos</button>
         <button onclick="relatorioPedido('<?=$pedido->getCodigo()?>')">relatorio</button>
+        <button onclick="alterarStatus('<?=$pedido->getCodigo()?>')">Auterar Status</button>
     </div>
 </div>

@@ -97,6 +97,7 @@ abstract class Routes
                     //Ações
                         '/orcamento/excluir/[0-9]+' => 'OrcamentoController@excluir',
                 //Pedido
+                    '/pedido/alterar/status/[0-9]+' => 'PedidoController@alterarStatus',
                     '/pagar/pedido/[0-9]+' => 'PagamentoController@pagarParcela',
                     '/pedido/pagamento/[0-9]+' => 'PagamentoController@buscarParcelas',
                     '/pedido/relatorio/[0-9]+' => 'PedidoController@relatorio',
@@ -135,6 +136,8 @@ abstract class Routes
                     '/servico/salvar' => 'ServicoController@salvar',
                     '/servico/atualizar/[0-9]+' => 'ServicoController@atualizar',
                 //Produto
+                    '/produto/inserir/[0-9]+' => 'ProdutoController@inserir',
+                    '/produto/debitar/[0-9]+' => 'ProdutoController@debitar',
                     '/produto/salvar' => 'ProdutoController@salvar',
                     '/produto/atualizar/[0-9]+' => 'ProdutoController@atualizar',
                 //Usuario
