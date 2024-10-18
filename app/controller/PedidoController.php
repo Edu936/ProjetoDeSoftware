@@ -447,12 +447,26 @@ class PedidoController extends Controller
     
     public function relatorio($codigo) {
         $pedido = $this->buscarPedido('CD_PEDIDO', $codigo[0]);
-        $produtos = $this->buscarProdutosAcossiados($codigo[0]);
         $servicos = $this->buscarServicoAcossiados($codigo[0]);
+        $produtos = $this->buscarProdutosAcossiados($codigo[0]);
         $parcelas = $this->buscarPagamentoAssociados($codigo[0]);
+        $cliente = $this->controllerCliente->buscarCliente('CD_CLIENTE', $pedido->getCliente());
+        $veiculo = $this->controllerVeiculo->buscarVeiculo('CD_VEICULO', $pedido->getCliente());
+        $email = $this->controllerCliente->buscarEmailsCliente('CD_CLIENTE', $cliente->getCodigo());
+        $telefone = $this->controllerCliente->buscarTelefonesCliente('CD_CLIENTE', $cliente->getCodigo());
+        $cidade = $this->controllerCliente->buscarCidadeCliente('CD_CIDADE',$cliente->getCidade());
         $this->views('relatorio', [
-            'title' => 'Relatorio Pedido',
+            'email' => $email,
+            'cidade' => $cidade,
+            'pedido' => $pedido,
             'pag' => 'relatorio',
+            'cliente' => $cliente,
+            'veiculo' => $veiculo,
+            'telefone' => $telefone,
+            'produtos' => $produtos,
+            'servicos' => $servicos,
+            'parcelas' => $parcelas,
+            'title' => 'Relatorio Pedido',
             'link' => '/pedido/detalhe/'.$pedido->getCodigo(),
         ]);
     }
