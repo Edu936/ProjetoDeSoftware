@@ -1,6 +1,6 @@
 {
-    "name": "dudum/projeto_php",
-    "description": "Projeto de Software",
+    "name": "dudum/projeto-de-software",
+    "description": "Projeoto de Software",
     "authors": [
         {
             "name": "Eduardo Vieira",
@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "league/plates": "^3.5",
+        "league/plates": "^3.6",
         "symfony/var-dumper": "^7.1"
     },
     "autoload": {
