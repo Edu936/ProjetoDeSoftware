@@ -10,8 +10,8 @@ class MySql
 {
     private static $username = "root";
     private static $connection = null;
-    private static $password = "Edu@1195";
-    private static $dbname = "estetica";
+    private static $password = "root";
+    private static $dbname = "db_clubcar";
     private static $servername = "localhost";
 
     public static function connect()

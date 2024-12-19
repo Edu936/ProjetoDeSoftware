@@ -1,15 +1,15 @@
 {
     "name": "dudum/projeto-de-software",
-    "description": "Projeoto de Software",
+    "description": "Projeto de Software",
     "authors": [
         {
-            "name": "Eduardo Vieira",
-            "email": "edu.vieira936@gmail.com"
+            "name": "Eduardo Vieira Marques",
+            "email": "eduvieira936@gmail.com"
         }
     ],
     "require": {
         "league/plates": "^3.6",
-        "symfony/var-dumper": "^7.1"
+        "symfony/var-dumper": "^7.2"
     },
     "autoload": {
         "psr-4": {
